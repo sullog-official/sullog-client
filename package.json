@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "storybook": "start-storybook -p 6006 -s ./public",
+    "build-storybook": "build-storybook -s ./public"
   },
   "dependencies": {
     "@next/font": "13.1.1",
@@ -22,5 +24,19 @@
     "sass": "^1.57.1",
     "typescript": "4.9.4"
   },
-  "packageManager": "yarn@3.3.1"
+  "packageManager": "yarn@3.3.1",
+  "devDependencies": {
+    "@babel/core": "^7.20.7",
+    "@mdx-js/react": "^1.6.22",
+    "@storybook/addon-actions": "^6.5.15",
+    "@storybook/addon-docs": "^6.5.15",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/addon-interactions": "^6.5.15",
+    "@storybook/addon-links": "^6.5.15",
+    "@storybook/builder-webpack5": "^6.5.15",
+    "@storybook/manager-webpack5": "^6.5.15",
+    "@storybook/react": "^6.5.15",
+    "@storybook/testing-library": "^0.0.13",
+    "babel-loader": "^8.3.0"
+  }
 }
