@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import Button from "./Button";
+import Button from './Button';
 
 export default {
   component: Button,
@@ -8,6 +8,6 @@ export default {
 
 export const Default: StoryObj<typeof Button> = {
   args: {
-    children: "버튼",
+    children: '버튼',
   },
 };

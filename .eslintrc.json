@@ -9,6 +9,7 @@
     "react/react-in-jsx-scope": "off",
     "no-unused-vars": "off",
     "react/prop-types": "off",
+    "no-undef": "off",
     "import/order": [
       "error",
       {
