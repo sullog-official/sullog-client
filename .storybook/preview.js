@@ -1,3 +1,5 @@
+import '@/assets/styles/index.scss';
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -7,3 +9,21 @@ export const parameters = {
     },
   },
 };
+
+
+export const decorators = [
+  (Story) => (
+    <>
+      <style>
+        {`
+          body {
+            height: 100%;
+            padding: 0 !important;
+            background-color: white;
+          }
+        `}
+      </style>
+      <Story />
+    </>
+  ),
+];
