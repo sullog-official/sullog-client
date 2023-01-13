@@ -18,6 +18,7 @@ module.exports = {
         'asset',
         'style',
         'dependency',
+        'build',
       ],
     ],
     'type-empty': [2, 'never'],
