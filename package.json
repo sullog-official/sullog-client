@@ -10,7 +10,8 @@
     "prettier": "prettier --write **/*.{ts,tsx}",
     "postinstall": "husky install",
     "storybook": "storybook dev -p 6006 -s ./public",
-    "build-storybook": "storybook build -s ./public"
+    "build-storybook": "storybook build -s ./public",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "dependencies": {
     "@next/font": "13.1.1",
@@ -39,6 +40,7 @@
     "@storybook/addon-links": "^7.0.0-beta.19",
     "@storybook/nextjs": "^7.0.0-beta.19",
     "@storybook/react": "^7.0.0-beta.19",
+    "@storybook/storybook-deployer": "^2.8.16",
     "@storybook/testing-library": "^0.0.14-next.1",
     "@svgr/webpack": "^6.5.1",
     "babel-loader": "^8.3.0",
