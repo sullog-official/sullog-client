@@ -1,0 +1,15 @@
+$floating: 1000; // 헤더 등에 사용
+$drawer: 1100;
+$bottomSheet: 1200;
+$modal: 1300;
+$snackbar: 1400;
+$loading: 2000;
+
+:export {
+  floating: $floating;
+  drawer: $drawer;
+  bottomSheet: $bottomSheet;
+  modal: $modal;
+  snackbar: $snackbar;
+  loading: $loading;
+}
