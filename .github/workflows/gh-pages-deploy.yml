@@ -2,7 +2,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - dev
+      - feature/gh-pages-deploy
 
 jobs:
   build-and-deploy:
