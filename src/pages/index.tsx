@@ -5,5 +5,5 @@ import styles from './index.module.scss';
 const cx = classNames.bind(styles);
 
 export default function Home() {
-  return <main className={cx('main')}>Home</main>;
+  return <main className={cx('main')}>Sullog Home</main>;
 }
