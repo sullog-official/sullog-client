@@ -1,6 +1,7 @@
+import { SVGProps } from 'react';
+
 import * as icons from '@/assets/icons';
 import classNames from 'classnames/bind';
-import { SVGProps } from 'react';
 
 import styles from './Icon.module.scss';
 
