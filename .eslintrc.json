@@ -9,22 +9,45 @@
     "react/react-in-jsx-scope": "off",
     "no-unused-vars": "off",
     "react/prop-types": "off",
-    "no-undef": "off"
-//    "import/order": [
-//      "error",
-//      {
-//        "groups": [
-//          "builtin",
-//          "external",
-//          "internal",
-//          ["sibling", "parent", "index"]
-//        ],
-//        "alphabetize": {
-//          "order": "asc",
-//          "caseInsensitive": true
-//        },
-//        "newlines-between": "always"
-//      }
-//    ]
+    "no-undef": "off",
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true,
+        "ignoreMemberSort": false,
+        "allowSeparatedGroups": true
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always",
+        "groups": [["builtin", "external"], "internal", "parent", "sibling", "index"],
+        "pathGroups": [
+          {
+            "pattern": "next",
+            "group": "builtin"
+          },
+          {
+            "pattern": "react",
+            "group": "builtin"
+          },
+          {
+            "pattern": "@Storybook/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "@/**",
+            "group": "internal"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["@/**", "@Storybook/**"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
   }
 }
