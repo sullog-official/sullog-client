@@ -10,15 +10,6 @@
     "no-unused-vars": "off",
     "react/prop-types": "off",
     "no-undef": "off",
-    "sort-imports": [
-      "error",
-      {
-        "ignoreCase": true,
-        "ignoreDeclarationSort": true,
-        "ignoreMemberSort": false,
-        "allowSeparatedGroups": true
-      }
-    ],
     "import/order": [
       "error",
       {
@@ -42,11 +33,7 @@
             "group": "internal"
           }
         ],
-        "pathGroupsExcludedImportTypes": ["@/**", "@Storybook/**"],
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        }
+        "pathGroupsExcludedImportTypes": ["@/**", "@Storybook/**"]
       }
     ]
   }
