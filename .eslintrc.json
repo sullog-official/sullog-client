@@ -19,6 +19,18 @@
           "internal",
           ["sibling", "parent", "index"]
         ],
+        "pathGroups": [
+          {
+            "pattern": "{react*, react*/**}",
+            "group": "builtin",
+            "position": "after"
+          },
+          {
+            "pattern": "@storybook/**",
+            "group": "external",
+            "position": "before"
+          }
+        ],
         "alphabetize": {
           "order": "asc",
           "caseInsensitive": true
