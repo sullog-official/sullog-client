@@ -1,5 +1,4 @@
 import type { Meta, StoryFn } from '@storybook/react';
-
 import classNames from 'classnames/bind';
 
 import color from './_color.module.scss';
