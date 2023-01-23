@@ -13,27 +13,24 @@
     "import/order": [
       "error",
       {
-        "newlines-between": "always",
-        "groups": [["builtin", "external"], "internal", "parent", "sibling", "index"],
         "pathGroups": [
           {
-            "pattern": "next",
-            "group": "builtin"
-          },
-          {
-            "pattern": "react",
-            "group": "builtin"
-          },
-          {
-            "pattern": "@Storybook/**",
-            "group": "internal"
-          },
-          {
             "pattern": "@/**",
-            "group": "internal"
+            "group": "external",
+            "position": "after"
           }
         ],
-        "pathGroupsExcludedImportTypes": ["@/**", "@Storybook/**"]
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "unknown",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ]
       }
     ]
   }

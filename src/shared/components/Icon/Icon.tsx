@@ -1,8 +1,6 @@
-import { SVGProps } from 'react';
-
 import * as icons from '@/assets/icons';
+import { SVGProps } from 'react';
 import classNames from 'classnames/bind';
-
 import styles from './Icon.module.scss';
 
 const cx = classNames.bind(styles);

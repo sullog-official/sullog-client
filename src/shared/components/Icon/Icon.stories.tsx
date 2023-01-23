@@ -1,7 +1,7 @@
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import * as icons from '@/assets/icons';
-
 import Icon, { IconNameType } from './Icon';
+
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 export default {
   component: Icon,
