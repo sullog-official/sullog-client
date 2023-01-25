@@ -1,0 +1,116 @@
+@use './index' as themes;
+
+.section {
+  padding: 16px;
+
+  > h1 {
+    margin-bottom: 4px;
+    @include themes.typography('title26', 500);
+  }
+
+  > h2 {
+    margin-top: 14px;
+
+    @include themes.typography('title20', 500);
+  }
+}
+
+.color-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+
+  .color-list-item {
+    display: flex;
+    flex-direction: column;
+    min-width: 80px;
+    margin: 2px;
+
+    + .color-list-item {
+      margin-left: 10px;
+    }
+
+    > b {
+      margin-top: 4px;
+      @include themes.typography('body16', 600);
+    }
+
+    > span {
+      @include themes.typography('body14', 400);
+    }
+  }
+
+  .color-block {
+    width: 120px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid themes.$grey200;
+  }
+}
+
+.typography-list {
+  display: flex;
+  flex-direction: column;
+
+  > li {
+    margin: 2px 0;
+    border: 1px solid themes.$grey200;
+  }
+
+  // title
+  .title40 {
+    @include themes.typography('title40');
+  }
+
+  .title26 {
+    @include themes.typography('title26');
+  }
+
+  .title20 {
+    @include themes.typography('title20');
+  }
+
+  .title18 {
+    @include themes.typography('title18');
+  }
+
+  // body
+  .body16 {
+    @include themes.typography('body16');
+  }
+
+  .body15 {
+    @include themes.typography('body15');
+  }
+
+  .body14 {
+    @include themes.typography('body14');
+  }
+
+  .body13 {
+    @include themes.typography('body13');
+  }
+
+  // caption
+  .caption12 {
+    @include themes.typography('caption12');
+  }
+
+  .caption11 {
+    @include themes.typography('caption11');
+  }
+
+  .caption10 {
+    @include themes.typography('caption10');
+  }
+}
+
+.z-index-list {
+  padding-left: 16px;
+
+  .z-index-list-item {
+    list-style: disc;
+
+    @include themes.typography('body16');
+  }
+}

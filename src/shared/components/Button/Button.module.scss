@@ -1,3 +1,7 @@
+@use '../../../assets/styles/themes';
+
 .button {
-  background-color: purple;
+  background-color: themes.$purple;
+
+  @include themes.typography('body13', 500);
 }

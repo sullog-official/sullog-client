@@ -1,0 +1,55 @@
+@use 'sass:map';
+
+$typography: (
+  'title40': (
+    'font-size': 40px,
+    'line-height': 48px,
+  ),
+  'title26': (
+    'font-size': 26px,
+    'line-height': 36px,
+  ),
+  'title20': (
+    'font-size': 20px,
+    'line-height': 28px,
+  ),
+  'title18': (
+    'font-size': 18px,
+    'line-height': 27px,
+  ),
+  'body16': (
+    'font-size': 16px,
+    'line-height': 24px,
+  ),
+  'body15': (
+    'font-size': 15px,
+    'line-height': 22px,
+  ),
+  'body14': (
+    'font-size': 14px,
+    'line-height': 20px,
+  ),
+  'body13': (
+    'font-size': 13px,
+    'line-height': 16px,
+  ),
+  'caption12': (
+    'font-size': 12px,
+    'line-height': 16px,
+  ),
+  'caption11': (
+    'font-size': 11px,
+    'line-height': 14px,
+  ),
+  'caption10': (
+    'font-size': 10px,
+    'line-height': 14px,
+  ),
+);
+
+@mixin typography($name, $weight: 400) {
+  $typographyType: map.get($typography, $name);
+  font-size: map.get($typographyType, 'font-size');
+  line-height: map.get($typographyType, 'line-height');
+  font-weight: $weight;
+}
