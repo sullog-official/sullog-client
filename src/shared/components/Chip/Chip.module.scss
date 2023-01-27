@@ -5,4 +5,25 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 2px 8px;
+
+  @include themes.typography('caption12', 500);
+
+  &.round {
+    border-radius: 20px;
+  }
+
+  &.squircle {
+    border-radius: 10px;
+  }
+
+  &.filled {
+    background-color: themes.$purple;
+    color: themes.$white;
+  }
+
+  &.outlined {
+    border: 1px solid themes.$lightPurple100;
+    color: themes.$lightPurple300;
+  }
 }

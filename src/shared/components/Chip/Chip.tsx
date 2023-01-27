@@ -5,42 +5,13 @@ import styles from './Chip.module.scss';
 const cx = classNames.bind(styles);
 
 type ChipProps = {
-  text: string;
-  fontSize: string;
-  fontWeight: string;
-  padding: string;
-  backgroundColor?: string;
-  color: string;
-  borderRadius: string;
-  border?: string;
+  label: string;
+  type: 'round' | 'squircle';
+  variant: 'filled' | 'outlined';
 };
 
-const Chip = ({
-  text,
-  fontSize,
-  fontWeight,
-  padding,
-  backgroundColor,
-  color,
-  borderRadius,
-  border,
-}: ChipProps) => {
-  return (
-    <div
-      className={cx('chip')}
-      style={{
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-        padding: padding,
-        backgroundColor: backgroundColor,
-        color: color,
-        borderRadius: borderRadius,
-        border: border,
-      }}
-    >
-      {text}
-    </div>
-  );
+const Chip = ({ label, type, variant }: ChipProps) => {
+  return <div className={cx('chip', type, variant)}>{label}</div>;
 };
 
 export default Chip;
