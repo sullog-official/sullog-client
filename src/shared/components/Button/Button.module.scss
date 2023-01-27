@@ -1,7 +1,33 @@
 @use '../../../assets/styles/themes';
 
 .button {
-  background-color: themes.$purple;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 46px;
+  padding: 16px;
+  border-radius: 36px;
 
-  @include themes.typography('body13', 500);
+  @include themes.typography('body13', 400);
+
+  &.primary {
+    color: themes.$white;
+    background-color: themes.$purple;
+
+    &:active {
+      filter: brightness(90%);
+    }
+  }
+
+  &.outline {
+    color: themes.$grey600;
+    background-color: themes.$white;
+    border: 1px solid themes.$purple;
+
+    &:active {
+      filter: brightness(95%);
+    }
+  }
 }
