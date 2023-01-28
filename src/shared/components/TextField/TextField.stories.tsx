@@ -10,9 +10,9 @@ export default {
 
 export const Default: StoryObj<typeof TextField> = {};
 
-export const Disabled: StoryObj<typeof TextField> = {
+export const Editable: StoryObj<typeof TextField> = {
   args: {
-    disabled: true,
+    editable: true,
   },
 };
 
