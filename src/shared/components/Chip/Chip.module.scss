@@ -20,10 +20,17 @@
   &.filled {
     background-color: themes.$purple;
     color: themes.$white;
+    &.writing {
+      background-color: themes.$grey100;
+      color: themes.$grey500;
+    }
   }
 
   &.outlined {
+    background-color: themes.$white;
     border: 1px solid themes.$lightPurple100;
-    color: themes.$lightPurple300;
+    &.purple {
+      color: themes.$lightPurple300;
+    }
   }
 }

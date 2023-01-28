@@ -5,36 +5,52 @@ export default {
   component: Chip,
 } as Meta<typeof Chip>;
 
-export const Default: StoryObj<typeof Chip> = {};
-
-export const RoundFilled: StoryObj<typeof Chip> = {
+export const Writing: StoryObj<typeof Chip> = {
   args: {
-    label: 'Round Filled Chip',
-    type: 'round',
+    label: 'Writing',
+    type: 'squircle',
     variant: 'filled',
+    writing: true,
   },
 };
 
-export const RoundOutlined: StoryObj<typeof Chip> = {
+export const FilledSquircle: StoryObj<typeof Chip> = {
   args: {
-    label: 'Round Outlined Chip',
-    type: 'round',
-    variant: 'outlined',
-  },
-};
-
-export const SquircleFilled: StoryObj<typeof Chip> = {
-  args: {
-    label: 'Squircle Filled Chip',
+    label: 'FilledSquircle',
     type: 'squircle',
     variant: 'filled',
   },
 };
 
-export const SquircleOutlined: StoryObj<typeof Chip> = {
+export const FilledRound: StoryObj<typeof Chip> = {
   args: {
-    label: 'Squircle Outlined Chip',
+    label: 'FilledRound',
+    type: 'round',
+    variant: 'filled',
+  },
+};
+
+export const OutlinedSquircle: StoryObj<typeof Chip> = {
+  args: {
+    label: 'OutlinedSquircle',
     type: 'squircle',
     variant: 'outlined',
+  },
+};
+
+export const OutlinedRound: StoryObj<typeof Chip> = {
+  args: {
+    label: 'OutlinedRound',
+    type: 'round',
+    variant: 'outlined',
+  },
+};
+
+export const OutlinedRoundPurpleFont: StoryObj<typeof Chip> = {
+  args: {
+    label: 'OutlinedRound',
+    type: 'round',
+    variant: 'outlined',
+    fontColor: 'purple',
   },
 };
