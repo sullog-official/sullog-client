@@ -10,7 +10,7 @@ export const PrimaryRound: StoryObj<typeof Chip> = {
     label: 'Primary Round',
     type: 'Primary',
     appearance: 'round',
-    size: 'md',
+    size: 'medium',
   },
 };
 
@@ -19,7 +19,7 @@ export const PrimarySquircle: StoryObj<typeof Chip> = {
     label: 'Primary Squircle',
     type: 'Primary',
     appearance: 'squircle',
-    size: 'md',
+    size: 'medium',
   },
 };
 
@@ -28,7 +28,7 @@ export const SecondaryRound: StoryObj<typeof Chip> = {
     label: 'Secondary Round',
     type: 'Secondary',
     appearance: 'round',
-    size: 'md',
+    size: 'medium',
   },
 };
 
@@ -37,7 +37,7 @@ export const SecondarySquircle: StoryObj<typeof Chip> = {
     label: 'Secondary Squircle',
     type: 'Secondary',
     appearance: 'squircle',
-    size: 'md',
+    size: 'medium',
   },
 };
 
@@ -46,7 +46,7 @@ export const OutlinedRound: StoryObj<typeof Chip> = {
     label: 'Outlined Round',
     type: 'Outlined',
     appearance: 'round',
-    size: 'lg',
+    size: 'large',
   },
 };
 
@@ -55,7 +55,7 @@ export const OutlinedSquircle: StoryObj<typeof Chip> = {
     label: 'Outlined Squircle',
     type: 'Outlined',
     appearance: 'squircle',
-    size: 'lg',
+    size: 'large',
   },
 };
 
@@ -64,7 +64,7 @@ export const OutlinedPurpleRound: StoryObj<typeof Chip> = {
     label: 'Outlined Purple Round',
     type: 'OutlinedPurple',
     appearance: 'round',
-    size: 'ms',
+    size: 'mediumSmall',
   },
 };
 
@@ -73,6 +73,6 @@ export const OutlinedPurpleSquircle: StoryObj<typeof Chip> = {
     label: 'Outlined Purple Squircle',
     type: 'OutlinedPurple',
     appearance: 'squircle',
-    size: 'ms',
+    size: 'mediumSmall',
   },
 };
