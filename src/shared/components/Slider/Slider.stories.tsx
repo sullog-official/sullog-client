@@ -7,7 +7,6 @@ export default {
   argTypes: {
     min: { type: 'number', defaultValue: 1 },
     max: { type: 'number', defaultValue: 5 },
-    showLabels: { type: 'boolean', defaultValue: true },
     minLabel: { type: 'string' },
     maxLabel: { type: 'string' },
   },
@@ -31,7 +30,6 @@ export const FlavorSlider: StoryObj<typeof Slider> = {
     value: 3,
     min: 1,
     max: 5,
-    showLabels: true,
     minLabel: '달다',
     maxLabel: '쓰다',
     style: { width: '200px' },

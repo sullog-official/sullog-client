@@ -12,7 +12,6 @@ type SliderProps = Pick<
   value: number;
   min?: number;
   max?: number;
-  showLabels?: boolean;
   minLabel?: string;
   maxLabel?: string;
   onChange: (value: number) => void;
@@ -22,7 +21,6 @@ const Slider = ({
   value,
   min = 0,
   max = 10,
-  showLabels = false,
   minLabel = min.toString(),
   maxLabel = max.toString(),
   className,
@@ -55,12 +53,10 @@ const Slider = ({
           onChange={(e) => onChange(parseInt(e.target.value))}
         />
       </div>
-      {showLabels && (
-        <div className={cx('labels')}>
-          <span>{minLabel}</span>
-          <span>{maxLabel}</span>
-        </div>
-      )}
+      <div className={cx('labels')}>
+        <span>{minLabel}</span>
+        <span>{maxLabel}</span>
+      </div>
     </div>
   );
 };
