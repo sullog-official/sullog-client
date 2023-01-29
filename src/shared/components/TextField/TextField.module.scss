@@ -1,0 +1,21 @@
+@use '~@styles/themes';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.label {
+  color: themes.$grey300;
+  @include themes.typography('body13');
+}
+
+.input {
+  border-bottom: 1px solid themes.$grey200;
+  padding-bottom: 7px;
+  width: 100%;
+
+  @include themes.typography('body15');
+}

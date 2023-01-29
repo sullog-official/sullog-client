@@ -49,7 +49,7 @@ $typography: (
 
 @mixin typography($name, $weight: 400) {
   $typographyType: map.get($typography, $name);
+  font-weight: $weight;
   font-size: map.get($typographyType, 'font-size');
   line-height: map.get($typographyType, 'line-height');
-  font-weight: $weight;
 }
