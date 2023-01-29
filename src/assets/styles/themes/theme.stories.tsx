@@ -23,10 +23,10 @@ export const Color: StoryFn = () => {
               <li key={key} className={cx('color-list-item')}>
                 <div
                   className={cx('color-block')}
-                  style={{ backgroundColor: value }}
+                  style={{ backgroundColor: value as string }}
                 />
                 <b>{key}</b>
-                <span>{value}</span>
+                <span>{value as string}</span>
               </li>
             ))}
         </ul>
@@ -74,7 +74,7 @@ export const ZIndex: StoryFn = () => {
       <ul className={cx('z-index-list')}>
         {Object.entries(zIndex).map(([key, value]) => (
           <li key={key} className={cx('z-index-list-item')}>
-            {key}: {value}
+            {`${key}: ${value}`}
           </li>
         ))}
       </ul>
