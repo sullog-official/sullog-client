@@ -1,25 +1,26 @@
 import classNames from 'classnames/bind';
-import { InputHTMLAttributes } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { debounce } from 'lodash-es';
 
 import styles from './Slider.module.scss';
 
 const cx = classNames.bind(styles);
 
-type SliderProps = Pick<
-  InputHTMLAttributes<HTMLInputElement>,
-  'className' | 'style'
-> & {
+type SliderProps = {
   value: number;
   min?: number;
   max?: number;
   step?: number;
   minLabel?: string;
   maxLabel?: string;
+  className?: string;
+  style?: React.CSSProperties;
   onChange: (value: number) => void;
+  useDebounce?: boolean;
 };
 
 const Slider = ({
-  value,
+  value: outerValue,
   min = 0,
   max = 10,
   minLabel = min.toString(),
@@ -28,8 +29,27 @@ const Slider = ({
   className,
   style,
   onChange,
+  useDebounce = false,
 }: SliderProps) => {
+  const [value, setValue] = useState(outerValue);
+
   const railPercent = ((value - min) / (max - min)) * 100;
+
+  useEffect(() => {
+    setValue(outerValue);
+  }, [outerValue]);
+
+  const debouncedChange = useMemo(() => debounce(onChange, 300), [onChange]);
+
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const currentValue = parseInt(e.target.value);
+      setValue(currentValue);
+
+      useDebounce ? debouncedChange(currentValue) : onChange(currentValue);
+    },
+    [debouncedChange, onChange, useDebounce]
+  );
 
   return (
     <div className={cx('slider-container', className)} style={style}>
@@ -57,7 +77,7 @@ const Slider = ({
           max={max}
           step={step}
           value={value}
-          onChange={(e) => onChange(parseInt(e.target.value))}
+          onChange={handleChange}
         />
       </div>
       <div className={cx('labels')}>

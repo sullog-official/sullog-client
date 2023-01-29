@@ -10,6 +10,7 @@ export default {
     step: { type: 'number', defaultValue: 1 },
     minLabel: { type: 'string' },
     maxLabel: { type: 'string' },
+    useDebounce: { type: 'boolean', defaultValue: false },
   },
 } as Meta<typeof Slider>;
 
@@ -17,12 +18,15 @@ export const Default: StoryFn<typeof Slider> = (args) => {
   const [value, setValue] = useState(args.min! + args.step!);
 
   return (
-    <Slider
-      {...args}
-      value={value}
-      onChange={setValue}
-      style={{ width: '200px' }}
-    />
+    <>
+      <Slider
+        {...args}
+        value={value}
+        onChange={setValue}
+        style={{ width: '200px' }}
+      />
+      <p>value: {value}</p>
+    </>
   );
 };
 
