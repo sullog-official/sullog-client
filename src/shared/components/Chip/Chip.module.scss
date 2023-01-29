@@ -5,7 +5,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2px 8px;
+  width: fit-content;
+  padding: 0 8px;
 
   @include themes.typography('caption12', 500);
 
@@ -53,5 +54,25 @@
     &.squircle {
       border-radius: 10px;
     }
+  }
+
+  &.sm {
+    height: 16px;
+  }
+
+  &.ms {
+    height: 20px;
+  }
+
+  &.md {
+    height: 22px;
+  }
+
+  &.ml {
+    height: 24px;
+  }
+
+  &.lg {
+    height: 26px;
   }
 }

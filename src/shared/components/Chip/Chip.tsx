@@ -8,10 +8,12 @@ type ChipProps = {
   label: string;
   type: 'Primary' | 'Secondary' | 'Outlined' | 'OutlinedPurple';
   appearance: 'round' | 'squircle';
+  // 16 20 22 24 26
+  size: 'sm' | 'ms' | 'md' | 'ml' | 'lg';
 };
 
-const Chip = ({ label, type, appearance }: ChipProps) => {
-  return <div className={cx('chip', type, appearance)}>{label}</div>;
+const Chip = ({ label, type, appearance, size }: ChipProps) => {
+  return <div className={cx('chip', type, appearance, size)}>{label}</div>;
 };
 
 export default Chip;
