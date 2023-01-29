@@ -1,13 +1,13 @@
 import classNames from 'classnames/bind';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { debounce } from 'lodash-es';
+import { debounce, isNil } from 'lodash-es';
 
 import styles from './Slider.module.scss';
 
 const cx = classNames.bind(styles);
 
 type SliderProps = {
-  value: number;
+  value?: number;
   min?: number;
   max?: number;
   step?: number;
@@ -15,7 +15,8 @@ type SliderProps = {
   maxLabel?: string;
   className?: string;
   style?: React.CSSProperties;
-  onChange: (value: number) => void;
+  name?: string;
+  onChange?: (value: number) => void;
   useDebounce?: boolean;
 };
 
@@ -28,25 +29,29 @@ const Slider = ({
   step = 1,
   className,
   style,
+  name,
   onChange,
   useDebounce = false,
 }: SliderProps) => {
   const [value, setValue] = useState(outerValue);
 
-  const railPercent = ((value - min) / (max - min)) * 100;
+  const railPercent = isNil(value) ? 0 : ((value - min) / (max - min)) * 100;
 
   useEffect(() => {
     setValue(outerValue);
   }, [outerValue]);
 
-  const debouncedChange = useMemo(() => debounce(onChange, 300), [onChange]);
+  const debouncedChange = useMemo(
+    () => onChange && debounce(onChange, 300),
+    [onChange]
+  );
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const currentValue = parseInt(e.target.value);
       setValue(currentValue);
 
-      useDebounce ? debouncedChange(currentValue) : onChange(currentValue);
+      (useDebounce ? debouncedChange : onChange)?.(currentValue);
     },
     [debouncedChange, onChange, useDebounce]
   );
@@ -65,7 +70,7 @@ const Slider = ({
                 key={markValue}
                 className={cx('mark', {
                   'mark--visible': index % step === 0,
-                  'mark--filled': markValue <= value,
+                  'mark--filled': !isNil(value) && markValue <= value,
                 })}
               />
             ))}
@@ -78,6 +83,7 @@ const Slider = ({
           step={step}
           value={value}
           onChange={handleChange}
+          name={name}
         />
       </div>
       <div className={cx('labels')}>

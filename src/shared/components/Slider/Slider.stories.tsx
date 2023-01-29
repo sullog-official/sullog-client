@@ -41,3 +41,15 @@ export const FlavorSlider: StoryObj<typeof Slider> = {
     style: { width: '200px' },
   },
 };
+
+export const WithNoValue: StoryObj<typeof Slider> = {
+  args: {
+    value: undefined,
+    min: 1,
+    max: 5,
+    step: 1,
+    minLabel: '달다',
+    maxLabel: '쓰다',
+    style: { width: '200px' },
+  },
+};
