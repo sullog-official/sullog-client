@@ -1,0 +1,78 @@
+@use '~@styles/themes';
+
+.chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 0 8px;
+
+  @include themes.typography('caption12', 500);
+
+  &.Primary {
+    background-color: themes.$purple;
+    color: themes.$white;
+    &.round {
+      border-radius: 20px;
+    }
+    &.squircle {
+      border-radius: 10px;
+    }
+  }
+
+  &.Secondary {
+    background-color: themes.$grey100;
+    color: themes.$grey500;
+    &.round {
+      border-radius: 20px;
+    }
+    &.squircle {
+      border-radius: 10px;
+    }
+  }
+
+  &.Outlined {
+    background-color: themes.$white;
+    color: themes.$black;
+    border: 1px solid themes.$lightPurple100;
+    &.round {
+      border-radius: 20px;
+    }
+    &.squircle {
+      border-radius: 10px;
+    }
+  }
+
+  &.OutlinedPurple {
+    background-color: themes.$white;
+    color: themes.$purple;
+    border: 1px solid themes.$lightPurple100;
+    &.round {
+      border-radius: 20px;
+    }
+    &.squircle {
+      border-radius: 10px;
+    }
+  }
+
+  &.sm {
+    height: 16px;
+  }
+
+  &.ms {
+    height: 20px;
+  }
+
+  &.md {
+    height: 22px;
+  }
+
+  &.ml {
+    height: 24px;
+  }
+
+  &.lg {
+    height: 26px;
+  }
+}
