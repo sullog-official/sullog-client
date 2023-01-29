@@ -1,10 +1,10 @@
 @use '~@styles/themes';
 
 .container {
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
 }
 
 .label {
@@ -13,9 +13,9 @@
 }
 
 .input {
-  width: 100%;
-  padding-bottom: 7px;
   border-bottom: 1px solid themes.$grey200;
+  padding-bottom: 7px;
+  width: 100%;
 
   @include themes.typography('body15');
 }
