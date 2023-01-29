@@ -5,52 +5,66 @@ export default {
   component: Chip,
 } as Meta<typeof Chip>;
 
-export const Writing: StoryObj<typeof Chip> = {
+export const PrimaryRound: StoryObj<typeof Chip> = {
   args: {
-    label: 'Writing',
-    type: 'squircle',
-    variant: 'filled',
-    writing: true,
+    label: 'Primary Round',
+    type: 'Primary',
+    appearance: 'round',
   },
 };
 
-export const FilledSquircle: StoryObj<typeof Chip> = {
+export const PrimarySquircle: StoryObj<typeof Chip> = {
   args: {
-    label: 'FilledSquircle',
-    type: 'squircle',
-    variant: 'filled',
+    label: 'Primary Squircle',
+    type: 'Primary',
+    appearance: 'squircle',
   },
 };
 
-export const FilledRound: StoryObj<typeof Chip> = {
+export const SecondaryRound: StoryObj<typeof Chip> = {
   args: {
-    label: 'FilledRound',
-    type: 'round',
-    variant: 'filled',
+    label: 'Secondary Round',
+    type: 'Secondary',
+    appearance: 'round',
   },
 };
 
-export const OutlinedSquircle: StoryObj<typeof Chip> = {
+export const SecondarySquircle: StoryObj<typeof Chip> = {
   args: {
-    label: 'OutlinedSquircle',
-    type: 'squircle',
-    variant: 'outlined',
+    label: 'Secondary Squircle',
+    type: 'Secondary',
+    appearance: 'squircle',
   },
 };
 
 export const OutlinedRound: StoryObj<typeof Chip> = {
   args: {
-    label: 'OutlinedRound',
-    type: 'round',
-    variant: 'outlined',
+    label: 'Outlined Round',
+    type: 'Outlined',
+    appearance: 'round',
   },
 };
 
-export const OutlinedRoundPurpleFont: StoryObj<typeof Chip> = {
+export const OutlinedSquircle: StoryObj<typeof Chip> = {
   args: {
-    label: 'OutlinedRound',
-    type: 'round',
-    variant: 'outlined',
-    fontColor: 'purple',
+    label: 'Outlined Squircle',
+    type: 'Outlined',
+    appearance: 'squircle',
+  },
+};
+
+export const OutlinedPurpleRound: StoryObj<typeof Chip> = {
+  args: {
+    label: 'Outlined Purple Round',
+    type: 'OutlinedPurple',
+    appearance: 'round',
+  },
+};
+
+export const OutlinedPurpleSquircle: StoryObj<typeof Chip> = {
+  args: {
+    label: 'Outlined Purple Squircle',
+    type: 'OutlinedPurple',
+    appearance: 'squircle',
   },
 };

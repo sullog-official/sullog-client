@@ -9,28 +9,49 @@
 
   @include themes.typography('caption12', 500);
 
-  &.round {
-    border-radius: 20px;
-  }
-
-  &.squircle {
-    border-radius: 10px;
-  }
-
-  &.filled {
+  &.Primary {
     background-color: themes.$purple;
     color: themes.$white;
-    &.writing {
-      background-color: themes.$grey100;
-      color: themes.$grey500;
+    &.round {
+      border-radius: 20px;
+    }
+    &.squircle {
+      border-radius: 10px;
     }
   }
 
-  &.outlined {
+  &.Secondary {
+    background-color: themes.$grey100;
+    color: themes.$grey500;
+    &.round {
+      border-radius: 20px;
+    }
+    &.squircle {
+      border-radius: 10px;
+    }
+  }
+
+  &.Outlined {
     background-color: themes.$white;
+    color: themes.$black;
     border: 1px solid themes.$lightPurple100;
-    &.purple {
-      color: themes.$lightPurple300;
+    &.round {
+      border-radius: 20px;
+    }
+    &.squircle {
+      border-radius: 10px;
+    }
+  }
+
+  &.OutlinedPurple {
+    background-color: themes.$white;
+    color: themes.$purple;
+    border: 1px solid themes.$lightPurple100;
+    &.round {
+      border-radius: 20px;
+    }
+    &.squircle {
+      border-radius: 10px;
     }
   }
 }

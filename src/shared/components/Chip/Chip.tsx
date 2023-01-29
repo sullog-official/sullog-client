@@ -6,18 +6,12 @@ const cx = classNames.bind(styles);
 
 type ChipProps = {
   label: string;
-  type: 'round' | 'squircle';
-  variant: 'filled' | 'outlined';
-  writing?: boolean;
-  fontColor?: 'default' | 'purple';
+  type: 'Primary' | 'Secondary' | 'Outlined' | 'OutlinedPurple';
+  appearance: 'round' | 'squircle';
 };
 
-const Chip = ({ label, type, variant, writing, fontColor }: ChipProps) => {
-  return (
-    <div className={cx('chip', type, variant, writing && 'writing', fontColor)}>
-      {label}
-    </div>
-  );
+const Chip = ({ label, type, appearance }: ChipProps) => {
+  return <div className={cx('chip', type, appearance)}>{label}</div>;
 };
 
 export default Chip;
