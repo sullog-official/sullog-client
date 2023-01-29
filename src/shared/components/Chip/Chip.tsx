@@ -9,7 +9,7 @@ type ChipProps = {
   type: 'Primary' | 'Secondary' | 'Outlined' | 'OutlinedPurple';
   appearance: 'round' | 'squircle';
   // 16 20 22 24 26
-  size: 'sm' | 'ms' | 'md' | 'ml' | 'lg';
+  size: 'small' | 'mediumSmall' | 'medium' | 'mediumLarge' | 'large';
 };
 
 const Chip = ({ label, type, appearance, size }: ChipProps) => {
