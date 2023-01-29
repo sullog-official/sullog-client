@@ -12,6 +12,7 @@ type SliderProps = Pick<
   value: number;
   min?: number;
   max?: number;
+  step?: number;
   minLabel?: string;
   maxLabel?: string;
   onChange: (value: number) => void;
@@ -23,6 +24,7 @@ const Slider = ({
   max = 10,
   minLabel = min.toString(),
   maxLabel = max.toString(),
+  step = 1,
   className,
   style,
   onChange,
@@ -37,10 +39,14 @@ const Slider = ({
         <div className={cx('marks')}>
           {Array(max - min + 1)
             .fill(0)
-            .map((_, index) => (
+            .map((_, index) => min + index)
+            .map((markValue, index) => (
               <span
-                key={index}
-                className={cx('mark', { 'mark--filled': min + index <= value })}
+                key={markValue}
+                className={cx('mark', {
+                  'mark--visible': index % step === 0,
+                  'mark--filled': markValue <= value,
+                })}
               />
             ))}
         </div>
@@ -49,6 +55,7 @@ const Slider = ({
           type="range"
           min={min}
           max={max}
+          step={step}
           value={value}
           onChange={(e) => onChange(parseInt(e.target.value))}
         />

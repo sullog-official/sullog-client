@@ -95,6 +95,11 @@
 
   .mark {
     @include markStyles;
+    visibility: hidden;
+
+    &--visible {
+      visibility: visible;
+    }
 
     &--filled {
       background-color: themes.$purple;
