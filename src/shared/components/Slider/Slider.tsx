@@ -18,6 +18,7 @@ type SliderProps = {
   name?: string;
   onChange?: (value: number) => void;
   useDebounce?: boolean;
+  readOnly?: boolean;
 };
 
 const Slider = ({
@@ -32,6 +33,7 @@ const Slider = ({
   name,
   onChange,
   useDebounce = false,
+  readOnly = false,
 }: SliderProps) => {
   const [value, setValue] = useState(outerValue);
 
@@ -48,12 +50,13 @@ const Slider = ({
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (readOnly) return;
+
       const currentValue = parseInt(e.target.value);
       setValue(currentValue);
-
       (useDebounce ? debouncedChange : onChange)?.(currentValue);
     },
-    [debouncedChange, onChange, useDebounce]
+    [debouncedChange, onChange, readOnly, useDebounce]
   );
 
   return (
@@ -84,6 +87,7 @@ const Slider = ({
           value={value}
           onChange={handleChange}
           name={name}
+          readOnly={readOnly}
         />
       </div>
       <div className={cx('labels')}>
