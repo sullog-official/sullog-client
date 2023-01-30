@@ -38,21 +38,15 @@ const Rating = (props: RatingProps) => {
                 <Icon
                   name="HalfStar"
                   size={12}
-                  // TODO: (테스트를 위한 임시코드) color prop으로 수정
-                  style={{
-                    backgroundColor:
-                      !isNil(value) && v - STEP <= value ? 'purple' : 'grey',
-                  }}
+                  color={
+                    !isNil(value) && v - STEP <= value ? 'purple' : 'grey200'
+                  }
                 />
                 <Icon
                   className={cx('half-star--flipped')}
                   name="HalfStar"
                   size={12}
-                  // TODO: (테스트를 위한 임시코드) color prop으로 수정
-                  style={{
-                    backgroundColor:
-                      !isNil(value) && v <= value ? 'purple' : 'grey',
-                  }}
+                  color={!isNil(value) && v <= value ? 'purple' : 'grey200'}
                 />
               </span>
             ))}
