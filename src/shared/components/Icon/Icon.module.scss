@@ -1,6 +1,5 @@
 @use '~@styles/themes/color.module';
 
-// TODO: grey50추가
 .icon {
   &.white {
     path{
@@ -50,6 +49,11 @@
     }
   }
 
+  &.grey50 {
+    path{
+      fill: color.$grey50;
+    }
+  }
   &.grey100 {
     path{
       fill: color.$grey100;
