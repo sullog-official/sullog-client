@@ -11,6 +11,7 @@ export default {
     minLabel: { type: 'string' },
     maxLabel: { type: 'string' },
     useDebounce: { type: 'boolean', defaultValue: false },
+    readOnly: { type: 'boolean', defaultValue: false },
   },
 } as Meta<typeof Slider>;
 
@@ -30,14 +31,30 @@ export const Default: StoryFn<typeof Slider> = (args) => {
   );
 };
 
+const flavorSliderArgs = {
+  value: 3,
+  min: 1,
+  max: 5,
+  step: 1,
+  minLabel: '달다',
+  maxLabel: '쓰다',
+  style: { width: '200px' },
+};
+
 export const FlavorSlider: StoryObj<typeof Slider> = {
+  args: flavorSliderArgs,
+};
+
+export const WithNoValue: StoryObj<typeof Slider> = {
   args: {
-    value: 3,
-    min: 1,
-    max: 5,
-    step: 1,
-    minLabel: '달다',
-    maxLabel: '쓰다',
-    style: { width: '200px' },
+    ...flavorSliderArgs,
+    value: undefined,
+  },
+};
+
+export const ReadOnly: StoryObj<typeof Slider> = {
+  args: {
+    ...flavorSliderArgs,
+    readOnly: true,
   },
 };

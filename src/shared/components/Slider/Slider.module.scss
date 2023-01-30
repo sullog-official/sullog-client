@@ -24,7 +24,7 @@
 
 @mixin thumbStyles {
   @include markStyles;
-  background: themes.$purple;
+  background: transparent;
 }
 
 .slider-wrapper {

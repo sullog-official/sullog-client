@@ -1,3 +1,92 @@
+@use '~@styles/themes/color.module';
+
 .icon {
-  // TODO: theme에 따른 color 지정
+  &.white {
+    path{
+      fill: color.$white;
+    }
+  }
+
+  &.black {
+    path{
+      fill: color.$black;
+    }
+  }
+
+  &.purple {
+    path{
+      fill: color.$purple;
+    }
+  }
+
+  &.purpleOpacity5 {
+    path{
+      fill: color.$purpleOpacity5;
+    }
+  }
+
+  &.purpleOpacity60 {
+    path{
+      fill: color.$purpleOpacity60;
+    }
+  }
+
+  &.lightPurple100 {
+    path{
+      fill: color.$lightPurple100;
+    }
+  }
+
+  &.lightPurple200 {
+    path{
+      fill: color.$lightPurple200;
+    }
+  }
+
+  &.lightPurple300 {
+    path{
+      fill: color.$lightPurple300;
+    }
+  }
+
+  &.grey50 {
+    path{
+      fill: color.$grey50;
+    }
+  }
+  &.grey100 {
+    path{
+      fill: color.$grey100;
+    }
+  }
+
+  &.grey200 {
+    path{
+      fill: color.$grey200;
+    }
+  }
+
+  &.grey300 {
+    path{
+      fill: color.$grey300;
+    }
+  }
+
+  &.grey400 {
+    path{
+      fill: color.$grey400;
+    }
+  }
+
+  &.grey500 {
+    path{
+      fill: color.$grey500;
+    }
+  }
+
+  &.grey600 {
+    path{
+      fill: color.$grey600;
+    }
+  }
 }
