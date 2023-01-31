@@ -4,3 +4,8 @@ export { ReactComponent as Search } from './search.svg';
 export { ReactComponent as Feed } from './feed.svg';
 export { ReactComponent as Menu } from './menu.svg';
 export { ReactComponent as Write } from './write.svg';
+export { ReactComponent as 소주 } from './소주.svg';
+export { ReactComponent as 과실주 } from './과실주.svg';
+export { ReactComponent as 막걸리 } from './막걸리.svg';
+export { ReactComponent as 기타 } from './기타.svg';
+export { ReactComponent as 전체 } from './all.svg';
