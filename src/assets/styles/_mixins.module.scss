@@ -1,8 +1,8 @@
 @mixin resetTrackStyles {
-  border: none;
   outline: none;
-  height: 100%;
+  border: none;
   background-color: transparent;
+  height: 100%;
 }
 
 @mixin resetSliderStyles {

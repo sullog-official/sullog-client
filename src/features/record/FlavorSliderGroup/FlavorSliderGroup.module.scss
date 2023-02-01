@@ -4,15 +4,14 @@
   display: grid;
   grid-template-columns: 22px 1fr;
   gap: 13px 17px;
-  width: 100%;
-  padding: 19px 27px 9px 27px;
   border-radius: 10px;
   background-color: themes.$grey50;
+  padding: 19px 27px 9px 27px;
+  width: 100%;
 
   > label {
     color: themes.$grey400;
 
-    @include themes.typography("caption11")
+    @include themes.typography('caption11');
   }
 }
-

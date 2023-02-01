@@ -3,10 +3,10 @@
 .chip {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  width: fit-content;
+  align-items: center;
   padding: 0 8px;
+  width: fit-content;
 
   @include themes.typography('caption12', 500);
 
@@ -33,9 +33,9 @@
   }
 
   &.Outlined {
+    border: 1px solid themes.$lightPurple100;
     background-color: themes.$white;
     color: themes.$black;
-    border: 1px solid themes.$lightPurple100;
     &.round {
       border-radius: 20px;
     }
@@ -45,9 +45,9 @@
   }
 
   &.OutlinedPurple {
+    border: 1px solid themes.$lightPurple100;
     background-color: themes.$white;
     color: themes.$purple;
-    border: 1px solid themes.$lightPurple100;
     &.round {
       border-radius: 20px;
     }
