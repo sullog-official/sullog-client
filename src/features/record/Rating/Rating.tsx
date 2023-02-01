@@ -33,20 +33,24 @@ const Rating = (props: RatingProps) => {
           {Array(MAX)
             .fill(0)
             .map((_, index) => index + 1)
-            .map((v, index) => (
+            .map((starValue, index) => (
               <span key={index} className={cx('star')}>
                 <Icon
                   name="HalfStar"
                   size={12}
                   color={
-                    !isNil(value) && v - STEP <= value ? 'purple' : 'grey200'
+                    !isNil(value) && starValue - STEP <= value
+                      ? 'purple'
+                      : 'grey200'
                   }
                 />
                 <Icon
                   className={cx('half-star--flipped')}
                   name="HalfStar"
                   size={12}
-                  color={!isNil(value) && v <= value ? 'purple' : 'grey200'}
+                  color={
+                    !isNil(value) && starValue <= value ? 'purple' : 'grey200'
+                  }
                 />
               </span>
             ))}
