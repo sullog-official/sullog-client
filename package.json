@@ -11,7 +11,8 @@
     "postinstall": "husky install",
     "storybook": "storybook dev -p 6006 -s ./public",
     "build-storybook": "storybook build -s ./public",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy-storybook": "storybook-to-ghpages",
+    "create-component": "plop component"
   },
   "dependencies": {
     "@next/font": "13.1.1",
