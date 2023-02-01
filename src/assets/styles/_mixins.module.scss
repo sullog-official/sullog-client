@@ -1,0 +1,30 @@
+@mixin resetTrackStyles {
+  border: none;
+  outline: none;
+  height: 100%;
+  background-color: transparent;
+}
+
+@mixin resetSliderStyles {
+  -webkit-appearance: none;
+
+  &::-webkit-slider-runnable-track {
+    @include resetTrackStyles;
+  }
+
+  &::-webkit-slider-thumb {
+    visibility: hidden;
+  }
+
+  &::-moz-range-track {
+    @include resetTrackStyles;
+  }
+
+  &::-moz-range-thumb {
+    visibility: hidden;
+  }
+
+  &:focus {
+    @include resetTrackStyles;
+  }
+}
