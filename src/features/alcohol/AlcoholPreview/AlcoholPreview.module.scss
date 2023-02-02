@@ -3,4 +3,38 @@
 .alcohol-preview-container {
   display: grid;
   grid-template-columns: 1fr 100px;
+  width: 100%;
+  gap: 24px;
+}
+
+.alcohol-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.alcohol-header {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.alcohol-name {
+  @include themes.typography('body14');
+}
+
+.alcohol-brand {
+  @include themes.typography('caption11');
+
+  color: themes.$grey300;
+}
+
+.alcohol-desc {
+  @include themes.typography('caption12');
+
+  color: themes.$grey500;
+}
+
+.alcohol-image {
+  border-radius: 10px;
 }
