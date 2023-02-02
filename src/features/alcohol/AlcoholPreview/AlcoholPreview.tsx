@@ -14,18 +14,18 @@ type AlcoholPreviewProps = {
 
 const AlcoholPreview = (props: AlcoholPreviewProps) => {
   return (
-    <div className={cx('alcohol-preview-container')}>
-      <div className={cx('alcohol-info')}>
-        <div className={cx('alcohol-header')}>
-          <span className={cx('alcohol-name')}>{props.name}</span>
-          <span className={cx('alcohol-brand')}>{props.brand}</span>
+    <div className={cx('container')}>
+      <div className={cx('info-container')}>
+        <div className={cx('header')}>
+          <span className={cx('name')}>{props.name}</span>
+          <span className={cx('brand')}>{props.brand}</span>
         </div>
-        <p className={cx('alcohol-desc')}>{props.description}</p>
+        <p className={cx('desc')}>{props.description}</p>
       </div>
       <Image
         src={props.imgSrc}
-        alt="술 이름"
-        className={cx('alcohol-image')}
+        alt={props.name}
+        className={cx('image')}
         width={100}
         height={100}
       />
