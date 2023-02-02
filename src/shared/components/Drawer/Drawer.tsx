@@ -8,8 +8,8 @@ const cx = classNames.bind(styles);
 interface DrawerProps {
   children: React.ReactNode;
   isOpen: boolean;
-  onClose: () => {};
-  width?: number;
+  onClose: () => void;
+  percentage?: number;
   position?: 'left' | 'right';
 }
 
@@ -17,8 +17,8 @@ const Drawer = ({
   children,
   isOpen,
   onClose,
-  width = 30,
-  position = 'left',
+  percentage = 83,
+  position = 'right',
 }: DrawerProps) => {
   return (
     <div
@@ -29,12 +29,12 @@ const Drawer = ({
     >
       <div
         className={cx('drawer', position)}
-        style={{ width: `${width}%` }}
+        style={{ width: `${percentage}%` }}
         role="dialog"
       >
         {children}
       </div>
-      <div className="backdrop" onClick={onClose} />
+      <div className={cx('backdrop')} onClick={onClose} />
     </div>
   );
 };

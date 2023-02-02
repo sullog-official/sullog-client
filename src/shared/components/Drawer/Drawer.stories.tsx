@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import Drawer from './Drawer';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
   component: Drawer,
@@ -8,4 +9,14 @@ export default {
   },
 } as Meta<typeof Drawer>;
 
-export const Default: StoryObj<typeof Drawer> = {};
+export const Default: StoryFn<typeof Drawer> = (args) => {
+  const [isOpen, setIsOpen] = useState(true);
+
+  const onClose = () => setIsOpen(false);
+
+  return (
+    <Drawer {...args} isOpen={isOpen} onClose={onClose}>
+      내용
+    </Drawer>
+  );
+};
