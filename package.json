@@ -11,7 +11,8 @@
     "postinstall": "husky install",
     "storybook": "storybook dev -p 6006 -s ./public",
     "build-storybook": "storybook build -s ./public",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy-storybook": "storybook-to-ghpages",
+    "create-component": "plop component"
   },
   "dependencies": {
     "@next/font": "13.1.1",
@@ -54,6 +55,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-storybook": "^0.6.8",
     "husky": "^8.0.3",
+    "plop": "^3.1.1",
     "postcss": "^8.4.20",
     "postcss-loader": "^7.0.2",
     "prettier": "^2.8.1",
