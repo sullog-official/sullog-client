@@ -1,4 +1,4 @@
-import AlcoholCard from './AlcoholCard';
+import AlcoholCard from './AlcoholCategoryTabItem';
 import type { Meta, StoryObj } from '@storybook/react';
 
 export default {
@@ -7,80 +7,80 @@ export default {
 
 export const DefaultSoju: StoryObj<typeof AlcoholCard> = {
   args: {
-    name: '소주',
+    name: 'Soju',
     iconSize: 16,
-    isClicked: false,
+    isSelected: false,
   },
 };
 
 export const DefaultFruitWine: StoryObj<typeof AlcoholCard> = {
   args: {
-    name: '과실주',
+    name: 'FruitWine',
     iconSize: 14,
-    isClicked: false,
+    isSelected: false,
   },
 };
 
 export const DefaultMakgeolli: StoryObj<typeof AlcoholCard> = {
   args: {
-    name: '막걸리',
+    name: 'Makgeolli',
     iconSize: 20,
-    isClicked: false,
+    isSelected: false,
   },
 };
 
 export const DefaultEtc: StoryObj<typeof AlcoholCard> = {
   args: {
-    name: '기타',
+    name: 'Etc',
     iconSize: 22,
-    isClicked: false,
+    isSelected: false,
   },
 };
 
 export const DefaultAll: StoryObj<typeof AlcoholCard> = {
   args: {
-    name: '전체',
+    name: 'All',
     iconSize: 14,
-    isClicked: false,
+    isSelected: false,
   },
 };
 
 export const ClickedSoju: StoryObj<typeof AlcoholCard> = {
   args: {
-    name: '소주',
+    name: 'Soju',
     iconSize: 16,
-    isClicked: true,
+    isSelected: true,
   },
 };
 
 export const ClickedFruitWine: StoryObj<typeof AlcoholCard> = {
   args: {
-    name: '과실주',
+    name: 'FruitWine',
     iconSize: 14,
-    isClicked: true,
+    isSelected: true,
   },
 };
 
 export const ClickedMakgeolli: StoryObj<typeof AlcoholCard> = {
   args: {
-    name: '막걸리',
+    name: 'Makgeolli',
     iconSize: 20,
-    isClicked: true,
+    isSelected: true,
   },
 };
 
 export const ClickedEtc: StoryObj<typeof AlcoholCard> = {
   args: {
-    name: '기타',
+    name: 'Etc',
     iconSize: 22,
-    isClicked: true,
+    isSelected: true,
   },
 };
 
 export const ClickedAll: StoryObj<typeof AlcoholCard> = {
   args: {
-    name: '전체',
+    name: 'All',
     iconSize: 14,
-    isClicked: true,
+    isSelected: true,
   },
 };
