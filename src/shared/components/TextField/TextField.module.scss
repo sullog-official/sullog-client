@@ -1,15 +1,16 @@
 @use '~@styles/themes';
 
 .container {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  width: 100%;
 }
 
 .label {
-  color: themes.$grey300;
   @include themes.typography('body13');
+
+  color: themes.$grey300;
+  margin-bottom: 12px;
 }
 
 .input {

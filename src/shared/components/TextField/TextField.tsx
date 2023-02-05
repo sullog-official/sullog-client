@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 interface TextFieldProps {
   value: string;
   label?: string;
-  editable?: boolean;
+  disabled?: boolean;
   onChange?: () => void;
   onSubmit?: () => void;
 }
@@ -18,18 +18,18 @@ const TextField = ({
   label,
   onChange,
   onSubmit,
-  editable = false,
+  disabled = false,
 }: TextFieldProps) => {
   return (
     <div className={cx('container')}>
-      {label && <span className={cx('label')}>{label}</span>}
+      {label && <label className={cx('label')}>{label}</label>}
       <input
         type="text"
         value={value}
         className={cx('input')}
         onChange={onChange}
         onSubmit={onSubmit}
-        disabled={!editable}
+        disabled={disabled}
       />
     </div>
   );
