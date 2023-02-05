@@ -12,19 +12,24 @@ type AlcoholPreviewProps = {
   imgSrc: string;
 };
 
-const AlcoholPreview = (props: AlcoholPreviewProps) => {
+const AlcoholPreview = ({
+  name,
+  brand,
+  description,
+  imgSrc,
+}: AlcoholPreviewProps) => {
   return (
     <div className={cx('container')}>
       <div className={cx('info-container')}>
         <div className={cx('header')}>
-          <span className={cx('name')}>{props.name}</span>
-          <span className={cx('brand')}>{props.brand}</span>
+          <span className={cx('name')}>{name}</span>
+          <span className={cx('brand')}>{brand}</span>
         </div>
-        <p className={cx('desc')}>{props.description}</p>
+        <p className={cx('desc')}>{description}</p>
       </div>
       <Image
-        src={props.imgSrc}
-        alt={props.name}
+        src={imgSrc}
+        alt={name}
         className={cx('image')}
         width={100}
         height={100}
