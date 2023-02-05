@@ -20,6 +20,11 @@ export const decorators = [
             padding: 0 !important;
             background-color: white;
           }
+
+          /** docs 스토리북 내부 폰트가 스토리북 기본 폰트인 'Nunito sans'로 덮어 씌워지는 문제로 인해 별도 선언 */
+          .docs-story {
+            font-family: 'Noto Sans KR', sans-serif;
+          }
         `}
       </style>
       <Story />
