@@ -1,0 +1,8 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-prettier-scss",
+    "stylelint-prettier/recommended",
+    "stylelint-config-property-sort-order-smacss"
+  ]
+}
