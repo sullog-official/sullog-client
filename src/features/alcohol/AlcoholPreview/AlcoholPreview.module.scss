@@ -16,11 +16,12 @@
 .header {
   display: flex;
   align-items: baseline;
-  gap: 6px;
 }
 
 .name {
   @include themes.typography('body14');
+
+  margin-right: 6px;
 }
 
 .brand {
