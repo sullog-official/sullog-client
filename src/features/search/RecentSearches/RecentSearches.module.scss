@@ -1,0 +1,19 @@
+@use '@styles/themes';
+
+
+.header {
+  display:flex;
+  justify-contents: space-between;
+  align-items: center;
+  margin-bottom:4px;
+}
+
+.title {
+  @include themes.typography('body15', 700);
+  color: themes.$purple;
+}
+
+.subtitle {
+  @include themes.typography('caption12', 400);
+  color: themes.$grey300;
+}
