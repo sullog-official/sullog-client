@@ -1,9 +1,12 @@
 @use '@styles/themes';
 
+.container {
+  width: 100%;
+}
 
 .header {
   display:flex;
-  justify-contents: space-between;
+  justify-content: space-between;
   align-items: center;
   margin-bottom:4px;
 }
@@ -16,4 +19,33 @@
 .subtitle {
   @include themes.typography('caption12', 400);
   color: themes.$grey300;
+}
+
+.items {
+  display: grid;
+  gap: 4px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-name {
+  @include themes.typography('body14', 400);
+
+  color: themes.$grey500;
+  cursor: pointer;
+}
+
+.item-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #E6E6E6;
+  border-radius: 50%;
+  width:16px;
+  height:16px;
+  cursor: pointer;
 }
