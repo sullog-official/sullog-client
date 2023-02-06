@@ -4,10 +4,10 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  padding: 10px 20px 14px;
   border-radius: 10px;
   background-color: themes.$grey50;
-  padding: 10px 20px 14px;
-  width: 100%;
 }
 
 .label {
@@ -19,8 +19,8 @@
 
 .slider-wrapper {
   position: relative;
-  margin-left: -12px;
   width: fit-content;
+  margin-left: -12px;
 }
 
 .stars {

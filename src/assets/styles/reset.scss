@@ -6,21 +6,19 @@
 }
 
 *,
-:after,
-:before {
-  flex-shrink: 0;
+::after,
+::before {
   box-sizing: border-box;
+  flex-shrink: 0;
 }
 
 :root {
-  -webkit-tap-highlight-color: transparent;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  cursor: default;
   line-height: 1.5;
-  overflow-wrap: break-word;
-  -moz-tab-size: 4;
   tab-size: 4;
+  cursor: default;
+  -webkit-tap-highlight-color: transparent;
+  text-size-adjust: 100%;
+  overflow-wrap: break-word;
 }
 
 html,
@@ -38,9 +36,9 @@ svg {
 }
 
 button {
-  cursor: pointer;
   border: 0;
   background: none;
+  cursor: pointer;
 }
 
 a,
@@ -50,8 +48,8 @@ a:hover {
 }
 
 table {
-  border-collapse: collapse;
   border-spacing: 0;
+  border-collapse: collapse;
 }
 
 dl,
@@ -64,11 +62,10 @@ ul {
 
 textarea,
 input {
-  outline: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
   border: none;
+  outline: none;
   background-color: transparent;
+  box-shadow: none;
   resize: none;
 }
 
@@ -77,7 +74,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
+  transition: background-color 9999s ease-out;
   transition: background-color 5000s ease-in-out 0s;
-  -webkit-transition: background-color 9999s ease-out;
-  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  box-shadow: 0 0 0 1000px transparent inset;
 }

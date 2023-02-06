@@ -3,11 +3,11 @@
 .flavor-slider-group {
   display: grid;
   grid-template-columns: 22px 1fr;
-  gap: 13px 17px;
+  width: 100%;
+  padding: 19px 27px 9px;
   border-radius: 10px;
   background-color: themes.$grey50;
-  padding: 19px 27px 9px 27px;
-  width: 100%;
+  gap: 13px 17px;
 
   > label {
     color: themes.$grey400;

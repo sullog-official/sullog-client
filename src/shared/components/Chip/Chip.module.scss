@@ -3,19 +3,21 @@
 .chip {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 0 8px;
+  justify-content: center;
   width: fit-content;
+  padding: 0 8px;
 
   @include themes.typography('caption12', 500);
 
   &.Primary {
     background-color: themes.$purple;
     color: themes.$white;
+
     &.round {
       border-radius: 20px;
     }
+
     &.squircle {
       border-radius: 10px;
     }
@@ -24,9 +26,11 @@
   &.Secondary {
     background-color: themes.$grey100;
     color: themes.$grey500;
+
     &.round {
       border-radius: 20px;
     }
+
     &.squircle {
       border-radius: 10px;
     }
@@ -36,9 +40,11 @@
     border: 1px solid themes.$lightPurple100;
     background-color: themes.$white;
     color: themes.$black;
+
     &.round {
       border-radius: 20px;
     }
+
     &.squircle {
       border-radius: 10px;
     }
@@ -48,9 +54,11 @@
     border: 1px solid themes.$lightPurple100;
     background-color: themes.$white;
     color: themes.$purple;
+
     &.round {
       border-radius: 20px;
     }
+
     &.squircle {
       border-radius: 10px;
     }
