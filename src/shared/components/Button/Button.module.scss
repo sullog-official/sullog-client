@@ -2,12 +2,12 @@
 
 .button {
   display: flex;
-  justify-content: center;
   align-items: center;
-  border-radius: 36px;
-  padding: 16px;
+  justify-content: center;
   width: 100%;
   height: 46px;
+  padding: 16px;
+  border-radius: 36px;
   text-align: center;
 
   @include themes.typography('body13', 400);

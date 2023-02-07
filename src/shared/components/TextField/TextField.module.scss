@@ -13,9 +13,9 @@
 }
 
 .input {
-  border-bottom: 1px solid themes.$grey200;
-  padding-bottom: 7px;
   width: 100%;
+  padding-bottom: 7px;
+  border-bottom: 1px solid themes.$grey200;
 
   @include themes.typography('body15');
 }
