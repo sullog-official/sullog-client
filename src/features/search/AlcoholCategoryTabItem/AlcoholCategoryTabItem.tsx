@@ -1,42 +1,58 @@
 import classNames from 'classnames/bind';
 
 import Icon from '@/shared/components/Icon';
-import { IconNameType } from '@/shared/components/Icon/Icon';
 import styles from './AlcoholCategoryTabItem.module.scss';
 
 const cx = classNames.bind(styles);
 
 type AlcoholCategoryTabItemProps = {
-  name: IconNameType;
-  iconSize?: number;
+  alcohol: 'Soju' | 'FruitWine' | 'Makgeolli' | 'Etc' | 'All';
   isSelected: boolean;
 };
 
-const changeAlcoholNameToKorean = (name: string) => {
-  switch (name) {
+const matchAlcoholIconSpec = (
+  alcohol: AlcoholCategoryTabItemProps['alcohol']
+) => {
+  switch (alcohol) {
     case 'Soju':
-      return '소주';
+      return {
+        size: 16,
+        label: '소주',
+      };
     case 'FruitWine':
-      return '과실주';
+      return {
+        size: 14,
+        label: '과실주',
+      };
     case 'Makgeolli':
-      return '막걸리';
+      return {
+        size: 20,
+        label: '막걸리',
+      };
     case 'Etc':
-      return '기타주';
-    default:
-      return '전체';
+      return {
+        size: 20,
+        label: '기타',
+      };
+    case 'All':
+      return {
+        size: 14,
+        label: '전체',
+      };
   }
 };
 
 const AlcoholCategoryTabItem = ({
-  name,
-  iconSize,
+  alcohol,
   isSelected,
 }: AlcoholCategoryTabItemProps) => {
   const svgColor = isSelected ? 'white' : 'black';
+  const { size, label } = matchAlcoholIconSpec(alcohol);
+
   return (
     <button type="button" className={cx('button', isSelected && 'clicked')}>
-      <Icon name={name} size={iconSize} color={svgColor} />
-      <span className={cx('name')}>{changeAlcoholNameToKorean(name)}</span>
+      <Icon name={alcohol} size={size} color={svgColor} />
+      <span className={cx('name')}>{label}</span>
     </button>
   );
 };
