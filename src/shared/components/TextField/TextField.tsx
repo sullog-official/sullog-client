@@ -9,7 +9,7 @@ interface TextFieldProps {
   value: string;
   label?: string;
   disabled?: boolean;
-  onChange?: () => void;
+  onChange?: (value: string) => void;
   onSubmit?: () => void;
 }
 
@@ -20,6 +20,9 @@ const TextField = ({
   onSubmit,
   disabled = false,
 }: TextFieldProps) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange && onChange(e.target.value);
+  };
   return (
     <div className={cx('container')}>
       {label && <span className={cx('label')}>{label}</span>}
@@ -27,7 +30,7 @@ const TextField = ({
         type="text"
         value={value}
         className={cx('input')}
-        onChange={onChange}
+        onChange={handleChange}
         onSubmit={onSubmit}
         disabled={disabled}
       />
