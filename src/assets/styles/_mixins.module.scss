@@ -1,12 +1,12 @@
 @mixin resetTrackStyles {
-  outline: none;
-  border: none;
-  background-color: transparent;
   height: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
 
 @mixin resetSliderStyles {
-  -webkit-appearance: none;
+  appearance: none;
 
   &::-webkit-slider-runnable-track {
     @include resetTrackStyles;

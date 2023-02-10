@@ -23,8 +23,8 @@
   .color-list-item {
     display: flex;
     flex-direction: column;
-    margin: 2px;
     min-width: 80px;
+    margin: 2px;
 
     + .color-list-item {
       margin-left: 10px;
@@ -41,10 +41,10 @@
   }
 
   .color-block {
-    border: 1px solid themes.$grey200;
-    border-radius: 8px;
     width: 120px;
     height: 40px;
+    border: 1px solid themes.$grey200;
+    border-radius: 8px;
   }
 }
 

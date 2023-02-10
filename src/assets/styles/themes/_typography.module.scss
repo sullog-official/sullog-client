@@ -45,11 +45,16 @@ $typography: (
     'font-size': 10px,
     'line-height': 14px,
   ),
+  'caption9': (
+    'font-size': 9px,
+    'line-height': 13px,
+  )
 );
 
 @mixin typography($name, $weight: 400) {
   $typographyType: map.get($typography, $name);
-  font-weight: $weight;
+
   font-size: map.get($typographyType, 'font-size');
+  font-weight: $weight;
   line-height: map.get($typographyType, 'line-height');
 }

@@ -9,11 +9,11 @@
 }
 
 @mixin markStyles {
+  width: 10px;
+  height: 10px;
   border: none;
   border-radius: 50%;
   background: themes.$grey300;
-  width: 10px;
-  height: 10px;
 }
 
 .slider-wrapper {
@@ -25,16 +25,16 @@
 }
 
 .track {
-  background: themes.$grey300;
   width: 100%;
   height: 2px;
+  background: themes.$grey300;
 }
 
 .slider {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   width: 100%;
+  transform: translateY(-50%);
 
   @include mixins.resetSliderStyles;
 }
@@ -43,9 +43,9 @@
   position: absolute;
   top: 50%;
   left: 0;
+  height: 2px;
   transform: translateY(-50%);
   background-color: themes.$purple;
-  height: 2px;
 }
 
 .marks {
@@ -53,12 +53,13 @@
   position: absolute;
   top: 0;
   left: 0;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
 
   .mark {
     @include markStyles;
+
     visibility: hidden;
 
     &--visible {

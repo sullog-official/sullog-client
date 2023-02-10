@@ -12,7 +12,7 @@ export const Default: StoryObj<typeof TextField> = {};
 
 export const Editable: StoryObj<typeof TextField> = {
   args: {
-    editable: true,
+    disabled: true,
   },
 };
 
