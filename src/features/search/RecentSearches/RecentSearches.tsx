@@ -14,20 +14,20 @@ type RecentSearchesProps = {
   items: RecentSearchItem[];
   onDeleteItem: (id: number) => void;
   onClickItem: (id: number) => void;
-  onClickDeleteAll: () => void;
+  onDeleteAll: () => void;
 };
 
 const RecentSearches = ({
   items,
   onDeleteItem,
   onClickItem,
-  onClickDeleteAll,
+  onDeleteAll,
 }: RecentSearchesProps) => {
   return (
     <div className={cx('container')}>
       <div className={cx('header')}>
         <span className={cx('title')}>최근 검색어</span>
-        <span className={cx('subtitle')} onClick={onClickDeleteAll}>
+        <span className={cx('subtitle')} onClick={onDeleteAll}>
           모두 지우기
         </span>
       </div>

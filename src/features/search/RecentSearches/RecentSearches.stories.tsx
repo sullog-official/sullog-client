@@ -15,7 +15,7 @@ export default {
 export const Default: StoryFn<typeof RecentSearches> = (args) => {
   const [items, setItems] = useState(args.items);
 
-  const onClickDeleteAll = () => {
+  const onDeleteAll = () => {
     setItems([]);
   };
 
@@ -33,7 +33,7 @@ export const Default: StoryFn<typeof RecentSearches> = (args) => {
         items={items}
         onDeleteItem={onDeleteItem}
         onClickItem={onClickItem}
-        onClickDeleteAll={onClickDeleteAll}
+        onDeleteAll={onDeleteAll}
       />
     </>
   );
