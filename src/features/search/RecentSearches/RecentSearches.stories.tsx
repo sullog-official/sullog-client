@@ -1,14 +1,40 @@
+import { useState } from 'react';
 import RecentSearches from './RecentSearches';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
   component: RecentSearches,
   args: {
     items: [
       { id: 1, name: '항목1' },
-      { id: 2, name: '항목' },
+      { id: 2, name: '항목2' },
     ],
   },
 } as Meta<typeof RecentSearches>;
 
-export const Default: StoryObj<typeof RecentSearches> = {};
+export const Default: StoryFn<typeof RecentSearches> = (args) => {
+  const [items, setItems] = useState(args.items);
+
+  const onClickDeleteAll = () => {
+    setItems([]);
+  };
+
+  const onDeleteItem = (id: number) => {
+    setItems((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const onClickItem = (id: number) => {
+    console.log(items[id]);
+  };
+
+  return (
+    <>
+      <RecentSearches
+        items={items}
+        onDeleteItem={onDeleteItem}
+        onClickItem={onClickItem}
+        onClickDeleteAll={onClickDeleteAll}
+      />
+    </>
+  );
+};

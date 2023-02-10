@@ -5,20 +5,23 @@
 }
 
 .header {
-  display:flex;
-  justify-content: space-between;
+  display: flex;
   align-items: center;
-  margin-bottom:4px;
+  justify-content: space-between;
+  margin-bottom: 4px;
 }
 
 .title {
   @include themes.typography('body15', 700);
+
   color: themes.$purple;
 }
 
 .subtitle {
   @include themes.typography('caption12', 400);
+
   color: themes.$grey300;
+  cursor: pointer;
 }
 
 .items {
@@ -28,8 +31,8 @@
 
 .item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
 .item-name {
@@ -41,11 +44,11 @@
 
 .item-delete {
   display: flex;
-  justify-content: center;
   align-items: center;
-  background-color: #E6E6E6;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  width:16px;
-  height:16px;
+  background-color: #e6e6e6;
   cursor: pointer;
 }

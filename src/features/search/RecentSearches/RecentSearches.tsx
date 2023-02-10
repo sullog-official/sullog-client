@@ -13,7 +13,7 @@ type RecentSearchItem = {
 type RecentSearchesProps = {
   items: RecentSearchItem[];
   onDeleteItem: (id: number) => void;
-  onClickItem: () => void;
+  onClickItem: (id: number) => void;
   onClickDeleteAll: () => void;
 };
 
@@ -34,7 +34,11 @@ const RecentSearches = ({
       <ul className={cx('items')}>
         {items.map((item) => {
           return (
-            <li className={cx('item')} key={item.id}>
+            <li
+              className={cx('item')}
+              onClick={() => onClickItem(item.id)}
+              key={item.id}
+            >
               <span className={cx('item-name')}>{item.name}</span>
               <div
                 className={cx('item-delete')}
