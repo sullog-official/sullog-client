@@ -4064,7 +4064,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mapbox-gl@npm:^2.6.0":
+"@types/mapbox-gl@npm:^2.6.0, @types/mapbox-gl@npm:^2.7.10":
   version: 2.7.10
   resolution: "@types/mapbox-gl@npm:2.7.10"
   dependencies:
@@ -13737,6 +13737,7 @@ __metadata:
     "@storybook/testing-library": ^0.0.14-next.1
     "@svgr/webpack": ^6.5.1
     "@types/lodash-es": ^4.17.6
+    "@types/mapbox-gl": ^2.7.10
     "@types/node": 18.11.18
     "@types/react": 18.0.26
     "@types/react-dom": 18.0.10
