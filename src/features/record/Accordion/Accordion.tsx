@@ -14,9 +14,14 @@ type AccordionProps = {
 
 const Accordion = ({ label, items }: AccordionProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [clickedItem, setClickedItem] = useState('');
 
   const handleAccordion = () => {
     isOpen ? setIsOpen(false) : setIsOpen(true);
+  };
+
+  const onClickChip = (item: string) => {
+    setClickedItem(item);
   };
 
   return (
@@ -35,13 +40,18 @@ const Accordion = ({ label, items }: AccordionProps) => {
         <div className={cx('items-wrapper')}>
           {items.map((item) => {
             return (
-              <Chip
+              <button
+                type="button"
                 key={item}
-                label={item}
-                type="Secondary"
-                appearance="squircle"
-                size="medium"
-              />
+                onClick={() => onClickChip(item)}
+              >
+                <Chip
+                  label={item}
+                  type={clickedItem === item ? 'Primary' : 'Secondary'}
+                  appearance="squircle"
+                  size="medium"
+                />
+              </button>
             );
           })}
         </div>

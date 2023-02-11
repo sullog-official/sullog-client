@@ -21,5 +21,9 @@
 
 .items-wrapper {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
+  column-gap: 8px;
+  row-gap: 6px;
+  margin-top: 12px;
 }
