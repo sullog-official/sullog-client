@@ -28,7 +28,7 @@ const Accordion = ({ label, items }: AccordionProps) => {
     <div className={cx('wrapper')}>
       <div className={cx('preview')}>
         <h3 className={cx('label')}>{label}</h3>
-        <button onClick={handleAccordion}>
+        <button type="button" onClick={handleAccordion}>
           {isOpen ? (
             <Icon name={'Close'} size={10} />
           ) : (
@@ -43,6 +43,7 @@ const Accordion = ({ label, items }: AccordionProps) => {
               <button
                 type="button"
                 key={item}
+                className={cx('chip-button')}
                 onClick={() => onClickChip(item)}
               >
                 <Chip

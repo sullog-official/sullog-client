@@ -22,8 +22,10 @@
 .items-wrapper {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
-  column-gap: 8px;
-  row-gap: 6px;
-  margin-top: 12px;
+  margin-top: 6px;
+}
+
+.chip-button {
+  margin-right: 8px;
+  margin-top: 6px;
 }
