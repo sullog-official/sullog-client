@@ -13,24 +13,19 @@
     "import/order": [
       "error",
       {
-        "pathGroups": [
-          {
-            "pattern": "@/**",
-            "group": "internal",
-            "position": "after"
-          }
-        ],
         "groups": [
           "builtin",
           "external",
           "internal",
-          "unknown",
           "parent",
           "sibling",
-          "index",
-          "object",
-          "type"
-        ]
+          "index"
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "newlines-between": "always"
       }
     ]
   }
