@@ -1,5 +1,6 @@
-import AlcoholPreview from './AlcoholPreview';
 import type { Meta, StoryObj } from '@storybook/react';
+
+import AlcoholPreview from './AlcoholPreview';
 
 export default {
   component: AlcoholPreview,

@@ -1,7 +1,7 @@
-import { SVGProps } from 'react';
-import classNames from 'classnames/bind';
 import * as icons from '@/assets/icons';
 import { Color } from '@/assets/styles/themes';
+import classNames from 'classnames/bind';
+import { SVGProps } from 'react';
 
 import styles from './Icon.module.scss';
 

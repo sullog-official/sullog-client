@@ -1,6 +1,6 @@
+import Icon from '@/shared/components/Icon';
 import classNames from 'classnames/bind';
 
-import Icon from '@/shared/components/Icon';
 import styles from './AlcoholCategoryTabItem.module.scss';
 
 const cx = classNames.bind(styles);

@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import RecentSearches from './RecentSearches';
 import type { Meta, StoryFn } from '@storybook/react';
+import { useState } from 'react';
+
+import RecentSearches from './RecentSearches';
 
 export default {
   component: RecentSearches,

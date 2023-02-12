@@ -1,5 +1,6 @@
-import AlcoholCard from './AlcoholCategoryTabItem';
 import type { Meta, StoryObj } from '@storybook/react';
+
+import AlcoholCard from './AlcoholCategoryTabItem';
 
 export default {
   component: AlcoholCard,

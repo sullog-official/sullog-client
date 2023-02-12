@@ -1,5 +1,6 @@
-import Chip from './Chip';
 import type { Meta, StoryObj } from '@storybook/react';
+
+import Chip from './Chip';
 
 export default {
   component: Chip,
