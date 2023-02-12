@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { useState } from 'react';
 
 import AlcoholPreview from '@/features/alcohol/AlcoholPreview';
 import AlcoholCategoryTabItem from '@/features/search/AlcoholCategoryTabItem';
@@ -15,6 +16,8 @@ const sampleDescription =
 const AlcoholCategories = ['Soju', 'FruitWine', 'Makgeolli', 'Etc', 'All'];
 
 const List = () => {
+  const [selectedTab, setSelectedTab] = useState('Soju');
+
   return (
     <>
       <header>나의 술로그</header>
@@ -25,7 +28,8 @@ const List = () => {
               <AlcoholCategoryTabItem
                 key={category}
                 alcohol={category}
-                isSelected={false}
+                isSelected={selectedTab === category}
+                setSelectedTab={setSelectedTab}
               />
             );
           })}
