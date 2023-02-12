@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import Drawer from './Drawer';
 import type { Meta, StoryFn } from '@storybook/react';
+import { useState } from 'react';
+
+import Drawer from './Drawer';
 
 export default {
   component: Drawer,

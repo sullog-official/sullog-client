@@ -1,5 +1,6 @@
-import FlavorSliderGroup from './FlavorSliderGroup';
 import type { Meta, StoryObj } from '@storybook/react';
+
+import FlavorSliderGroup from './FlavorSliderGroup';
 
 export default {
   component: FlavorSliderGroup,
