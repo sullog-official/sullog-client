@@ -1,4 +1,5 @@
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
+
 import type { AppProps } from 'next/app';
 
 import '@/assets/styles/index.scss';

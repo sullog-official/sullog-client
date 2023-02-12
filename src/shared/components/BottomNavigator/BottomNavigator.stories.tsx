@@ -1,4 +1,5 @@
 import BottomNavigator from '@/shared/components/BottomNavigator/BottomNavigator';
+
 import { Meta, StoryObj } from '@storybook/react';
 
 export default {
