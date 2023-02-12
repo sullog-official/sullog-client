@@ -10,3 +10,5 @@ export { ReactComponent as FruitWine } from './fruitWine.svg';
 export { ReactComponent as Makgeolli } from './makgeolli.svg';
 export { ReactComponent as Etc } from './etc.svg';
 export { ReactComponent as All } from './all.svg';
+export { ReactComponent as Pin } from './pin.svg';
+export { ReactComponent as PinCount } from './pin-count.svg';
