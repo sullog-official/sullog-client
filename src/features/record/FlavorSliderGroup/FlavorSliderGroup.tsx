@@ -1,7 +1,7 @@
-import Slider from '@/shared/components/Slider';
-
 import classNames from 'classnames/bind';
 import { useState } from 'react';
+
+import Slider from '@/shared/components/Slider';
 
 import styles from './FlavorSliderGroup.module.scss';
 
