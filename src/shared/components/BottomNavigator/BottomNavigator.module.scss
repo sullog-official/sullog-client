@@ -1,7 +1,8 @@
-@use '../../../assets/styles/themes';
+@use '@/assets/styles/themes';
 
-.nav {
+.wrapper {
   height: 110px;
+  background-color: themes.$white;
 }
 
 .writeBtn {
