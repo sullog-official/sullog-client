@@ -4,6 +4,7 @@ import { useState } from 'react';
 import AlcoholPreview from '@/features/alcohol/AlcoholPreview';
 import AlcoholCategoryTabItem from '@/features/search/AlcoholCategoryTabItem';
 import BottomNavigator from '@/shared/components/BottomNavigator';
+import TopNavigator from '@/shared/components/TopNavigator';
 
 import styles from './List.module.scss';
 
@@ -20,7 +21,9 @@ const List = () => {
 
   return (
     <>
-      <header>나의 술로그</header>
+      <header>
+        <TopNavigator type={'personal'} title={'나의 술로그'} />
+      </header>
       <main>
         <div className={cx('category-wrapper')}>
           {AlcoholCategories.map((category: any) => {
