@@ -71,6 +71,18 @@ const List = () => {
             description={sampleDescription}
             imgSrc={'https://via.placeholder.com/100'}
           />
+          <AlcoholPreview
+            name={'술 이름'}
+            brand={'브랜드'}
+            description={sampleDescription}
+            imgSrc={'https://via.placeholder.com/100'}
+          />
+          <AlcoholPreview
+            name={'술 이름'}
+            brand={'브랜드'}
+            description={sampleDescription}
+            imgSrc={'https://via.placeholder.com/100'}
+          />
         </div>
       </main>
       <nav className={cx('bottom-navigator')}>

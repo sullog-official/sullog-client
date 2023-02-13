@@ -10,8 +10,16 @@
   display: grid;
   row-gap: 12px;
   width: 100%;
+  height: calc(100vh - 130px);
+  padding: 0 36px 88px 36px;
+  margin-top: 42px;
   overflow: scroll;
-  padding: 0 36px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.preview-wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 .bottom-navigator {
