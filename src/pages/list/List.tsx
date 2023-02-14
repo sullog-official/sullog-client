@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import { useState } from 'react';
 
 import AlcoholPreview from '@/features/alcohol/AlcoholPreview';
-import AlcoholCategoryTabItem from '@/features/search/AlcoholCategoryTabItem';
+import AlcoholCategoryTab from '@/features/search/AlcoholCategoryTab';
 import BottomNavigator from '@/shared/components/BottomNavigator';
 import TopNavigator from '@/shared/components/TopNavigator';
 
@@ -25,18 +25,11 @@ const List = () => {
         <TopNavigator type={'personal'} title={'나의 술로그'} />
       </header>
       <main>
-        <div className={cx('category-wrapper')}>
-          {AlcoholCategories.map((category: any) => {
-            return (
-              <AlcoholCategoryTabItem
-                key={category}
-                alcohol={category}
-                isSelected={selectedTab === category}
-                setSelectedTab={setSelectedTab}
-              />
-            );
-          })}
-        </div>
+        <AlcoholCategoryTab
+          alcoholCategories={AlcoholCategories}
+          selectedTab={selectedTab}
+          onTabChange={setSelectedTab}
+        />
         <div className={cx('preview-wrapper')}>
           <AlcoholPreview
             name={'술 이름'}
