@@ -23,7 +23,7 @@ const BottomNavigator = () => {
   };
 
   return (
-    <div className={cx('wrapper')}>
+    <nav className={cx('wrapper')}>
       <button
         onClick={navigateToWrite}
         type="button"
@@ -50,7 +50,7 @@ const BottomNavigator = () => {
           <p>메뉴</p>
         </button>
       </div>
-    </div>
+    </nav>
   );
 };
 
