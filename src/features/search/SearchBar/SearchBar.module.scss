@@ -1,0 +1,21 @@
+@use '@styles/themes';
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  background-color: themes.$white;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 30px;
+  width: 100%;
+  height: 40px;
+  padding: 12px 24px;
+}
+
+.search-input {
+  width: 100%;
+  margin-left: 6px;
+}
+
+.search-input::placeholder {
+  color: themes.$grey300;
+}
