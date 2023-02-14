@@ -88,9 +88,7 @@ const List = () => {
           />
         </div>
       </main>
-      <nav className={cx('bottom-navigator')}>
-        <BottomNavigator />
-      </nav>
+      <BottomNavigator />
     </>
   );
 };
