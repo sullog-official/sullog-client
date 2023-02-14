@@ -12,10 +12,12 @@
 }
 
 .search-input {
+  height: 100%;
   width: 100%;
   margin-left: 6px;
 }
 
 .search-input::placeholder {
   color: themes.$grey300;
+  @include themes.typography('body14');
 }
