@@ -14,7 +14,7 @@ type TopNavigatorProps = {
 const TopNavigator = ({ type, title, isCompleted }: TopNavigatorProps) => {
   return (
     <div className={cx('wrapper')}>
-      <button type="button" className={cx('back-btn')}>
+      <button type="button" aria-label="Back" className={cx('back-btn')}>
         <Icon name={'Back'} size={12} />
       </button>
       <h2 className={cx('title', type)}>{title}</h2>
