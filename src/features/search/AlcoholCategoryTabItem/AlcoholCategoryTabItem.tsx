@@ -6,7 +6,7 @@ import styles from './AlcoholCategoryTabItem.module.scss';
 
 const cx = classNames.bind(styles);
 
-type AlcoholCategoryTabItemProps = {
+export type AlcoholCategoryTabItemProps = {
   alcohol: 'Soju' | 'FruitWine' | 'Makgeolli' | 'Etc' | 'All';
   isSelected: boolean;
   setSelectedTab: (alcohol: AlcoholCategoryTabItemProps['alcohol']) => void;
