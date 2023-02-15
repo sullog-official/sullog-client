@@ -17,7 +17,7 @@ const TopNavigator = ({ type, title, isCompleted }: TopNavigatorProps) => {
       <button type="button" aria-label="Back" className={cx('back-btn')}>
         <Icon name={'Back'} size={12} />
       </button>
-      <h2 className={cx('title', type)}>{title}</h2>
+      <h1 className={cx('title', type)}>{title}</h1>
       {type === 'writing' && (
         <button type="button" className={cx('write-btn')}>
           <span className={cx('write-label', isCompleted)}>완료</span>
