@@ -1,16 +1,16 @@
 import classNames from 'classnames/bind';
 
 import AlcoholCategoryTabItem from '@/features/search/AlcoholCategoryTabItem';
-import { AlcoholCategoryTabItemProps } from '@/features/search/AlcoholCategoryTabItem/AlcoholCategoryTabItem';
+import { AlcoholCategories } from '@/pages/list/List';
 
 import styles from './AlcoholCategoryTab.module.scss';
 
 const cx = classNames.bind(styles);
 
 type AlcoholCategoryTabProps = {
-  alcoholCategories: string[];
+  alcoholCategories: typeof AlcoholCategories;
   selectedTab: string;
-  onTabChange: (alcohol: AlcoholCategoryTabItemProps['alcohol']) => void;
+  onTabChange: (alcohol: typeof AlcoholCategories[number]) => void;
 };
 
 const AlcoholCategoryTab = ({
