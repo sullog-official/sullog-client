@@ -23,7 +23,7 @@ const BottomNavigator = () => {
   };
 
   return (
-    <nav className={cx('nav')}>
+    <nav className={cx('wrapper')}>
       <button
         onClick={navigateToWrite}
         type="button"
