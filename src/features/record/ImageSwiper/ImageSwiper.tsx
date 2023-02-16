@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, ChangeEvent } from 'react';
 import { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -12,12 +12,14 @@ import styles from './ImageSwiper.module.scss';
 
 const cx = classNames.bind(styles);
 
+type Image = { url: string; file?: File | null };
+
 type ImageSwiperProps = {
   mode?: 'read' | 'edit';
   /* 이미지 url 배열 */
-  images?: string[];
+  images?: Image[];
   /* 스와이퍼의 이미지가 바뀔때마다 호출 */
-  onImagesChange?: (images: string[]) => void;
+  onImagesChange?: (images: Image[]) => void;
   /* 업로드 가능한 최대 이미지 개수 */
   max?: number;
 };
@@ -28,12 +30,8 @@ const ImageSwiper = ({
   onImagesChange,
   max = 3,
 }: ImageSwiperProps) => {
-  const [images, setImages] = useState(defaultImages);
+  const [images, setImages] = useState<Image[]>(defaultImages.slice(0, max));
   const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    setImages(defaultImages);
-  }, [defaultImages]);
 
   useEffect(() => {
     if (mode === 'edit') {
@@ -47,8 +45,29 @@ const ImageSwiper = ({
     );
   };
 
-  const addImages = () => {
-    // TODO
+  const addImages = (e: ChangeEvent<HTMLInputElement>) => {
+    const imageFiles = e.target.files;
+    if (!imageFiles) {
+      return;
+    }
+
+    const imageFilesArray = Array.from(imageFiles);
+
+    if (images.length + imageFilesArray.length > max) {
+      alert(`이미지는 최대 ${max}장까지 업로드 가능합니다.`);
+    }
+
+    const splicedImages = imageFilesArray.slice(0, max - images.length);
+    if (!splicedImages.length) {
+      return;
+    }
+
+    const newImages = splicedImages.map((file) => ({
+      url: URL.createObjectURL(file),
+      file,
+    }));
+
+    setImages((prevImages) => [...prevImages, ...newImages]);
   };
 
   return (
@@ -59,7 +78,7 @@ const ImageSwiper = ({
         pagination
         onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
       >
-        {images.slice(0, max).map((imageUrl, index) => (
+        {images.slice(0, max).map(({ url: imageUrl }, index) => (
           <SwiperSlide key={index} className={cx('slide')}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -91,14 +110,17 @@ const ImageSwiper = ({
       {mode === 'edit' &&
         images.length < max &&
         activeIndex > images.length - 1 && (
-          <button
-            type="button"
-            className={cx('add-button')}
-            aria-label="이미지 추가"
-            onClick={addImages}
-          >
+          <label className={cx('add-button')}>
+            <input
+              type="file"
+              accept="image/*"
+              aria-label="이미지 추가"
+              onChange={addImages}
+              hidden
+              multiple
+            />
             <Icon name="Plus" color="white" size={24} />
-          </button>
+          </label>
         )}
     </div>
   );
