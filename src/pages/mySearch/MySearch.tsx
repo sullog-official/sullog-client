@@ -2,6 +2,8 @@ import classNames from 'classnames/bind';
 
 import RecentSearches from '@/features/search/RecentSearches';
 import SearchBar from '@/features/search/SearchBar';
+import BottomNavigator from '@/shared/components/BottomNavigator';
+import TopNavigator from '@/shared/components/TopNavigator';
 
 import styles from './MySearch.module.scss';
 const cx = classNames.bind(styles);
@@ -31,19 +33,23 @@ const MySearch = () => {
   };
 
   return (
-    <div className={cx('wrapper')}>
-      <div className={cx('search-bar-wrapper')}>
-        <SearchBar placeholder={'Search'} />
-      </div>
-      <div className={cx('recent-searches-wrapper')}>
-        <RecentSearches
-          items={sampleItems}
-          onDeleteItem={onDeleteItem}
-          onClickItem={onClickItem}
-          onDeleteAll={onDeleteAll}
-        />
-      </div>
-    </div>
+    <>
+      <TopNavigator type={'personal'} title={'나의 술로그'} />
+      <main className={cx('wrapper')}>
+        <div className={cx('search-bar-wrapper')}>
+          <SearchBar placeholder={'Search'} />
+        </div>
+        <div className={cx('recent-searches-wrapper')}>
+          <RecentSearches
+            items={sampleItems}
+            onDeleteItem={onDeleteItem}
+            onClickItem={onClickItem}
+            onDeleteAll={onDeleteAll}
+          />
+        </div>
+      </main>
+      <BottomNavigator />
+    </>
   );
 };
 
