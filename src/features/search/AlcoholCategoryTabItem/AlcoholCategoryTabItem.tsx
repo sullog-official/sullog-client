@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 
 import Icon from '@/shared/components/Icon';
+
 import styles from './AlcoholCategoryTabItem.module.scss';
 
 const cx = classNames.bind(styles);
@@ -8,6 +9,7 @@ const cx = classNames.bind(styles);
 type AlcoholCategoryTabItemProps = {
   alcohol: 'Soju' | 'FruitWine' | 'Makgeolli' | 'Etc' | 'All';
   isSelected: boolean;
+  setSelectedTab: (alcohol: AlcoholCategoryTabItemProps['alcohol']) => void;
 };
 
 const matchAlcoholIconSpec = (
@@ -45,12 +47,21 @@ const matchAlcoholIconSpec = (
 const AlcoholCategoryTabItem = ({
   alcohol,
   isSelected,
+  setSelectedTab,
 }: AlcoholCategoryTabItemProps) => {
   const svgColor = isSelected ? 'white' : 'black';
   const { size, label } = matchAlcoholIconSpec(alcohol);
 
+  const onClickTab = () => {
+    setSelectedTab(alcohol);
+  };
+
   return (
-    <button type="button" className={cx('button', isSelected && 'clicked')}>
+    <button
+      type="button"
+      onClick={onClickTab}
+      className={cx('button', isSelected && 'clicked')}
+    >
       <Icon name={alcohol} size={size} color={svgColor} />
       <span className={cx('name')}>{label}</span>
     </button>

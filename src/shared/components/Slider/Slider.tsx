@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { debounce, isNil } from 'lodash-es';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import styles from './Slider.module.scss';
 

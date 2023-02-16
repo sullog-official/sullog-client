@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
-import { useCallback, useState } from 'react';
 import { isNil } from 'lodash-es';
+import { useCallback, useState } from 'react';
+
 import Icon from '@/shared/components/Icon';
 
 import styles from './Rating.module.scss';

@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import Slider from './Slider';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { useState } from 'react';
+
+import Slider from './Slider';
 
 export default {
   component: Slider,

@@ -1,5 +1,6 @@
-import Rating from './Rating';
 import type { Meta, StoryObj } from '@storybook/react';
+
+import Rating from './Rating';
 
 export default {
   component: Rating,

@@ -1,7 +1,8 @@
 import classNames from 'classnames/bind';
-
 import { useState } from 'react';
+
 import Icon from '@/shared/components/Icon';
+
 import styles from './BottomNavigator.module.scss';
 
 const cx = classNames.bind(styles);
@@ -22,7 +23,7 @@ const BottomNavigator = () => {
   };
 
   return (
-    <nav className={cx('nav')}>
+    <nav className={cx('wrapper')}>
       <button
         onClick={navigateToWrite}
         type="button"

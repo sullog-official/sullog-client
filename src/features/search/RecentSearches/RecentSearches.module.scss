@@ -1,0 +1,54 @@
+@use '@styles/themes';
+
+.container {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.title {
+  @include themes.typography('body15', 700);
+
+  color: themes.$purple;
+}
+
+.subtitle {
+  @include themes.typography('caption12', 400);
+
+  color: themes.$grey300;
+  cursor: pointer;
+}
+
+.items {
+  display: grid;
+  gap: 4px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item-name {
+  @include themes.typography('body14', 400);
+
+  color: themes.$grey500;
+  cursor: pointer;
+}
+
+.item-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #e6e6e6;
+  cursor: pointer;
+}

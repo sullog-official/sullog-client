@@ -1,9 +1,9 @@
+import type { Meta, StoryFn } from '@storybook/react';
 import classNames from 'classnames/bind';
 
 import color from './_color.module.scss';
 import zIndex from './_z-index.module.scss';
 import styles from './theme-story.module.scss';
-import type { Meta, StoryFn } from '@storybook/react';
 
 const cx = classNames.bind(styles);
 
