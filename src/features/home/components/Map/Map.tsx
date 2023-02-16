@@ -3,6 +3,8 @@ import { GeoJSONSource } from 'mapbox-gl';
 import { useRef, useState, useEffect } from 'react';
 import ReactMapGL, { Layer, MapRef, Source, useMap } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import { Experience } from '@/shared/types/Experience';
+import Slider from '../Slider';
 import styles from './Map.module.scss';
 import {
   clusterLayer,
@@ -19,7 +21,7 @@ const mapboxAccessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN?.replace(
 );
 
 type MapProps = {
-  records: any[];
+  records: Experience[];
 };
 
 const MapImage = ({ id, src }: { id: string; src: string }) => {
@@ -39,16 +41,12 @@ const MapImage = ({ id, src }: { id: string; src: string }) => {
 
 const Map = ({ records }: MapProps) => {
   const mapRef = useRef<MapRef>(null);
+  const [selectedItems, setSelectedItems] = useState<Experience[]>([]);
   const [data, setData] = useState({
     type: 'FeatureCollection',
-    features: records?.map((record: any) => ({
+    features: records?.map((record: Experience) => ({
       type: 'Feature',
-      properties: {
-        name: record.name,
-        seq: record.seq,
-        type: record.type,
-        manufacturer: record.manufacturer,
-      },
+      properties: record,
       geometry: {
         type: 'Point',
         coordinates: [Number(record.lat), Number(record.lng)],
@@ -59,14 +57,9 @@ const Map = ({ records }: MapProps) => {
   useEffect(() => {
     setData({
       type: 'FeatureCollection',
-      features: records?.map((record: any) => ({
+      features: records?.map((record: Experience) => ({
         type: 'Feature',
-        properties: {
-          name: record.name,
-          seq: record.seq,
-          type: record.type,
-          manufacturer: record.manufacturer,
-        },
+        properties: record,
         geometry: {
           type: 'Point',
           coordinates: [Number(record.lat), Number(record.lng)],
@@ -86,29 +79,21 @@ const Map = ({ records }: MapProps) => {
             'records'
           ) as GeoJSONSource;
 
-          mapboxSource.getClusterExpansionZoom(
-            clusterId,
-            (err: any, zoom: any) => {
-              if (err) {
-                return;
-              }
-
-              if (mapRef.current) {
-                mapRef.current.easeTo({
-                  center: feature.geometry.coordinates,
-                  zoom,
-                  duration: 500,
-                });
-              }
-            }
-          );
+          mapboxSource.getClusterChildren(clusterId, (err, features) => {
+            setSelectedItems(
+              features
+                .map((feature) => feature.properties)
+                .flat() as Experience[]
+            );
+            // show records in slider
+          });
         }
 
         if (feature.layer.id === 'unclustered-point') {
-          // manufacturerState.setState(feature.properties.manufacturer);
+          // navigate to specific record
         }
       } else {
-        // manufacturerState.setState('');
+        setSelectedItems([]);
       }
     }
   };
@@ -121,7 +106,6 @@ const Map = ({ records }: MapProps) => {
           latitude: 37.516536,
           zoom: 7,
         }}
-        style={{ width: '100vw', height: '100vh' }}
         mapStyle="mapbox://styles/jinho1011/cl5faqrml00dv15qvknh8tres"
         mapboxAccessToken={mapboxAccessToken}
         // maxBounds={maxBounds as LngLatBoundsLike}
@@ -147,6 +131,7 @@ const Map = ({ records }: MapProps) => {
           <Layer {...clusterCountLayer} />
           <Layer {...unclusteredPointLayer} />
         </Source>
+        <Slider items={selectedItems} />
       </ReactMapGL>
     </div>
   );
