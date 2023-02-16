@@ -82,6 +82,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["stylelint-config-property-sort-order-smacss", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:9.0.0"],\
             ["stylelint-config-standard-scss", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:6.1.0"],\
             ["stylelint-prettier", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:2.0.0"],\
+            ["swiper", "npm:9.0.5"],\
             ["tslib", "npm:2.4.1"],\
             ["typescript", "patch:typescript@npm%3A4.9.4#~builtin<compat/typescript>::version=4.9.4&hash=ad5954"],\
             ["url-loader", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:4.1.1"],\
@@ -18298,6 +18299,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["ssr-window", [\
+        ["npm:4.0.2", {\
+          "packageLocation": "./.yarn/cache/ssr-window-npm-4.0.2-01f9c0151e-df18260092.zip/node_modules/ssr-window/",\
+          "packageDependencies": [\
+            ["ssr-window", "npm:4.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["ssri", [\
         ["npm:9.0.1", {\
           "packageLocation": "./.yarn/cache/ssri-npm-9.0.1-33ce27f4f8-fb58f5e46b.zip/node_modules/ssri/",\
@@ -18930,6 +18940,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["stylelint-config-property-sort-order-smacss", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:9.0.0"],\
             ["stylelint-config-standard-scss", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:6.1.0"],\
             ["stylelint-prettier", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:2.0.0"],\
+            ["swiper", "npm:9.0.5"],\
             ["tslib", "npm:2.4.1"],\
             ["typescript", "patch:typescript@npm%3A4.9.4#~builtin<compat/typescript>::version=4.9.4&hash=ad5954"],\
             ["url-loader", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:4.1.1"],\
@@ -19025,6 +19036,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["csso", "npm:4.2.0"],\
             ["picocolors", "npm:1.0.0"],\
             ["stable", "npm:0.1.8"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["swiper", [\
+        ["npm:9.0.5", {\
+          "packageLocation": "./.yarn/cache/swiper-npm-9.0.5-afb755771d-33c45c0d9e.zip/node_modules/swiper/",\
+          "packageDependencies": [\
+            ["swiper", "npm:9.0.5"],\
+            ["ssr-window", "npm:4.0.2"]\
           ],\
           "linkType": "HARD"\
         }]\
