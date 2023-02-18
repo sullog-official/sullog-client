@@ -6,7 +6,7 @@ import AlcoholCategoryTab from '@/features/search/AlcoholCategoryTab';
 import BottomNavigator from '@/shared/components/BottomNavigator';
 import TopNavigator from '@/shared/components/TopNavigator';
 
-import styles from './List.module.scss';
+import styles from './index.module.scss';
 
 const cx = classNames.bind(styles);
 
