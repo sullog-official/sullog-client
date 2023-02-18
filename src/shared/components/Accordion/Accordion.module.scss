@@ -1,0 +1,44 @@
+@use '@styles/themes';
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: themes.$grey50;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-items: left;
+  justify-content: space-between;
+}
+
+.header-text {
+  color: themes.$grey400;
+  @include themes.typography('caption12');
+}
+
+.icon {
+  transition: transform 0.3s ease;
+
+  &--rotated {
+    transform: rotate(45deg);
+  }
+}
+
+.contents {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+
+  &--is-open {
+    max-height: var(--max-height);
+  }
+}
+
+.inner-contents {
+  padding-top: 12px;
+}
