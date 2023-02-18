@@ -56,6 +56,7 @@ const Map = ({ records }: MapProps) => {
       },
     })),
   });
+  const mapStyleUrl = 'mapbox://styles/jinho1011/cl5faqrml00dv15qvknh8tres';
 
   useEffect(() => {
     setData({
@@ -109,7 +110,7 @@ const Map = ({ records }: MapProps) => {
           latitude: 37.516536,
           zoom: 7,
         }}
-        mapStyle="mapbox://styles/jinho1011/cl5faqrml00dv15qvknh8tres"
+        mapStyle={mapStyleUrl}
         mapboxAccessToken={mapboxAccessToken}
         // maxBounds={maxBounds as LngLatBoundsLike}
         interactiveLayerIds={[
