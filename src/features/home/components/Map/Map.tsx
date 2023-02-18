@@ -56,7 +56,7 @@ const Map = ({ records }: MapProps) => {
       },
     })),
   });
-  const mapStyleUrl = 'mapbox://styles/jinho1011/cl5faqrml00dv15qvknh8tres';
+  const MAP_STYLE_URL = 'mapbox://styles/jinho1011/cl5faqrml00dv15qvknh8tres';
 
   useEffect(() => {
     setData({
