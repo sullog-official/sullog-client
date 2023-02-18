@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { GeoJSONSource } from 'mapbox-gl';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useMemo } from 'react';
 import ReactMapGL, { Layer, MapRef, Source, useMap } from 'react-map-gl';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -61,48 +61,34 @@ const Map = ({ records }: MapProps) => {
   );
   const MAP_STYLE_URL = 'mapbox://styles/jinho1011/cl5faqrml00dv15qvknh8tres';
 
-  useEffect(() => {
-    setData({
-      type: 'FeatureCollection',
-      features: records?.map((record: Experience) => ({
-        type: 'Feature',
-        properties: record,
-        geometry: {
-          type: 'Point',
-          coordinates: [Number(record.lat), Number(record.lng)],
-        },
-      })),
-    });
-  }, [records]);
+  const onClick = (event: any) => {
+    if (!mapRef.current) {
+      return;
+    }
 
-const onClick = (event: any) => {
-  if (!mapRef.current) {
-    return;
-  }
+    if (!event.features?.length) {
+      setSelectedItems([]);
+      return;
+    }
 
-  if (!event.features?.length) {
-    setSelectedItems([]);
-    return;
-  }
+    const feature = event.features[0];
+    if (feature.layer.id === 'clusters' && feature.properties) {
+      const clusterId = feature.properties.cluster_id;
 
-  const feature = event.features[0];
-  if (feature.layer.id === 'clusters' && feature.properties) {
-    const clusterId = feature.properties.cluster_id;
+      const mapboxSource = mapRef.current.getSource('records') as GeoJSONSource;
 
-    const mapboxSource = mapRef.current.getSource('records') as GeoJSONSource;
+      mapboxSource.getClusterChildren(clusterId, (err, features) => {
+        setSelectedItems(
+          features.map((feature) => feature.properties).flat() as Experience[]
+        );
+        // show records in slider
+      });
+    }
 
-    mapboxSource.getClusterChildren(clusterId, (err, features) => {
-      setSelectedItems(
-        features.map((feature) => feature.properties).flat() as Experience[]
-      );
-      // show records in slider
-    });
-  }
-
-  if (feature.layer.id === 'unclustered-point') {
-    // navigate to specific record
-  }
-};
+    if (feature.layer.id === 'unclustered-point') {
+      // navigate to specific record
+    }
+  };
 
   return (
     <div className={cx('map-container')}>
@@ -112,7 +98,7 @@ const onClick = (event: any) => {
           latitude: 37.516536,
           zoom: 7,
         }}
-        mapStyle={mapStyleUrl}
+        mapStyle={MAP_STYLE_URL}
         mapboxAccessToken={mapboxAccessToken}
         // maxBounds={maxBounds as LngLatBoundsLike}
         interactiveLayerIds={[
