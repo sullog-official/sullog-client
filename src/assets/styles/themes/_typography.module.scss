@@ -48,7 +48,7 @@ $typography: (
   'caption9': (
     'font-size': 9px,
     'line-height': 13px,
-  )
+  ),
 );
 
 @mixin typography($name, $weight: 400) {
