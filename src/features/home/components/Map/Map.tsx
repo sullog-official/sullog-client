@@ -45,17 +45,20 @@ const MapImage = ({ id, src }: { id: string; src: string }) => {
 const Map = ({ records }: MapProps) => {
   const mapRef = useRef<MapRef>(null);
   const [selectedItems, setSelectedItems] = useState<Experience[]>([]);
-  const [data, setData] = useState({
-    type: 'FeatureCollection',
-    features: records?.map((record: Experience) => ({
-      type: 'Feature',
-      properties: record,
-      geometry: {
-        type: 'Point',
-        coordinates: [Number(record.lat), Number(record.lng)],
-      },
-    })),
-  });
+  const data = useMemo(
+    () => ({
+      type: 'FeatureCollection',
+      features: records?.map((record: Experience) => ({
+        type: 'Feature',
+        properties: record,
+        geometry: {
+          type: 'Point',
+          coordinates: [Number(record.lat), Number(record.lng)],
+        },
+      })),
+    }),
+    [records]
+  );
   const MAP_STYLE_URL = 'mapbox://styles/jinho1011/cl5faqrml00dv15qvknh8tres';
 
   useEffect(() => {
