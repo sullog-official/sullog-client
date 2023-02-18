@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+
 import Map from '@/features/home/components/Map';
 
 import styles from './index.module.scss';

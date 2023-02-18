@@ -2,16 +2,19 @@ import classNames from 'classnames/bind';
 import { GeoJSONSource } from 'mapbox-gl';
 import { useRef, useState, useEffect } from 'react';
 import ReactMapGL, { Layer, MapRef, Source, useMap } from 'react-map-gl';
+
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Experience } from '@/shared/types/Experience';
+
 import Slider from '../Slider';
-import styles from './Map.module.scss';
+
 import {
   clusterLayer,
   unclusteredPointLayer,
   clusterCountBackgroundLayer,
   clusterCountLayer,
 } from './layers';
+import styles from './Map.module.scss';
 
 const cx = classNames.bind(styles);
 

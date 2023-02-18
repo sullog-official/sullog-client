@@ -2,8 +2,9 @@ import classNames from 'classnames/bind';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
-import { Experience } from '@/shared/types/Experience';
 import AlcoholPreview from '@/features/alcohol/AlcoholPreview';
+import { Experience } from '@/shared/types/Experience';
+
 import styles from './Slider.module.scss';
 
 const cx = classNames.bind(styles);
