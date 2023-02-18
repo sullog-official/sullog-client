@@ -75,35 +75,34 @@ const Map = ({ records }: MapProps) => {
     });
   }, [records]);
 
-  const onClick = (event: any) => {
-    if (mapRef.current) {
-      if (event.features && event.features.length > 0) {
-        const feature = event.features[0];
-        if (feature.layer.id === 'clusters' && feature.properties) {
-          const clusterId = feature.properties.cluster_id;
+const onClick = (event: any) => {
+  if (!mapRef.current) {
+    return;
+  }
 
-          const mapboxSource = mapRef.current.getSource(
-            'records'
-          ) as GeoJSONSource;
+  if (!event.features?.length) {
+    setSelectedItems([]);
+    return;
+  }
 
-          mapboxSource.getClusterChildren(clusterId, (err, features) => {
-            setSelectedItems(
-              features
-                .map((feature) => feature.properties)
-                .flat() as Experience[]
-            );
-            // show records in slider
-          });
-        }
+  const feature = event.features[0];
+  if (feature.layer.id === 'clusters' && feature.properties) {
+    const clusterId = feature.properties.cluster_id;
 
-        if (feature.layer.id === 'unclustered-point') {
-          // navigate to specific record
-        }
-      } else {
-        setSelectedItems([]);
-      }
-    }
-  };
+    const mapboxSource = mapRef.current.getSource('records') as GeoJSONSource;
+
+    mapboxSource.getClusterChildren(clusterId, (err, features) => {
+      setSelectedItems(
+        features.map((feature) => feature.properties).flat() as Experience[]
+      );
+      // show records in slider
+    });
+  }
+
+  if (feature.layer.id === 'unclustered-point') {
+    // navigate to specific record
+  }
+};
 
   return (
     <div className={cx('map-container')}>
