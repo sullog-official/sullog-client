@@ -10,8 +10,8 @@ type TextAreaProps = DetailedHTMLProps<
   HTMLTextAreaElement
 >;
 
-const TextArea = ({ children, ...props }: TextAreaProps) => {
-  return <textarea className={cx('text-area', children)} {...props} />;
+const TextArea = ({ className, ...props }: TextAreaProps) => {
+  return <textarea className={cx('text-area', className)} {...props} />;
 };
 
 export default TextArea;
