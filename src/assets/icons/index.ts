@@ -6,6 +6,7 @@ export { ReactComponent as Photo } from './photo.svg';
 export { ReactComponent as Plus } from './plus.svg';
 export { ReactComponent as Search } from './search.svg';
 export { ReactComponent as Write } from './write.svg';
+export { ReactComponent as Star } from './star.svg';
 export { ReactComponent as Soju } from './soju.svg';
 export { ReactComponent as FruitWine } from './fruitWine.svg';
 export { ReactComponent as Makgeolli } from './makgeolli.svg';
