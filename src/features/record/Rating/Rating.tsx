@@ -8,13 +8,17 @@ import styles from './Rating.module.scss';
 
 const cx = classNames.bind(styles);
 
-type RatingProps = {};
+type RatingProps = {
+  className?: string;
+  label?: string;
+  name?: string;
+};
 
 const MIN = 0;
 const MAX = 5;
 const STEP = 0.5;
 
-const Rating = (props: RatingProps) => {
+const Rating = ({ className, label, name }: RatingProps) => {
   const [value, setValue] = useState<number>();
 
   const handleSliderChange = useCallback(
@@ -25,47 +29,54 @@ const Rating = (props: RatingProps) => {
   );
 
   return (
-    <div className={cx('wrapper')}>
-      <label className={cx('label')} htmlFor="points">
-        드래그해서 별점을 입력해보세요.
-      </label>
-      <div className={cx('slider-wrapper')}>
-        <div className={cx('stars')}>
-          {Array(MAX)
-            .fill(0)
-            .map((_, index) => index + 1)
-            .map((starValue, index) => (
-              <span key={index} className={cx('star')}>
-                <Icon
-                  name="HalfStar"
-                  size={12}
-                  color={
-                    !isNil(value) && starValue - STEP <= value
-                      ? 'purple'
-                      : 'grey200'
-                  }
-                />
-                <Icon
-                  className={cx('half-star--flipped')}
-                  name="HalfStar"
-                  size={12}
-                  color={
-                    !isNil(value) && starValue <= value ? 'purple' : 'grey200'
-                  }
-                />
-              </span>
-            ))}
+    <div className={cx('container', className)}>
+      {label && (
+        <label className={cx('label')} htmlFor={name}>
+          {label}
+        </label>
+      )}
+      <div className={cx('wrapper')}>
+        <span className={cx('description')}>
+          드래그해서 별점을 입력해보세요.
+        </span>
+        <div className={cx('slider-wrapper')}>
+          <div className={cx('stars')}>
+            {Array(MAX)
+              .fill(0)
+              .map((_, index) => index + 1)
+              .map((starValue, index) => (
+                <span key={index} className={cx('star')}>
+                  <Icon
+                    name="HalfStar"
+                    size={12}
+                    color={
+                      !isNil(value) && starValue - STEP <= value
+                        ? 'purple'
+                        : 'grey200'
+                    }
+                  />
+                  <Icon
+                    className={cx('half-star--flipped')}
+                    name="HalfStar"
+                    size={12}
+                    color={
+                      !isNil(value) && starValue <= value ? 'purple' : 'grey200'
+                    }
+                  />
+                </span>
+              ))}
+          </div>
+          <input
+            className={cx('slider')}
+            type="range"
+            name={name}
+            min={MIN}
+            max={MAX}
+            step={STEP}
+            value={value}
+            onChange={handleSliderChange}
+          />
         </div>
-        <input
-          className={cx('slider')}
-          type="range"
-          name="points"
-          min={MIN}
-          max={MAX}
-          step={STEP}
-          value={value}
-          onChange={handleSliderChange}
-        />
       </div>
     </div>
   );

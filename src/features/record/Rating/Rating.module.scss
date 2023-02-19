@@ -1,6 +1,18 @@
 @use '@styles/themes';
 @use '@styles/mixins.module';
 
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 9px;
+  color: themes.$grey300;
+
+  @include themes.typography('body13');
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -10,7 +22,7 @@
   background-color: themes.$grey50;
 }
 
-.label {
+.description {
   margin-bottom: 8px;
   color: themes.$grey400;
 

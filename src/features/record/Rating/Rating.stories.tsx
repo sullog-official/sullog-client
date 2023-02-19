@@ -6,4 +6,8 @@ export default {
   component: Rating,
 } as Meta<typeof Rating>;
 
-export const Default: StoryObj<typeof Rating> = {};
+export const Default: StoryObj<typeof Rating> = {
+  args: {
+    label: '별점',
+  },
+};
