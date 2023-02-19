@@ -11,8 +11,9 @@ export default {
 
 export const Default: StoryObj<typeof TextField> = {};
 
-export const Editable: StoryObj<typeof TextField> = {
+export const Disabled: StoryObj<typeof TextField> = {
   args: {
+    value: '내용',
     disabled: true,
   },
 };
@@ -20,5 +21,6 @@ export const Editable: StoryObj<typeof TextField> = {
 export const Labelled: StoryObj<typeof TextField> = {
   args: {
     label: '라벨',
+    placeholder: '내용을 입력해주세요.',
   },
 };

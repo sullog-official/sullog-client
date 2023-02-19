@@ -7,8 +7,8 @@
 }
 
 .label {
-  color: themes.$grey300;
   margin-bottom: 12px;
+  color: themes.$grey300;
   @include themes.typography('body13');
 }
 
@@ -18,4 +18,8 @@
   border-bottom: 1px solid themes.$grey200;
 
   @include themes.typography('body15');
+
+  &::placeholder {
+    color: themes.$grey400;
+  }
 }
