@@ -1,0 +1,29 @@
+.contents {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 30px 50px;
+
+  > *:not(:first-child) {
+    margin-top: 18px;
+  }
+}
+
+.input-row {
+  display: flex;
+}
+
+.name,
+.brand {
+  flex: 2;
+  margin-right: 24px;
+}
+
+.category,
+.date {
+  flex: 1;
+}
+
+.rating,
+.detail-text {
+  margin-top: 28px !important;
+}
