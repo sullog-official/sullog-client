@@ -5,7 +5,7 @@ import SearchBar from '@/features/search/SearchBar';
 import BottomNavigator from '@/shared/components/BottomNavigator';
 import TopNavigator from '@/shared/components/TopNavigator';
 
-import styles from './MySearch.module.scss';
+import styles from './index.module.scss';
 const cx = classNames.bind(styles);
 
 const sampleItems = [

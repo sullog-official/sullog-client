@@ -20,8 +20,8 @@ const setPlopGenerator = (
     actions: [
       {
         type: 'add',
-        path: '{{path}}/{{pascalCase name}}/index.ts',
-        templateFile: 'plop-templates/Component/index.ts.hbs',
+        path: '{{path}}/{{pascalCase name}}/index.tsx',
+        templateFile: 'plop-templates/Component/index.tsx.hbs',
       },
       {
         type: 'add',
