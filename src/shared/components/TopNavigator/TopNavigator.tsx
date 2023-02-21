@@ -13,7 +13,7 @@ type TopNavigatorProps = {
 
 const TopNavigator = ({ type, title, isCompleted }: TopNavigatorProps) => {
   return (
-    <div className={cx('wrapper')}>
+    <nav className={cx('wrapper')}>
       <button type="button" aria-label="Back" className={cx('back-btn')}>
         <Icon name={'Back'} size={12} />
       </button>
@@ -23,7 +23,7 @@ const TopNavigator = ({ type, title, isCompleted }: TopNavigatorProps) => {
           <span className={cx('write-label', isCompleted)}>완료</span>
         </button>
       )}
-    </div>
+    </nav>
   );
 };
 
