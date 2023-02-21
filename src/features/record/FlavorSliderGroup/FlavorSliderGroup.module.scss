@@ -1,5 +1,17 @@
 @use '@styles/themes';
 
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 9px;
+  color: themes.$grey300;
+
+  @include themes.typography('body13');
+}
+
 .flavor-slider-group {
   display: grid;
   grid-template-columns: 22px 1fr;
