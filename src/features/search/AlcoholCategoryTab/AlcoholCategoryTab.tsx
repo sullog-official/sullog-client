@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 
 import AlcoholCategoryTabItem from '@/features/search/AlcoholCategoryTabItem';
-import { AlcoholCategories } from '@/pages/list/List';
+import { AlcoholCategories } from '@/pages/list';
 
 import styles from './AlcoholCategoryTab.module.scss';
 

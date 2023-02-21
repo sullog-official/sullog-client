@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Slider from '@/shared/components/Slider';
 
@@ -7,29 +7,41 @@ import styles from './FlavorSliderGroup.module.scss';
 
 const cx = classNames.bind(styles);
 
-type FlavorSliderGroupProps = {
-  readOnly?: boolean;
-};
-
 type Flavor = {
   aroma?: number;
   taste?: number;
   texture?: number;
 };
 
-const FlavorSliderGroup = ({ readOnly = false }: FlavorSliderGroupProps) => {
-  const [value, setValue] = useState<Flavor>({
+type FlavorSliderGroupProps = {
+  value?: Flavor;
+  readOnly?: boolean;
+  className?: string;
+  onValueChange?: (value: Flavor) => void;
+};
+
+const FlavorSliderGroup = ({
+  value: defaultValue = {
     aroma: undefined,
     taste: undefined,
     texture: undefined,
-  });
+  },
+  readOnly = false,
+  className,
+  onValueChange,
+}: FlavorSliderGroupProps) => {
+  const [value, setValue] = useState<Flavor>(defaultValue);
+
+  useEffect(() => {
+    onValueChange?.(value);
+  }, [onValueChange, value]);
 
   const handleSliderChange = (name: keyof Flavor) => (sliderValue: number) => {
     setValue((prev) => ({ ...prev, [name]: sliderValue }));
   };
 
   return (
-    <div className={cx('flavor-slider-group')}>
+    <div className={cx('flavor-slider-group', className)}>
       <label htmlFor="aroma">향</label>
       <Slider
         name="aroma"

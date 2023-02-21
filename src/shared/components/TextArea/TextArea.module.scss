@@ -1,0 +1,10 @@
+@use '@styles/themes';
+
+.text-area {
+  width: 100%;
+  padding: 12px 17px;
+  border: 1px solid themes.$grey200;
+  border-radius: 10px;
+
+  @include themes.typography('caption12');
+}
