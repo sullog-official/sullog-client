@@ -1,7 +1,21 @@
-.main {
-  background-color: beige;
-}
+@use '@styles/themes';
 
 .title {
   font-family: var(--mapo-flower-island-font);
+}
+
+.logo {
+  margin-bottom: 20px;
+}
+
+.header {
+  display: flex;
+  position: absolute;
+  z-index: themes.$floating;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px 22px;
 }

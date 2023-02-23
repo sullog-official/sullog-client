@@ -1,8 +1,9 @@
 import classNames from 'classnames/bind';
 
 import Map from '@/features/home/components/Map';
+import SearchBar from '@/features/search/SearchBar';
 import BottomNavigator from '@/shared/components/BottomNavigator';
-import TopNavigator from '@/shared/components/TopNavigator';
+import Icon from '@/shared/components/Icon';
 
 import styles from './index.module.scss';
 
@@ -11,6 +12,11 @@ const cx = classNames.bind(styles);
 export default function Home() {
   return (
     <main className={cx('main')}>
+      <div className={cx('header')}>
+        <Icon className={cx('logo')} name={'Logo'} size={93} />
+        <SearchBar placeholder={'Search'} />
+      </div>
+
       <Map
         records={[
           // @ts-ignore
