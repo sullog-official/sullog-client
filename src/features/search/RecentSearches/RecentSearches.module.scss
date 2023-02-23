@@ -25,29 +25,21 @@
 }
 
 .items {
-  width: 100%;
+  display: grid;
+  gap: 4px;
 }
 
 .item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 100%;
-  margin-bottom: 4px;
 }
 
 .item-name {
   @include themes.typography('body14', 400);
 
-  display: inline-block;
-  flex: 1;
-  overflow: hidden;
   color: themes.$grey500;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   cursor: pointer;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
 }
 
 .item-delete {
