@@ -1,6 +1,8 @@
 import classNames from 'classnames/bind';
 
 import Map from '@/features/home/components/Map';
+import BottomNavigator from '@/shared/components/BottomNavigator';
+import TopNavigator from '@/shared/components/TopNavigator';
 
 import styles from './index.module.scss';
 
@@ -33,6 +35,7 @@ export default function Home() {
           },
         ]}
       />
+      <BottomNavigator />
     </main>
   );
 }
