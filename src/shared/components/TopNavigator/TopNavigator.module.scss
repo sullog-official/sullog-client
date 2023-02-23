@@ -16,6 +16,7 @@
 .title {
   color: themes.$black;
   @include themes.typography('body15');
+
   &.personal {
     color: themes.$purple;
     font-family: var(--mapo-flower-island-font);
@@ -30,7 +31,9 @@
 
 .write-label {
   @include themes.typography('body14');
+
   color: themes.$grey200;
+
   &.completed {
     color: themes.$black;
   }
