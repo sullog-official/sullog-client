@@ -41,12 +41,14 @@ const RecentSearches = ({
               key={item.id}
             >
               <span className={cx('item-name')}>{item.name}</span>
-              <div
+              <button
+                type="button"
+                aria-label="삭제"
                 className={cx('item-delete')}
                 onClick={() => onDeleteItem(item.id)}
               >
                 <Icon name={'Close'} size={7} />
-              </div>
+              </button>
             </li>
           );
         })}
