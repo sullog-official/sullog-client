@@ -1,5 +1,6 @@
-import DetailFlavorInput from './DetailFlavorInput';
 import type { Meta, StoryObj } from '@storybook/react';
+
+import DetailFlavorInput from './DetailFlavorInput';
 
 export default {
   component: DetailFlavorInput,
