@@ -15,10 +15,14 @@ const Login = () => {
         <h2 className={cx('sub-title')}>전통주를 기록하다</h2>
       </div>
       <div className={cx('button-wrapper')}>
-        <button className={cx('kakao-btn')}>
+        <button
+          type="button"
+          aria-label="kakao-login"
+          className={cx('kakao-btn')}
+        >
           <Image src={loginKakao} alt="kakaologin" />
         </button>
-        <button>
+        <button type="button" aria-label="naver-login">
           <Image src={loginNaver} alt="naverlogin" />
         </button>
         <div className={cx('terms-of-service')}>
@@ -30,7 +34,10 @@ const Login = () => {
             및
           </span>
           <span>
-            <button className={cx('terms-of-personal-info-modal-btn')}>
+            <button
+              type="button"
+              className={cx('terms-of-personal-info-modal-btn')}
+            >
               개인정보처리방침
             </button>{' '}
             동의로 간주됩니다
