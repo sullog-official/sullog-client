@@ -28,7 +28,7 @@ const Login = () => {
         <div className={cx('terms-of-service')}>
           <span>
             첫 로그인 시{' '}
-            <button className={cx('terms-of-service-modal-btn')}>
+            <button type="button" className={cx('terms-of-service-modal-btn')}>
               이용약관
             </button>{' '}
             및
