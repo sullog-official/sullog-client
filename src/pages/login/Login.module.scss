@@ -34,12 +34,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 15px;
 }
 
 .kakao-btn {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   height: 48px;
+  border-radius: 6px;
   margin-bottom: 8px;
+  background-color: themes.$kakaoYellow;
+  @include themes.typography('body16');
+}
+
+.naver-btn {
+  width: 100%;
+  height: 48px;
+  border-radius: 6px;
+  background-color: themes.$naverGreen;
+  color: themes.$white;
+  @include themes.typography('body16');
 }
 
 .terms-of-service {

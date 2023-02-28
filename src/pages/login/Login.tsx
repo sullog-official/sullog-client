@@ -1,7 +1,6 @@
 import classNames from 'classnames/bind';
-import Image from 'next/image';
-import loginKakao from 'src/assets/images/loginKakao.png';
-import loginNaver from 'src/assets/images/loginNaver.png';
+
+import Icon from '@/shared/components/Icon';
 
 import styles from './Login.module.scss';
 
@@ -17,13 +16,27 @@ const Login = () => {
       <div className={cx('button-wrapper')}>
         <button
           type="button"
-          aria-label="kakao-login"
+          aria-label="카카오 로그인"
           className={cx('kakao-btn')}
         >
-          <Image src={loginKakao} alt="kakaologin" />
+          <Icon
+            name="Kakao"
+            size={24}
+            style={{ position: 'absolute', left: '8vw' }}
+          />
+          <span>카카오톡 로그인</span>
         </button>
-        <button type="button" aria-label="naver-login">
-          <Image src={loginNaver} alt="naverlogin" />
+        <button
+          type="button"
+          aria-label="네이버 로그인"
+          className={cx('naver-btn')}
+        >
+          <Icon
+            name="Naver"
+            size={24}
+            style={{ position: 'absolute', left: '8vw' }}
+          />
+          <span>네이버 로그인</span>
         </button>
         <div className={cx('terms-of-service')}>
           <span>
