@@ -46,7 +46,7 @@
   height: 48px;
   border-radius: 6px;
   margin-bottom: 8px;
-  background-color: themes.$kakaoYellow;
+  background-color: #FEE500;
   @include themes.typography('body16');
 }
 
@@ -54,7 +54,7 @@
   width: 100%;
   height: 48px;
   border-radius: 6px;
-  background-color: themes.$naverGreen;
+  background-color: #03C75A;
   color: themes.$white;
   @include themes.typography('body16');
 }
