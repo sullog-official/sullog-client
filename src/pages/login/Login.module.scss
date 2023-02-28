@@ -20,6 +20,8 @@
   @include themes.typography('title40');
   font-family: var(--mapo-flower-island-font);
   color: themes.$white;
+  display: flex;
+  flex-direction: column;
 }
 
 .sub-title {

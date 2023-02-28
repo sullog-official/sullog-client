@@ -10,8 +10,10 @@ const Login = () => {
   return (
     <main className={cx('wrapper')}>
       <div className={cx('title-wrapper')}>
-        <h1 className={cx('main-title')}>술로그</h1>
-        <h2 className={cx('sub-title')}>전통주를 기록하다</h2>
+        <h1 className={cx('main-title')}>
+          <span>술로그</span>
+          <span className={cx('sub-title')}>전통주를 기록하다</span>
+        </h1>
       </div>
       <div className={cx('button-wrapper')}>
         <button
