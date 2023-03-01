@@ -8,10 +8,17 @@ const cx = classNames.bind(styles);
 type TextAreaProps = DetailedHTMLProps<
   TextareaHTMLAttributes<HTMLTextAreaElement>,
   HTMLTextAreaElement
->;
+> & {
+  label?: string;
+};
 
-const TextArea = ({ className, ...props }: TextAreaProps) => {
-  return <textarea className={cx('text-area', className)} {...props} />;
+const TextArea = ({ label, className, ...props }: TextAreaProps) => {
+  return (
+    <div className={cx('container', className)}>
+      {label && <label className={cx('label')}>{label}</label>}
+      <textarea className={cx('text-area')} {...props} />
+    </div>
+  );
 };
 
 export default TextArea;

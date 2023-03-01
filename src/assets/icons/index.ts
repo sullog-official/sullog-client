@@ -15,3 +15,4 @@ export { ReactComponent as All } from './all.svg';
 export { ReactComponent as Back } from './back.svg';
 export { ReactComponent as Kakao } from './kakao.svg';
 export { ReactComponent as Naver } from './naver.svg';
+export { ReactComponent as Logo } from './logo.svg';
