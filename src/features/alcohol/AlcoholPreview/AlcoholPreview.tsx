@@ -34,7 +34,9 @@ const AlcoholPreview = ({
       <>
         {parts.map((part, index) =>
           part.toLowerCase() === highlightKeyword.toLowerCase() ? (
-            <mark key={index}>{part}</mark>
+            <mark style={{ background: '#D0C8E8 ' }} key={index}>
+              {part}
+            </mark>
           ) : (
             part
           )
