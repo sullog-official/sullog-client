@@ -10,6 +10,7 @@ type AlcoholPreviewProps = {
   brand: string;
   description: string;
   imgSrc: string;
+  highlightKeyword?: string;
 };
 
 const AlcoholPreview = ({
@@ -17,15 +18,41 @@ const AlcoholPreview = ({
   brand,
   description,
   imgSrc,
+  highlightKeyword,
 }: AlcoholPreviewProps) => {
+  const highlightText = (text: string) => {
+    if (!highlightKeyword) {
+      return text;
+    }
+
+    if (!text.includes(highlightKeyword)) {
+      return text;
+    }
+
+    const parts = text.split(new RegExp(`(${highlightKeyword})`, 'gi'));
+    return (
+      <>
+        {parts.map((part, index) =>
+          part.toLowerCase() === highlightKeyword.toLowerCase() ? (
+            <mark style={{ background: '#D0C8E8 ' }} key={index}>
+              {part}
+            </mark>
+          ) : (
+            part
+          )
+        )}
+      </>
+    );
+  };
+
   return (
     <div className={cx('container')}>
       <div className={cx('info-container')}>
         <div className={cx('header')}>
-          <span className={cx('name')}>{name}</span>
-          <span className={cx('brand')}>{brand}</span>
+          <span className={cx('name')}>{highlightText(name)}</span>
+          <span className={cx('brand')}>{highlightText(brand)}</span>
         </div>
-        <p className={cx('desc')}>{description}</p>
+        <p className={cx('desc')}>{highlightText(description)}</p>
       </div>
       <Image
         src={imgSrc}
