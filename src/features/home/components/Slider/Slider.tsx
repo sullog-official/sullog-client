@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
 import AlcoholPreview from '@/features/alcohol/AlcoholPreview';
+import Icon from '@/shared/components/Icon';
 import { Experience } from '@/shared/types/Experience';
 
 import styles from './Slider.module.scss';
@@ -28,6 +29,20 @@ const Slider = ({ items }: SliderProps) => {
           </SwiperSlide>
         );
       })}
+      {items.length > 0 && (
+        <SwiperSlide className={cx('slide')}>
+          <button
+            type="button"
+            className={cx('add-btn')}
+            onClick={() => {
+              // navigate to 둘러보기
+            }}
+          >
+            <Icon name="Plus" size={24} style={{ marginBottom: 4 }} />
+            <span className={cx('add-btn-text')}>더보기</span>
+          </button>
+        </SwiperSlide>
+      )}
     </Swiper>
   );
 };

@@ -2,3 +2,8 @@ body {
   background-color: #fff;
   font-family: 'Noto Sans KR', sans-serif;
 }
+
+.mapboxgl-ctrl-bottom-left,
+.mapboxgl-ctrl-bottom-right {
+  display: none;
+}
