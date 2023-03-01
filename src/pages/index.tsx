@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 import Map from '@/features/home/components/Map';
 import SearchBar from '@/features/search/SearchBar';
 import BottomNavigator from '@/shared/components/BottomNavigator';
-import Icon from '@/shared/components/Icon';
 
 import styles from './index.module.scss';
 
@@ -13,10 +12,9 @@ export default function Home() {
   return (
     <main className={cx('main')}>
       <div className={cx('header')}>
-        <Icon className={cx('logo')} name={'Logo'} size={93} />
+        <h1 className={cx('header-text')}>나의 술로그</h1>
         <SearchBar placeholder={'Search'} />
       </div>
-
       <Map
         records={[
           // @ts-ignore
