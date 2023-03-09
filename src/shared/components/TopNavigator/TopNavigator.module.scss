@@ -1,0 +1,40 @@
+@use '@styles/themes';
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 56.4px;
+}
+
+.back-btn {
+  position: absolute;
+  left: 28px;
+}
+
+.title {
+  color: themes.$black;
+  @include themes.typography('body15');
+
+  &.personal {
+    color: themes.$purple;
+    font-family: var(--mapo-flower-island-font);
+    @include themes.typography('body16');
+  }
+}
+
+.write-btn {
+  position: absolute;
+  right: 28px;
+}
+
+.write-label {
+  @include themes.typography('body14');
+
+  color: themes.$grey200;
+
+  &.completed {
+    color: themes.$black;
+  }
+}

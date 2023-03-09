@@ -1,0 +1,25 @@
+@use '@styles/themes';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.label {
+  margin-bottom: 12px;
+  color: themes.$grey300;
+  @include themes.typography('body13');
+}
+
+.input {
+  width: 100%;
+  padding-bottom: 7px;
+  border-bottom: 1px solid themes.$grey200;
+
+  @include themes.typography('body15');
+
+  &::placeholder {
+    color: themes.$grey400;
+  }
+}

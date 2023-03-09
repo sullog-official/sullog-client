@@ -1,7 +1,9 @@
+import classNames from 'classnames/bind';
 import { SVGProps } from 'react';
 
-import classNames from 'classnames/bind';
 import * as icons from '@/assets/icons';
+import { Color } from '@/assets/styles/themes';
+
 import styles from './Icon.module.scss';
 
 const cx = classNames.bind(styles);
@@ -13,8 +15,7 @@ interface IconProps extends SVGProps<SVGSVGElement> {
   size?: number;
   width?: string;
   height?: string;
-  // TODO: theme 추가 후 color prop 타입 수정
-  color?: string;
+  color?: Color;
 }
 
 const DEFAULT_SIZE = 30;

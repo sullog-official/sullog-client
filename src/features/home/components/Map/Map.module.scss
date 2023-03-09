@@ -1,0 +1,9 @@
+@use '@styles/themes';
+
+.map-container {
+  height: 100vh;
+
+  .mapboxgl-canvas {
+    height: 100%;
+  }
+}

@@ -1,7 +1,7 @@
-import '@/assets/styles/index.scss';
+import '@styles/index.scss';
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -9,7 +9,6 @@ export const parameters = {
     },
   },
 };
-
 
 export const decorators = [
   (Story) => (
@@ -20,6 +19,11 @@ export const decorators = [
             height: 100%;
             padding: 0 !important;
             background-color: white;
+          }
+
+          /** docs 스토리북 내부 폰트가 스토리북 기본 폰트인 'Nunito sans'로 덮어 씌워지는 문제로 인해 별도 선언 */
+          .docs-story {
+            font-family: 'Noto Sans KR', sans-serif;
           }
         `}
       </style>

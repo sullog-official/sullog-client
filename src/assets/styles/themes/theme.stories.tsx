@@ -1,9 +1,9 @@
+import type { Meta, StoryFn } from '@storybook/react';
 import classNames from 'classnames/bind';
 
 import color from './_color.module.scss';
 import zIndex from './_z-index.module.scss';
 import styles from './theme-story.module.scss';
-import type { Meta, StoryFn } from '@storybook/react';
 
 const cx = classNames.bind(styles);
 
@@ -23,10 +23,10 @@ export const Color: StoryFn = () => {
               <li key={key} className={cx('color-list-item')}>
                 <div
                   className={cx('color-block')}
-                  style={{ backgroundColor: value }}
+                  style={{ backgroundColor: value as string }}
                 />
                 <b>{key}</b>
-                <span>{value}</span>
+                <span>{value as string}</span>
               </li>
             ))}
         </ul>
@@ -74,7 +74,7 @@ export const ZIndex: StoryFn = () => {
       <ul className={cx('z-index-list')}>
         {Object.entries(zIndex).map(([key, value]) => (
           <li key={key} className={cx('z-index-list-item')}>
-            {key}: {value}
+            {`${key}: ${value}`}
           </li>
         ))}
       </ul>

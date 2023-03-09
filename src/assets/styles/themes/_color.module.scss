@@ -1,15 +1,13 @@
-$white: #ffffff;
-$black: #000000;
-
+$white: #fff;
+$black: #000;
 $purple: #3e14b4;
-$purpleOpacity5: rgba(62, 20, 180, 0.05);
-$purpleOpacity60: rgba(62, 20, 180, 0.6);
-
+$purpleOpacity5: rgb(62 20 180 / 5%);
+$purpleOpacity60: rgb(62 20 180 / 60%);
 $lightPurple100: #b2a1e1;
 $lightPurple200: #a88df4;
 $lightPurple300: #7855da;
-
-$grey100: #eeeeee;
+$grey50: #f9f9f9;
+$grey100: #eee;
 $grey200: #d9d9d9;
 $grey300: #adadad;
 $grey400: #989898;
@@ -19,15 +17,13 @@ $grey600: #0c0c0c;
 :export {
   white: $white;
   black: $black;
-
   purple: $purple;
   purpleOpacity5: $purpleOpacity5;
   purpleOpacity60: $purpleOpacity60;
-
   lightPurple100: $lightPurple100;
   lightPurple200: $lightPurple200;
   lightPurple300: $lightPurple300;
-
+  grey50: $grey50;
   grey100: $grey100;
   grey200: $grey200;
   grey300: $grey300;

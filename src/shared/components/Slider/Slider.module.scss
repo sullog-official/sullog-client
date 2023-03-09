@@ -1,0 +1,82 @@
+@use '@styles/themes';
+@use '@styles/mixins.module';
+
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+}
+
+@mixin markStyles {
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 50%;
+  background: themes.$grey300;
+}
+
+.slider-wrapper {
+  display: flex;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  height: 10px;
+}
+
+.track {
+  width: 100%;
+  height: 2px;
+  background: themes.$grey300;
+}
+
+.slider {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+
+  @include mixins.resetSliderStyles;
+}
+
+.rail {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 2px;
+  transform: translateY(-50%);
+  background-color: themes.$purple;
+}
+
+.marks {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  .mark {
+    @include markStyles;
+
+    visibility: hidden;
+
+    &--visible {
+      visibility: visible;
+    }
+
+    &--filled {
+      background-color: themes.$purple;
+    }
+  }
+}
+
+.labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  color: themes.$grey300;
+
+  @include themes.typography('caption10');
+}

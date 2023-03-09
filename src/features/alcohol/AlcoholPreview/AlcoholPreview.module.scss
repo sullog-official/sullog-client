@@ -1,0 +1,46 @@
+@use '@styles/themes';
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  width: 100%;
+  gap: 24px;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+}
+
+.name {
+  @include themes.typography('body14');
+
+  margin-right: 6px;
+}
+
+.brand {
+  @include themes.typography('caption11');
+
+  color: themes.$grey300;
+}
+
+.desc {
+  @include themes.typography('caption12');
+
+  display: -webkit-box;
+  overflow: hidden;
+  color: themes.$grey500;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.image {
+  border-radius: 10px;
+}

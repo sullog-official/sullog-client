@@ -1,0 +1,33 @@
+@use '@styles/themes';
+
+.slider {
+  position: absolute;
+  z-index: themes.$modal;
+  bottom: 120px;
+  width: 100%;
+  padding-left: 20px;
+}
+
+.slide {
+  width: calc(100% - 40px);
+  margin-right: 20px;
+  padding: 16px 22px;
+  border-radius: 15px;
+  background-color: themes.$white;
+  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+}
+
+.add-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100px;
+}
+
+.add-btn-text {
+  color: themes.$grey300;
+
+  @include themes.typography('caption12');
+}
