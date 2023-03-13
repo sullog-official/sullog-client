@@ -6,16 +6,16 @@ import registerLogger from './logger';
 
 const env = process.env.NODE_ENV;
 
-enum TOKEN_KEYS {
-  ACCESS = 'ACCESSTOKEN',
-  REFRESH = 'REFRESHTOKEN',
+enum TokenKeys {
+  Access = 'ACCESSTOKEN',
+  Refresh = 'REFRESHTOKEN',
 }
 
 let isFetchingAccessToken = false;
-let subscribers: ((accessToken: string) => Promise<void>)[] = [];
+let subscribers: ((AccessToken: string) => Promise<void>)[] = [];
 
 function getAccessToken() {
-  return sessionStorage.getItem(TOKEN_KEYS.ACCESS);
+  return sessionStorage.getItem(TokenKeys.Access);
 }
 
 async function refreshAccessToken() {
@@ -24,12 +24,12 @@ async function refreshAccessToken() {
   const response = await instance.get('/token/refresh', {
     validateStatus: null,
     headers: {
-      Authorization: getCookie(TOKEN_KEYS.REFRESH),
+      Authorization: getCookie(TokenKeys.Refresh),
     },
   });
 
-  sessionStorage.setItem(TOKEN_KEYS.ACCESS, response.headers['Authorization']);
-  setCookie(TOKEN_KEYS.REFRESH, response.headers['Refresh'], 14);
+  sessionStorage.setItem(TokenKeys.Access, response.headers['Authorization']);
+  setCookie(TokenKeys.Refresh, response.headers['Refresh'], 14);
 
   isFetchingAccessToken = false;
 
@@ -51,10 +51,10 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use((config) => {
-  const accessToken = getAccessToken();
+  const AccessToken = getAccessToken();
 
-  if (accessToken) {
-    config.headers['Authorization'] = 'Bearer ' + accessToken;
+  if (AccessToken) {
+    config.headers['Authorization'] = 'Bearer ' + AccessToken;
   }
 
   return config;
@@ -65,9 +65,9 @@ instance.interceptors.response.use(async (error) => {
     try {
       const retryOriginalRequest = new Promise<AxiosResponse<any, any>>(
         (resolve, reject) => {
-          subscribers.push(async (accessToken: string) => {
+          subscribers.push(async (AccessToken: string) => {
             try {
-              error.config.headers['Authorization'] = 'Bearer ' + accessToken;
+              error.config.headers['Authorization'] = 'Bearer ' + AccessToken;
               resolve(instance(error.config));
             } catch (err) {
               reject(err);
