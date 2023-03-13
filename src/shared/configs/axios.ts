@@ -47,8 +47,7 @@ const instance = axios.create({
   baseURL:
     env === 'development'
       ? 'https://api.bbpsp-backend-api.click'
-      : /** TODO: chagne production server url */
-        'https://api.bbpsp-backend-api.click',
+      : 'https://api.bbpsp-backend-api.click', // TBD
 });
 
 instance.interceptors.request.use((config) => {
