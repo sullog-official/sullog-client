@@ -1,38 +1,22 @@
 import { AxiosInstance, AxiosResponse } from 'axios';
 
-const responseLogMiddleware = (res: AxiosResponse<any, any>) => {
+const logRequest = (res: AxiosResponse<any, any>, error = false) => {
   const status = res.status;
   const method = res.request._method;
   const url = res.request.responseURL.replace('https://', '');
-  let req;
-  try {
-    req = res?.config?.data ? JSON.parse(res?.config?.data) : null;
-  } catch (e) {
-    req = null;
-  }
+  const req = res.config.data ? JSON.parse(res.config.data) : null;
+
   console.info(decodeURI(`${status} ${method} ${url}`));
-  if (req) {
-    console.info('req', req);
-  }
+  if (req) console.info('req', req);
+  if (error && res.data) console.error('res', res.data);
+
   return res;
 };
 
-const responseErrorLogMiddleware = (err: any) => {
-  const res = err.response;
-  const status = res.status;
-  const method = res.request._method;
-  const url = res.request.responseURL.replace('https://', '');
-  const req = res?.config?.data ? JSON.parse(res?.config?.data) : null;
-  const resData = res.data;
-  console.info(decodeURI(`${status} ${method} ${url}`));
-  if (req) {
-    console.info('req', req);
-  }
-  if (resData) {
-    console.info('res', resData);
-  }
-  return Promise.reject(err);
-};
+const responseLogMiddleware = (res: AxiosResponse<any, any>) => logRequest(res);
+
+const responseErrorLogMiddleware = (err: any) =>
+  Promise.reject(logRequest(err.response, true));
 
 const registerLogger = (client: AxiosInstance) => {
   client.interceptors.response.use(
