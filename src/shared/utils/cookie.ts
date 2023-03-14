@@ -1,9 +1,14 @@
-// Set a cookie with the given name, value, and expiration date
-function setCookie(name: string, value: string, days: number) {
+/**
+ * Set a cookie with the given name, value, and expiration date
+ * @param name
+ * @param value
+ * @param expireTime days * 24 * 60 * 60 * 1000
+ */
+function setCookie(name: string, value: string, expireTime?: number) {
   let expires = '';
-  if (days) {
+  if (expireTime) {
     let date = new Date();
-    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    date.setTime(date.getTime() + expireTime);
     expires = '; expires=' + date.toUTCString();
   }
   document.cookie = name + '=' + (value || '') + expires + '; path=/';
