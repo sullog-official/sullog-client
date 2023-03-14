@@ -83,7 +83,6 @@ instance.interceptors.response.use(async (error) => {
       return await retryOriginalRequest;
     } catch (error) {
       window.location.href = '/signin'; // TBD
-      return Promise.reject(error);
     }
   }
   return Promise.reject(error);
