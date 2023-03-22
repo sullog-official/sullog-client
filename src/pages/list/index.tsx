@@ -10,7 +10,7 @@ import styles from './index.module.scss';
 
 const cx = classNames.bind(styles);
 
-// TODO: api 연결시 삭제
+// TODO: apis 연결시 삭제
 const sampleDescription =
   '테이스팅, 시식, 시음, 맛 평가. 식품의 질을 맛으로 평가하는 것. 특히버터, 오일, 푸아그라, 초콜릿 등은 전문 맛 감정사가 있다. 파리 시 연구소에';
 

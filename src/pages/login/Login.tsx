@@ -1,12 +1,27 @@
 import classNames from 'classnames/bind';
 
+import { kakaoLogin } from '@/shared/apis/auth/kakaoLogin';
 import Icon from '@/shared/components/Icon';
+import axios from '@/shared/configs/axios';
 
 import styles from './Login.module.scss';
 
 const cx = classNames.bind(styles);
 
 const Login = () => {
+  const onClickKakaoLoginBtn = async () => {
+    kakaoLogin();
+  };
+
+  const test = async () => {
+    axios.get('/alcohols?alcoholId=1', {
+      headers: {
+        Authorization:
+          'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMCIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNjc5MzIxOTI5LCJleHAiOjE2Nzk0MDgzMjl9.mL6XhaD1kNeB7GIXjzS3y10CDsJLdVfGm2lJLxDRDyQ',
+      },
+    });
+  };
+
   return (
     <main className={cx('wrapper')}>
       <div className={cx('title-wrapper')}>
@@ -20,6 +35,7 @@ const Login = () => {
           type="button"
           aria-label="카카오 로그인"
           className={cx('kakao-btn')}
+          onClick={onClickKakaoLoginBtn}
         >
           <Icon
             name="Kakao"
