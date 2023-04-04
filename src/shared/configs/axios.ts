@@ -46,7 +46,7 @@ async function refreshAccessToken() {
 const instance = axios.create({
   baseURL:
     env === 'development'
-      ? 'https://api.bbpsp-backend-api.click'
+      ? 'http://ec2-3-18-111-157.us-east-2.compute.amazonaws.com:8081'
       : 'https://api.bbpsp-backend-api.click', // TBD
 });
 
