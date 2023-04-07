@@ -46,8 +46,8 @@ async function refreshAccessToken() {
 const instance = axios.create({
   baseURL:
     env === 'development'
-      ? 'http://ec2-3-18-111-157.us-east-2.compute.amazonaws.com:8081/'
-      : 'http://ec2-3-18-111-157.us-east-2.compute.amazonaws.com:8081/', // TBD
+      ? 'http://ec2-3-18-111-157.us-east-2.compute.amazonaws.com:8081'
+      : 'http://ec2-3-18-111-157.us-east-2.compute.amazonaws.com:8081', // TBD
 });
 
 instance.interceptors.request.use((config) => {
@@ -82,7 +82,7 @@ instance.interceptors.response.use(async (error) => {
 
       return await retryOriginalRequest;
     } catch (error) {
-      window.location.href = '/signin'; // TBD
+      window.location.href = '/login'; // TBD
     }
   }
   return Promise.reject(error);
