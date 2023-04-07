@@ -24,6 +24,7 @@ function getAccessToken() {
 
 // 리프레시 토큰을 사용하여 새 액세스 토큰을 가져 오는 함수
 async function refreshAccessToken() {
+  console.log('refreshAccessToken');
   // 중복된 새로 고침 요청을 방지하기 위해 isFetchingAccessToken 플래그를 true로 설정
   isFetchingAccessToken = true;
 
@@ -75,39 +76,43 @@ instance.interceptors.request.use((config) => {
 });
 
 // 401 에러 처리하는 interceptor 추가
-instance.interceptors.response.use(async (error) => {
-  if (error.status === 401) {
-    try {
-      // 새 액세스 토큰을 얻은 후 원래 요청을 다시 시도하기 위한 새 promise 만들기
-      const retryOriginalRequest = new Promise<AxiosResponse<any, any>>(
-        (resolve, reject) => {
-          // 새 액세스 토큰을 기다리면서 원래 요청을 다시 시도하기 위해 subscriber 추가
-          subscribers.push(async (AccessToken: string) => {
-            try {
-              error.config.headers['Authorization'] = 'Bearer ' + AccessToken;
-              resolve(instance(error.config));
-            } catch (err) {
-              reject(err);
-            }
-          });
+instance.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    console.log(error);
+    if (error.status === 401) {
+      try {
+        // 새 액세스 토큰을 얻은 후 원래 요청을 다시 시도하기 위한 새 promise 만들기
+        const retryOriginalRequest = new Promise<AxiosResponse<any, any>>(
+          (resolve, reject) => {
+            // 새 액세스 토큰을 기다리면서 원래 요청을 다시 시도하기 위해 subscriber 추가
+            subscribers.push(async (AccessToken: string) => {
+              try {
+                error.config.headers['Authorization'] = 'Bearer ' + AccessToken;
+                resolve(instance(error.config));
+              } catch (err) {
+                reject(err);
+              }
+            });
+          }
+        );
+
+        // 새 액세스 토큰을 이미 가져 오는 중이 아니면 새 액세스 토큰 가져 오기
+        if (!isFetchingAccessToken) {
+          refreshAccessToken();
         }
-      );
 
-      // 새 액세스 토큰을 이미 가져 오는 중이 아니면 새 액세스 토큰 가져 오기
-      if (!isFetchingAccessToken) {
-        refreshAccessToken();
+        // 새 액세스 토큰을 가져 온 후 원래 요청을 다시 시도하기 위한 프로미스 반환
+        return await retryOriginalRequest;
+      } catch (error) {
+        // 새 액세스 토큰을 가져 오는 동안 오류가 발생하면 로그인 페이지로 리디렉션
+        window.location.href = '/signin'; // TBD
       }
-
-      // 새 액세스 토큰을 가져 온 후 원래 요청을 다시 시도하기 위한 프로미스 반환
-      return await retryOriginalRequest;
-    } catch (error) {
-      // 새 액세스 토큰을 가져 오는 동안 오류가 발생하면 로그인 페이지로 리디렉션
-      window.location.href = '/signin'; // TBD
     }
-  }
 
-  return Promise.reject(error);
-});
+    return Promise.reject(error);
+  }
+);
 
 registerLogger(instance);
 
