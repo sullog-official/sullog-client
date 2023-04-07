@@ -29,7 +29,6 @@ async function refreshAccessToken() {
 
   // 새로운 액세스 토큰을 가져 오기 위해 서버에 요청 보내기
   const response = await instance.get('/token/refresh', {
-    // 2xx 상태 코드가 아닌 경우 오류를 발생시키지 않음
     validateStatus: null,
     // Authorization 헤더를 리프레시 토큰 쿠키 값으로 설정
     headers: {
