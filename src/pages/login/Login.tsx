@@ -16,8 +16,15 @@ const Login = () => {
   const onClickKakaoLoginBtn = () =>
     (location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=209bdcaaebd1d90d002f358651d8ef4b&scope=profile_nickname,account_email&redirect_uri=http://localhost:3000/login`);
 
+  const setToken = async (code: string) => {
+    const data = await kakaoLoginCallback(code);
+    console.log(data);
+  };
+
   useEffect(() => {
-    if (code) kakaoLoginCallback(code as string);
+    if (code) {
+      setToken(code as string);
+    }
   }, [code]);
 
   return (
