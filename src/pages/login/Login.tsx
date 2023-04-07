@@ -1,26 +1,24 @@
 import classNames from 'classnames/bind';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
-import { kakaoLogin } from '@/shared/apis/auth/kakaoLogin';
+import { kakaoLoginCallback } from '@/shared/apis/auth/kakaoLogin';
 import Icon from '@/shared/components/Icon';
-import axios from '@/shared/configs/axios';
 
 import styles from './Login.module.scss';
 
 const cx = classNames.bind(styles);
 
 const Login = () => {
-  const onClickKakaoLoginBtn = async () => {
-    kakaoLogin();
-  };
+  const router = useRouter();
+  const { code } = router.query;
 
-  const test = async () => {
-    axios.get('/alcohols?alcoholId=1', {
-      headers: {
-        Authorization:
-          'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMCIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNjc5MzIxOTI5LCJleHAiOjE2Nzk0MDgzMjl9.mL6XhaD1kNeB7GIXjzS3y10CDsJLdVfGm2lJLxDRDyQ',
-      },
-    });
-  };
+  const onClickKakaoLoginBtn = () =>
+    (location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=209bdcaaebd1d90d002f358651d8ef4b&scope=profile_nickname,account_email&redirect_uri=http://localhost:3000/login`);
+
+  useEffect(() => {
+    if (code) kakaoLoginCallback(code as string);
+  }, [code]);
 
   return (
     <main className={cx('wrapper')}>
