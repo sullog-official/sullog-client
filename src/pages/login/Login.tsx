@@ -21,7 +21,11 @@ const Login = () => {
   const setToken = async (code: string) => {
     const response = await kakaoLoginCallback(code);
     sessionStorage.setItem(TokenKeys.Access, response.headers['authorization']);
-    setCookie(TokenKeys.Refresh, response.headers['refresh'], 14);
+    setCookie(
+      TokenKeys.Refresh,
+      response.headers['refresh'],
+      24 * 60 * 60 * 1000 * 14
+    );
   };
 
   useEffect(() => {
