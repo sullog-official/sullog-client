@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 
 import { kakaoLoginCallback } from '@/shared/apis/auth/kakaoLogin';
 import Icon from '@/shared/components/Icon';
+import { TokenKeys } from '@/shared/configs/axios';
+import { setCookie } from '@/shared/utils/cookie';
 
 import styles from './Login.module.scss';
 
@@ -17,14 +19,13 @@ const Login = () => {
     (location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=209bdcaaebd1d90d002f358651d8ef4b&scope=profile_nickname,account_email&redirect_uri=http://localhost:3000/login`);
 
   const setToken = async (code: string) => {
-    const data = await kakaoLoginCallback(code);
-    console.log(data);
+    const response = await kakaoLoginCallback(code);
+    sessionStorage.setItem(TokenKeys.Access, response.headers['authorization']);
+    setCookie(TokenKeys.Refresh, response.headers['refresh'], 14);
   };
 
   useEffect(() => {
-    if (code) {
-      setToken(code as string);
-    }
+    if (code) setToken(code as string);
   }, [code]);
 
   return (
