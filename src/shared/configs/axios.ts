@@ -6,7 +6,7 @@ import registerLogger from './logger';
 
 const env = process.env.NODE_ENV;
 
-enum TokenKeys {
+export enum TokenKeys {
   Access = 'ACCESSTOKEN',
   Refresh = 'REFRESHTOKEN',
 }
