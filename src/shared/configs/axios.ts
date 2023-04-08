@@ -7,8 +7,8 @@ import registerLogger from './logger';
 const env = process.env.NODE_ENV;
 
 export enum TokenKeys {
-  Access = 'ACCESSTOKEN',
-  Refresh = 'REFRESHTOKEN',
+  Access = 'authorization',
+  Refresh = 'refresh',
 }
 
 // 새 액세스 토큰을 가져 오는 중인지 여부를 추적하는 변수
@@ -40,7 +40,11 @@ async function refreshAccessToken() {
   // 새로운 액세스 토큰을 세션 스토리지에 저장
   sessionStorage.setItem(TokenKeys.Access, response.headers['authorization']);
   // 리프레시 토큰 쿠키를 새 값으로 업데이트
-  setCookie(TokenKeys.Refresh, response.headers['refresh'], 14);
+  setCookie(
+    TokenKeys.Refresh,
+    response.headers['refresh'],
+    24 * 60 * 60 * 1000 * 14
+  );
 
   // isFetchingAccessToken 플래그를 false로 설정
   isFetchingAccessToken = false;
