@@ -38,16 +38,16 @@ async function refreshAccessToken() {
   });
 
   // 새로운 액세스 토큰을 세션 스토리지에 저장
-  sessionStorage.setItem(TokenKeys.Access, response.headers['Authorization']);
+  sessionStorage.setItem(TokenKeys.Access, response.headers['authorization']);
   // 리프레시 토큰 쿠키를 새 값으로 업데이트
-  setCookie(TokenKeys.Refresh, response.headers['Refresh'], 14);
+  setCookie(TokenKeys.Refresh, response.headers['refresh'], 14);
 
   // isFetchingAccessToken 플래그를 false로 설정
   isFetchingAccessToken = false;
 
   // 새 액세스 토큰을 기다리는 모든 구독자를 호출하고 새 토큰 값을 전달
   subscribers.forEach((callback) =>
-    callback(response.headers['Authorization'])
+    callback(response.headers['authorization'])
   );
   // 구독자 배열 지우기
   subscribers = [];
@@ -69,7 +69,7 @@ instance.interceptors.request.use((config) => {
   const AccessToken = getAccessToken();
 
   if (AccessToken) {
-    config.headers['Authorization'] = 'Bearer ' + AccessToken;
+    config.headers['authorization'] = 'Bearer ' + AccessToken;
   }
 
   return config;
@@ -88,7 +88,7 @@ instance.interceptors.response.use(
             // 새 액세스 토큰을 기다리면서 원래 요청을 다시 시도하기 위해 subscriber 추가
             subscribers.push(async (AccessToken: string) => {
               try {
-                error.config.headers['Authorization'] = 'Bearer ' + AccessToken;
+                error.config.headers['authorization'] = 'Bearer ' + AccessToken;
                 resolve(instance(error.config));
               } catch (err) {
                 reject(err);
