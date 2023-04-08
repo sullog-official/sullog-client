@@ -5,7 +5,13 @@ import { useEffect } from 'react';
 import { kakaoLoginCallback } from '@/shared/apis/auth/kakaoLogin';
 import Icon from '@/shared/components/Icon';
 import { TokenKeys } from '@/shared/configs/axios';
-import { setCookie } from '@/shared/utils/cookie';
+import {
+  NEXT_PUBLIC_KAKAO_BASE_URI,
+  NEXT_PUBLIC_KAKAO_CLIENT_ID,
+  NEXT_PUBLIC_KAKAO_REDIRECT_URI,
+  NEXT_PUBLIC_SCOPE,
+} from '@/shared/constants';
+import { getCookie, setCookie } from '@/shared/utils/cookie';
 
 import styles from './Login.module.scss';
 
@@ -16,7 +22,7 @@ const Login = () => {
   const { code } = router.query;
 
   const onClickKakaoLoginBtn = () =>
-    (location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=209bdcaaebd1d90d002f358651d8ef4b&scope=profile_nickname,account_email&redirect_uri=http://localhost:3000/login`);
+    (location.href = `${NEXT_PUBLIC_KAKAO_BASE_URI}&client_id=${NEXT_PUBLIC_KAKAO_CLIENT_ID}&scope=${NEXT_PUBLIC_SCOPE}&redirect_uri=${NEXT_PUBLIC_KAKAO_REDIRECT_URI}`);
 
   const setToken = async (code: string) => {
     const response = await kakaoLoginCallback(code);
@@ -29,8 +35,13 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (code) setToken(code as string);
-  }, [code]);
+    if (code) setToken(code as string).then(() => router.push('/'));
+  }, [code, router]);
+
+  useEffect(() => {
+    if (sessionStorage.getItem(TokenKeys.Access)) router.push('/');
+    if (getCookie(TokenKeys.Refresh)) router.push('/');
+  }, [router]);
 
   return (
     <main className={cx('wrapper')}>
