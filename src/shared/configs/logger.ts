@@ -1,14 +1,14 @@
 import { AxiosInstance, AxiosResponse } from 'axios';
 
 const logRequest = (res: AxiosResponse<any, any>, error = false) => {
-  const status = res.status;
-  const method = res.request._method;
-  const url = res.request.responseURL.replace('https://', '');
-  const req = res.config.data ? JSON.parse(res.config.data) : null;
+  const status = res?.status;
+  const method = res?.request._method;
+  const url = res?.request.responseURL.replace('https://', '');
+  const req = res?.config.data ? JSON.parse(res.config.data) : null;
 
   console.info(decodeURI(`${status} ${method} ${url}`));
   if (req) console.info('req', req);
-  if (error && res.data) console.error('res', res.data);
+  if (error && res?.data) console.error('res', res.data);
 
   return res;
 };

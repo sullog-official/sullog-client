@@ -1,12 +1,48 @@
 import classNames from 'classnames/bind';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
+import { kakaoLoginCallback } from '@/shared/apis/auth/kakaoLogin';
 import Icon from '@/shared/components/Icon';
+import { TokenKeys } from '@/shared/configs/axios';
+import {
+  NEXT_PUBLIC_KAKAO_BASE_URI,
+  NEXT_PUBLIC_KAKAO_CLIENT_ID,
+  NEXT_PUBLIC_KAKAO_REDIRECT_URI,
+  NEXT_PUBLIC_SCOPE,
+} from '@/shared/constants';
+import { getCookie, setCookie } from '@/shared/utils/cookie';
 
 import styles from './Login.module.scss';
 
 const cx = classNames.bind(styles);
 
 const Login = () => {
+  const router = useRouter();
+  const { code } = router.query as { code: string };
+
+  const onClickKakaoLoginBtn = () =>
+    (location.href = `${NEXT_PUBLIC_KAKAO_BASE_URI}&client_id=${NEXT_PUBLIC_KAKAO_CLIENT_ID}&scope=${NEXT_PUBLIC_SCOPE}&redirect_uri=${NEXT_PUBLIC_KAKAO_REDIRECT_URI}`);
+
+  const setToken = async (code: string) => {
+    const response = await kakaoLoginCallback(code);
+    sessionStorage.setItem(TokenKeys.Access, response.headers['authorization']);
+    setCookie(
+      TokenKeys.Refresh,
+      response.headers['refresh'],
+      24 * 60 * 60 * 1000 * 14
+    );
+  };
+
+  useEffect(() => {
+    if (code) setToken(code).then(() => router.push('/'));
+  }, [code, router]);
+
+  useEffect(() => {
+    if (sessionStorage.getItem(TokenKeys.Access)) router.push('/');
+    if (getCookie(TokenKeys.Refresh)) router.push('/');
+  }, [router]);
+
   return (
     <main className={cx('wrapper')}>
       <div className={cx('title-wrapper')}>
@@ -20,6 +56,7 @@ const Login = () => {
           type="button"
           aria-label="카카오 로그인"
           className={cx('kakao-btn')}
+          onClick={onClickKakaoLoginBtn}
         >
           <Icon
             name="Kakao"
