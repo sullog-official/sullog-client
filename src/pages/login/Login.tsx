@@ -19,7 +19,7 @@ const cx = classNames.bind(styles);
 
 const Login = () => {
   const router = useRouter();
-  const { code } = router.query;
+  const { code } = router.query as { code: string };
 
   const onClickKakaoLoginBtn = () =>
     (location.href = `${NEXT_PUBLIC_KAKAO_BASE_URI}&client_id=${NEXT_PUBLIC_KAKAO_CLIENT_ID}&scope=${NEXT_PUBLIC_SCOPE}&redirect_uri=${NEXT_PUBLIC_KAKAO_REDIRECT_URI}`);
@@ -35,7 +35,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (code) setToken(code as string).then(() => router.push('/'));
+    if (code) setToken(code).then(() => router.push('/'));
   }, [code, router]);
 
   useEffect(() => {
