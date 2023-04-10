@@ -9,7 +9,7 @@ import {
   NEXT_PUBLIC_KAKAO_BASE_URI,
   NEXT_PUBLIC_KAKAO_CLIENT_ID,
   NEXT_PUBLIC_KAKAO_REDIRECT_URI,
-  NEXT_PUBLIC_SCOPE,
+  NEXT_PUBLIC_KAKAO_SCOPE,
 } from '@/shared/constants';
 import { getCookie, setCookie } from '@/shared/utils/cookie';
 
@@ -22,7 +22,7 @@ const Login = () => {
   const { code } = router.query as { code: string };
 
   const onClickKakaoLoginBtn = () =>
-    (location.href = `${NEXT_PUBLIC_KAKAO_BASE_URI}&client_id=${NEXT_PUBLIC_KAKAO_CLIENT_ID}&scope=${NEXT_PUBLIC_SCOPE}&redirect_uri=${NEXT_PUBLIC_KAKAO_REDIRECT_URI}`);
+    (location.href = `${NEXT_PUBLIC_KAKAO_BASE_URI}&client_id=${NEXT_PUBLIC_KAKAO_CLIENT_ID}&scope=${NEXT_PUBLIC_KAKAO_SCOPE}&redirect_uri=${NEXT_PUBLIC_KAKAO_REDIRECT_URI}`);
 
   const setToken = async (code: string) => {
     const response = await kakaoLoginCallback(code);
