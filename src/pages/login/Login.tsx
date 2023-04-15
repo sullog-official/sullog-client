@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
+import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import { kakaoLoginCallback } from '@/shared/apis/auth/kakaoLogin';
 import Icon from '@/shared/components/Icon';
 import { TokenKeys } from '@/shared/configs/axios';
@@ -46,7 +47,7 @@ const Login = () => {
   return (
     <main className={cx('wrapper')}>
       <div className={cx('title-wrapper')}>
-        <h1 className={cx('main-title')}>
+        <h1 className={cx('main-title')} style={mapoFlowerIsland.style}>
           <span>술로그</span>
           <span className={cx('sub-title')}>전통주를 기록하다</span>
         </h1>
