@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
 import { useState } from 'react';
 
-import AlcoholPreview from '@/features/alcohol/AlcoholPreview';
-import AlcoholCategoryTab from '@/features/search/AlcoholCategoryTab';
+import AlcoholPreview from '@/features/alcohol/components/AlcoholPreview';
+import AlcoholCategoryTab from '@/features/search/components/AlcoholCategoryTab';
 import BottomNavigator from '@/shared/components/BottomNavigator';
 import TopNavigator from '@/shared/components/TopNavigator';
 

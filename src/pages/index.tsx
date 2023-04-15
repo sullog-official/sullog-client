@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import Map from '@/features/home/components/Map';
-import SearchBar from '@/features/search/SearchBar';
+import SearchBar from '@/features/search/components/SearchBar';
 import BottomNavigator from '@/shared/components/BottomNavigator';
 
 import styles from './index.module.scss';

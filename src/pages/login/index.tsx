@@ -14,7 +14,7 @@ import {
 } from '@/shared/constants';
 import { getCookie, setCookie } from '@/shared/utils/cookie';
 
-import styles from './Login.module.scss';
+import styles from './index.module.scss';
 
 const cx = classNames.bind(styles);
 

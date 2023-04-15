@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 
-import FlavorSliderGroup from '@/features/record/FlavorSliderGroup';
-import ImageSwiper from '@/features/record/ImageSwiper';
+import FlavorSliderGroup from '@/features/record/components/FlavorSliderGroup';
+import ImageSwiper from '@/features/record/components/ImageSwiper';
 import Chip from '@/shared/components/Chip';
 import Icon from '@/shared/components/Icon';
 

@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 
-import RecentSearches from '@/features/search/RecentSearches';
-import SearchBar from '@/features/search/SearchBar';
+import RecentSearches from '@/features/search/components/RecentSearches';
+import SearchBar from '@/features/search/components/SearchBar';
 import BottomNavigator from '@/shared/components/BottomNavigator';
 import TopNavigator from '@/shared/components/TopNavigator';
 

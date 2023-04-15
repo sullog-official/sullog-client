@@ -1,10 +1,10 @@
 import classNames from 'classnames/bind';
 
-import AbvInput from '@/features/record/AbvInput';
-import DetailFlavorInput from '@/features/record/DetailFlavorInput';
-import FlavorSliderGroup from '@/features/record/FlavorSliderGroup';
-import ImageSwiper from '@/features/record/ImageSwiper';
-import Rating from '@/features/record/Rating';
+import AbvInput from '@/features/record/components/AbvInput';
+import DetailFlavorInput from '@/features/record/components/DetailFlavorInput';
+import FlavorSliderGroup from '@/features/record/components/FlavorSliderGroup';
+import ImageSwiper from '@/features/record/components/ImageSwiper';
+import Rating from '@/features/record/components/Rating';
 import TextArea from '@/shared/components/TextArea';
 import TextField from '@/shared/components/TextField';
 
