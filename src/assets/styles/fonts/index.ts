@@ -8,4 +8,5 @@ export const mapoFlowerIsland = localFont({
       style: 'italic',
     },
   ],
+  variable: '--mapo-flower-island-font',
 });

@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 
+import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import Map from '@/features/home/components/Map';
 import SearchBar from '@/features/search/SearchBar';
 import BottomNavigator from '@/shared/components/BottomNavigator';
@@ -12,7 +13,9 @@ export default function Home() {
   return (
     <main className={cx('main')}>
       <div className={cx('header')}>
-        <h1 className={cx('header-text')}>나의 술로그</h1>
+        <h1 className={cx('header-text')} style={mapoFlowerIsland.style}>
+          나의 술로그
+        </h1>
         <SearchBar placeholder={'Search'} />
       </div>
       <Map
