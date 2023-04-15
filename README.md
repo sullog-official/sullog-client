@@ -4,4 +4,5 @@
 [(구)술로그](https://github.com/wit-kr/sullog_web)를 새롭게 다시 개발하는 중입니다.
 
 ## 서비스 배포 링크
-[Sullog](https://sullog-client.vercel.app/)
+- Production: [Sullog](https://sullog-client.vercel.app/)
+- Development: [Sullog-dev](https://sullog-dev.vercel.app/)
