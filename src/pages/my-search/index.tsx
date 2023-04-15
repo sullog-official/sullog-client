@@ -34,7 +34,7 @@ const MySearch = () => {
 
   return (
     <>
-      <TopNavigator type={'personal'} title={'나의 술로그'} />
+      <TopNavigator title={'나의 술로그'} highlighted />
       <main className={cx('wrapper')}>
         <div className={cx('search-bar-wrapper')}>
           <SearchBar placeholder={'Search'} />

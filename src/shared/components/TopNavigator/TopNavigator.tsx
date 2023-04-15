@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { useRouter } from 'next/router';
 
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import Icon from '@/shared/components/Icon';
@@ -7,28 +8,37 @@ import styles from './TopNavigator.module.scss';
 const cx = classNames.bind(styles);
 
 type TopNavigatorProps = {
-  type: 'default' | 'personal' | 'writing';
   title: string;
-  isCompleted?: boolean;
+  onBack?: VoidFunction;
+  extra?: React.ReactNode;
+  highlighted?: boolean;
 };
 
-const TopNavigator = ({ type, title, isCompleted }: TopNavigatorProps) => {
+const TopNavigator = ({
+  title,
+  onBack,
+  extra,
+  highlighted,
+}: TopNavigatorProps) => {
+  const router = useRouter();
+
   return (
     <nav className={cx('wrapper')}>
-      <button type="button" aria-label="Back" className={cx('back-btn')}>
-        <Icon name={'Back'} size={12} />
+      <button
+        type="button"
+        aria-label="뒤로가기"
+        className={cx('back-btn')}
+        onClick={onBack ?? router.back}
+      >
+        <Icon name="Back" size={12} />
       </button>
       <h1
-        className={cx('title', type)}
-        style={type === 'personal' ? mapoFlowerIsland.style : {}}
+        className={cx('title', { highlighted })}
+        style={highlighted ? mapoFlowerIsland.style : {}}
       >
         {title}
       </h1>
-      {type === 'writing' && (
-        <button type="button" className={cx('write-btn')}>
-          <span className={cx('write-label', isCompleted)}>완료</span>
-        </button>
-      )}
+      {extra && <div className={cx('extra')}>{extra}</div>}
     </nav>
   );
 };

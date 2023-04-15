@@ -28,7 +28,7 @@ const List = () => {
 
   return (
     <>
-      <TopNavigator type={'personal'} title={'나의 술로그'} />
+      <TopNavigator title={'나의 술로그'} highlighted />
       <main>
         <AlcoholCategoryTab
           alcoholCategories={AlcoholCategories}
