@@ -3753,6 +3753,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-core@npm:4.29.1":
+  version: 4.29.1
+  resolution: "@tanstack/query-core@npm:4.29.1"
+  checksum: e7a5a73e5e743411e39348bee3ded4b6c5dd3a70009e72e067e257d5f3d612bfe8df0998cddff6ad7a078e0bcf7a3c92ded669758ca697055472ce910e23a368
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^4.29.3":
+  version: 4.29.3
+  resolution: "@tanstack/react-query@npm:4.29.3"
+  dependencies:
+    "@tanstack/query-core": 4.29.1
+    use-sync-external-store: ^1.2.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-native: "*"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: 7d33fe001ba6ec2332c28749312e5268e6bc060ea0e7c3faa37a28a12fd4b4fddd3803fdfb4e6551997f06d4cd32568e39d9cc9a26c19f40cfef276fad1eaaee
+  languageName: node
+  linkType: hard
+
 "@testing-library/dom@npm:^8.3.0":
   version: 8.19.1
   resolution: "@testing-library/dom@npm:8.19.1"
@@ -12282,6 +12308,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-query-kit@npm:^1.4.1":
+  version: 1.4.1
+  resolution: "react-query-kit@npm:1.4.1"
+  peerDependencies:
+    "@tanstack/react-query": "*"
+  peerDependenciesMeta:
+    "@tanstack/react-query":
+      optional: true
+  checksum: 8054919042eb6f52fe3dd73bc1fd5bb3a890406847a07047ae73170ca15921b0435ecc96d5bfb3e1e52ccafcf3f3d9fd576bfeb81faecbdd1c1a12dda62be7cc
+  languageName: node
+  linkType: hard
+
 "react-refresh@npm:^0.11.0":
   version: 0.11.0
   resolution: "react-refresh@npm:0.11.0"
@@ -13811,6 +13849,7 @@ __metadata:
     "@storybook/storybook-deployer": ^2.8.16
     "@storybook/testing-library": ^0.0.14-next.1
     "@svgr/webpack": ^6.5.1
+    "@tanstack/react-query": ^4.29.3
     "@types/lodash-es": ^4.17.6
     "@types/mapbox-gl": ^2.7.10
     "@types/node": 18.11.18
@@ -13837,6 +13876,7 @@ __metadata:
     react: 18.2.0
     react-dom: 18.2.0
     react-map-gl: ^7.0.21
+    react-query-kit: ^1.4.1
     resolve-url-loader: ^5.0.0
     sass: ^1.57.1
     sass-loader: ^13.2.0
@@ -14690,6 +14730,15 @@ __metadata:
     file-loader:
       optional: true
   checksum: c1122a992c6cff70a7e56dfc2b7474534d48eb40b2cc75467cde0c6972e7597faf8e43acb4f45f93c2473645dfd803bcbc20960b57544dd1e4c96e77f72ba6fd
+  languageName: node
+  linkType: hard
+
+"use-sync-external-store@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "use-sync-external-store@npm:1.2.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 5c639e0f8da3521d605f59ce5be9e094ca772bd44a4ce7322b055a6f58eeed8dda3c94cabd90c7a41fb6fa852210092008afe48f7038792fd47501f33299116a
   languageName: node
   linkType: hard
 
