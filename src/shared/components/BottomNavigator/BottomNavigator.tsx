@@ -1,6 +1,8 @@
 import classNames from 'classnames/bind';
 import { useState } from 'react';
 
+import DrawerContents from '@/features/home/components/DrawerContents';
+import Drawer from '@/shared/components/Drawer';
 import Icon from '@/shared/components/Icon';
 
 import styles from './BottomNavigator.module.scss';
@@ -50,6 +52,12 @@ const BottomNavigator = () => {
           <p>메뉴</p>
         </button>
       </div>
+      <Drawer
+        isOpen={isMenuBtnClicked}
+        onClose={() => setIsMenuBtnClicked(false)}
+      >
+        <DrawerContents />
+      </Drawer>
     </nav>
   );
 };
