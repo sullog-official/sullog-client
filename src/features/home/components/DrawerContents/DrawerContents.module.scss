@@ -23,7 +23,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
+  text-align: start;
   padding: 40px 11px 0 11px;
   @include themes.typography('body15');
 }
@@ -32,6 +32,22 @@
   color: themes.$purple;
   @include themes.typography('title18');
   font-weight: 700;
+}
+
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 330px;
+  color: themes.$grey300;
+  @include themes.typography('caption9');
+  font-weight: 350;
+
+  > p:first-child {
+    color: themes.$purple;
+    @include themes.typography('body16');
+  }
 }
 
 .button-container {

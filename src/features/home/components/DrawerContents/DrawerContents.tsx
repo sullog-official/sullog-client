@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 
 import { Close } from '@/assets/icons';
+import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import DoughnutChart from '@/features/home/components/DoughnutChart';
 import { Button } from '@/shared/components';
 
@@ -20,8 +21,10 @@ const DrawerContents = () => {
         </p>
         <p>오늘도 나만의 술로그를 남겨보아요</p>
       </div>
-      <div>
+      <div className={cx('chart-container')}>
+        <p style={mapoFlowerIsland.style}>나의 술로그</p>
         <DoughnutChart />
+        <p>술짱조아 님은 10개의 술로그를 남겨주었어요</p>
       </div>
       <div className={cx('button-container')}>
         <Button>문의하기</Button>
