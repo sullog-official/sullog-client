@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import { Close } from '@/assets/icons';
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import DoughnutChart from '@/features/home/components/DoughnutChart';
+import logout from '@/shared/apis/auth/logout';
 import { Button } from '@/shared/components';
 
 import styles from './DrawerContents.module.scss';
@@ -36,8 +37,11 @@ const DrawerContents = ({ onClose }: Props) => {
         <p>술짱조아 님은 10개의 술로그를 남겨주었어요</p>
       </div>
       <div className={cx('button-container')}>
+        {/*TODO: 문의하기 기능에 대한 논의 필요*/}
         <Button>문의하기</Button>
-        <Button type="outline">로그아웃</Button>
+        <Button type="outline" onClick={logout}>
+          로그아웃
+        </Button>
       </div>
     </div>
   );
