@@ -5,28 +5,28 @@ import color from '@/assets/styles/themes/_color.module.scss';
 
 ChartJS.register(ArcElement);
 
-const test = Object.entries(color).filter(([key]) =>
-  key.includes('purple' || 'lightPurple')
+// purple, lightPurple300, lightPurple200, lightPurple100
+const dataColors = Object.entries(color).filter(
+  ([key]) => key === 'purple' || key.includes('lightPurple')
 );
-console.log(test);
 
 const data = {
-  labels: ['Red', 'Blue', 'Yellow', 'Green'],
+  labels: ['소주', '과실주', '막걸리', '기타'],
   datasets: [
     {
       label: '# of Votes',
-      data: [12, 19, 3, 5],
+      data: [35, 30, 25, 10],
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
+        dataColors[0][1],
+        dataColors[3][1],
+        dataColors[2][1],
+        dataColors[1][1],
       ],
       borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
+        dataColors[0][1],
+        dataColors[3][1],
+        dataColors[2][1],
+        dataColors[1][1],
       ],
       borderWidth: 1,
     },
@@ -34,7 +34,7 @@ const data = {
 };
 
 const DoughnutChart = () => {
-  return <Doughnut data={data} />;
+  return <Doughnut data={data} options={{ cutout: 50 }} />;
 };
 
 export default DoughnutChart;
