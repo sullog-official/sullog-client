@@ -9,10 +9,19 @@ import styles from './DrawerContents.module.scss';
 
 const cx = classNames.bind(styles);
 
-const DrawerContents = () => {
+type Props = {
+  onClose: () => void;
+};
+
+const DrawerContents = ({ onClose }: Props) => {
   return (
     <div className={cx('wrapper')}>
-      <button className={cx('close-btn')}>
+      <button
+        className={cx('close-btn')}
+        type="button"
+        aria-label="메뉴 닫기"
+        onClick={onClose}
+      >
         <Close size={16} />
       </button>
       <div className={cx('title-box')}>

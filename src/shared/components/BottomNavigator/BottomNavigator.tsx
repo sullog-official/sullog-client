@@ -19,9 +19,14 @@ const BottomNavigator = () => {
     setIsFeedBtnClicked(true);
     setIsMenuBtnClicked(false);
   };
+
   const openMenuDrawer = () => {
     setIsFeedBtnClicked(false);
     setIsMenuBtnClicked(true);
+  };
+
+  const closeDrawer = () => {
+    setIsMenuBtnClicked(false);
   };
 
   return (
@@ -52,11 +57,8 @@ const BottomNavigator = () => {
           <p>메뉴</p>
         </button>
       </div>
-      <Drawer
-        isOpen={isMenuBtnClicked}
-        onClose={() => setIsMenuBtnClicked(false)}
-      >
-        <DrawerContents />
+      <Drawer isOpen={isMenuBtnClicked} onClose={closeDrawer}>
+        <DrawerContents onClose={closeDrawer} />
       </Drawer>
     </nav>
   );
