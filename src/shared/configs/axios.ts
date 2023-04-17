@@ -64,8 +64,8 @@ async function refreshAccessToken() {
 const instance = axios.create({
   baseURL:
     env === 'development'
-      ? 'http://ec2-3-18-111-157.us-east-2.compute.amazonaws.com:8081'
-      : 'https://api.bbpsp-backend-api.click', // TBD
+      ? 'http://ec2-13-124-179-45.ap-northeast-2.compute.amazonaws.com:8081'
+      : 'http://ec2-13-124-179-45.ap-northeast-2.compute.amazonaws.com:8081', // TBD
 });
 
 // 각 요청마다 세션 스토리지에 있는 액세스 토큰 값을 Authorization 헤더에 설정하기 위한 인터셉터 추가
