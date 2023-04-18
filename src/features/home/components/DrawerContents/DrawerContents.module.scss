@@ -39,7 +39,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 330px;
+  padding: 10px;
   color: themes.$grey300;
   @include themes.typography('caption9');
   font-weight: 350;
@@ -47,6 +47,11 @@
   > p:first-child {
     color: themes.$purple;
     @include themes.typography('body16');
+    margin-bottom: 12px;
+  }
+
+  > p:last-child {
+    margin-top: 12px;
   }
 }
 

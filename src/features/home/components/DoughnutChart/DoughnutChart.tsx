@@ -21,7 +21,7 @@ const data = {
 };
 
 const DoughnutChart = () => {
-  return <Doughnut data={data} options={{ cutout: 50 }} />;
+  return <Doughnut data={data} />;
 };
 
 export default DoughnutChart;
