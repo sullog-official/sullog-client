@@ -73,7 +73,7 @@ instance.interceptors.request.use((config) => {
   const AccessToken = getAccessToken();
 
   if (AccessToken) {
-    config.headers['authorization'] = 'Bearer ' + AccessToken;
+    config.headers['authorization'] = AccessToken;
   }
 
   return config;
@@ -92,7 +92,7 @@ instance.interceptors.response.use(
             // 새 액세스 토큰을 기다리면서 원래 요청을 다시 시도하기 위해 subscriber 추가
             subscribers.push(async (AccessToken: string) => {
               try {
-                error.config.headers['authorization'] = 'Bearer ' + AccessToken;
+                error.config.headers['authorization'] = AccessToken;
                 resolve(instance(error.config));
               } catch (err) {
                 reject(err);
