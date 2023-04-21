@@ -47,6 +47,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@svgr/webpack", "npm:6.5.1"],\
             ["@tanstack/react-query", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:4.29.3"],\
             ["@tanstack/react-query-devtools", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:4.29.3"],\
+            ["@types/chart.js", "npm:2.9.37"],\
             ["@types/lodash-es", "npm:4.17.6"],\
             ["@types/mapbox-gl", "npm:2.7.10"],\
             ["@types/node", "npm:18.11.18"],\
@@ -54,6 +55,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:18.0.10"],\
             ["axios", "npm:1.3.4"],\
             ["babel-loader", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:8.3.0"],\
+            ["chart.js", "npm:4.2.1"],\
             ["classnames", "npm:2.3.2"],\
             ["css-loader", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:6.7.3"],\
             ["eslint", "npm:8.33.0"],\
@@ -71,6 +73,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss-loader", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:7.0.2"],\
             ["prettier", "npm:2.8.1"],\
             ["react", "npm:18.2.0"],\
+            ["react-chartjs-2", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:5.2.0"],\
             ["react-dom", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:18.2.0"],\
             ["react-map-gl", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:7.0.21"],\
             ["react-query-kit", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:1.4.1"],\
@@ -4669,6 +4672,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@kurkle/color", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@kurkle-color-npm-0.3.2-98f2086013-79e97b31f8.zip/node_modules/@kurkle/color/",\
+          "packageDependencies": [\
+            ["@kurkle/color", "npm:0.3.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@mapbox/geojson-rewind", [\
         ["npm:0.5.2", {\
           "packageLocation": "./.yarn/cache/@mapbox-geojson-rewind-npm-0.5.2-716dd1ae97-721470ab5e.zip/node_modules/@mapbox/geojson-rewind/",\
@@ -7215,6 +7227,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@types/chart.js", [\
+        ["npm:2.9.37", {\
+          "packageLocation": "./.yarn/cache/@types-chart.js-npm-2.9.37-b6ebfac7e0-5626a8cc3b.zip/node_modules/@types/chart.js/",\
+          "packageDependencies": [\
+            ["@types/chart.js", "npm:2.9.37"],\
+            ["moment", "npm:2.29.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@types/connect", [\
         ["npm:3.4.35", {\
           "packageLocation": "./.yarn/cache/@types-connect-npm-3.4.35-7337eee0a3-fe81351470.zip/node_modules/@types/connect/",\
@@ -9431,6 +9453,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/chardet-npm-0.7.0-27933dd6c7-6fd5da1f5d.zip/node_modules/chardet/",\
           "packageDependencies": [\
             ["chardet", "npm:0.7.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["chart.js", [\
+        ["npm:4.2.1", {\
+          "packageLocation": "./.yarn/cache/chart.js-npm-4.2.1-97512b9a29-7319fdfd1e.zip/node_modules/chart.js/",\
+          "packageDependencies": [\
+            ["chart.js", "npm:4.2.1"],\
+            ["@kurkle/color", "npm:0.3.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -15321,6 +15353,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["moment", [\
+        ["npm:2.29.4", {\
+          "packageLocation": "./.yarn/cache/moment-npm-2.29.4-902943305d-0ec3f9c2bc.zip/node_modules/moment/",\
+          "packageDependencies": [\
+            ["moment", "npm:2.29.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["mri", [\
         ["npm:1.2.0", {\
           "packageLocation": "./.yarn/cache/mri-npm-1.2.0-8ecee0357d-83f515abbc.zip/node_modules/mri/",\
@@ -17070,6 +17111,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["react", "npm:18.2.0"],\
             ["loose-envify", "npm:1.4.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["react-chartjs-2", [\
+        ["npm:5.2.0", {\
+          "packageLocation": "./.yarn/cache/react-chartjs-2-npm-5.2.0-03632f5179-ace702185b.zip/node_modules/react-chartjs-2/",\
+          "packageDependencies": [\
+            ["react-chartjs-2", "npm:5.2.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:5.2.0", {\
+          "packageLocation": "./.yarn/__virtual__/react-chartjs-2-virtual-84cd3ecb5b/0/cache/react-chartjs-2-npm-5.2.0-03632f5179-ace702185b.zip/node_modules/react-chartjs-2/",\
+          "packageDependencies": [\
+            ["react-chartjs-2", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:5.2.0"],\
+            ["@types/chart.js", "npm:2.9.37"],\
+            ["@types/react", "npm:18.0.26"],\
+            ["chart.js", "npm:4.2.1"],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/chart.js",\
+            "@types/react",\
+            "chart.js",\
+            "react"\
           ],\
           "linkType": "HARD"\
         }]\
@@ -19106,6 +19173,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@svgr/webpack", "npm:6.5.1"],\
             ["@tanstack/react-query", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:4.29.3"],\
             ["@tanstack/react-query-devtools", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:4.29.3"],\
+            ["@types/chart.js", "npm:2.9.37"],\
             ["@types/lodash-es", "npm:4.17.6"],\
             ["@types/mapbox-gl", "npm:2.7.10"],\
             ["@types/node", "npm:18.11.18"],\
@@ -19113,6 +19181,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:18.0.10"],\
             ["axios", "npm:1.3.4"],\
             ["babel-loader", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:8.3.0"],\
+            ["chart.js", "npm:4.2.1"],\
             ["classnames", "npm:2.3.2"],\
             ["css-loader", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:6.7.3"],\
             ["eslint", "npm:8.33.0"],\
@@ -19130,6 +19199,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss-loader", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:7.0.2"],\
             ["prettier", "npm:2.8.1"],\
             ["react", "npm:18.2.0"],\
+            ["react-chartjs-2", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:5.2.0"],\
             ["react-dom", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:18.2.0"],\
             ["react-map-gl", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:7.0.21"],\
             ["react-query-kit", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:1.4.1"],\
