@@ -10,7 +10,7 @@ const cx = classNames.bind(styles);
 type TopNavigatorProps = {
   title: string;
   onBack?: VoidFunction;
-  extra?: React.ReactNode;
+  extra?: () => React.ReactNode;
   highlighted?: boolean;
 };
 
@@ -38,7 +38,7 @@ const TopNavigator = ({
       >
         {title}
       </h1>
-      {extra && <div className={cx('extra')}>{extra}</div>}
+      {extra && <div className={cx('extra')}>{extra()}</div>}
     </nav>
   );
 };
