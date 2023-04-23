@@ -1,3 +1,15 @@
+@use '@styles/themes';
+
+.submit-button {
+  @include themes.typography('body14');
+
+  color: themes.$black;
+
+  &:disabled {
+    color: themes.$grey300;
+  }
+}
+
 .contents {
   display: flex;
   flex-direction: column;

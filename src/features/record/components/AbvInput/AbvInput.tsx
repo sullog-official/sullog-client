@@ -10,10 +10,11 @@ const cx = classNames.bind(styles);
 type AbvInputProps = {
   className?: string;
   label?: string;
+  alcoholPercent: number;
 };
 
 // TODO: api에 따라 입력 형식 수정
-const AbvInput = ({ className, label }: AbvInputProps) => {
+const AbvInput = ({ className, label, alcoholPercent }: AbvInputProps) => {
   const [value, setValue] = useState<number>();
 
   return (
@@ -34,7 +35,9 @@ const AbvInput = ({ className, label }: AbvInputProps) => {
             </button>
           ))}
         </div>
-        <span className={cx('abv-info')}>실제 도수는 16.5도입니다.</span>
+        <span className={cx('abv-info')}>
+          실제 도수는 {alcoholPercent}도입니다.
+        </span>
       </div>
     </div>
   );
