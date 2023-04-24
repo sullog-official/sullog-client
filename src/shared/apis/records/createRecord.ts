@@ -9,14 +9,14 @@ type Variables = {
   recordInfo: Pick<Alcohol, 'alcoholId'> &
     Pick<
       Record,
-      | 'title'
+      | 'experienceDate'
       | 'alcoholPercentFeeling'
-      | 'flavorTagList'
+      | 'starScore'
       | 'scentScore'
       | 'tasteScore'
       | 'textureScore'
+      | 'flavorTagList'
       | 'description'
-      | 'experienceDate'
     >;
 };
 type Response = string;

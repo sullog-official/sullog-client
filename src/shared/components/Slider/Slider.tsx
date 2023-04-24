@@ -22,9 +22,9 @@ type SliderProps = {
 };
 
 const Slider = ({
-  value: outerValue,
   min = 0,
   max = 10,
+  value: outerValue = min,
   minLabel = min.toString(),
   maxLabel = max.toString(),
   step = 1,
