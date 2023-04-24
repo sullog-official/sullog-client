@@ -34,13 +34,15 @@ const SearchBar = ({
   return (
     <>
       <div className={cx('wrapper')}>
-        <Icon name={'Search'} size={12} />
-        <input
-          className={cx('search-input')}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-        />
+        <div className={cx('search-box')}>
+          <Icon name={'Search'} size={12} />
+          <input
+            className={cx('search-input')}
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+          />
+        </div>
         {filterItems && (
           <button
             type="button"
