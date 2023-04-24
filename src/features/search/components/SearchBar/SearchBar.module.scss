@@ -11,8 +11,12 @@
   box-shadow: 1px 1px 10px rgb(0 0 0 / 5%);
 }
 
+.filter-btn {
+  width: 9px;
+}
+
 .search-input {
-  width: 100%;
+  width: 90%;
   height: 100%;
   margin-left: 6px;
 }
@@ -20,4 +24,19 @@
 .search-input::placeholder {
   color: themes.$grey300;
   @include themes.typography('body14');
+}
+
+.chip-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 12px;
+  width: 100%;
+  padding: 12px;
+}
+
+.chip-btn {
+  width: 100%;
+  min-width: 50px;
+  height: 26px;
+  @include themes.typography('caption12');
 }
