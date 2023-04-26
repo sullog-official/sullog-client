@@ -5,6 +5,7 @@
 
   color: themes.$black;
 
+  &[data-disabled='true'],
   &:disabled {
     color: themes.$grey300;
   }

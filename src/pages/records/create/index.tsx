@@ -1,6 +1,7 @@
 import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 import { GetServerSideProps } from 'next';
+import { useEffect } from 'react';
 import { Controller } from 'react-hook-form';
 
 import AlcoholPercentFeelingInput from '@/features/record/components/AlcoholPercentFeelingInput';
@@ -25,7 +26,7 @@ type RecordCreateProps = {
 const RecordCreate = ({ alcoholId }: RecordCreateProps) => {
   const { data: alcohol } = useGetAlcohol({ variables: { alcoholId } });
 
-  const { control, handleSubmit } = useCreateRecordForm({
+  const { control, formState, handleSubmit } = useCreateRecordForm({
     alcoholId,
   });
 
@@ -35,11 +36,16 @@ const RecordCreate = ({ alcoholId }: RecordCreateProps) => {
 
   return (
     <main>
-      <form onSubmit={handleSubmit}>
+      <form>
         <TopNavigator
           title="게시글"
           extra={
-            <button type="submit" className={cx('submit-button')}>
+            <button
+              type="submit"
+              className={cx('submit-button')}
+              onClick={handleSubmit}
+              data-disabled={!formState.isValid}
+            >
               완료
             </button>
           }
@@ -83,6 +89,9 @@ const RecordCreate = ({ alcoholId }: RecordCreateProps) => {
             <Controller
               name="experienceDate"
               control={control}
+              rules={{
+                required: { value: true, message: '날짜를 입력해주세요' },
+              }}
               render={({ field }) => (
                 <TextField
                   className={cx('date')}
@@ -103,6 +112,14 @@ const RecordCreate = ({ alcoholId }: RecordCreateProps) => {
           <Controller
             name="starScore"
             control={control}
+            rules={{
+              required: {
+                value: true,
+                message: '별점을 입력해주세요 (0.5 이상)',
+              },
+              validate: (value) =>
+                value !== 0 || '별점을 입력해주세요 (0.5 이상)',
+            }}
             render={({ field }) => (
               <Rating className={cx('rating')} label="별점" {...field} />
             )}
@@ -110,6 +127,9 @@ const RecordCreate = ({ alcoholId }: RecordCreateProps) => {
           <Controller
             name="alcoholPercentFeeling"
             control={control}
+            rules={{
+              required: { value: true, message: '도수를 입력해주세요' },
+            }}
             render={({ field }) => (
               <AlcoholPercentFeelingInput
                 label="도수"
@@ -121,6 +141,9 @@ const RecordCreate = ({ alcoholId }: RecordCreateProps) => {
           <Controller
             name="flavorScore"
             control={control}
+            rules={{
+              required: { value: true, message: '플레이버를 입력해주세요' },
+            }}
             render={({ field }) => (
               <FlavorSliderGroup label="플레이버" {...field} />
             )}
@@ -129,12 +152,15 @@ const RecordCreate = ({ alcoholId }: RecordCreateProps) => {
             name="flavorTag"
             control={control}
             render={({ field }) => (
-              <DetailFlavorInput label="상세 플레이버" {...field} />
+              <DetailFlavorInput label="상세 플레이버 (선택)" {...field} />
             )}
           />
           <Controller
             name="description"
             control={control}
+            rules={{
+              required: { value: true, message: '상세 내용을 입력해주세요' },
+            }}
             render={({ field }) => (
               <TextArea
                 className={cx('detail-text')}

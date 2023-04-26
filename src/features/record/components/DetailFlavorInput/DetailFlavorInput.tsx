@@ -14,7 +14,7 @@ type DetailFlavorInputProps = {
   className?: string;
   label?: string;
   value?: FlavorTag;
-  onChange?: (value: FlavorTag) => void;
+  onChange?: (value?: FlavorTag) => void;
 };
 
 const DetailFlavorInput = forwardRef(
@@ -22,6 +22,16 @@ const DetailFlavorInput = forwardRef(
     { className, label, value, onChange }: DetailFlavorInputProps,
     ref: ForwardedRef<HTMLDivElement>
   ) => {
+    const handleButtonClick = (tag: FlavorTag) => {
+      onChange?.(
+        value &&
+          tag.majorTag === value.majorTag &&
+          tag.detailTag === value.detailTag
+          ? undefined
+          : tag
+      );
+    };
+
     return (
       <div ref={ref} className={cx('container', className)}>
         {label && <span className={cx('label')}>{label}</span>}
@@ -35,7 +45,7 @@ const DetailFlavorInput = forwardRef(
                     className={cx('flavor-option')}
                     type="button"
                     onClick={() =>
-                      onChange?.({
+                      handleButtonClick({
                         majorTag: majorTag.value,
                         detailTag: detailTag.value,
                       } as FlavorTag)

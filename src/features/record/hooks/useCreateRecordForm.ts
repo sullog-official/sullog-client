@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 
 import { useCreateRecord } from '@/shared/apis/records/createRecord';
 import { Alcohol } from '@/shared/types/alcohol';
@@ -27,10 +27,13 @@ export const useCreateRecordForm = ({
     },
   });
 
+  const { handleSubmit, control, formState } = form;
+
   const { mutate: createRecord } = useCreateRecord();
 
-  const submit = form.handleSubmit(async (data) => {
+  const onSubmit: SubmitHandler<CreateRecordForm> = async (data) => {
     console.log('data', data);
+
     // TODO
     // const res = await createRecord(
     //   {
@@ -54,7 +57,25 @@ export const useCreateRecordForm = ({
     //   }
     // );
     // console.log('res', res);
-  });
+  };
 
-  return { control: form.control, handleSubmit: submit };
+  const onError: SubmitErrorHandler<CreateRecordForm> = (errors) => {
+    const error =
+      errors.experienceDate ||
+      errors.starScore ||
+      errors.alcoholPercentFeeling ||
+      errors.flavorScore ||
+      errors.description;
+
+    if (error?.message) {
+      // TODO: 에러메시지 UI 논의 후 수정
+      alert(error.message);
+    }
+  };
+
+  return {
+    control,
+    formState,
+    handleSubmit: handleSubmit(onSubmit, onError),
+  };
 };

@@ -25,9 +25,9 @@ const FlavorSliderGroup = forwardRef(
     {
       label,
       value = {
-        scentScore: 1,
-        tasteScore: 1,
-        textureScore: 1,
+        scentScore: undefined,
+        tasteScore: undefined,
+        textureScore: undefined,
       },
       readOnly = false,
       className,
