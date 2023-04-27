@@ -1,7 +1,6 @@
 import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 import { GetServerSideProps } from 'next';
-import { useEffect } from 'react';
 import { Controller } from 'react-hook-form';
 
 import AlcoholPercentFeelingInput from '@/features/record/components/AlcoholPercentFeelingInput';
@@ -50,9 +49,13 @@ const RecordCreate = ({ alcoholId }: RecordCreateProps) => {
             </button>
           }
         />
-        {/* TODO: 사진 입력 */}
-        {/* <Controller
+        <Controller
           name="photoList"
+          control={control}
+          rules={{
+            validate: (value) =>
+              value.length > 0 || '사진을 1장 이상 등록해주세요',
+          }}
           render={({ field }) => (
             <ImageSwiper
               {...field}
@@ -62,7 +65,7 @@ const RecordCreate = ({ alcoholId }: RecordCreateProps) => {
               onImagesChange={field.onChange}
             />
           )}
-        /> */}
+        />
         <div className={cx('contents')}>
           <div className={cx('input-row')}>
             <TextField

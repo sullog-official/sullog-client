@@ -9,7 +9,7 @@ import { FlavorTag } from '@/shared/types/record/flavorTag';
 type useCreateRecordFormProps = Pick<Alcohol, 'alcoholId'>;
 
 type CreateRecordForm = {
-  photoList: File[];
+  photoList: { url?: string; file?: File | null }[];
   flavorScore: Pick<Record, 'scentScore' | 'tasteScore' | 'textureScore'>;
   flavorTag: FlavorTag;
 } & Pick<
@@ -32,35 +32,36 @@ export const useCreateRecordForm = ({
   const { mutate: createRecord } = useCreateRecord();
 
   const onSubmit: SubmitHandler<CreateRecordForm> = async (data) => {
-    console.log('data', data);
+    const files = data.photoList
+      .filter((file) => !!file)
+      .map(({ file }) => file!);
 
-    // TODO
-    // const res = await createRecord(
-    //   {
-    //     photoList: data.photoList,
-    //     recordInfo: {
-    //       alcoholId,
-    //       alcoholPercentFeeling: data.alcoholPercentFeeling,
-    //       flavorTagList: [data.flavorTag],
-    //       starScore: data.starScore,
-    //       scentScore: data.flavorScore.scentScore,
-    //       tasteScore: data.flavorScore.tasteScore,
-    //       textureScore: data.flavorScore.textureScore,
-    //       description: data.description,
-    //       experienceDate: data.experienceDate,
-    //     },
-    //   },
-    //   {
-    //     onSuccess: () => {
-    //       console.log('기록 생성');
-    //     },
-    //   }
-    // );
-    // console.log('res', res);
+    await createRecord(
+      {
+        photoList: files,
+        recordInfo: {
+          alcoholId,
+          alcoholPercentFeeling: data.alcoholPercentFeeling,
+          flavorTagList: [data.flavorTag],
+          starScore: data.starScore,
+          scentScore: data.flavorScore.scentScore,
+          tasteScore: data.flavorScore.tasteScore,
+          textureScore: data.flavorScore.textureScore,
+          description: data.description,
+          experienceDate: data.experienceDate,
+        },
+      },
+      {
+        onSuccess: () => {
+          // TODO: 생성된 기록으로 이동
+        },
+      }
+    );
   };
 
   const onError: SubmitErrorHandler<CreateRecordForm> = (errors) => {
     const error =
+      errors.photoList ||
       errors.experienceDate ||
       errors.starScore ||
       errors.alcoholPercentFeeling ||
