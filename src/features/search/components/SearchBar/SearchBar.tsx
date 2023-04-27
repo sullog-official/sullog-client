@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind';
-import { ChangeEventHandler, MouseEvent, useState } from 'react';
+import { ChangeEventHandler, useState } from 'react';
 
-import { Button } from '@/shared/components';
 import Icon from '@/shared/components/Icon';
 
+import ChipContainer from './ChipContainer';
 import styles from './SearchBar.module.scss';
 
 const cx = classNames.bind(styles);
@@ -65,39 +65,3 @@ const SearchBar = ({
 };
 
 export default SearchBar;
-
-type ChipContainerProps = {
-  items: string[];
-  selectedItems?: string[];
-  onClick?: (filter: string) => void;
-};
-
-const ChipContainer = ({
-  items,
-  selectedItems,
-  onClick,
-}: ChipContainerProps) => {
-  const handleChipClick = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    const item = (e.target as HTMLElement).innerText;
-    if (onClick) {
-      onClick(item);
-    }
-  };
-
-  return (
-    <div className={cx('chip-container')}>
-      {items.map((item: string) => (
-        <Button
-          key={item}
-          type={selectedItems?.includes(item) ? 'primary' : 'outline'}
-          buttonType="button"
-          onClick={handleChipClick}
-          className={cx('chip-btn')}
-        >
-          {item}
-        </Button>
-      ))}
-    </div>
-  );
-};
