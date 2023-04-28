@@ -1,4 +1,4 @@
-const flavorMapper = {
+export const flavorMapper = {
   FLOWER: ['CHRYSANTHEMUM', 'PLUM_BLOSSOM', 'ACACIA', 'LOTUS', 'ROSE'] as const,
   FRUIT: [
     'CITRUS',

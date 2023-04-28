@@ -6394,6 +6394,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dayjs@npm:^1.11.7":
+  version: 1.11.7
+  resolution: "dayjs@npm:1.11.7"
+  checksum: 5003a7c1dd9ed51385beb658231c3548700b82d3548c0cfbe549d85f2d08e90e972510282b7506941452c58d32136d6362f009c77ca55381a09c704e9f177ebb
+  languageName: node
+  linkType: hard
+
 "debug@npm:2.6.9, debug@npm:^2.2.0, debug@npm:^2.3.3, debug@npm:^2.6.9":
   version: 2.6.9
   resolution: "debug@npm:2.6.9"
@@ -12348,6 +12355,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-hook-form@npm:^7.43.9":
+  version: 7.43.9
+  resolution: "react-hook-form@npm:7.43.9"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18
+  checksum: 65b94de625f2b7921c4e856bf0abbe142bfe06c052217bd1bcc3a842e2cc37fa3a3e03758119dc038bbcf5edb49e02c29206528b80b201f9a4d601471ef78153
+  languageName: node
+  linkType: hard
+
 "react-inspector@npm:^6.0.0":
   version: 6.0.1
   resolution: "react-inspector@npm:6.0.1"
@@ -13951,6 +13967,7 @@ __metadata:
     chart.js: ^4.2.1
     classnames: ^2.3.2
     css-loader: ^6.7.3
+    dayjs: ^1.11.7
     eslint: ^8.33.0
     eslint-config-next: 13.1.1
     eslint-config-prettier: ^8.6.0
@@ -13968,6 +13985,7 @@ __metadata:
     react: 18.2.0
     react-chartjs-2: ^5.2.0
     react-dom: 18.2.0
+    react-hook-form: ^7.43.9
     react-map-gl: ^7.0.21
     react-query-kit: ^1.4.1
     resolve-url-loader: ^5.0.0

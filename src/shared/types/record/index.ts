@@ -5,10 +5,10 @@ export type Record = {
   recordId: number;
   memberId: number;
   alcoholId: number;
-  title: string;
   photoPathList: string[];
   alcoholPercentFeeling: AlcoholPercentFeeling;
   flavorTagList: FlavorTag[];
+  starScore: number;
   scentScore: number;
   tasteScore: number;
   textureScore: number;

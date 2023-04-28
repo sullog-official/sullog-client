@@ -57,9 +57,9 @@ const RecordDetail = () => {
           className={cx('flavor-slider-group')}
           readOnly
           value={{
-            aroma: 3,
-            taste: 4,
-            texture: 2,
+            scentScore: 3,
+            tasteScore: 4,
+            textureScore: 2,
           }}
         />
         <p className={cx('detail')}>
