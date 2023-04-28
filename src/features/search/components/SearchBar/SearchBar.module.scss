@@ -3,23 +3,12 @@
 .wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   width: 100%;
   height: 40px;
   padding: 12px 24px;
   border-radius: 30px;
   background-color: themes.$white;
   box-shadow: 1px 1px 10px rgb(0 0 0 / 5%);
-}
-
-.filter-btn {
-  width: 9px;
-}
-
-.search-box {
-  display: flex;
-  flex-direction: row;
-  width: 90%;
 }
 
 .search-input {
@@ -31,19 +20,4 @@
 .search-input::placeholder {
   color: themes.$grey300;
   @include themes.typography('body14');
-}
-
-.chip-container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  column-gap: 12px;
-  width: 100%;
-  padding: 12px;
-}
-
-.chip-btn {
-  width: 100%;
-  min-width: 50px;
-  height: 26px;
-  @include themes.typography('caption12');
 }
