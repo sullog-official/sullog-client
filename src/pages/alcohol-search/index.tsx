@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import Link from 'next/link';
+import { ChangeEvent } from 'react';
 
 import SearchBar from '@/features/search/components/SearchBar';
 import TopNavigator from '@/shared/components/TopNavigator';
@@ -29,7 +30,13 @@ const MySearch = () => {
       <TopNavigator title={'검색'} extra={renderExtraButton} />
       <main className={cx('wrapper')}>
         <div className={cx('search-bar-wrapper')}>
-          <SearchBar placeholder={'마신 술 이름을 검색해주세요.'} />
+          <SearchBar
+            placeholder={'마신 술 이름을 검색해주세요.'}
+            value={''}
+            onChange={function (event: ChangeEvent<HTMLInputElement>): void {
+              throw new Error('Function not implemented.');
+            }}
+          />
         </div>
         <div className={cx('result-wrapper')}>
           <div className={cx('label')}>해당하는 술을 선택해주세요.</div>
