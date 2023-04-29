@@ -54,8 +54,8 @@ const Map = ({ records }: MapProps) => {
         geometry: {
           type: 'Point',
           coordinates: [
-            Number(record.productionLatitude),
             Number(record.productionLongitude),
+            Number(record.productionLatitude),
           ],
         },
       })),
@@ -75,7 +75,8 @@ const Map = ({ records }: MapProps) => {
     }
 
     const feature = event.features[0];
-    if (feature.layer.id === 'clusters' && feature.properties) {
+
+    if (feature.layer.id === 'clusters') {
       const clusterId = feature.properties.cluster_id;
 
       const mapboxSource = mapRef.current.getSource('records') as GeoJSONSource;
@@ -84,12 +85,11 @@ const Map = ({ records }: MapProps) => {
         setSelectedItems(
           features.map((feature) => feature.properties).flat() as Experience[]
         );
-        // show records in slider
       });
     }
 
     if (feature.layer.id === 'unclustered-point') {
-      // navigate to specific record
+      setSelectedItems([feature.properties]);
     }
   };
 
