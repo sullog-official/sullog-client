@@ -58,6 +58,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["chart.js", "npm:4.2.1"],\
             ["classnames", "npm:2.3.2"],\
             ["css-loader", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:6.7.3"],\
+            ["dayjs", "npm:1.11.7"],\
             ["eslint", "npm:8.33.0"],\
             ["eslint-config-next", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:13.1.1"],\
             ["eslint-config-prettier", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:8.6.0"],\
@@ -75,6 +76,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:18.2.0"],\
             ["react-chartjs-2", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:5.2.0"],\
             ["react-dom", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:18.2.0"],\
+            ["react-hook-form", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:7.43.9"],\
             ["react-map-gl", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:7.0.21"],\
             ["react-query-kit", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:1.4.1"],\
             ["resolve-url-loader", "npm:5.0.0"],\
@@ -10260,6 +10262,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["dayjs", [\
+        ["npm:1.11.7", {\
+          "packageLocation": "./.yarn/cache/dayjs-npm-1.11.7-d5cd5b2919-5003a7c1dd.zip/node_modules/dayjs/",\
+          "packageDependencies": [\
+            ["dayjs", "npm:1.11.7"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["debug", [\
         ["npm:2.6.9", {\
           "packageLocation": "./.yarn/cache/debug-npm-2.6.9-7d4cb597dc-d2f51589ca.zip/node_modules/debug/",\
@@ -17261,6 +17272,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["react-hook-form", [\
+        ["npm:7.43.9", {\
+          "packageLocation": "./.yarn/cache/react-hook-form-npm-7.43.9-3a3f4f3335-65b94de625.zip/node_modules/react-hook-form/",\
+          "packageDependencies": [\
+            ["react-hook-form", "npm:7.43.9"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:7.43.9", {\
+          "packageLocation": "./.yarn/__virtual__/react-hook-form-virtual-638276a3f2/0/cache/react-hook-form-npm-7.43.9-3a3f4f3335-65b94de625.zip/node_modules/react-hook-form/",\
+          "packageDependencies": [\
+            ["react-hook-form", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:7.43.9"],\
+            ["@types/react", "npm:18.0.26"],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["react-inspector", [\
         ["npm:6.0.1", {\
           "packageLocation": "./.yarn/cache/react-inspector-npm-6.0.1-4b36e29023-877cbccf36.zip/node_modules/react-inspector/",\
@@ -19184,6 +19217,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["chart.js", "npm:4.2.1"],\
             ["classnames", "npm:2.3.2"],\
             ["css-loader", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:6.7.3"],\
+            ["dayjs", "npm:1.11.7"],\
             ["eslint", "npm:8.33.0"],\
             ["eslint-config-next", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:13.1.1"],\
             ["eslint-config-prettier", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:8.6.0"],\
@@ -19201,6 +19235,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:18.2.0"],\
             ["react-chartjs-2", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:5.2.0"],\
             ["react-dom", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:18.2.0"],\
+            ["react-hook-form", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:7.43.9"],\
             ["react-map-gl", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:7.0.21"],\
             ["react-query-kit", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:1.4.1"],\
             ["resolve-url-loader", "npm:5.0.0"],\

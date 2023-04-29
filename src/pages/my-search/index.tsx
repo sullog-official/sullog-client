@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { ChangeEvent } from 'react';
 
 import RecentSearches from '@/features/search/components/RecentSearches';
 import SearchBar from '@/features/search/components/SearchBar';
@@ -37,7 +38,13 @@ const MySearch = () => {
       <TopNavigator title={'나의 술로그'} highlighted />
       <main className={cx('wrapper')}>
         <div className={cx('search-bar-wrapper')}>
-          <SearchBar placeholder={'Search'} />
+          <SearchBar
+            placeholder={'Search'}
+            value={''}
+            onChange={function (event: ChangeEvent<HTMLInputElement>): void {
+              throw new Error('Function not implemented.');
+            }}
+          />
         </div>
         <div className={cx('recent-searches-wrapper')}>
           <RecentSearches

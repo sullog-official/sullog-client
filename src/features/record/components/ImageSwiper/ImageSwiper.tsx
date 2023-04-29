@@ -12,7 +12,7 @@ import styles from './ImageSwiper.module.scss';
 
 const cx = classNames.bind(styles);
 
-type Image = { url: string; file?: File | null };
+type Image = { url?: string; file?: File | null };
 
 type ImageSwiperProps = {
   mode?: 'read' | 'edit';
@@ -52,6 +52,11 @@ const ImageSwiper = ({
     }
 
     const imageFilesArray = Array.from(imageFiles);
+
+    if (!imageFilesArray.every((file) => file.type.startsWith('image/'))) {
+      alert('이미지만 업로드 가능합니다.');
+      return;
+    }
 
     if (images.length + imageFilesArray.length > max) {
       alert(`이미지는 최대 ${max}장까지 업로드 가능합니다.`);
