@@ -53,7 +53,10 @@ const Map = ({ records }: MapProps) => {
         properties: record,
         geometry: {
           type: 'Point',
-          coordinates: [Number(record.lat), Number(record.lng)],
+          coordinates: [
+            Number(record.productionLatitude),
+            Number(record.productionLongitude),
+          ],
         },
       })),
     }),
