@@ -40,25 +40,41 @@ export default function Home() {
       </div>
       <Map
         records={[
-          // @ts-ignore
           {
-            name: '술1',
-            seq: 123,
-            type: '소주',
-            manufacturer: '제조사',
-            lat: '127.07015',
-            lng: '37.54607',
-            etc: '설명ㅁ나ㅜㅠㅜㅏㅓㅁㄴㅇ',
+            recordId: 1,
+            description: 'This is a first sample record.',
+            mainPhotoPath: 'path/to/photo1.jpg',
+            alcoholId: 1,
+            alcoholName: 'test1',
+            productionLocation: '서울시 광진구 능동로 120',
+            productionLatitude: 37.123456,
+            productionLongitude: 126.789012,
+            alcoholTag: 'SOJU',
+            brandName: '진로',
           },
-          // @ts-ignore
           {
-            name: '술2',
-            seq: 1234,
-            type: '소주2',
-            manufacturer: '제조사22',
-            lat: '127.07019',
-            lng: '37.54608',
-            etc: '설명ㅁ나ㅜㅠㅜㅏㅓㅁㄴㅇ',
+            recordId: 2,
+            description: 'This is a second sample record.',
+            mainPhotoPath: 'path/to/photo3.jpg',
+            alcoholId: 2,
+            alcoholName: 'test2',
+            productionLocation: '서울시 광진구 능동로 120',
+            productionLatitude: 36.987654,
+            productionLongitude: 127.012345,
+            alcoholTag: 'FRUIT_WINE',
+            brandName: '진로',
+          },
+          {
+            recordId: 3,
+            description: 'This is a third sample record.',
+            mainPhotoPath: 'path/to/photo5.jpg',
+            alcoholId: 3,
+            alcoholName: 'test3',
+            productionLocation: '서울시 광진구 능동로 120',
+            productionLatitude: 35.123456,
+            productionLongitude: 128.789012,
+            alcoholTag: 'MAKGEOLLI',
+            brandName: '진로',
           },
         ]}
       />
