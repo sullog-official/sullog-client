@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 import DrawerContents from '@/features/home/components/DrawerContents';
@@ -10,6 +11,8 @@ import styles from './BottomNavigator.module.scss';
 const cx = classNames.bind(styles);
 
 const BottomNavigator = () => {
+  const router = useRouter();
+
   const [isFeedBtnClicked, setIsFeedBtnClicked] = useState(false);
   const [isMenuBtnClicked, setIsMenuBtnClicked] = useState(false);
 
@@ -18,6 +21,7 @@ const BottomNavigator = () => {
   const navigateToFeed = () => {
     setIsFeedBtnClicked(true);
     setIsMenuBtnClicked(false);
+    router.push('/feed');
   };
 
   const openMenuDrawer = () => {
