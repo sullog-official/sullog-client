@@ -4,6 +4,8 @@ import { ForwardedRef, forwardRef } from 'react';
 import Chip from '@/shared/components/Chip';
 import { AlcoholPercentFeeling } from '@/shared/types/record/alcoholPercentFeeling';
 
+import { getAlcoholPercentFeelingLabel } from '../../utils/getAlcoholPercentFeelingLabel';
+
 import styles from './AlcoholPercentFeelingInput.module.scss';
 
 const cx = classNames.bind(styles);
@@ -11,20 +13,10 @@ const cx = classNames.bind(styles);
 const ALCOHOL_PERCENT_FEELING_OPTIONS: {
   value: AlcoholPercentFeeling;
   label: string;
-}[] = [
-  {
-    value: 'MILD',
-    label: '연하다',
-  },
-  {
-    value: 'MODERATE',
-    label: '보통이다',
-  },
-  {
-    value: 'STRONG',
-    label: '독하다',
-  },
-];
+}[] = (['MILD', 'MODERATE', 'STRONG'] as const).map((value) => ({
+  value,
+  label: getAlcoholPercentFeelingLabel(value),
+}));
 
 type AlcoholPercentFeelingInputProps = {
   className?: string;
