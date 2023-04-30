@@ -89,7 +89,7 @@ const ImageSwiper = ({
             <img
               className={cx('slide-image')}
               src={imageUrl}
-              alt={`4개 이미지 중 ${index}번째 이미지`}
+              alt={`${images.length}개 이미지 중 ${index + 1}번째 이미지`}
             />
             {mode === 'edit' && (
               <button

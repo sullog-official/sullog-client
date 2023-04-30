@@ -1,41 +1,12 @@
-export const flavorMapper = {
-  FLOWER: ['CHRYSANTHEMUM', 'PLUM_BLOSSOM', 'ACACIA', 'LOTUS', 'ROSE'] as const,
-  FRUIT: [
-    'CITRUS',
-    'STRAWBERRY',
-    'JAPANESE_PLUM',
-    'MELON',
-    'BANANA',
-    'PEAR',
-    'PEACH',
-    'APPLE',
-    'WILD_STRAWBERRY',
-    'APRICOT',
-    'YUZU',
-    'PLUM',
-    'CANTALOUPE',
-    'PINEAPPLE',
-  ] as const,
-  GRAIN: [
-    'POTATO',
-    'FRESHLY_COOKED_RICE',
-    'SWEET_POTATO',
-    'GRAIN_POWDER',
-    'NURUNGJI',
-    'WHEAT',
-    'RAW_RICE',
-    'CORN',
-  ] as const,
-  NUT: ['PEANUT', 'CHESTNUT', 'ALMOND', 'PINE_NUT'] as const,
-  SWEETENER: ['HONEY', 'MALT_SYRUP', 'BROWN_RICE_SYRUP', 'CARAMEL'] as const,
-  DAIRY: ['BUTTER', 'YOGURT', 'MILK', 'CHEESE'] as const,
-};
+import { FLAVOR_TAGS } from '@/shared/constants/flavorTags';
 
-export type MajorTag = keyof typeof flavorMapper;
+export type MajorTag = keyof typeof FLAVOR_TAGS;
+export type DetailTag<TMajorTag extends MajorTag> =
+  typeof FLAVOR_TAGS[TMajorTag][number];
 
 type FlavorTagItem<TMajorTag extends MajorTag> = {
   majorTag: TMajorTag;
-  detailTag: typeof flavorMapper[TMajorTag][number];
+  detailTag: DetailTag<TMajorTag>;
 };
 
 export type FlowerFlavorTag = FlavorTagItem<'FLOWER'>;

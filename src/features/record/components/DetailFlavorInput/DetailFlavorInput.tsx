@@ -1,12 +1,12 @@
 import classNames from 'classnames/bind';
-import { ForwardedRef, forwardRef, useState } from 'react';
+import { ForwardedRef, forwardRef } from 'react';
 
 import Accordion from '@/shared/components/Accordion';
 import Chip from '@/shared/components/Chip';
 import { FlavorTag } from '@/shared/types/record/flavorTag';
 
 import styles from './DetailFlavorInput.module.scss';
-import { FLAVOR_TAGS } from './flavorTags';
+import { flavorTagOptions } from './flavorTagOptions';
 
 const cx = classNames.bind(styles);
 
@@ -36,7 +36,7 @@ const DetailFlavorInput = forwardRef(
       <div ref={ref} className={cx('container', className)}>
         {label && <span className={cx('label')}>{label}</span>}
         <div className={cx('accordion-group')}>
-          {FLAVOR_TAGS.map(({ majorTag, detailTags }) => (
+          {flavorTagOptions.map(({ majorTag, detailTags }) => (
             <Accordion key={majorTag.label} header={majorTag.label}>
               <div>
                 {detailTags.map((detailTag) => (
