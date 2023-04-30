@@ -12,7 +12,12 @@ const Card = () => {
       className={cx('wrapper')}
       aria-label="피드로 이동하기"
     >
-      <Image src={'https://placehold.co/100x100'} alt="sample" fill />
+      <Image
+        src={'https://placehold.co/100x50'}
+        alt="sample"
+        fill
+        style={{ objectFit: 'cover' }}
+      />
     </button>
   );
 };
