@@ -7,8 +7,11 @@
   width: 100%;
   height: 46px;
   padding: 16px;
+  overflow: hidden;
   border-radius: 36px;
   text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   @include themes.typography('body13', 400);
 

@@ -8,28 +8,31 @@ export default {
 
 export const Default: StoryObj<typeof TopNavigator> = {
   args: {
-    type: 'default',
     title: '게시글',
   },
 };
 
 export const MySullog: StoryObj<typeof TopNavigator> = {
   args: {
-    type: 'personal',
     title: '나의 술로그',
+    highlighted: true,
   },
 };
 
 export const NeighborsSullog: StoryObj<typeof TopNavigator> = {
   args: {
-    type: 'personal',
     title: '이웃 술로그',
+    highlighted: true,
   },
 };
 
 export const Writing: StoryObj<typeof TopNavigator> = {
   args: {
-    type: 'writing',
     title: '게시글',
+    extra: (
+      <button type="button" style={{ fontSize: '13px', lineHeight: '16px' }}>
+        완료
+      </button>
+    ),
   },
 };
