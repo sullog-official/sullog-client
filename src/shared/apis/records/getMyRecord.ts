@@ -4,10 +4,7 @@ import { Alcohol } from '@/shared/types/alcohol';
 import { Experience } from '@/shared/types/Experience';
 import { request } from '@/shared/utils/request';
 
-type Response = {
-  record: Experience[];
-  alcoholInfo: Alcohol;
-};
+type Response = Experience[];
 
 const getMyRecord = () => {
   return request<Response>({
