@@ -16,6 +16,10 @@ export default function Home() {
   const [searchValue, setSearchValue] = useState('');
   const [selectedFilter, setSelectedFilter] = useState<string[]>([]);
 
+  const filteredRecords = (records || []).filter((record) =>
+    selectedFilter.includes(record.alcoholTag)
+  );
+
   const handleFilterClick = (filter: string) => {
     if (selectedFilter.includes(filter)) {
       return setSelectedFilter(
@@ -40,7 +44,9 @@ export default function Home() {
           onFilterClick={handleFilterClick}
         />
       </div>
-      <Map records={records || []} />
+      <Map
+        records={selectedFilter.length > 0 ? filteredRecords : records || []}
+      />
       <BottomNavigator />
     </main>
   );
