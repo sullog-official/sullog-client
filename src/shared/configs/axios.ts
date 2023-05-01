@@ -73,7 +73,7 @@ instance.interceptors.request.use((config) => {
   const AccessToken = getAccessToken();
 
   if (AccessToken) {
-    config.headers['authorization'] = AccessToken;
+    config.headers['authorization'] = `Bearer ${AccessToken}`;
   }
 
   return config;
