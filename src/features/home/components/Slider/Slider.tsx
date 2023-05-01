@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
-import AlcoholPreview from '@/features/alcohol/components/AlcoholPreview';
+import AlcoholPreview from '@/features/alcohol/AlcoholPreview';
 import Icon from '@/shared/components/Icon';
 import { Experience } from '@/shared/types/Experience';
 

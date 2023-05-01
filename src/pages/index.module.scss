@@ -7,6 +7,7 @@
 .header-text {
   padding-bottom: 20px;
   color: themes.$purple;
+  font-family: var(--mapo-flower-island-font);
   @include themes.typography('body16');
 }
 
