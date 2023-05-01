@@ -22,9 +22,9 @@ type SliderProps = {
 };
 
 const Slider = ({
-  value: outerValue,
   min = 0,
   max = 10,
+  value: outerValue,
   minLabel = min.toString(),
   maxLabel = max.toString(),
   step = 1,
@@ -84,7 +84,7 @@ const Slider = ({
           min={min}
           max={max}
           step={step}
-          value={value}
+          value={value || min}
           onChange={handleChange}
           name={name}
           readOnly={readOnly}

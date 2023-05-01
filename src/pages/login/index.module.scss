@@ -1,0 +1,80 @@
+@use '@styles/themes';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: themes.$purple;
+}
+
+.title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 32vh;
+}
+
+.main-title {
+  @include themes.typography('title40');
+
+  display: flex;
+  flex-direction: column;
+  color: themes.$white;
+}
+
+.sub-title {
+  @include themes.typography('body14');
+
+  color: themes.$lightPurple100;
+}
+
+.button-wrapper {
+  display: flex;
+  position: absolute;
+  bottom: 46px;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.kakao-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 48px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  background-color: #fee500;
+  @include themes.typography('body16');
+}
+
+.naver-btn {
+  width: 100%;
+  height: 48px;
+  border-radius: 6px;
+  background-color: #03c75a;
+  color: themes.$white;
+  @include themes.typography('body16');
+}
+
+.terms-of-service {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 14px;
+  color: themes.$grey200;
+  font-size: 10px;
+}
+
+.terms-of-service-modal-btn {
+  text-decoration-line: underline;
+}
+
+.terms-of-personal-info-modal-btn {
+  text-decoration-line: underline;
+}

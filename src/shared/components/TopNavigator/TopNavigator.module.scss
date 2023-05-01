@@ -1,40 +1,43 @@
 @use '@styles/themes';
 
+$height: 56.4px;
+
 .wrapper {
   display: flex;
+  position: relative;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 56.4px;
+  height: $height;
 }
 
+$backButtonWidth: 40px;
+$iconWidth: 12px;
+
 .back-btn {
+  display: flex;
   position: absolute;
-  left: 28px;
+  left: calc(28px - ($backButtonWidth - $iconWidth) / 2);
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 100%;
 }
 
 .title {
   color: themes.$black;
   @include themes.typography('body15');
 
-  &.personal {
+  &.highlighted {
     color: themes.$purple;
-    font-family: var(--mapo-flower-island-font);
     @include themes.typography('body16');
   }
 }
 
-.write-btn {
+.extra {
+  display: flex;
   position: absolute;
   right: 28px;
-}
-
-.write-label {
-  @include themes.typography('body14');
-
-  color: themes.$grey200;
-
-  &.completed {
-    color: themes.$black;
-  }
+  align-items: center;
+  height: 100%;
 }
