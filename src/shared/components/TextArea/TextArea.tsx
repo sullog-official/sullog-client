@@ -1,10 +1,5 @@
 import classNames from 'classnames/bind';
-import {
-  DetailedHTMLProps,
-  ForwardedRef,
-  forwardRef,
-  TextareaHTMLAttributes,
-} from 'react';
+import { DetailedHTMLProps, TextareaHTMLAttributes } from 'react';
 
 import styles from './TextArea.module.scss';
 
@@ -17,20 +12,13 @@ type TextAreaProps = DetailedHTMLProps<
   label?: string;
 };
 
-const TextArea = forwardRef(
-  (
-    { label, className, ...props }: TextAreaProps,
-    ref: ForwardedRef<HTMLDivElement>
-  ) => {
-    return (
-      <div ref={ref} className={cx('container', className)}>
-        {label && <label className={cx('label')}>{label}</label>}
-        <textarea className={cx('text-area')} {...props} />
-      </div>
-    );
-  }
-);
-
-TextArea.displayName = 'TextArea';
+const TextArea = ({ label, className, ...props }: TextAreaProps) => {
+  return (
+    <div className={cx('container', className)}>
+      {label && <label className={cx('label')}>{label}</label>}
+      <textarea className={cx('text-area')} {...props} />
+    </div>
+  );
+};
 
 export default TextArea;

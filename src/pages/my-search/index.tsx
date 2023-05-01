@@ -1,8 +1,7 @@
 import classNames from 'classnames/bind';
-import { ChangeEvent } from 'react';
 
-import RecentSearches from '@/features/search/components/RecentSearches';
-import SearchBar from '@/features/search/components/SearchBar';
+import RecentSearches from '@/features/search/RecentSearches';
+import SearchBar from '@/features/search/SearchBar';
 import BottomNavigator from '@/shared/components/BottomNavigator';
 import TopNavigator from '@/shared/components/TopNavigator';
 
@@ -35,16 +34,10 @@ const MySearch = () => {
 
   return (
     <>
-      <TopNavigator title={'나의 술로그'} highlighted />
+      <TopNavigator type={'personal'} title={'나의 술로그'} />
       <main className={cx('wrapper')}>
         <div className={cx('search-bar-wrapper')}>
-          <SearchBar
-            placeholder={'Search'}
-            value={''}
-            onChange={function (event: ChangeEvent<HTMLInputElement>): void {
-              throw new Error('Function not implemented.');
-            }}
-          />
+          <SearchBar placeholder={'Search'} />
         </div>
         <div className={cx('recent-searches-wrapper')}>
           <RecentSearches

@@ -34,7 +34,6 @@
         },
         "newlines-between": "always"
       }
-    ],
-    "react/button-has-type": "warn"
+    ]
   }
 }

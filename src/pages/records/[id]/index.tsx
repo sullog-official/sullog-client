@@ -1,62 +1,32 @@
-import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
-import dayjs from 'dayjs';
-import { isNil } from 'lodash-es';
-import { GetServerSideProps } from 'next';
-import { useCallback } from 'react';
 
-import FlavorSliderGroup from '@/features/record/components/FlavorSliderGroup';
-import ImageSwiper from '@/features/record/components/ImageSwiper';
-import { getAlcoholPercentFeelingLabel } from '@/features/record/utils/getAlcoholPercentFeelingLabel';
-import { getDetailFlavorTagLabel } from '@/features/record/utils/getFlavorTagLabel';
-import { useGetRecord } from '@/shared/apis/records/getRecord';
+import FlavorSliderGroup from '@/features/record/FlavorSliderGroup';
+import ImageSwiper from '@/features/record/ImageSwiper';
 import Chip from '@/shared/components/Chip';
 import Icon from '@/shared/components/Icon';
-import TopNavigator from '@/shared/components/TopNavigator';
-import { Alcohol } from '@/shared/types/alcohol';
-import { Record } from '@/shared/types/record';
-import { FlavorTag } from '@/shared/types/record/flavorTag';
 
 import styles from './index.module.scss';
 
 const cx = classNames.bind(styles);
 
-type RecordDetailProps = {
-  id: number;
-};
+const mockData = [
+  {
+    url: 'https://i.pinimg.com/564x/30/8d/7d/308d7d49609c1172b02297772e1b885e.jpg',
+  },
+  {
+    url: 'https://i.pinimg.com/564x/d6/da/c9/d6dac9be66de47795d403ed094b12838.jpg',
+  },
+  {
+    url: 'https://i.pinimg.com/564x/8b/a8/f6/8ba8f6e12a8f4a78948ce18f53be1416.jpg',
+  },
+];
 
-const RecordDetail = ({ id }: RecordDetailProps) => {
-  const { data } = useGetRecord({ variables: { recordId: id } });
-
-  const formatRecordTags = useCallback(
-    ([alcoholPercent, alcoholPercentFeeling, flavorDetailTag]: [
-      Alcohol['alcoholPercent'],
-      Record['alcoholPercentFeeling'],
-      FlavorTag['detailTag']
-    ]) => {
-      return [
-        !isNil(alcoholPercent) ? `${alcoholPercent}도` : '',
-        alcoholPercentFeeling
-          ? getAlcoholPercentFeelingLabel(alcoholPercentFeeling)
-          : '',
-        flavorDetailTag ? getDetailFlavorTagLabel(flavorDetailTag) : '',
-      ].filter((tag) => !!tag);
-    },
-    []
-  );
-
-  if (!data) {
-    return null;
-  }
-
-  const { alcoholInfo, record } = data;
-
+// TODO : TopNavigation 추가
+const RecordDetail = () => {
   return (
     <main>
-      <TopNavigator title="내 게시글" />
-      <ImageSwiper images={record.photoPathList.map((url) => ({ url }))} />
+      <ImageSwiper images={mockData} />
       <div className={cx('contents-wrap')}>
-        {/* TODO : 주종 api 연동 */}
         <Chip
           label="과실주"
           type="Primary"
@@ -64,17 +34,11 @@ const RecordDetail = ({ id }: RecordDetailProps) => {
           size="mediumLarge"
         />
         <div className={cx('title-area')}>
-          <h1 className={cx('title')}>{alcoholInfo.alcoholName}</h1>
-          <span className={cx('location')}>
-            {alcoholInfo.productionLocation}
-          </span>
+          <h1 className={cx('title')}>백련 맑은 백련 맑은 술</h1>
+          <span className={cx('location')}>신평 양조장</span>
         </div>
         <div className={cx('tags')}>
-          {formatRecordTags([
-            alcoholInfo.alcoholPercent,
-            record.alcoholPercentFeeling,
-            record.flavorTagList?.[0].detailTag,
-          ]).map((label) => (
+          {['16.5도', '독하다', '아카시아'].map((label) => (
             <Chip
               key={label}
               className={cx('tag')}
@@ -87,51 +51,25 @@ const RecordDetail = ({ id }: RecordDetailProps) => {
         </div>
         <div className={cx('rate')}>
           <Icon name="Star" size={18} />
-          <span>{record.starScore}</span>
+          <span>4.0</span>
         </div>
         <FlavorSliderGroup
           className={cx('flavor-slider-group')}
           readOnly
           value={{
-            scentScore: record.scentScore,
-            tasteScore: record.tasteScore,
-            textureScore: record.textureScore,
+            aroma: 3,
+            taste: 4,
+            texture: 2,
           }}
         />
-        <p className={cx('detail')}>{record.description}</p>
-        <div className={cx('date')}>
-          {dayjs(record.experienceDate).format('YYYY.MM.DD')}
-        </div>
+        <p className={cx('detail')}>
+          백련 맑은 술 뱅련 말근{'\n'}술 100련 맑은 술자리어카백련 맑은 술
+          먹었다리미
+        </p>
+        <div className={cx('date')}>2022.07.22</div>
       </div>
     </main>
   );
 };
 
 export default RecordDetail;
-
-export const getServerSideProps: GetServerSideProps<{
-  dehydratedState: DehydratedState;
-  id: number;
-}> = async ({ query }) => {
-  if (!query.id) {
-    // TODO: record id가 없는 경우 어떻게 처리할지 논의 필요
-    return {
-      notFound: true,
-    };
-  }
-
-  const recordId = parseInt(query.id.toString());
-
-  const queryClient = new QueryClient();
-  await queryClient.prefetchQuery(
-    useGetRecord.getKey({ recordId }),
-    useGetRecord.queryFn
-  );
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-      id: recordId,
-    },
-  };
-};

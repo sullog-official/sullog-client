@@ -1,0 +1,47 @@
+@use '@styles/themes';
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 9px;
+  color: themes.$grey300;
+
+  @include themes.typography('body13');
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: themes.$grey50;
+}
+
+.description {
+  margin-bottom: 8px;
+  color: themes.$grey400;
+
+  @include themes.typography('caption12');
+}
+
+.chips {
+  display: flex;
+
+  > *:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+
+.abv-info {
+  margin: 11px 0 0;
+  color: themes.$grey300;
+
+  @include themes.typography('caption10');
+}
+
+.abv-input {
+  margin-top: 18px;
+}
