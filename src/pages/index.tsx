@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import Map from '@/features/home/components/Map';
 import SearchBar from '@/features/search/components/SearchBar';
+import { useGetMyRecord } from '@/shared/apis/records/getMyRecord';
 import BottomNavigator from '@/shared/components/BottomNavigator';
 
 import styles from './index.module.scss';
@@ -11,6 +12,7 @@ import styles from './index.module.scss';
 const cx = classNames.bind(styles);
 
 export default function Home() {
+  const { data: records } = useGetMyRecord();
   const [searchValue, setSearchValue] = useState('');
   const [selectedFilter, setSelectedFilter] = useState<string[]>([]);
 
@@ -38,46 +40,7 @@ export default function Home() {
           onFilterClick={handleFilterClick}
         />
       </div>
-      <Map
-        records={[
-          {
-            recordId: 1,
-            description: 'This is a first sample record.',
-            mainPhotoPath: 'path/to/photo1.jpg',
-            alcoholId: 1,
-            alcoholName: 'test1',
-            productionLocation: '서울시 광진구 능동로 120',
-            productionLatitude: 37.123456,
-            productionLongitude: 126.789012,
-            alcoholTag: 'SOJU',
-            brandName: '진로',
-          },
-          {
-            recordId: 2,
-            description: 'This is a second sample record.',
-            mainPhotoPath: 'path/to/photo3.jpg',
-            alcoholId: 2,
-            alcoholName: 'test2',
-            productionLocation: '서울시 광진구 능동로 120',
-            productionLatitude: 36.987654,
-            productionLongitude: 127.012345,
-            alcoholTag: 'FRUIT_WINE',
-            brandName: '진로',
-          },
-          {
-            recordId: 3,
-            description: 'This is a third sample record.',
-            mainPhotoPath: 'path/to/photo5.jpg',
-            alcoholId: 3,
-            alcoholName: 'test3',
-            productionLocation: '서울시 광진구 능동로 120',
-            productionLatitude: 35.123456,
-            productionLongitude: 128.789012,
-            alcoholTag: 'MAKGEOLLI',
-            brandName: '진로',
-          },
-        ]}
-      />
+      <Map records={records || []} />
       <BottomNavigator />
     </main>
   );
