@@ -12,11 +12,11 @@ import styles from './index.module.scss';
 const cx = classNames.bind(styles);
 
 export default function Home() {
-  const { data: records } = useGetMyRecord();
+  const { data: records = [] } = useGetMyRecord();
   const [searchValue, setSearchValue] = useState('');
   const [selectedFilter, setSelectedFilter] = useState<string[]>([]);
 
-  const filteredRecords = (records || []).filter((record) =>
+  const filteredRecords = records.filter((record) =>
     selectedFilter.includes(record.alcoholTag)
   );
 
