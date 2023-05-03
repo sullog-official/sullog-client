@@ -44,9 +44,7 @@ export default function Home() {
           onFilterClick={handleFilterClick}
         />
       </div>
-      <Map
-        records={selectedFilter.length > 0 ? filteredRecords : records }
-      />
+      <Map records={selectedFilter.length > 0 ? filteredRecords : records} />
       <BottomNavigator />
     </main>
   );
