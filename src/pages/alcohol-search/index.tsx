@@ -17,17 +17,16 @@ const MySearch = () => {
     // Do something
   };
 
-  const renderExtraButton = () => {
-    return (
-      <div className={cx('extra-btn')}>
-        <Link href="/records/create">다음</Link>
-      </div>
-    );
-  };
-
   return (
     <>
-      <TopNavigator title={'검색'} extra={renderExtraButton} />
+      <TopNavigator
+        title={'검색'}
+        extra={
+          <div className={cx('extra-btn')}>
+            <Link href="/records/create">다음</Link>
+          </div>
+        }
+      />
       <main className={cx('wrapper')}>
         <div className={cx('search-bar-wrapper')}>
           <SearchBar
