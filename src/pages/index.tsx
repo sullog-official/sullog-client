@@ -45,7 +45,7 @@ export default function Home() {
         />
       </div>
       <Map
-        records={selectedFilter.length > 0 ? filteredRecords : records || []}
+        records={selectedFilter.length > 0 ? filteredRecords : records }
       />
       <BottomNavigator />
     </main>
