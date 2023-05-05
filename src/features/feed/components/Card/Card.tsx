@@ -5,20 +5,16 @@ import styles from './Card.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Card = () => {
+type CardProps = {
+  alt: string;
+  imageUrl: string;
+};
+
+const Card = ({ alt, imageUrl }: CardProps) => {
   return (
-    <button
-      type="button"
-      className={cx('wrapper')}
-      aria-label="피드로 이동하기"
-    >
-      <Image
-        src={'https://placehold.co/100x50'}
-        alt="sample"
-        fill
-        style={{ objectFit: 'cover' }}
-      />
-    </button>
+    <figure className={cx('wrapper')}>
+      <Image src={imageUrl} alt={alt} fill style={{ objectFit: 'cover' }} />
+    </figure>
   );
 };
 
