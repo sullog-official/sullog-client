@@ -1,14 +1,10 @@
 import { createInfiniteQuery } from 'react-query-kit';
 
 import { Feed } from '@/shared/types/feed';
+import { PagingInfo } from '@/shared/types/paging';
 import { request } from '@/shared/utils/request';
 
 type Variables = {
-  cursor: number;
-  limit: number;
-};
-
-type PagingInfo = {
   cursor: number;
   limit: number;
 };
