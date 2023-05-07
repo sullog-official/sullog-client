@@ -1,13 +1,7 @@
-export type Feed = {
-  memberId: number;
-  recordId: number;
-  description: string;
-  mainPhotoPath: string;
-  alcoholId: number;
-  alcoholName: string;
-  productionLocation: string;
-  productionLatitude: number;
-  productionLongitude: number;
-  alcoholTag: string;
-  brandName: string;
-};
+import { Alcohol } from '@/shared/types/alcohol';
+import { Record } from '@/shared/types/record';
+
+export type Feed = Alcohol &
+  Pick<Record, 'memberId' | 'recordId' | 'description'> & {
+    mainPhotoPath: string;
+  };
