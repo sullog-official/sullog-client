@@ -27,6 +27,7 @@ const Login = () => {
 
   const setToken = async (code: string) => {
     const response = await kakaoLoginCallback(code);
+
     sessionStorage.setItem(TokenKeys.Access, response.headers['authorization']);
     setCookie(
       TokenKeys.Refresh,
@@ -36,12 +37,27 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (code) setToken(code).then(() => router.push('/'));
+    if (code) {
+      setToken(code)
+        .then(() => {
+          router.push('/');
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+    }
   }, [code, router]);
 
   useEffect(() => {
-    if (sessionStorage.getItem(TokenKeys.Access)) router.push('/');
-    if (getCookie(TokenKeys.Refresh)) router.push('/');
+    const accessToken = sessionStorage.getItem(TokenKeys.Access);
+
+    if (
+      accessToken !== undefined &&
+      accessToken !== 'undefined' &&
+      accessToken !== null
+    ) {
+      router.push('/');
+    }
   }, [router]);
 
   return (

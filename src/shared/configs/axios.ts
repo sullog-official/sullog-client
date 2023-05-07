@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 
 import { getCookie, setCookie } from '../utils/cookie';
 
@@ -23,17 +23,15 @@ function getAccessToken() {
 }
 
 // 리프레시 토큰을 사용하여 새 액세스 토큰을 가져 오는 함수
-async function refreshAccessToken() {
-  console.log('refreshAccessToken');
+async function refreshAccessToken(refreshToken: string) {
   // 중복된 새로 고침 요청을 방지하기 위해 isFetchingAccessToken 플래그를 true로 설정
   isFetchingAccessToken = true;
 
   // 새로운 액세스 토큰을 가져 오기 위해 서버에 요청 보내기
   const response = await instance.get('/token/refresh', {
     validateStatus: null,
-    // Authorization 헤더를 리프레시 토큰 쿠키 값으로 설정
     headers: {
-      Authorization: getCookie(TokenKeys.Refresh),
+      Authorization: refreshToken,
     },
   });
 
@@ -53,6 +51,7 @@ async function refreshAccessToken() {
   subscribers.forEach((callback) =>
     callback(response.headers['authorization'])
   );
+
   // 구독자 배열 지우기
   subscribers = [];
 }
@@ -72,7 +71,7 @@ const instance = axios.create({
 instance.interceptors.request.use((config) => {
   const AccessToken = getAccessToken();
 
-  if (AccessToken) {
+  if (AccessToken && AccessToken !== 'undefined') {
     config.headers['authorization'] = `Bearer ${AccessToken}`;
   }
 
@@ -82,18 +81,23 @@ instance.interceptors.request.use((config) => {
 // 401 에러 처리하는 interceptor 추가
 instance.interceptors.response.use(
   (response) => response,
-  async (error) => {
-    console.log(error);
-    if (error.status === 401) {
+  async (error: AxiosError) => {
+    if (error.response?.status === 401) {
       try {
+        if (subscribers.length > 3) {
+          throw new Error('exceed retry limit count');
+        }
+
         // 새 액세스 토큰을 얻은 후 원래 요청을 다시 시도하기 위한 새 promise 만들기
         const retryOriginalRequest = new Promise<AxiosResponse<any, any>>(
           (resolve, reject) => {
             // 새 액세스 토큰을 기다리면서 원래 요청을 다시 시도하기 위해 subscriber 추가
             subscribers.push(async (AccessToken: string) => {
               try {
-                error.config.headers['authorization'] = AccessToken;
-                resolve(instance(error.config));
+                if (error.config) {
+                  error.config.headers['authorization'] = AccessToken;
+                  resolve(instance(error.config));
+                }
               } catch (err) {
                 reject(err);
               }
@@ -101,16 +105,22 @@ instance.interceptors.response.use(
           }
         );
 
+        const refreshToken = getCookie(TokenKeys.Refresh);
+
+        if (!refreshToken) {
+          throw new Error('refreshToken is undefined');
+        }
+
         // 새 액세스 토큰을 이미 가져 오는 중이 아니면 새 액세스 토큰 가져 오기
         if (!isFetchingAccessToken) {
-          refreshAccessToken();
+          refreshAccessToken(refreshToken);
         }
 
         // 새 액세스 토큰을 가져 온 후 원래 요청을 다시 시도하기 위한 프로미스 반환
         return await retryOriginalRequest;
       } catch (error) {
         // 새 액세스 토큰을 가져 오는 동안 오류가 발생하면 로그인 페이지로 리디렉션
-        window.location.href = '/signin'; // TBD
+        window.location.href = '/login'; // TBD
       }
     }
 
