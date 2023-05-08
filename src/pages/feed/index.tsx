@@ -7,12 +7,13 @@ import { useGetFeed } from '@/shared/apis/feed/getFeed';
 import BottomNavigator from '@/shared/components/BottomNavigator';
 import TopNavigator from '@/shared/components/TopNavigator';
 import useIntersect from '@/shared/hooks/useIntersect';
+import { Feed } from '@/shared/types/feed';
 
 import styles from './index.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Feed = () => {
+const FeedPage = () => {
   const { data, fetchNextPage, hasNextPage, isFetching, isLoading } =
     useGetFeed({
       variables: {
@@ -29,7 +30,13 @@ const Feed = () => {
   });
 
   if (!data) return null;
-  const { allRecordMetaList: feeds, pagingInfo } = data.pages[0];
+
+  const feeds: Feed[] = [];
+  data.pages.map((page) => {
+    page.allRecordMetaList.map((feed) => {
+      feeds.push(feed);
+    });
+  });
 
   return (
     <>
@@ -47,7 +54,7 @@ const Feed = () => {
   );
 };
 
-export default Feed;
+export default FeedPage;
 
 export const getServerSideProps: GetServerSideProps<{
   dehydratedState: DehydratedState;
