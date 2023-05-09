@@ -1,20 +1,26 @@
 import classNames from 'classnames/bind';
 import Link from 'next/link';
-import { ChangeEvent } from 'react';
+import { useRouter } from 'next/router';
+import { ChangeEvent, useState } from 'react';
 
 import SearchBar from '@/features/search/components/SearchBar';
+import { useSearchAlcohol } from '@/shared/apis/alcohols/searchAlcohol';
 import TopNavigator from '@/shared/components/TopNavigator';
 
 import styles from './index.module.scss';
 const cx = classNames.bind(styles);
 
-const MySearch = () => {
-  const onClickItem = () => {
-    // Do something
-  };
+const AlcoholSearch = () => {
+  const router = useRouter();
+  const [searchValue, setSearchValue] = useState('');
+  const [isEnterPressed, setIsEnterPressed] = useState(false);
+  const { data: alcohols } = useSearchAlcohol({
+    variables: { keyword: searchValue, limit: 20, cursor: 1 },
+    enabled: isEnterPressed && searchValue.trim() !== '',
+  });
 
-  const onDeleteAll = () => {
-    // Do something
+  const onClickItem = (alcoholId: number) => {
+    router.push(`/records/create?alcoholId=${alcoholId}`);
   };
 
   return (
@@ -31,33 +37,33 @@ const MySearch = () => {
         <div className={cx('search-bar-wrapper')}>
           <SearchBar
             placeholder={'마신 술 이름을 검색해주세요.'}
-            value={''}
-            onChange={function (event: ChangeEvent<HTMLInputElement>): void {
-              throw new Error('Function not implemented.');
-            }}
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            onKeyDown={(e) => setIsEnterPressed(e.code === 'Enter')}
           />
         </div>
         <div className={cx('result-wrapper')}>
           <div className={cx('label')}>해당하는 술을 선택해주세요.</div>
           <div className={cx('alcohol-card-wrapper')}>
-            <div
-              className={cx('alcohol-card', { 'alcohol--is-selected': true })}
-            >
-              <div className={cx('alcohol-info')}>
-                <span>기타</span>
-                <span>신평양조장</span>
-              </div>
-              <span className={cx('alcohol-name')}>백련 맑은 술</span>
-            </div>
-            <div
-              className={cx('alcohol-card', { 'alcohol--is-selected': false })}
-            >
-              <div className={cx('alcohol-info')}>
-                <span>기타</span>
-                <span>신평양조장</span>
-              </div>
-              <span className={cx('alcohol-name')}>백련 맑은 술</span>
-            </div>
+            {alcohols?.alcoholInfoDtoList.map((alcohol) => {
+              return (
+                <div
+                  className={cx('alcohol-card', {
+                    'alcohol--is-selected': false,
+                  })}
+                  onClick={() => onClickItem(alcohol.alcoholId)}
+                  key={alcohol.alcoholId}
+                >
+                  <div className={cx('alcohol-info')}>
+                    <span>{alcohol.alcoholType}</span>
+                    <span>{alcohol.brandName}</span>
+                  </div>
+                  <span className={cx('alcohol-name')}>
+                    {alcohol.alcoholName}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </main>
@@ -65,4 +71,4 @@ const MySearch = () => {
   );
 };
 
-export default MySearch;
+export default AlcoholSearch;
