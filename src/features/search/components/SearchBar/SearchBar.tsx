@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { ChangeEventHandler, useState } from 'react';
+import { ChangeEventHandler, KeyboardEventHandler, useState } from 'react';
 
 import Icon from '@/shared/components/Icon';
 
@@ -12,6 +12,7 @@ type SearchBarProps = {
   placeholder: string;
   value: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
   filterItems?: string[];
   selectedFilter?: string[];
   onFilterClick?: (filter: string) => void;
@@ -21,6 +22,7 @@ const SearchBar = ({
   placeholder,
   value,
   onChange,
+  onKeyDown,
   filterItems,
   selectedFilter,
   onFilterClick,
@@ -41,6 +43,7 @@ const SearchBar = ({
             placeholder={placeholder}
             value={value}
             onChange={onChange}
+            onKeyDown={onKeyDown}
           />
         </div>
         {filterItems && (
