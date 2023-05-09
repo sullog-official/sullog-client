@@ -47,6 +47,7 @@
   padding: 16px 20px 25px;
   border-radius: 15px;
   background-color: themes.$grey50;
+  cursor: pointer;
 
   &.alcohol--is-selected {
     background-color: #f5f3fb;
