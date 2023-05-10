@@ -30,13 +30,7 @@ const FeedPage = () => {
   });
 
   if (!data) return null;
-
-  const feeds: Feed[] = [];
-  data.pages.map((page) => {
-    page.allRecordMetaList.map((feed) => {
-      feeds.push(feed);
-    });
-  });
+  const feeds: Feed[] = data.pages.flatMap((page) => page.allRecordMetaList);
 
   return (
     <>
