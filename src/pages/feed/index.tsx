@@ -5,6 +5,7 @@ import { GetServerSideProps } from 'next';
 import Card from '@/features/feed/components/Card';
 import { useGetFeed } from '@/shared/apis/feed/getFeed';
 import BottomNavigator from '@/shared/components/BottomNavigator';
+import PageLayout from '@/shared/components/PageLayout';
 import TopNavigator from '@/shared/components/TopNavigator';
 import useIntersect from '@/shared/hooks/useIntersect';
 import { Feed } from '@/shared/types/feed';
@@ -33,18 +34,18 @@ const FeedPage = () => {
   const feeds: Feed[] = data.pages.flatMap((page) => page.allRecordMetaList);
 
   return (
-    <>
+    <PageLayout hasTopNavigatorPadding hasBottomNavigatorPadding>
       <TopNavigator title={'이웃 술로그'} highlighted />
-      <main className={cx('wrapper')}>
+      <div className={cx('wrapper')}>
         {feeds.map((feed) => (
           <button key={feed.recordId} type="button">
             <Card alt={feed.alcoholName} imageUrl={feed.mainPhotoPath} />
           </button>
         ))}
         <div ref={ref} />
-      </main>
+      </div>
       <BottomNavigator />
-    </>
+    </PageLayout>
   );
 };
 

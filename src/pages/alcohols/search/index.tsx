@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ChangeEvent } from 'react';
 
 import SearchBar from '@/features/search/components/SearchBar';
+import PageLayout from '@/shared/components/PageLayout';
 import TopNavigator from '@/shared/components/TopNavigator';
 
 import styles from './index.module.scss';
@@ -18,7 +19,7 @@ const AlcoholSearch = () => {
   };
 
   return (
-    <>
+    <PageLayout className={cx('main')}>
       <TopNavigator
         title={'검색'}
         extra={
@@ -26,8 +27,7 @@ const AlcoholSearch = () => {
             <Link href="/records/create">다음</Link>
           </div>
         }
-      />
-      <main className={cx('wrapper')}>
+      >
         <div className={cx('search-bar-wrapper')}>
           <SearchBar
             placeholder={'마신 술 이름을 검색해주세요.'}
@@ -37,31 +37,29 @@ const AlcoholSearch = () => {
             }}
           />
         </div>
-        <div className={cx('result-wrapper')}>
-          <div className={cx('label')}>해당하는 술을 선택해주세요.</div>
-          <div className={cx('alcohol-card-wrapper')}>
-            <div
-              className={cx('alcohol-card', { 'alcohol--is-selected': true })}
-            >
-              <div className={cx('alcohol-info')}>
-                <span>기타</span>
-                <span>신평양조장</span>
-              </div>
-              <span className={cx('alcohol-name')}>백련 맑은 술</span>
+      </TopNavigator>
+      <div className={cx('result-wrapper')}>
+        <div className={cx('label')}>해당하는 술을 선택해주세요.</div>
+        <div className={cx('alcohol-card-wrapper')}>
+          <div className={cx('alcohol-card', { 'alcohol--is-selected': true })}>
+            <div className={cx('alcohol-info')}>
+              <span>기타</span>
+              <span>신평양조장</span>
             </div>
-            <div
-              className={cx('alcohol-card', { 'alcohol--is-selected': false })}
-            >
-              <div className={cx('alcohol-info')}>
-                <span>기타</span>
-                <span>신평양조장</span>
-              </div>
-              <span className={cx('alcohol-name')}>백련 맑은 술</span>
+            <span className={cx('alcohol-name')}>백련 맑은 술</span>
+          </div>
+          <div
+            className={cx('alcohol-card', { 'alcohol--is-selected': false })}
+          >
+            <div className={cx('alcohol-info')}>
+              <span>기타</span>
+              <span>신평양조장</span>
             </div>
+            <span className={cx('alcohol-name')}>백련 맑은 술</span>
           </div>
         </div>
-      </main>
-    </>
+      </div>
+    </PageLayout>
   );
 };
 

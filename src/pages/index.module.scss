@@ -15,9 +15,9 @@
   position: absolute;
   z-index: themes.$floating;
   top: 0;
-  left: 0;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  max-width: themes.$layoutMaxWidth;
   padding: 20px 22px;
 }
