@@ -55,7 +55,7 @@ export const getServerSideProps: GetServerSideProps<{
 }> = async () => {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(
+  await queryClient.prefetchInfiniteQuery(
     useGetFeed.getKey({ cursor: 0, limit: 8 }),
     useGetFeed.queryFn
   );
