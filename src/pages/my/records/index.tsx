@@ -22,7 +22,7 @@ export const AlcoholCategories = [
   'All',
 ] as const;
 
-const List = () => {
+const MyRecords = () => {
   const [selectedTab, setSelectedTab] =
     useState<typeof AlcoholCategories[number]>('Soju');
 
@@ -91,4 +91,4 @@ const List = () => {
   );
 };
 
-export default List;
+export default MyRecords;

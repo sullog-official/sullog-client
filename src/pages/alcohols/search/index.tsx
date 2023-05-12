@@ -8,7 +8,7 @@ import TopNavigator from '@/shared/components/TopNavigator';
 import styles from './index.module.scss';
 const cx = classNames.bind(styles);
 
-const MySearch = () => {
+const AlcoholSearch = () => {
   const onClickItem = () => {
     // Do something
   };
@@ -65,4 +65,4 @@ const MySearch = () => {
   );
 };
 
-export default MySearch;
+export default AlcoholSearch;

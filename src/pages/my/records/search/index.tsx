@@ -20,7 +20,7 @@ const sampleItems = [
   },
 ];
 
-const MySearch = () => {
+const MyRecordSearch = () => {
   const onDeleteItem = () => {
     // Do something
   };
@@ -60,4 +60,4 @@ const MySearch = () => {
   );
 };
 
-export default MySearch;
+export default MyRecordSearch;
