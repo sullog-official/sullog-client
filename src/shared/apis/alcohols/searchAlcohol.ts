@@ -1,4 +1,4 @@
-import { createQuery } from 'react-query-kit';
+import { createInfiniteQuery, createQuery } from 'react-query-kit';
 
 import { Alcohol } from '@/shared/types/alcohol';
 import { PagingInfo } from '@/shared/types/paging';
@@ -16,7 +16,8 @@ const searchAlcohol = ({ keyword, cursor = 1, limit = 20 }: Variables) => {
   });
 };
 
-export const useSearchAlcohol = createQuery<Response, Variables>({
+export const useSearchAlcohol = createInfiniteQuery<Response, Variables>({
   primaryKey: '/alcohols/search',
   queryFn: ({ queryKey: [, variables] }) => searchAlcohol(variables),
+  getNextPageParam: ({ pagingInfoDto }) => pagingInfoDto.cursor,
 });

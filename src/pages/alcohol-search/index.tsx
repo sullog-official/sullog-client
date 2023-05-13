@@ -14,10 +14,12 @@ const AlcoholSearch = () => {
   const router = useRouter();
   const [searchValue, setSearchValue] = useState('');
   const [isEnterPressed, setIsEnterPressed] = useState(false);
-  const { data: alcohols } = useSearchAlcohol({
+  const { data, fetchNextPage, hasNextPage, isLoading } = useSearchAlcohol({
     variables: { keyword: searchValue, limit: 20, cursor: 1 },
     enabled: isEnterPressed && searchValue.trim() !== '',
   });
+
+  // const { alcoholInfoDtoList: alcohols, pagingInfoDto } = data.pages[0];
 
   const onClickItem = (alcoholId: number) => {
     router.push(`/records/create?alcoholId=${alcoholId}`);
@@ -45,7 +47,7 @@ const AlcoholSearch = () => {
         <div className={cx('result-wrapper')}>
           <div className={cx('label')}>해당하는 술을 선택해주세요.</div>
           <div className={cx('alcohol-card-wrapper')}>
-            {alcohols?.alcoholInfoDtoList.map((alcohol) => {
+            {/* {alcohols.map((alcohol) => {
               return (
                 <div
                   className={cx('alcohol-card', {
@@ -63,7 +65,7 @@ const AlcoholSearch = () => {
                   </span>
                 </div>
               );
-            })}
+            })} */}
           </div>
         </div>
       </main>
