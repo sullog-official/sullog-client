@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import { kakaoLoginCallback } from '@/shared/apis/auth/kakaoLogin';
 import Icon from '@/shared/components/Icon';
+import PageLayout from '@/shared/components/PageLayout';
 import { TokenKeys } from '@/shared/configs/axios';
 import {
   NEXT_PUBLIC_KAKAO_BASE_URI,
@@ -61,7 +62,7 @@ const Login = () => {
   }, [router]);
 
   return (
-    <main className={cx('wrapper')}>
+    <PageLayout className={cx('main')}>
       <div className={cx('title-wrapper')}>
         <h1 className={cx('main-title')} style={mapoFlowerIsland.style}>
           <span>술로그</span>
@@ -72,26 +73,18 @@ const Login = () => {
         <button
           type="button"
           aria-label="카카오 로그인"
-          className={cx('kakao-btn')}
+          className={cx('login-button', 'login-button--kakao')}
           onClick={onClickKakaoLoginBtn}
         >
-          <Icon
-            name="Kakao"
-            size={24}
-            style={{ position: 'absolute', left: '8vw' }}
-          />
+          <Icon name="Kakao" size={24} />
           <span>카카오톡 로그인</span>
         </button>
         <button
           type="button"
           aria-label="네이버 로그인"
-          className={cx('naver-btn')}
+          className={cx('login-button', 'login-button--naver')}
         >
-          <Icon
-            name="Naver"
-            size={24}
-            style={{ position: 'absolute', left: '8vw' }}
-          />
+          <Icon name="Naver" size={24} />
           <span>네이버 로그인</span>
         </button>
         <div className={cx('terms-of-service')}>
@@ -113,7 +106,7 @@ const Login = () => {
           </span>
         </div>
       </div>
-    </main>
+    </PageLayout>
   );
 };
 

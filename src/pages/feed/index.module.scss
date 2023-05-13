@@ -1,12 +1,5 @@
-$topNavigatorHeight: 56.4px;
-$bottomNavigatorHeight: 88px;
-$fromCategoryTab: 30px;
-
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   grid-gap: 2px;
-  height: calc(100vh - $bottomNavigatorHeight);
-  padding-bottom: calc($bottomNavigatorHeight - $fromCategoryTab);
-  overflow-y: scroll;
+  grid-template-columns: repeat(2, 1fr);
 }

@@ -1,7 +1,12 @@
 body {
+  height: 100%;
   background-color: #fff;
   font-family: 'Noto Sans KR', sans-serif;
-  overflow: hidden;
+}
+
+/* stylelint-disable-next-line selector-id-pattern */
+#__next {
+  height: 100%;
 }
 
 .mapboxgl-ctrl-bottom-left,

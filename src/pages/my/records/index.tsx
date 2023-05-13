@@ -4,6 +4,7 @@ import { useState } from 'react';
 import AlcoholPreview from '@/features/alcohol/components/AlcoholPreview';
 import AlcoholCategoryTab from '@/features/search/components/AlcoholCategoryTab';
 import BottomNavigator from '@/shared/components/BottomNavigator';
+import PageLayout from '@/shared/components/PageLayout';
 import TopNavigator from '@/shared/components/TopNavigator';
 
 import styles from './index.module.scss';
@@ -27,67 +28,66 @@ const MyRecords = () => {
     useState<typeof AlcoholCategories[number]>('Soju');
 
   return (
-    <>
-      <TopNavigator title={'나의 술로그'} highlighted />
-      <main>
+    <PageLayout className={cx('main')} hasBottomNavigatorPadding>
+      <TopNavigator title={'나의 술로그'} highlighted>
         <AlcoholCategoryTab
           alcoholCategories={AlcoholCategories}
           selectedTab={selectedTab}
           onTabChange={setSelectedTab}
         />
-        <div className={cx('preview-wrapper')}>
-          <AlcoholPreview
-            name={'술 이름'}
-            brand={'브랜드'}
-            description={sampleDescription}
-            imgSrc={'https://via.placeholder.com/100'}
-          />
-          <AlcoholPreview
-            name={'술 이름'}
-            brand={'브랜드'}
-            description={sampleDescription}
-            imgSrc={'https://via.placeholder.com/100'}
-          />
-          <AlcoholPreview
-            name={'술 이름'}
-            brand={'브랜드'}
-            description={sampleDescription}
-            imgSrc={'https://via.placeholder.com/100'}
-          />
-          <AlcoholPreview
-            name={'술 이름'}
-            brand={'브랜드'}
-            description={sampleDescription}
-            imgSrc={'https://via.placeholder.com/100'}
-          />
-          <AlcoholPreview
-            name={'술 이름'}
-            brand={'브랜드'}
-            description={sampleDescription}
-            imgSrc={'https://via.placeholder.com/100'}
-          />
-          <AlcoholPreview
-            name={'술 이름'}
-            brand={'브랜드'}
-            description={sampleDescription}
-            imgSrc={'https://via.placeholder.com/100'}
-          />
-          <AlcoholPreview
-            name={'술 이름'}
-            brand={'브랜드'}
-            description={sampleDescription}
-            imgSrc={'https://via.placeholder.com/100'}
-          />
-          <AlcoholPreview
-            name={'술 이름'}
-            brand={'브랜드'}
-            description={sampleDescription}
-            imgSrc={'https://via.placeholder.com/100'}
-          />
-        </div>
-      </main>
+      </TopNavigator>
+      <div className={cx('preview-wrapper')}>
+        <AlcoholPreview
+          name={'술 이름'}
+          brand={'브랜드'}
+          description={sampleDescription}
+          imgSrc={'https://via.placeholder.com/100'}
+        />
+        <AlcoholPreview
+          name={'술 이름'}
+          brand={'브랜드'}
+          description={sampleDescription}
+          imgSrc={'https://via.placeholder.com/100'}
+        />
+        <AlcoholPreview
+          name={'술 이름'}
+          brand={'브랜드'}
+          description={sampleDescription}
+          imgSrc={'https://via.placeholder.com/100'}
+        />
+        <AlcoholPreview
+          name={'술 이름'}
+          brand={'브랜드'}
+          description={sampleDescription}
+          imgSrc={'https://via.placeholder.com/100'}
+        />
+        <AlcoholPreview
+          name={'술 이름'}
+          brand={'브랜드'}
+          description={sampleDescription}
+          imgSrc={'https://via.placeholder.com/100'}
+        />
+        <AlcoholPreview
+          name={'술 이름'}
+          brand={'브랜드'}
+          description={sampleDescription}
+          imgSrc={'https://via.placeholder.com/100'}
+        />
+        <AlcoholPreview
+          name={'술 이름'}
+          brand={'브랜드'}
+          description={sampleDescription}
+          imgSrc={'https://via.placeholder.com/100'}
+        />
+        <AlcoholPreview
+          name={'술 이름'}
+          brand={'브랜드'}
+          description={sampleDescription}
+          imgSrc={'https://via.placeholder.com/100'}
+        />
+      </div>
       <BottomNavigator />
-    </>
+    </PageLayout>
   );
 };
 

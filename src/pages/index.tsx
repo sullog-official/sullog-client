@@ -6,6 +6,7 @@ import Map from '@/features/home/components/Map';
 import SearchBar from '@/features/search/components/SearchBar';
 import { useGetMyRecord } from '@/shared/apis/records/getMyRecord';
 import BottomNavigator from '@/shared/components/BottomNavigator';
+import PageLayout from '@/shared/components/PageLayout';
 
 import styles from './index.module.scss';
 
@@ -30,7 +31,7 @@ export default function Home() {
   };
 
   return (
-    <main className={cx('main')}>
+    <PageLayout>
       <div className={cx('header')}>
         <h1 className={cx('header-text')} style={mapoFlowerIsland.style}>
           나의 술로그
@@ -46,6 +47,6 @@ export default function Home() {
       </div>
       <Map records={selectedFilter.length > 0 ? filteredRecords : records} />
       <BottomNavigator />
-    </main>
+    </PageLayout>
   );
 }
