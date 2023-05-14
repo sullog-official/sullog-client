@@ -56,9 +56,7 @@ const AlcoholSearch = () => {
                 return (
                   <button
                     type="button"
-                    className={cx('alcohol-card', {
-                      'alcohol--is-selected': false,
-                    })}
+                    className={cx('alcohol-card')}
                     onClick={() => onClickItem(alcohol.alcoholId)}
                     key={alcohol.alcoholId}
                   >
