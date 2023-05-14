@@ -5,6 +5,7 @@ import { ChangeEvent, useState } from 'react';
 
 import SearchBar from '@/features/search/components/SearchBar';
 import { useSearchAlcohol } from '@/shared/apis/alcohols/searchAlcohol';
+import PageLayout from '@/shared/components/PageLayout';
 import TopNavigator from '@/shared/components/TopNavigator';
 
 import styles from './index.module.scss';
@@ -26,7 +27,7 @@ const AlcoholSearch = () => {
   };
 
   return (
-    <>
+    <PageLayout className={cx('main')}>
       <TopNavigator
         title={'검색'}
         extra={
@@ -34,8 +35,7 @@ const AlcoholSearch = () => {
             <Link href="/records/create">다음</Link>
           </div>
         }
-      />
-      <main className={cx('wrapper')}>
+      >
         <div className={cx('search-bar-wrapper')}>
           <SearchBar
             placeholder={'마신 술 이름을 검색해주세요.'}
@@ -44,32 +44,36 @@ const AlcoholSearch = () => {
             onKeyDown={(e) => setIsEnterPressed(e.code === 'Enter')}
           />
         </div>
+      </TopNavigator>
+      <div className={cx('wrapper')}>
         <div className={cx('result-wrapper')}>
           <div className={cx('label')}>해당하는 술을 선택해주세요.</div>
           <div className={cx('alcohol-card-wrapper')}>
-            {/* {alcohols.map((alcohol) => {
-              return (
-                <div
-                  className={cx('alcohol-card', {
-                    'alcohol--is-selected': false,
-                  })}
-                  onClick={() => onClickItem(alcohol.alcoholId)}
-                  key={alcohol.alcoholId}
-                >
-                  <div className={cx('alcohol-info')}>
-                    <span>{alcohol.alcoholType}</span>
-                    <span>{alcohol.brandName}</span>
+            {data?.pages
+              .flatMap((page) => page.alcoholInfoDtoList)
+              .map((alcohol) => {
+                return (
+                  <div
+                    className={cx('alcohol-card', {
+                      'alcohol--is-selected': false,
+                    })}
+                    onClick={() => onClickItem(alcohol.alcoholId)}
+                    key={alcohol.alcoholId}
+                  >
+                    <div className={cx('alcohol-info')}>
+                      <span>{alcohol.alcoholType}</span>
+                      <span>{alcohol.brandName}</span>
+                    </div>
+                    <span className={cx('alcohol-name')}>
+                      {alcohol.alcoholName}
+                    </span>
                   </div>
-                  <span className={cx('alcohol-name')}>
-                    {alcohol.alcoholName}
-                  </span>
-                </div>
-              );
-            })} */}
+                );
+              })}
           </div>
         </div>
-      </main>
-    </>
+      </div>
+    </PageLayout>
   );
 };
 
