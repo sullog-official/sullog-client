@@ -1,6 +1,5 @@
 import classNames from 'classnames/bind';
 
-import { Close } from '@/assets/icons';
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import DoughnutChart from '@/features/home/components/DoughnutChart';
 import logout from '@/shared/apis/auth/logout';
@@ -10,21 +9,9 @@ import styles from './DrawerContents.module.scss';
 
 const cx = classNames.bind(styles);
 
-type Props = {
-  onClose: () => void;
-};
-
-const DrawerContents = ({ onClose }: Props) => {
+const DrawerContents = () => {
   return (
     <div className={cx('wrapper')}>
-      <button
-        className={cx('close-btn')}
-        type="button"
-        aria-label="메뉴 닫기"
-        onClick={onClose}
-      >
-        <Close size={16} />
-      </button>
       <div className={cx('title-box')}>
         <p>
           <span className={cx('name')}>이짱구</span>님 환영해요!

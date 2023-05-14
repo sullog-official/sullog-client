@@ -5,34 +5,62 @@
 }
 
 .drawer {
-  position: fixed;
+  position: absolute;
   z-index: themes.$drawer;
-  width: 30%;
+  top: 0;
+
+  &.left {
+    left: 0;
+
+    --transform-open-from: translateX(-100%);
+  }
+
+  &.right {
+    right: 0;
+
+    --transform-open-from: translateX(100%);
+  }
+
   height: 100%;
   overflow: auto;
   transition: transform var(--transition-speed) ease;
+  animation: close 0.25s ease-out forwards;
   background: themes.$white;
   box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+
+  &.open {
+    animation: open 0.25s ease-out forwards;
+  }
 }
 
-.drawer.left {
-  top: 0;
-  left: 0;
-  transform: translateX(-100%);
+@keyframes open {
+  from {
+    transform: var(--transform-open-from);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
 
-.drawer.right {
-  top: 0;
-  right: 0;
-  transform: translateX(100%);
+@keyframes close {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: var(--transform-open-from);
+  }
 }
 
-.container.open .left {
-  transform: translateX(0);
-}
-
-.container.open .right {
-  transform: translateX(0);
+.close-btn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 16px;
+  height: 16px;
+  outline: none;
+  cursor: pointer;
 }
 
 .backdrop {
@@ -40,18 +68,14 @@
   position: fixed;
   z-index: 0;
   top: 0;
-  left: 0;
   width: 100%;
+  max-width: themes.$layoutMaxWidth;
   height: 100%;
   transition: opacity var(--transition-speed) ease,
     visibility var(--transition-speed) ease;
   opacity: 0;
   background: rgb(0 0 0 / 30%);
   pointer-events: none;
-}
-
-.container.open .drawer {
-  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
 }
 
 .container.open .backdrop {
