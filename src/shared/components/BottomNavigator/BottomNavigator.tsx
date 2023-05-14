@@ -16,7 +16,9 @@ const BottomNavigator = () => {
   const [isFeedBtnClicked, setIsFeedBtnClicked] = useState(false);
   const [isMenuBtnClicked, setIsMenuBtnClicked] = useState(false);
 
-  const navigateToWrite = () => {};
+  const navigateToWrite = () => {
+    router.push('/alcohols/search');
+  };
 
   const navigateToFeed = () => {
     setIsFeedBtnClicked(true);

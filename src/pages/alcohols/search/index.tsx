@@ -1,8 +1,11 @@
 import classNames from 'classnames/bind';
+import { debounce } from 'lodash-es';
 import Link from 'next/link';
-import { ChangeEvent } from 'react';
+import { useRouter } from 'next/router';
+import { ChangeEvent, useMemo, useState } from 'react';
 
 import SearchBar from '@/features/search/components/SearchBar';
+import { useSearchAlcohol } from '@/shared/apis/alcohols/searchAlcohol';
 import PageLayout from '@/shared/components/PageLayout';
 import TopNavigator from '@/shared/components/TopNavigator';
 
@@ -10,12 +13,18 @@ import styles from './index.module.scss';
 const cx = classNames.bind(styles);
 
 const AlcoholSearch = () => {
-  const onClickItem = () => {
-    // Do something
-  };
+  const router = useRouter();
+  const [searchValue, setSearchValue] = useState('');
+  const { data, fetchNextPage, hasNextPage, isLoading } = useSearchAlcohol({
+    variables: { keyword: searchValue, limit: 20, cursor: 1 },
+    enabled: searchValue !== '',
+    keepPreviousData: true,
+  });
 
-  const onDeleteAll = () => {
-    // Do something
+  console.log(searchValue);
+
+  const onClickItem = (alcoholId: number) => {
+    router.push(`/records/create?alcoholId=${alcoholId}`);
   };
 
   return (
@@ -31,31 +40,36 @@ const AlcoholSearch = () => {
         <div className={cx('search-bar-wrapper')}>
           <SearchBar
             placeholder={'마신 술 이름을 검색해주세요.'}
-            value={''}
-            onChange={function (event: ChangeEvent<HTMLInputElement>): void {
-              throw new Error('Function not implemented.');
-            }}
+            value={searchValue}
+            onChange={setSearchValue}
+            useDebounce
           />
         </div>
       </TopNavigator>
-      <div className={cx('result-wrapper')}>
-        <div className={cx('label')}>해당하는 술을 선택해주세요.</div>
-        <div className={cx('alcohol-card-wrapper')}>
-          <div className={cx('alcohol-card', { 'alcohol--is-selected': true })}>
-            <div className={cx('alcohol-info')}>
-              <span>기타</span>
-              <span>신평양조장</span>
-            </div>
-            <span className={cx('alcohol-name')}>백련 맑은 술</span>
-          </div>
-          <div
-            className={cx('alcohol-card', { 'alcohol--is-selected': false })}
-          >
-            <div className={cx('alcohol-info')}>
-              <span>기타</span>
-              <span>신평양조장</span>
-            </div>
-            <span className={cx('alcohol-name')}>백련 맑은 술</span>
+      <div className={cx('wrapper')}>
+        <div className={cx('result-wrapper')}>
+          <div className={cx('label')}>해당하는 술을 선택해주세요.</div>
+          <div className={cx('alcohol-card-wrapper')}>
+            {data?.pages
+              .flatMap((page) => page.alcoholInfoDtoList)
+              .map((alcohol) => {
+                return (
+                  <button
+                    type="button"
+                    className={cx('alcohol-card')}
+                    onClick={() => onClickItem(alcohol.alcoholId)}
+                    key={alcohol.alcoholId}
+                  >
+                    <div className={cx('alcohol-info')}>
+                      <span>{alcohol.alcoholType}</span>
+                      <span>{alcohol.brandName}</span>
+                    </div>
+                    <span className={cx('alcohol-name')}>
+                      {alcohol.alcoholName}
+                    </span>
+                  </button>
+                );
+              })}
           </div>
         </div>
       </div>

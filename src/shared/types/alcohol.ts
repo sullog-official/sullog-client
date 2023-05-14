@@ -7,4 +7,5 @@ export type Alcohol = {
   productionLatitude: number;
   productionLongitude: number;
   alcoholTag: string;
+  alcoholType: string;
 };
