@@ -35,7 +35,7 @@ const MyRecordSearch = () => {
           <SearchBar
             placeholder={'Search'}
             value={''}
-            onChange={function (event: ChangeEvent<HTMLInputElement>): void {
+            onChange={function (value: string): void {
               throw new Error('Function not implemented.');
             }}
           />
