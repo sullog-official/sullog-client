@@ -39,7 +39,7 @@ export default function Home() {
         <SearchBar
           placeholder="Search"
           value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
+          onChange={setSearchValue}
           filterItems={['소주', '과실주', '막걸리', '기타', '전체']}
           selectedFilter={selectedFilter}
           onFilterClick={handleFilterClick}
