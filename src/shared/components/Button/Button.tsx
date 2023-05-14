@@ -29,6 +29,7 @@ const Button = ({
   return (
     <button
       {...props}
+      // eslint-disable-next-line react/button-has-type
       type={buttonType}
       className={cx('button', type, className)}
     >

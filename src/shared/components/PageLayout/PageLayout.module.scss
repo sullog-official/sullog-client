@@ -1,0 +1,17 @@
+@use '@styles/themes';
+
+.main {
+  max-width: themes.$layoutMaxWidth;
+  min-height: 100%;
+  margin: 0 auto;
+
+  &.has-top-navigator-padding {
+    padding-top: themes.$topNavigatorHeight;
+  }
+
+  &.has-bottom-navigator-padding {
+    padding-bottom: calc(
+      themes.$bottomNavigatorHeight + env(safe-area-inset-bottom, 0)
+    );
+  }
+}

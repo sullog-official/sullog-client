@@ -1,0 +1,14 @@
+.main {
+  padding-top: 138px;
+}
+
+.preview-wrapper {
+  display: grid;
+  width: 100%;
+  margin-top: 8px;
+  padding: 0 36px;
+  overflow: scroll;
+  row-gap: 12px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

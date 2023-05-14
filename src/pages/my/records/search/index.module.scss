@@ -1,0 +1,10 @@
+@use '@styles/themes';
+
+.main {
+  padding-top: 118px;
+}
+
+.search-bar-wrapper {
+  padding: 8px 22px 0;
+  background-color: themes.$white;
+}

@@ -1,16 +1,12 @@
 @use '@styles/themes';
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
+.main {
+  padding-top: 118px;
 }
 
 .search-bar-wrapper {
-  padding: 0 22px 14px;
-}
-
-.recent-searches-wrapper {
-  padding: 0 31px;
+  padding: 8px 22px 0;
+  background-color: themes.$white;
 }
 
 .extra-btn {

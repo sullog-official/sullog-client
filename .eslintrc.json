@@ -35,6 +35,13 @@
         "newlines-between": "always"
       }
     ],
-    "react/button-has-type": "warn"
+    "react/button-has-type": "warn",
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": true
+      }
+    ]
   }
 }

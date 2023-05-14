@@ -4,17 +4,12 @@ import { Feed } from '@/shared/types/feed';
 import { PagingInfo } from '@/shared/types/paging';
 import { request } from '@/shared/utils/request';
 
-type Variables = {
-  cursor: number;
-  limit: number;
-};
-
 type Response = {
   allRecordMetaList: Feed[];
   pagingInfo: PagingInfo;
 };
 
-const getFeed = ({ cursor, limit }: Variables) => {
+const getFeed = ({ cursor, limit }: PagingInfo) => {
   return request<Response>({
     method: 'get',
     url: `records?${cursor ? `cursor=${cursor}` : ''}&limit=${limit}`,
@@ -23,6 +18,10 @@ const getFeed = ({ cursor, limit }: Variables) => {
 
 export const useGetFeed = createInfiniteQuery({
   primaryKey: '/feed',
-  queryFn: ({ queryKey: [, variables] }) => getFeed(variables),
-  getNextPageParam: ({ pagingInfo }) => pagingInfo.cursor,
+  queryFn: ({ pageParam }) => getFeed({ cursor: pageParam?.cursor, limit: 8 }),
+  getNextPageParam: (lastPage) => {
+    if (lastPage.pagingInfo.cursor) {
+      return { cursor: lastPage.pagingInfo.cursor };
+    }
+  },
 });

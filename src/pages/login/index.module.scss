@@ -1,6 +1,6 @@
 @use '@styles/themes';
 
-.wrapper {
+.main {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,34 +32,40 @@
 
 .button-wrapper {
   display: flex;
-  position: absolute;
-  bottom: 46px;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 0 15px;
+  margin-top: auto;
+  padding: 0 15px 46px;
 }
 
-.kakao-btn {
+.login-button {
   display: flex;
-  flex-direction: column;
+  position: relative;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 48px;
-  margin-bottom: 8px;
   border-radius: 6px;
-  background-color: #fee500;
   @include themes.typography('body16');
-}
 
-.naver-btn {
-  width: 100%;
-  height: 48px;
-  border-radius: 6px;
-  background-color: #03c75a;
-  color: themes.$white;
-  @include themes.typography('body16');
+  + .login-button {
+    margin-top: 8px;
+  }
+
+  > svg {
+    position: absolute;
+    left: 20px;
+  }
+
+  &--kakao {
+    background-color: #fee500;
+  }
+
+  &--naver {
+    background-color: #03c75a;
+    color: themes.$white;
+  }
 }
 
 .terms-of-service {
