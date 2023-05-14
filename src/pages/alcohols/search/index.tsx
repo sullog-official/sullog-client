@@ -20,8 +20,6 @@ const AlcoholSearch = () => {
     enabled: isEnterPressed && searchValue.trim() !== '',
   });
 
-  // const { alcoholInfoDtoList: alcohols, pagingInfoDto } = data.pages[0];
-
   const onClickItem = (alcoholId: number) => {
     router.push(`/records/create?alcoholId=${alcoholId}`);
   };
@@ -53,7 +51,8 @@ const AlcoholSearch = () => {
               .flatMap((page) => page.alcoholInfoDtoList)
               .map((alcohol) => {
                 return (
-                  <div
+                  <button
+                    type="button"
                     className={cx('alcohol-card', {
                       'alcohol--is-selected': false,
                     })}
@@ -67,7 +66,7 @@ const AlcoholSearch = () => {
                     <span className={cx('alcohol-name')}>
                       {alcohol.alcoholName}
                     </span>
-                  </div>
+                  </button>
                 );
               })}
           </div>
