@@ -1,9 +1,11 @@
 @use '@styles/themes';
 
 .main {
+  position: relative;
   max-width: themes.$layoutMaxWidth;
   min-height: 100%;
   margin: 0 auto;
+  overflow-x: hidden;
 
   &.has-top-navigator-padding {
     padding-top: themes.$topNavigatorHeight;
