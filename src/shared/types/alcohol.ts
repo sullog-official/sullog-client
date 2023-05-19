@@ -9,3 +9,11 @@ export type Alcohol = {
   alcoholTag: string;
   alcoholType: string;
 };
+
+export enum AlcoholTag {
+  'Soju' = '소주',
+  'FruitWine' = '과실주',
+  'Makgeolli' = '막걸리',
+  'Etc' = '기타',
+  'All' = '전체',
+}
