@@ -32,7 +32,7 @@ const AlcoholCategoryTabItem = ({
       className={cx('button', isSelected && 'clicked')}
     >
       {alcohol === 'All' ? (
-        <div>All</div>
+        <div>all</div>
       ) : (
         <Icon name={alcohol} size={20} color={svgColor} />
       )}
