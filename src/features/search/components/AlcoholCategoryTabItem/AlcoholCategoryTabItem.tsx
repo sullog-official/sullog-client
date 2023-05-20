@@ -1,7 +1,6 @@
 import classNames from 'classnames/bind';
 
 import Icon from '@/shared/components/Icon';
-import { IconNameType } from '@/shared/components/Icon/Icon';
 import { AlcoholTag } from '@/shared/types/alcohol';
 
 import styles from './AlcoholCategoryTabItem.module.scss';
