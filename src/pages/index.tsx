@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import Map from '@/features/home/components/Map';
 import SearchBar from '@/features/search/components/SearchBar';
-import { useGetMyRecord } from '@/shared/apis/records/getMyRecord';
+import { useGetMyRecords } from '@/shared/apis/records/getMyRecords';
 import BottomNavigator from '@/shared/components/BottomNavigator';
 import PageLayout from '@/shared/components/PageLayout';
 
@@ -13,7 +13,7 @@ import styles from './index.module.scss';
 const cx = classNames.bind(styles);
 
 export default function Home() {
-  const { data: records = [] } = useGetMyRecord();
+  const { data: records = [] } = useGetMyRecords();
   const [searchValue, setSearchValue] = useState('');
   const [selectedFilter, setSelectedFilter] = useState<string[]>([]);
 
