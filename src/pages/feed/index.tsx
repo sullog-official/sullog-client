@@ -1,6 +1,7 @@
 import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 import { GetServerSideProps } from 'next';
+import Link from 'next/link';
 
 import Card from '@/features/feed/components/Card';
 import { useGetFeed } from '@/shared/apis/feed/getFeed';
@@ -38,9 +39,9 @@ const FeedPage = () => {
       <TopNavigator title={'이웃 술로그'} highlighted />
       <div className={cx('wrapper')}>
         {feeds.map((feed) => (
-          <button key={feed.recordId} type="button">
+          <Link key={feed.recordId} href={`/records/${feed.recordId}`}>
             <Card alt={feed.alcoholName} imageUrl={feed.mainPhotoPath} />
-          </button>
+          </Link>
         ))}
         <div ref={ref} />
       </div>
