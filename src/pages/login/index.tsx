@@ -70,6 +70,7 @@ const Login = () => {
 
   return (
     <PageLayout className={cx('main')}>
+      {isSettingToken && <div className={cx('setting-token')} />}
       <div className={cx('title-wrapper')}>
         <h1 className={cx('main-title')} style={mapoFlowerIsland.style}>
           <span>술로그</span>
