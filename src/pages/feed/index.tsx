@@ -7,6 +7,7 @@ import Card from '@/features/feed/components/Card';
 import { useGetFeed } from '@/shared/apis/feed/getFeed';
 import BottomNavigator from '@/shared/components/BottomNavigator';
 import PageLayout from '@/shared/components/PageLayout';
+import Skeleton from '@/shared/components/Skeleton';
 import TopNavigator from '@/shared/components/TopNavigator';
 import useIntersect from '@/shared/hooks/useIntersect';
 import { Feed } from '@/shared/types/feed';
@@ -43,6 +44,12 @@ const FeedPage = () => {
             <Card alt={feed.alcoholName} imageUrl={feed.mainPhotoPath} />
           </Link>
         ))}
+        {isFetching && (
+          <>
+            <Skeleton width="100%" height="100%" padding="50%" />
+            <Skeleton width="100%" height="100%" padding="50%" />
+          </>
+        )}
         <div ref={ref} />
       </div>
       <BottomNavigator />
