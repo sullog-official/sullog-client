@@ -74,7 +74,7 @@ const RecordDetail = ({ id }: RecordDetailProps) => {
           {formatRecordTags([
             alcoholInfo.alcoholPercent,
             record.alcoholPercentFeeling,
-            record.flavorTagList?.[0].detailTag,
+            record.flavorTagList?.[0]?.detailTag,
           ]).map((label) => (
             <Chip
               key={label}
