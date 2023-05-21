@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import { kakaoLoginCallback } from '@/shared/apis/auth/kakaoLogin';
@@ -20,11 +20,14 @@ import styles from './index.module.scss';
 const cx = classNames.bind(styles);
 
 const Login = () => {
+  const [isSettingToken, setIsSettingToken] = useState<boolean>(false);
   const router = useRouter();
   const { code } = router.query as { code: string };
 
   const onClickKakaoLoginBtn = () =>
     (location.href = `${NEXT_PUBLIC_KAKAO_BASE_URI}&client_id=${NEXT_PUBLIC_KAKAO_CLIENT_ID}&scope=${NEXT_PUBLIC_KAKAO_SCOPE}&redirect_uri=${NEXT_PUBLIC_KAKAO_REDIRECT_URI}`);
+
+  const onClickNaverLoginBtn = () => alert('준비중입니다!');
 
   const setToken = async (code: string) => {
     const response = await kakaoLoginCallback(code);
@@ -36,6 +39,10 @@ const Login = () => {
       24 * 60 * 60 * 1000 * 14
     );
   };
+
+  useEffect(() => {
+    if (code) setIsSettingToken(true);
+  }, [code]);
 
   useEffect(() => {
     if (code) {
@@ -83,6 +90,7 @@ const Login = () => {
           type="button"
           aria-label="네이버 로그인"
           className={cx('login-button', 'login-button--naver')}
+          onClick={onClickNaverLoginBtn}
         >
           <Icon name="Naver" size={24} />
           <span>네이버 로그인</span>
