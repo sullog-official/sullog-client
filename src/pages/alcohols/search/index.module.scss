@@ -1,0 +1,58 @@
+@use '@styles/themes';
+
+.main {
+  padding-top: 118px;
+}
+
+.search-bar-wrapper {
+  padding: 8px 22px 0;
+  background-color: themes.$white;
+}
+
+.extra-btn {
+  @include themes.typography('body14', 200);
+}
+
+.result-wrapper {
+  padding: 6px 30px;
+}
+
+.label {
+  @include themes.typography('caption12', 200);
+
+  margin-bottom: 10px;
+}
+
+.alcohol-card-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.alcohol-info span {
+  @include themes.typography('caption12', 200);
+
+  margin-right: 8px;
+}
+
+.alcohol-name {
+  @include themes.typography('title20', 500);
+}
+
+.alcohol-card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+  padding: 16px 20px 25px;
+  border-radius: 15px;
+  background-color: themes.$grey50;
+  cursor: pointer;
+
+  &.alcohol--is-selected {
+    background-color: #f5f3fb;
+
+    .alcohol-info,
+    .alcohol-name {
+      color: themes.$purple;
+    }
+  }
+}

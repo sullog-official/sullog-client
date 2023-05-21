@@ -4,15 +4,22 @@ import { useState } from 'react';
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import Map from '@/features/home/components/Map';
 import SearchBar from '@/features/search/components/SearchBar';
+import { useGetMyRecord } from '@/shared/apis/records/getMyRecord';
 import BottomNavigator from '@/shared/components/BottomNavigator';
+import PageLayout from '@/shared/components/PageLayout';
 
 import styles from './index.module.scss';
 
 const cx = classNames.bind(styles);
 
 export default function Home() {
+  const { data: records = [] } = useGetMyRecord();
   const [searchValue, setSearchValue] = useState('');
   const [selectedFilter, setSelectedFilter] = useState<string[]>([]);
+
+  const filteredRecords = records.filter((record) =>
+    selectedFilter.includes(record.alcoholTag)
+  );
 
   const handleFilterClick = (filter: string) => {
     if (selectedFilter.includes(filter)) {
@@ -24,7 +31,7 @@ export default function Home() {
   };
 
   return (
-    <main className={cx('main')}>
+    <PageLayout>
       <div className={cx('header')}>
         <h1 className={cx('header-text')} style={mapoFlowerIsland.style}>
           나의 술로그
@@ -32,37 +39,14 @@ export default function Home() {
         <SearchBar
           placeholder="Search"
           value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
+          onChange={setSearchValue}
           filterItems={['소주', '과실주', '막걸리', '기타', '전체']}
           selectedFilter={selectedFilter}
           onFilterClick={handleFilterClick}
         />
       </div>
-      <Map
-        records={[
-          // @ts-ignore
-          {
-            name: '술1',
-            seq: 123,
-            type: '소주',
-            manufacturer: '제조사',
-            lat: '127.07015',
-            lng: '37.54607',
-            etc: '설명ㅁ나ㅜㅠㅜㅏㅓㅁㄴㅇ',
-          },
-          // @ts-ignore
-          {
-            name: '술2',
-            seq: 1234,
-            type: '소주2',
-            manufacturer: '제조사22',
-            lat: '127.07019',
-            lng: '37.54608',
-            etc: '설명ㅁ나ㅜㅠㅜㅏㅓㅁㄴㅇ',
-          },
-        ]}
-      />
+      <Map records={selectedFilter.length > 0 ? filteredRecords : records} />
       <BottomNavigator />
-    </main>
+    </PageLayout>
   );
 }

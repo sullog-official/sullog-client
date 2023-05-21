@@ -12,6 +12,7 @@ import { getDetailFlavorTagLabel } from '@/features/record/utils/getFlavorTagLab
 import { useGetRecord } from '@/shared/apis/records/getRecord';
 import Chip from '@/shared/components/Chip';
 import Icon from '@/shared/components/Icon';
+import PageLayout from '@/shared/components/PageLayout';
 import TopNavigator from '@/shared/components/TopNavigator';
 import { Alcohol } from '@/shared/types/alcohol';
 import { Record } from '@/shared/types/record';
@@ -52,7 +53,7 @@ const RecordDetail = ({ id }: RecordDetailProps) => {
   const { alcoholInfo, record } = data;
 
   return (
-    <main>
+    <PageLayout hasTopNavigatorPadding>
       <TopNavigator title="내 게시글" />
       <ImageSwiper images={record.photoPathList.map((url) => ({ url }))} />
       <div className={cx('contents-wrap')}>
@@ -103,7 +104,7 @@ const RecordDetail = ({ id }: RecordDetailProps) => {
           {dayjs(record.experienceDate).format('YYYY.MM.DD')}
         </div>
       </div>
-    </main>
+    </PageLayout>
   );
 };
 

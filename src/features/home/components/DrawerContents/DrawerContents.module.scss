@@ -6,31 +6,22 @@
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  padding: 30px 30px 80px 30px;
-}
-
-.close-btn {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
-  outline: none;
+  padding: 30px 30px 80px;
 }
 
 .title-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 40px 11px 0;
   text-align: start;
-  padding: 40px 11px 0 11px;
   @include themes.typography('body15');
 }
 
 .name {
   color: themes.$purple;
   @include themes.typography('title18');
+
   font-weight: 700;
 }
 
@@ -42,12 +33,13 @@
   padding: 10px;
   color: themes.$grey300;
   @include themes.typography('caption9');
+
   font-weight: 350;
 
   > p:first-child {
+    margin-bottom: 12px;
     color: themes.$purple;
     @include themes.typography('body16');
-    margin-bottom: 12px;
   }
 
   > p:last-child {

@@ -10,6 +10,7 @@ import ImageSwiper from '@/features/record/components/ImageSwiper';
 import Rating from '@/features/record/components/Rating';
 import { useCreateRecordForm } from '@/features/record/hooks/useCreateRecordForm';
 import { useGetAlcohol } from '@/shared/apis/alcohols/getAlcohol';
+import PageLayout from '@/shared/components/PageLayout';
 import TextArea from '@/shared/components/TextArea';
 import TextField from '@/shared/components/TextField';
 import TopNavigator from '@/shared/components/TopNavigator';
@@ -34,7 +35,7 @@ const RecordCreate = ({ alcoholId }: RecordCreateProps) => {
   }
 
   return (
-    <main>
+    <PageLayout hasTopNavigatorPadding>
       <form>
         <TopNavigator
           title="게시글"
@@ -176,7 +177,7 @@ const RecordCreate = ({ alcoholId }: RecordCreateProps) => {
           />
         </div>
       </form>
-    </main>
+    </PageLayout>
   );
 };
 

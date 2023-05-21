@@ -19,11 +19,11 @@ const Slider = ({ items }: SliderProps) => {
     <Swiper className={cx('slider')} slidesPerView="auto" centeredSlides>
       {items.map((item) => {
         return (
-          <SwiperSlide className={cx('slide')} key={item.seq}>
+          <SwiperSlide className={cx('slide')} key={item.recordId}>
             <AlcoholPreview
-              name={item.name}
-              brand={item.manufacturer}
-              description={item.etc}
+              name={item.alcoholName}
+              brand={item.brandName}
+              description={item.description}
               imgSrc=""
             />
           </SwiperSlide>

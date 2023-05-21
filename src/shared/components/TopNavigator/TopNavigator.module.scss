@@ -1,14 +1,23 @@
 @use '@styles/themes';
 
-$height: 56.4px;
+.container {
+  display: flex;
+  position: fixed;
+  z-index: themes.$floating;
+  top: 0;
+  flex-direction: column;
+  width: 100%;
+  max-width: themes.$layoutMaxWidth;
+}
 
 .wrapper {
   display: flex;
-  position: relative;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: $height;
+  width: 100%;
+  height: themes.$topNavigatorHeight;
+  background-color: themes.$white;
 }
 
 $backButtonWidth: 40px;
@@ -21,7 +30,7 @@ $iconWidth: 12px;
   align-items: center;
   justify-content: center;
   width: 40px;
-  height: 100%;
+  height: themes.$topNavigatorHeight;
 }
 
 .title {
@@ -39,5 +48,5 @@ $iconWidth: 12px;
   position: absolute;
   right: 28px;
   align-items: center;
-  height: 100%;
+  height: themes.$topNavigatorHeight;
 }

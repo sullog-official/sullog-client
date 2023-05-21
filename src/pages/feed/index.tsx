@@ -1,28 +1,69 @@
+import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
+import { GetServerSideProps } from 'next';
 
 import Card from '@/features/feed/components/Card';
+import { useGetFeed } from '@/shared/apis/feed/getFeed';
 import BottomNavigator from '@/shared/components/BottomNavigator';
+import PageLayout from '@/shared/components/PageLayout';
 import TopNavigator from '@/shared/components/TopNavigator';
+import useIntersect from '@/shared/hooks/useIntersect';
+import { Feed } from '@/shared/types/feed';
 
 import styles from './index.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Feed = () => {
+const FeedPage = () => {
+  const { data, fetchNextPage, hasNextPage, isFetching, isLoading } =
+    useGetFeed({
+      variables: {
+        cursor: 0,
+        limit: 8,
+      },
+    });
+
+  const ref = useIntersect(async (entry, observer) => {
+    observer.unobserve(entry.target);
+    if (hasNextPage && !isFetching) {
+      fetchNextPage();
+    }
+  });
+
+  if (!data) return null;
+  const feeds: Feed[] = data.pages.flatMap((page) => page.allRecordMetaList);
+
   return (
-    <>
+    <PageLayout hasTopNavigatorPadding hasBottomNavigatorPadding>
       <TopNavigator title={'이웃 술로그'} highlighted />
-      <main className={cx('wrapper')}>
-        {/*TODO: 실제 데이터로 바뀔 부분*/}
-        {mockData.map((data, idx) => (
-          <Card key={idx} />
+      <div className={cx('wrapper')}>
+        {feeds.map((feed) => (
+          <button key={feed.recordId} type="button">
+            <Card alt={feed.alcoholName} imageUrl={feed.mainPhotoPath} />
+          </button>
         ))}
-      </main>
+        <div ref={ref} />
+      </div>
       <BottomNavigator />
-    </>
+    </PageLayout>
   );
 };
 
-const mockData = Array.from({ length: 8 });
+export default FeedPage;
 
-export default Feed;
+export const getServerSideProps: GetServerSideProps<{
+  dehydratedState: DehydratedState;
+}> = async () => {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchInfiniteQuery(
+    useGetFeed.getKey({ cursor: 0, limit: 8 }),
+    useGetFeed.queryFn
+  );
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+};
