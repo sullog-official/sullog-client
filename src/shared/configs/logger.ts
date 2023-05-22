@@ -4,10 +4,13 @@ const logRequest = (res: AxiosResponse<any, any>, error = false) => {
   const status = res?.status;
   const method = res?.request._method;
   const url = res?.request.responseURL.replace('https://', '');
-  const req = res?.config.data ? JSON.parse(res.config.data) : null;
+  let reqData = res?.config.data;
+  if (res.headers['Content-Type'] === 'multipart/form-data') {
+    reqData = reqData ? JSON.parse(reqData) : null;
+  }
 
   console.info(decodeURI(`${status} ${method} ${url}`));
-  if (req) console.info('req', req);
+  if (reqData) console.info('req', reqData);
   if (error && res?.data) console.error('res', res.data);
 
   return res;

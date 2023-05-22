@@ -8,7 +8,11 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: 'sullog-image-bucket.s3.us-east-2.amazonaws.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'sullog-s3.s3.ap-northeast-2.amazonaws.com',
       },
       {
         protocol: 'http',

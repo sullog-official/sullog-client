@@ -1,11 +1,13 @@
 import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 import { GetServerSideProps } from 'next';
+import Link from 'next/link';
 
 import Card from '@/features/feed/components/Card';
 import { useGetFeed } from '@/shared/apis/feed/getFeed';
 import BottomNavigator from '@/shared/components/BottomNavigator';
 import PageLayout from '@/shared/components/PageLayout';
+import Skeleton from '@/shared/components/Skeleton';
 import TopNavigator from '@/shared/components/TopNavigator';
 import useIntersect from '@/shared/hooks/useIntersect';
 import { Feed } from '@/shared/types/feed';
@@ -38,10 +40,16 @@ const FeedPage = () => {
       <TopNavigator title={'이웃 술로그'} highlighted />
       <div className={cx('wrapper')}>
         {feeds.map((feed) => (
-          <button key={feed.recordId} type="button">
+          <Link key={feed.recordId} href={`/records/${feed.recordId}`}>
             <Card alt={feed.alcoholName} imageUrl={feed.mainPhotoPath} />
-          </button>
+          </Link>
         ))}
+        {isFetching && (
+          <>
+            <Skeleton width="100%" height="100%" padding="50%" />
+            <Skeleton width="100%" height="100%" padding="50%" />
+          </>
+        )}
         <div ref={ref} />
       </div>
       <BottomNavigator />

@@ -5,8 +5,9 @@ export const mapoFlowerIsland = localFont({
     {
       path: './MapoFlowerIsland.woff2',
       weight: '400',
-      style: 'italic',
+      style: 'normal',
     },
   ],
+  display: 'swap',
   variable: '--mapo-flower-island-font',
 });
