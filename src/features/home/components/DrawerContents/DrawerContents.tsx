@@ -4,27 +4,32 @@ import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import DoughnutChart from '@/features/home/components/DoughnutChart';
 import logout from '@/shared/apis/auth/logout';
 import { Button } from '@/shared/components';
+import { Statistics } from '@/shared/types/record/statistics';
 
 import styles from './DrawerContents.module.scss';
 
 const cx = classNames.bind(styles);
 
-const DrawerContents = () => {
+type DrawerContentsProps = {
+  statistics?: Statistics;
+};
+
+const DrawerContents = ({ statistics }: DrawerContentsProps) => {
+  // TODO 글쓰기 기능 연결하고 실제 통계 데이터 출력
   return (
     <div className={cx('wrapper')}>
       <div className={cx('title-box')}>
         <p>
-          <span className={cx('name')}>이짱구</span>님 환영해요!
+          <span className={cx('name')}>{statistics?.nickname}</span>님 환영해요!
         </p>
         <p>오늘도 나만의 술로그를 남겨보아요</p>
       </div>
       <div className={cx('chart-container')}>
         <p style={mapoFlowerIsland.style}>나의 술로그</p>
         <DoughnutChart />
-        <p>술짱조아 님은 10개의 술로그를 남겨주었어요</p>
+        <p>{statistics?.nickname}님은 10개의 술로그를 남겨주었어요</p>
       </div>
       <div className={cx('button-container')}>
-        {/*TODO: 문의하기 기능에 대한 논의 필요*/}
         <Button>문의하기</Button>
         <Button type="outline" onClick={logout}>
           로그아웃
