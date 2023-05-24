@@ -20,7 +20,6 @@ import styles from './index.module.scss';
 const cx = classNames.bind(styles);
 
 const Login = () => {
-  const [isSettingToken, setIsSettingToken] = useState<boolean>(false);
   const router = useRouter();
   const { code } = router.query as { code: string };
 
@@ -39,10 +38,6 @@ const Login = () => {
       24 * 60 * 60 * 1000 * 14
     );
   };
-
-  useEffect(() => {
-    if (code) setIsSettingToken(true);
-  }, [code]);
 
   useEffect(() => {
     if (code) {
@@ -70,7 +65,7 @@ const Login = () => {
 
   return (
     <PageLayout className={cx('main')}>
-      {isSettingToken && <div className={cx('setting-token')} />}
+      {code && <div className={cx('setting-token')} />}
       <div className={cx('title-wrapper')}>
         <h1 className={cx('main-title')} style={mapoFlowerIsland.style}>
           <span>술로그</span>
