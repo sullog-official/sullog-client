@@ -1,20 +1,20 @@
 import classNames from 'classnames/bind';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
 
 import DrawerContents from '@/features/home/components/DrawerContents';
 import Drawer from '@/shared/components/Drawer';
 import Icon from '@/shared/components/Icon';
-import { useModal } from '@/shared/hooks/useModal';
 
 import styles from './BottomNavigator.module.scss';
 
 const cx = classNames.bind(styles);
 
-const BottomNavigator = () => {
-  const router = useRouter();
+type BottomNavigatorProps = {
+  openDrawer?: () => void;
+};
 
-  const [isDrawerOpen, openDrawer, closeDrawer] = useModal();
+const BottomNavigator = ({ openDrawer }: BottomNavigatorProps) => {
+  const router = useRouter();
 
   const navigateToWrite = () => {
     router.push('/alcohols/search');
@@ -51,9 +51,6 @@ const BottomNavigator = () => {
           </button>
         </div>
       </nav>
-      <Drawer isOpen={isDrawerOpen} onClose={closeDrawer}>
-        <DrawerContents />
-      </Drawer>
     </>
   );
 };
