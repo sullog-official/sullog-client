@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import { kakaoLoginCallback } from '@/shared/apis/auth/kakaoLogin';
@@ -13,7 +13,7 @@ import {
   NEXT_PUBLIC_KAKAO_REDIRECT_URI,
   NEXT_PUBLIC_KAKAO_SCOPE,
 } from '@/shared/constants';
-import { getCookie, setCookie } from '@/shared/utils/cookie';
+import { setCookie } from '@/shared/utils/cookie';
 
 import styles from './index.module.scss';
 
