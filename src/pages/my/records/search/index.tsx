@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import RecentSearches from '@/features/search/components/RecentSearches';
 import SearchBar from '@/features/search/components/SearchBar';
+import { useMyRecentSearchKeywords } from '@/features/search/hooks/useMyRecentSearchKeywords';
 import { useSearchMyRecords } from '@/shared/apis/records/searchMyRecords';
 import BottomNavigator from '@/shared/components/BottomNavigator';
 import PageLayout from '@/shared/components/PageLayout';
@@ -11,29 +12,22 @@ import TopNavigator from '@/shared/components/TopNavigator';
 import styles from './index.module.scss';
 const cx = classNames.bind(styles);
 
-const sampleItems = Array.from({ length: 10 }).map((_, index) => ({
-  id: index + 1,
-  name: `Sample Item ${index + 1}`,
-}));
-
 const MyRecordSearch = () => {
   const [keyword, setKeyword] = useState('');
-  const { data } = useSearchMyRecords({
+
+  const { myRecentSearchKeywords, deleteKeyword, resetKeywords } =
+    useMyRecentSearchKeywords();
+
+  const { data: searchMyRecordsInfiniteData } = useSearchMyRecords({
     variables: { keyword },
     enabled: !!keyword,
   });
-  const myRecords = data?.pages.flatMap((page) => page.recordMetaList);
+  const myRecords = searchMyRecordsInfiniteData?.pages.flatMap(
+    (page) => page.recordMetaList
+  );
 
-  const onDeleteItem = () => {
-    // Do something
-  };
-
-  const onClickItem = () => {
-    // Do something
-  };
-
-  const onDeleteAll = () => {
-    // Do something
+  const onClickKeyword = (item: string) => {
+    setKeyword(item);
   };
 
   return (
@@ -49,10 +43,10 @@ const MyRecordSearch = () => {
         </div>
       </TopNavigator>
       <RecentSearches
-        items={sampleItems}
-        onDeleteItem={onDeleteItem}
-        onClickItem={onClickItem}
-        onDeleteAll={onDeleteAll}
+        items={myRecentSearchKeywords}
+        onDeleteItem={deleteKeyword}
+        onClickItem={onClickKeyword}
+        onReset={resetKeywords}
       />
       {/* TODO: 기록 검색 후 UI 추가 */}
       <BottomNavigator />
