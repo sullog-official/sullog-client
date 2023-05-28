@@ -1,8 +1,9 @@
 import classNames from 'classnames/bind';
-import { ChangeEvent } from 'react';
+import { useState } from 'react';
 
 import RecentSearches from '@/features/search/components/RecentSearches';
 import SearchBar from '@/features/search/components/SearchBar';
+import { useSearchMyRecords } from '@/shared/apis/records/searchMyRecords';
 import BottomNavigator from '@/shared/components/BottomNavigator';
 import PageLayout from '@/shared/components/PageLayout';
 import TopNavigator from '@/shared/components/TopNavigator';
@@ -16,6 +17,13 @@ const sampleItems = Array.from({ length: 10 }).map((_, index) => ({
 }));
 
 const MyRecordSearch = () => {
+  const [keyword, setKeyword] = useState('');
+  const { data } = useSearchMyRecords({
+    variables: { keyword },
+    enabled: !!keyword,
+  });
+  const myRecords = data?.pages.flatMap((page) => page.recordMetaList);
+
   const onDeleteItem = () => {
     // Do something
   };
@@ -34,10 +42,9 @@ const MyRecordSearch = () => {
         <div className={cx('search-bar-wrapper')}>
           <SearchBar
             placeholder={'Search'}
-            value={''}
-            onChange={function (value: string): void {
-              throw new Error('Function not implemented.');
-            }}
+            value={keyword}
+            onChange={setKeyword}
+            useDebounce
           />
         </div>
       </TopNavigator>
@@ -47,6 +54,7 @@ const MyRecordSearch = () => {
         onClickItem={onClickItem}
         onDeleteAll={onDeleteAll}
       />
+      {/* TODO: 기록 검색 후 UI 추가 */}
       <BottomNavigator />
     </PageLayout>
   );

@@ -1,3 +1,5 @@
+import { Alcohol } from '../alcohol';
+
 import { AlcoholPercentFeeling } from './alcoholPercentFeeling';
 import { FlavorTag } from './flavorTag';
 
@@ -15,3 +17,17 @@ export type Record = {
   description: string;
   experienceDate: string;
 };
+
+export type RecordMeta = Pick<Record, 'recordId' | 'description'> &
+  Pick<
+    Alcohol,
+    | 'alcoholId'
+    | 'alcoholName'
+    | 'productionLocation'
+    | 'productionLatitude'
+    | 'productionLongitude'
+    | 'alcoholTag'
+    | 'brandName'
+  > & {
+    mainPhotoPath: string;
+  };
