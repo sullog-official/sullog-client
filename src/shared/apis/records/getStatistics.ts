@@ -12,5 +12,5 @@ const getStatistics = () => {
 
 export const useGetStatistics = createQuery({
   primaryKey: '/statistics',
-  queryFn: () => getStatistics(),
+  queryFn: getStatistics,
 });
