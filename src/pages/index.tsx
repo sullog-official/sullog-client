@@ -4,15 +4,12 @@ import { GetServerSideProps } from 'next';
 import { useState } from 'react';
 
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
-import DrawerContents from '@/features/home/components/DrawerContents';
 import Map from '@/features/home/components/Map';
 import SearchBar from '@/features/search/components/SearchBar';
 import { useGetMyRecord } from '@/shared/apis/records/getMyRecord';
 import { useGetStatistics } from '@/shared/apis/records/getStatistics';
 import BottomNavigator from '@/shared/components/BottomNavigator';
-import Drawer from '@/shared/components/Drawer';
 import PageLayout from '@/shared/components/PageLayout';
-import { useModal } from '@/shared/hooks/useModal';
 
 import styles from './index.module.scss';
 
@@ -24,8 +21,6 @@ export default function Home() {
 
   const [searchValue, setSearchValue] = useState('');
   const [selectedFilter, setSelectedFilter] = useState<string[]>([]);
-
-  const [isDrawerOpen, openDrawer, closeDrawer] = useModal();
 
   const filteredRecords = records.filter((record) =>
     selectedFilter.includes(record.alcoholTag)
@@ -56,10 +51,7 @@ export default function Home() {
         />
       </div>
       <Map records={selectedFilter.length > 0 ? filteredRecords : records} />
-      <BottomNavigator openDrawer={openDrawer} />
-      <Drawer isOpen={isDrawerOpen} onClose={closeDrawer}>
-        <DrawerContents statistics={statistics} />
-      </Drawer>
+      <BottomNavigator statistics={statistics} />
     </PageLayout>
   );
 }
