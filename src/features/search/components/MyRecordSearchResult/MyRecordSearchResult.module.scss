@@ -1,0 +1,32 @@
+@use '@styles/themes';
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 33%;
+  color: themes.$grey300;
+  @include themes.typography('body14', 400);
+}
+
+.my-record-list {
+  padding: 0 36px;
+}
+
+.my-record-group {
+  + .my-record-group {
+    margin-top: 20px;
+  }
+
+  .location {
+    display: flex;
+    align-items: center;
+    padding: 16px 0 10px;
+    @include themes.typography('caption12', 400);
+
+    > svg {
+      margin-right: 6px;
+    }
+  }
+}

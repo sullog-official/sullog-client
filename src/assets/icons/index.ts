@@ -16,3 +16,4 @@ export { ReactComponent as Kakao } from './kakao.svg';
 export { ReactComponent as Naver } from './naver.svg';
 export { ReactComponent as Logo } from './logo.svg';
 export { ReactComponent as Filter } from './filter.svg';
+export { ReactComponent as LocationPin } from './location-pin.svg';
