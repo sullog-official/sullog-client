@@ -2,7 +2,5 @@ export type Statistics = {
   memberId: number;
   email: string;
   nickname: string;
-  recordStatisticsMap: {
-    [key: string]: number;
-  };
+  recordStatisticsMap: Record<string, number>;
 };
