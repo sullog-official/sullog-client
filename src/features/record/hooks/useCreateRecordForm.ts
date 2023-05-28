@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { useRouter } from 'next/router';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 
 import { useCreateRecord } from '@/shared/apis/records/createRecord';
@@ -20,6 +21,7 @@ type CreateRecordForm = {
 export const useCreateRecordForm = ({
   alcoholId,
 }: useCreateRecordFormProps) => {
+  const router = useRouter();
   const form = useForm<CreateRecordForm>({
     defaultValues: {
       photoList: [],
@@ -52,8 +54,8 @@ export const useCreateRecordForm = ({
         },
       },
       {
-        onSuccess: () => {
-          // TODO: 생성된 기록으로 이동
+        onSuccess: (data) => {
+          router.replace(`/records/${data.recordId}`);
         },
       }
     );
