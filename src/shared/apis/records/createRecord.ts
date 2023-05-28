@@ -19,7 +19,7 @@ type Variables = {
       | 'description'
     >;
 };
-type Response = string;
+type Response = Pick<Record, 'recordId'>;
 
 const createRecord = ({ photoList, recordInfo }: Variables) => {
   const formData = new FormData();
