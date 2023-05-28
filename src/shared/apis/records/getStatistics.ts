@@ -6,7 +6,7 @@ import { request } from '@/shared/utils/request';
 const getStatistics = () => {
   return request<Statistics>({
     method: 'get',
-    url: 'records/me/statistics',
+    url: '/records/me/statistics',
   });
 };
 
