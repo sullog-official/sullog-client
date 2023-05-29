@@ -1,9 +1,8 @@
 import classNames from 'classnames/bind';
 import { useRouter } from 'next/router';
 
-import DrawerContents from '@/features/home/components/DrawerContents';
-import Drawer from '@/shared/components/Drawer';
 import Icon from '@/shared/components/Icon';
+import StatisticsDrawer from '@/shared/components/StatisticsDrawer';
 import { useModal } from '@/shared/hooks/useModal';
 import { Statistics } from '@/shared/types/record/statistics';
 
@@ -54,9 +53,7 @@ const BottomNavigator = ({ statistics }: BottomNavigatorProps) => {
           </button>
         </div>
       </nav>
-      <Drawer isOpen={isDrawerOpen} onClose={closeDrawer}>
-        <DrawerContents statistics={statistics} />
-      </Drawer>
+      <StatisticsDrawer isDrawerOpen={isDrawerOpen} closeDrawer={closeDrawer} />
     </>
   );
 };

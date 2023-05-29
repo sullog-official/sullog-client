@@ -1,6 +1,4 @@
-import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
-import { GetServerSideProps } from 'next';
 import { useState } from 'react';
 
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
@@ -55,20 +53,3 @@ export default function Home() {
     </PageLayout>
   );
 }
-
-export const getServerSideProps: GetServerSideProps<{
-  dehydratedState: DehydratedState;
-}> = async () => {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery(
-    useGetStatistics.getKey(),
-    useGetStatistics.queryFn
-  );
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
-};
