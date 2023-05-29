@@ -13,7 +13,13 @@ type CardProps = {
 const Card = ({ alt, imageUrl }: CardProps) => {
   return (
     <figure className={cx('wrapper')}>
-      <Image src={imageUrl} alt={alt} fill style={{ objectFit: 'cover' }} />
+      <Image
+        src={imageUrl}
+        alt={alt}
+        fill
+        style={{ objectFit: 'cover' }}
+        unoptimized={true}
+      />
     </figure>
   );
 };
