@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import Map from '@/features/home/components/Map';
 import SearchBar from '@/features/search/components/SearchBar';
-import { useGetMyRecords } from '@/shared/apis/records/getMyRecords';
+import { useGetMyRecord } from '@/shared/apis/records/getMyRecord';
+import { useGetStatistics } from '@/shared/apis/records/getStatistics';
 import BottomNavigator from '@/shared/components/BottomNavigator';
 import PageLayout from '@/shared/components/PageLayout';
 
@@ -13,7 +14,9 @@ import styles from './index.module.scss';
 const cx = classNames.bind(styles);
 
 export default function Home() {
-  const { data: records = [] } = useGetMyRecords();
+  const { data: records = [] } = useGetMyRecord();
+  const { data: statistics } = useGetStatistics();
+
   const [searchValue, setSearchValue] = useState('');
   const [selectedFilter, setSelectedFilter] = useState<string[]>([]);
 
@@ -46,7 +49,7 @@ export default function Home() {
         />
       </div>
       <Map records={selectedFilter.length > 0 ? filteredRecords : records} />
-      <BottomNavigator />
+      <BottomNavigator statistics={statistics} />
     </PageLayout>
   );
 }

@@ -1,17 +1,20 @@
 import classNames from 'classnames/bind';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
 
-import DrawerContents from '@/features/home/components/DrawerContents';
-import Drawer from '@/shared/components/Drawer';
 import Icon from '@/shared/components/Icon';
+import StatisticsDrawer from '@/shared/components/StatisticsDrawer';
 import { useModal } from '@/shared/hooks/useModal';
+import { Statistics } from '@/shared/types/record/statistics';
 
 import styles from './BottomNavigator.module.scss';
 
 const cx = classNames.bind(styles);
 
-const BottomNavigator = () => {
+type BottomNavigatorProps = {
+  statistics?: Statistics;
+};
+
+const BottomNavigator = ({ statistics }: BottomNavigatorProps) => {
   const router = useRouter();
 
   const [isDrawerOpen, openDrawer, closeDrawer] = useModal();
@@ -35,7 +38,6 @@ const BottomNavigator = () => {
           <Icon name="Write" size={14} />
           <p>글쓰기</p>
         </button>
-        {/* TODO: button active 시 아이콘 변경 */}
         <div className={cx('container')}>
           <button
             onClick={navigateToFeed}
@@ -51,9 +53,7 @@ const BottomNavigator = () => {
           </button>
         </div>
       </nav>
-      <Drawer isOpen={isDrawerOpen} onClose={closeDrawer}>
-        <DrawerContents />
-      </Drawer>
+      <StatisticsDrawer isDrawerOpen={isDrawerOpen} closeDrawer={closeDrawer} />
     </>
   );
 };

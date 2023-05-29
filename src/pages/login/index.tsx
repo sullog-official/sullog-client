@@ -13,7 +13,7 @@ import {
   NEXT_PUBLIC_KAKAO_REDIRECT_URI,
   NEXT_PUBLIC_KAKAO_SCOPE,
 } from '@/shared/constants';
-import { getCookie, setCookie } from '@/shared/utils/cookie';
+import { setCookie } from '@/shared/utils/cookie';
 
 import styles from './index.module.scss';
 
@@ -25,6 +25,8 @@ const Login = () => {
 
   const onClickKakaoLoginBtn = () =>
     (location.href = `${NEXT_PUBLIC_KAKAO_BASE_URI}&client_id=${NEXT_PUBLIC_KAKAO_CLIENT_ID}&scope=${NEXT_PUBLIC_KAKAO_SCOPE}&redirect_uri=${NEXT_PUBLIC_KAKAO_REDIRECT_URI}`);
+
+  const onClickNaverLoginBtn = () => alert('준비중입니다!');
 
   const setToken = async (code: string) => {
     const response = await kakaoLoginCallback(code);
@@ -63,6 +65,7 @@ const Login = () => {
 
   return (
     <PageLayout className={cx('main')}>
+      {code && <div className={cx('setting-token')} />}
       <div className={cx('title-wrapper')}>
         <h1 className={cx('main-title')} style={mapoFlowerIsland.style}>
           <span>술로그</span>
@@ -83,6 +86,7 @@ const Login = () => {
           type="button"
           aria-label="네이버 로그인"
           className={cx('login-button', 'login-button--naver')}
+          onClick={onClickNaverLoginBtn}
         >
           <Icon name="Naver" size={24} />
           <span>네이버 로그인</span>
