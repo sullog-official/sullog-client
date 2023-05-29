@@ -46,8 +46,9 @@ const FeedPage = () => {
         ))}
         {isFetching && (
           <>
-            <Skeleton width="100%" height="100%" padding="50%" />
-            <Skeleton width="100%" height="100%" padding="50%" />
+            {Array.from({ length: 2 }).map((_, index) => (
+              <Skeleton width="100%" height="100%" padding="50%" key={index} />
+            ))}
           </>
         )}
         <div ref={ref} />
