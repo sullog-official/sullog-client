@@ -1,8 +1,10 @@
 import classNames from 'classnames/bind';
-import { ChangeEvent } from 'react';
+import { useEffect, useState } from 'react';
 
+import MyRecordSearchResult from '@/features/search/components/MyRecordSearchResult';
 import RecentSearches from '@/features/search/components/RecentSearches';
 import SearchBar from '@/features/search/components/SearchBar';
+import { useMyRecentSearchKeywords } from '@/features/search/hooks/useMyRecentSearchKeywords';
 import BottomNavigator from '@/shared/components/BottomNavigator';
 import PageLayout from '@/shared/components/PageLayout';
 import TopNavigator from '@/shared/components/TopNavigator';
@@ -10,22 +12,22 @@ import TopNavigator from '@/shared/components/TopNavigator';
 import styles from './index.module.scss';
 const cx = classNames.bind(styles);
 
-const sampleItems = Array.from({ length: 10 }).map((_, index) => ({
-  id: index + 1,
-  name: `Sample Item ${index + 1}`,
-}));
-
+// TODO: 페이지 -> 플로팅 레이아웃으로 변경
 const MyRecordSearch = () => {
-  const onDeleteItem = () => {
-    // Do something
-  };
+  const { myRecentSearchKeywords, deleteKeyword, resetKeywords } =
+    useMyRecentSearchKeywords();
 
-  const onClickItem = () => {
-    // Do something
-  };
+  const [isSearched, setIsSearched] = useState(false);
+  const [keyword, setKeyword] = useState('');
 
-  const onDeleteAll = () => {
-    // Do something
+  useEffect(() => {
+    if (!isSearched && !!keyword) {
+      setIsSearched(true);
+    }
+  }, [isSearched, keyword]);
+
+  const onClickKeyword = (item: string) => {
+    setKeyword(item);
   };
 
   return (
@@ -34,19 +36,22 @@ const MyRecordSearch = () => {
         <div className={cx('search-bar-wrapper')}>
           <SearchBar
             placeholder={'Search'}
-            value={''}
-            onChange={function (value: string): void {
-              throw new Error('Function not implemented.');
-            }}
+            value={keyword}
+            onChange={setKeyword}
+            useDebounce
           />
         </div>
       </TopNavigator>
-      <RecentSearches
-        items={sampleItems}
-        onDeleteItem={onDeleteItem}
-        onClickItem={onClickItem}
-        onDeleteAll={onDeleteAll}
-      />
+      {isSearched ? (
+        <MyRecordSearchResult keyword={keyword} />
+      ) : (
+        <RecentSearches
+          items={myRecentSearchKeywords}
+          onDeleteItem={deleteKeyword}
+          onClickItem={onClickKeyword}
+          onReset={resetKeywords}
+        />
+      )}
       <BottomNavigator />
     </PageLayout>
   );
