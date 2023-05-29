@@ -7,11 +7,15 @@ export default {
   component: RecentSearches,
   args: {
     items: [
-      { id: 1, name: '항목1' },
-      { id: 2, name: '항목2' },
-      { id: 3, name: '항목3' },
-      { id: 4, name: '항목4' },
-      { id: 5, name: '항목5' },
+      '술',
+      '맥주',
+      '소주',
+      '막걸리',
+      '와인',
+      '맥주',
+      '소주',
+      '막걸리',
+      '와인',
     ],
   },
 } as Meta<typeof RecentSearches>;
@@ -23,12 +27,18 @@ export const Default: StoryFn<typeof RecentSearches> = (args) => {
     setItems([]);
   };
 
-  const onDeleteItem = (id: number) => {
-    setItems((prev) => prev.filter((item) => item.id !== id));
+  const onDeleteItem = (item: string) => {
+    setItems((prev) => prev?.filter((item) => item !== item));
   };
 
-  const onClickItem = (id: number) => {
-    console.log(items[id]);
+  const onClickItem = (item: string) => {
+    if (items) {
+      console.log(item);
+    }
+  };
+
+  const onReset = () => {
+    console.log('reset');
   };
 
   return (
@@ -36,7 +46,9 @@ export const Default: StoryFn<typeof RecentSearches> = (args) => {
       items={items}
       onDeleteItem={onDeleteItem}
       onClickItem={onClickItem}
+      // @ts-ignore
       onDeleteAll={onDeleteAll}
+      onReset={onReset}
     />
   );
 };
@@ -48,12 +60,18 @@ export const Scroll: StoryFn<typeof RecentSearches> = (args) => {
     setItems([]);
   };
 
-  const onDeleteItem = (id: number) => {
-    setItems((prev) => prev.filter((item) => item.id !== id));
+  const onDeleteItem = (item: string) => {
+    setItems((prev) => prev?.filter((item) => item !== item));
   };
 
-  const onClickItem = (id: number) => {
-    console.log(items[id]);
+  const onClickItem = (item: string) => {
+    if (items) {
+      console.log(item);
+    }
+  };
+
+  const onReset = () => {
+    console.log('reset');
   };
 
   return (
@@ -62,7 +80,9 @@ export const Scroll: StoryFn<typeof RecentSearches> = (args) => {
         items={items}
         onDeleteItem={onDeleteItem}
         onClickItem={onClickItem}
+        // @ts-ignore
         onDeleteAll={onDeleteAll}
+        onReset={onReset}
       />
     </div>
   );
