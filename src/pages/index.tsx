@@ -1,12 +1,14 @@
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import Map from '@/features/home/components/Map';
+import AlcoholCategoryFilter from '@/features/search/components/AlcoholCategoryFilter';
 import SearchBar from '@/features/search/components/SearchBar';
 import { useGetMyRecords } from '@/shared/apis/records/getMyRecords';
 import { useGetStatistics } from '@/shared/apis/records/getStatistics';
 import BottomNavigator from '@/shared/components/BottomNavigator';
+import Icon from '@/shared/components/Icon';
 import PageLayout from '@/shared/components/PageLayout';
 
 import styles from './index.module.scss';
@@ -18,19 +20,21 @@ export default function Home() {
   const { data: statistics } = useGetStatistics();
 
   const [searchValue, setSearchValue] = useState('');
+  const [showFilter, setShowFilter] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState<string[]>([]);
 
-  const filteredRecords = records.filter((record) =>
-    selectedFilter.includes(record.alcoholTag)
+  const filteredRecords = useMemo(
+    () =>
+      !selectedFilter.length
+        ? records
+        : records.filter((record) =>
+            selectedFilter.includes(record.alcoholTag)
+          ),
+    [records, selectedFilter]
   );
 
-  const handleFilterClick = (filter: string) => {
-    if (selectedFilter.includes(filter)) {
-      return setSelectedFilter(
-        selectedFilter.filter((item) => item !== filter)
-      );
-    }
-    setSelectedFilter([...selectedFilter, filter]);
+  const toggleFilter = () => {
+    setShowFilter(!showFilter);
   };
 
   return (
@@ -43,12 +47,29 @@ export default function Home() {
           placeholder="Search"
           value={searchValue}
           onChange={setSearchValue}
-          filterItems={['소주', '과실주', '막걸리', '기타', '전체']}
-          selectedFilter={selectedFilter}
-          onFilterClick={handleFilterClick}
+          extras={
+            <button
+              className={cx('filter-button')}
+              type="button"
+              onClick={toggleFilter}
+              aria-label="필터"
+            >
+              <Icon
+                name="Filter"
+                size={9}
+                color={showFilter ? 'purple' : 'grey300'}
+              />
+            </button>
+          }
         />
+        {showFilter && (
+          <AlcoholCategoryFilter
+            selectedCategories={selectedFilter}
+            onChange={setSelectedFilter}
+          />
+        )}
       </div>
-      <Map records={selectedFilter.length > 0 ? filteredRecords : records} />
+      <Map records={filteredRecords} />
       <BottomNavigator statistics={statistics} />
     </PageLayout>
   );
