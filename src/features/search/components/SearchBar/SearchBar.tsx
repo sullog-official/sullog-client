@@ -1,7 +1,6 @@
 import classNames from 'classnames/bind';
 import { debounce } from 'lodash-es';
 import {
-  ChangeEventHandler,
   KeyboardEventHandler,
   useCallback,
   useEffect,
@@ -11,7 +10,6 @@ import {
 
 import Icon from '@/shared/components/Icon';
 
-import ChipContainer from './ChipContainer';
 import styles from './SearchBar.module.scss';
 
 const cx = classNames.bind(styles);
@@ -21,9 +19,7 @@ type SearchBarProps = {
   value: string;
   onChange: (value: string) => void;
   onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
-  filterItems?: string[];
-  selectedFilter?: string[];
-  onFilterClick?: (filter: string) => void;
+  extras?: React.ReactNode;
   useDebounce?: boolean;
 };
 
@@ -33,18 +29,13 @@ const SearchBar = ({
   onChange,
   useDebounce = false,
   onKeyDown,
-  filterItems,
-  selectedFilter,
-  onFilterClick,
+  extras,
 }: SearchBarProps) => {
   const [value, setValue] = useState(outerValue);
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   useEffect(() => {
     setValue(outerValue);
   }, [outerValue]);
-
-  const handleFilterClick = () => setIsFilterOpen(!isFilterOpen);
 
   const debouncedChange = useMemo(
     () => onChange && debounce(onChange, 300),
@@ -59,8 +50,6 @@ const SearchBar = ({
     [debouncedChange, onChange, useDebounce]
   );
 
-  const filterIconColor = isFilterOpen ? 'purple' : 'grey300';
-
   return (
     <>
       <div className={cx('wrapper')}>
@@ -74,23 +63,8 @@ const SearchBar = ({
             onKeyDown={onKeyDown}
           />
         </div>
-        {filterItems && (
-          <button
-            type="button"
-            className={cx('filter-btn')}
-            onClick={handleFilterClick}
-          >
-            <Icon name="Filter" size={9} color={filterIconColor} />
-          </button>
-        )}
+        {extras && extras}
       </div>
-      {filterItems && isFilterOpen && (
-        <ChipContainer
-          items={filterItems}
-          selectedItems={selectedFilter}
-          onClick={onFilterClick}
-        />
-      )}
     </>
   );
 };

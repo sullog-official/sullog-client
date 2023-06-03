@@ -1,3 +1,4 @@
+@use '@styles/mixins.module';
 @use '@styles/themes';
 
 .logo {
@@ -20,4 +21,17 @@
   width: 100%;
   max-width: themes.$layoutMaxWidth;
   padding: 20px 22px;
+}
+
+.filter-button {
+  height: 40px;
+  margin: -12px -12px 0 0;
+  padding: 0 12px 0 6px;
+}
+
+.category-filter-wrap {
+  width: calc(100% + 44px);
+  overflow: auto;
+
+  @include mixins.hideScrollBar;
 }
