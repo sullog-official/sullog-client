@@ -2,8 +2,9 @@
 
 .alcohol-category-filter {
   display: flex;
-  width: 100%;
-  padding: 12px;
+  width: fit-content;
+  min-width: 100%;
+  padding: 12px 31px;
 }
 
 .category-chip {

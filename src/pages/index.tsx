@@ -63,10 +63,12 @@ export default function Home() {
           }
         />
         {showFilter && (
-          <AlcoholCategoryFilter
-            selectedCategories={selectedFilter}
-            onChange={setSelectedFilter}
-          />
+          <div className={cx('category-filter-wrap')}>
+            <AlcoholCategoryFilter
+              selectedCategories={selectedFilter}
+              onChange={setSelectedFilter}
+            />
+          </div>
         )}
       </div>
       <Map records={filteredRecords} />
