@@ -41,7 +41,7 @@ const AlcoholSearch = () => {
           <SearchBar
             placeholder={'마신 술 이름을 검색해주세요.'}
             value={searchValue}
-            onChange={setSearchValue}
+            onValueChange={setSearchValue}
             useDebounce
           />
         </div>

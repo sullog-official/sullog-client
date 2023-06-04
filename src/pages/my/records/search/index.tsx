@@ -37,7 +37,7 @@ const MyRecordSearch = () => {
           <SearchBar
             placeholder={'Search'}
             value={keyword}
-            onChange={setKeyword}
+            onValueChange={setKeyword}
             useDebounce
           />
         </div>

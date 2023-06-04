@@ -15,6 +15,5 @@ export const ExperienceSearchBar: StoryObj<typeof SearchBar> = {
 export const AlcoholSearchBar: StoryObj<typeof SearchBar> = {
   args: {
     placeholder: '마신 술 이름을 입력해주세요.',
-    filterItems: ['소주', '과실주', '막걸리', '기타', '전체'],
   },
 };

@@ -10,6 +10,7 @@ import { useGetStatistics } from '@/shared/apis/records/getStatistics';
 import BottomNavigator from '@/shared/components/BottomNavigator';
 import Icon from '@/shared/components/Icon';
 import PageLayout from '@/shared/components/PageLayout';
+import { useModal } from '@/shared/hooks/useModal';
 
 import styles from './index.module.scss';
 
@@ -19,7 +20,12 @@ export default function Home() {
   const { data: records = [] } = useGetMyRecords();
   const { data: statistics } = useGetStatistics();
 
-  const [searchValue, setSearchValue] = useState('');
+  const [
+    showMyRecordSearchModal,
+    openMyRecordSearchModal,
+    closeMyRecordSearchModal,
+  ] = useModal();
+
   const [showFilter, setShowFilter] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState<string[]>([]);
 
@@ -44,9 +50,9 @@ export default function Home() {
           나의 술로그
         </h1>
         <SearchBar
-          placeholder="Search"
-          value={searchValue}
-          onChange={setSearchValue}
+          readOnly
+          placeholder="술이름을 검색해보세요"
+          onClick={openMyRecordSearchModal}
           extras={
             <button
               className={cx('filter-button')}
