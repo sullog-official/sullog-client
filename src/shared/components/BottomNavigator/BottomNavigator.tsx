@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 
 import Icon from '@/shared/components/Icon';
@@ -7,6 +8,10 @@ import { useModal } from '@/shared/hooks/useModal';
 import { Statistics } from '@/shared/types/record/statistics';
 
 import styles from './BottomNavigator.module.scss';
+
+const AlcoholSearchModal = dynamic(
+  () => import('@/features/search/components/AlcoholSearchModal')
+);
 
 const cx = classNames.bind(styles);
 
@@ -18,10 +23,11 @@ const BottomNavigator = ({ statistics }: BottomNavigatorProps) => {
   const router = useRouter();
 
   const [isDrawerOpen, openDrawer, closeDrawer] = useModal();
-
-  const navigateToWrite = () => {
-    router.push('/alcohols/search');
-  };
+  const [
+    isAlcoholSearchModalOpen,
+    openAlcoholSearchModalOpen,
+    closeAlcoholSearchModalOpen,
+  ] = useModal();
 
   const navigateToFeed = () => {
     router.push('/feed');
@@ -31,7 +37,7 @@ const BottomNavigator = ({ statistics }: BottomNavigatorProps) => {
     <>
       <nav className={cx('wrapper')}>
         <button
-          onClick={navigateToWrite}
+          onClick={openAlcoholSearchModalOpen}
           type="button"
           className={cx('writeBtn')}
         >
@@ -54,6 +60,9 @@ const BottomNavigator = ({ statistics }: BottomNavigatorProps) => {
         </div>
       </nav>
       <StatisticsDrawer isDrawerOpen={isDrawerOpen} closeDrawer={closeDrawer} />
+      {isAlcoholSearchModalOpen && (
+        <AlcoholSearchModal onClose={closeAlcoholSearchModalOpen} />
+      )}
     </>
   );
 };

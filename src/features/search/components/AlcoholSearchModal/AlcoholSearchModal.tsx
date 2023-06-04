@@ -1,18 +1,23 @@
 import classNames from 'classnames/bind';
-import { debounce } from 'lodash-es';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ChangeEvent, useMemo, useState } from 'react';
+import { useState } from 'react';
 
-import SearchBar from '@/features/search/components/SearchBar';
 import { useSearchAlcohol } from '@/shared/apis/alcohols/searchAlcohol';
 import PageLayout from '@/shared/components/PageLayout';
 import TopNavigator from '@/shared/components/TopNavigator';
 
-import styles from './index.module.scss';
+import SearchBar from '../SearchBar';
+
+import styles from './AlcoholSearchModal.module.scss';
+
 const cx = classNames.bind(styles);
 
-const AlcoholSearch = () => {
+type AlcoholSearchModalProps = {
+  onClose: VoidFunction;
+};
+
+const AlcoholSearchModal = ({ onClose }: AlcoholSearchModalProps) => {
   const router = useRouter();
   const [searchValue, setSearchValue] = useState('');
   const { data, fetchNextPage, hasNextPage, isLoading } = useSearchAlcohol({
@@ -21,22 +26,13 @@ const AlcoholSearch = () => {
     keepPreviousData: true,
   });
 
-  console.log(searchValue);
-
   const onClickItem = (alcoholId: number) => {
     router.push(`/records/create?alcoholId=${alcoholId}`);
   };
 
   return (
-    <PageLayout className={cx('main')}>
-      <TopNavigator
-        title={'검색'}
-        extra={
-          <div className={cx('extra-btn')}>
-            <Link href="/records/create">다음</Link>
-          </div>
-        }
-      >
+    <PageLayout className={cx('alcohol-search-modal')}>
+      <TopNavigator title={'검색'} onBack={onClose}>
         <div className={cx('search-bar-wrapper')}>
           <SearchBar
             placeholder={'마신 술 이름을 검색해주세요.'}
@@ -77,4 +73,4 @@ const AlcoholSearch = () => {
   );
 };
 
-export default AlcoholSearch;
+export default AlcoholSearchModal;
