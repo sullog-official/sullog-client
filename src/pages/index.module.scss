@@ -5,22 +5,8 @@
   margin-bottom: 20px;
 }
 
-.header-text {
-  padding-bottom: 20px;
-  color: themes.$purple;
-  @include themes.typography('body16');
-}
-
-.header {
-  display: flex;
-  position: absolute;
-  z-index: themes.$floating;
-  top: 0;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: themes.$layoutMaxWidth;
-  padding: 20px 22px;
+.search-bar-wrapper {
+  padding: 8px 22px 0;
 }
 
 .filter-button {
@@ -30,7 +16,7 @@
 }
 
 .category-filter-wrap {
-  width: calc(100% + 44px);
+  width: 100%;
   overflow: auto;
 
   @include mixins.hideScrollBar;
