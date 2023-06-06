@@ -11,11 +11,15 @@ import styles from './DrawerContents.module.scss';
 const cx = classNames.bind(styles);
 
 type DrawerContentsProps = {
-  statistics?: Statistics;
+  statistics: Statistics;
 };
 
 const DrawerContents = ({ statistics }: DrawerContentsProps) => {
-  // TODO 글쓰기 기능 연결하고 실제 통계 데이터 출력
+  const recordsCount = Object.values(statistics?.recordStatisticsMap).reduce(
+    (acc, cur) => acc + cur,
+    0
+  );
+
   return (
     <div className={cx('wrapper')}>
       <div className={cx('title-box')}>
@@ -26,8 +30,10 @@ const DrawerContents = ({ statistics }: DrawerContentsProps) => {
       </div>
       <div className={cx('chart-container')}>
         <p style={mapoFlowerIsland.style}>나의 술로그</p>
-        <DoughnutChart />
-        <p>{statistics?.nickname}님은 10개의 술로그를 남겨주었어요</p>
+        <DoughnutChart statistics={statistics} />
+        <p>
+          {statistics?.nickname}님은 {recordsCount}개의 술로그를 남겨주었어요
+        </p>
       </div>
       <div className={cx('button-container')}>
         <Button>문의하기</Button>
