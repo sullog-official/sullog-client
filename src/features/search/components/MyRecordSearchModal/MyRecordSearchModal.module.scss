@@ -1,0 +1,12 @@
+@use '@styles/themes';
+@use '@styles/mixins.module';
+
+.my-record-search-modal {
+  padding-top: 118px;
+  background-color: themes.$white;
+  @include mixins.pageModalStyles;
+}
+
+.search-bar-wrapper {
+  padding: 8px 22px 0;
+}
