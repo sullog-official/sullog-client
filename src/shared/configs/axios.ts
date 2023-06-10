@@ -31,7 +31,7 @@ async function refreshAccessToken(refreshToken: string) {
   const response = await instance.get('/token/refresh', {
     validateStatus: null,
     headers: {
-      Authorization: refreshToken,
+      Authorization: `Bearer ${refreshToken}`,
     },
   });
 
