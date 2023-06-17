@@ -1,0 +1,20 @@
+@use '@styles/themes';
+
+.alcohol-category-filter {
+  display: flex;
+  width: fit-content;
+  min-width: 100%;
+  padding: 12px 31px;
+}
+
+.category-chip {
+  flex: 1;
+  width: 100%;
+  min-width: 50px;
+  height: 26px;
+  @include themes.typography('caption12');
+
+  + .category-chip {
+    margin-left: 12px;
+  }
+}

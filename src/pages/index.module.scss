@@ -1,23 +1,23 @@
+@use '@styles/mixins.module';
 @use '@styles/themes';
 
 .logo {
   margin-bottom: 20px;
 }
 
-.header-text {
-  padding-bottom: 20px;
-  color: themes.$purple;
-  @include themes.typography('body16');
+.search-bar-wrapper {
+  padding: 8px 22px 0;
 }
 
-.header {
-  display: flex;
-  position: absolute;
-  z-index: themes.$floating;
-  top: 0;
-  flex-direction: column;
-  align-items: center;
+.filter-button {
+  height: 40px;
+  margin: 0 -12px 0 0;
+  padding: 0 12px 0 6px;
+}
+
+.category-filter-wrap {
   width: 100%;
-  max-width: themes.$layoutMaxWidth;
-  padding: 20px 22px;
+  overflow: auto;
+
+  @include mixins.hideScrollBar;
 }

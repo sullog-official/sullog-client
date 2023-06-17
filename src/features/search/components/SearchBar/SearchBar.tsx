@@ -1,7 +1,6 @@
 import classNames from 'classnames/bind';
 import { debounce } from 'lodash-es';
 import {
-  ChangeEventHandler,
   KeyboardEventHandler,
   useCallback,
   useEffect,
@@ -11,86 +10,70 @@ import {
 
 import Icon from '@/shared/components/Icon';
 
-import ChipContainer from './ChipContainer';
 import styles from './SearchBar.module.scss';
 
 const cx = classNames.bind(styles);
 
 type SearchBarProps = {
   placeholder: string;
-  value: string;
-  onChange: (value: string) => void;
+  value?: string;
+  onValueChange?: (value: string) => void;
   onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
-  filterItems?: string[];
-  selectedFilter?: string[];
-  onFilterClick?: (filter: string) => void;
+  onClick?: VoidFunction;
+  readOnly?: boolean;
+  extras?: React.ReactNode;
   useDebounce?: boolean;
 };
 
 const SearchBar = ({
   placeholder,
-  value: outerValue,
-  onChange,
-  useDebounce = false,
+  value: outerValue = '',
+  onValueChange,
   onKeyDown,
-  filterItems,
-  selectedFilter,
-  onFilterClick,
+  onClick,
+  readOnly,
+  extras,
+  useDebounce = false,
 }: SearchBarProps) => {
   const [value, setValue] = useState(outerValue);
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   useEffect(() => {
     setValue(outerValue);
   }, [outerValue]);
 
-  const handleFilterClick = () => setIsFilterOpen(!isFilterOpen);
-
   const debouncedChange = useMemo(
-    () => onChange && debounce(onChange, 300),
-    [onChange]
+    () => onValueChange && debounce(onValueChange, 300),
+    [onValueChange]
   );
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setValue(e.target.value);
-      (useDebounce ? debouncedChange : onChange)?.(e.target.value);
+      (useDebounce ? debouncedChange : onValueChange)?.(e.target.value);
     },
-    [debouncedChange, onChange, useDebounce]
+    [debouncedChange, onValueChange, useDebounce]
   );
-
-  const filterIconColor = isFilterOpen ? 'purple' : 'grey300';
 
   return (
     <>
-      <div className={cx('wrapper')}>
-        <div className={cx('search-box')}>
-          <Icon name={'Search'} size={12} />
-          <input
-            className={cx('search-input')}
-            value={value}
-            placeholder={placeholder}
-            onChange={handleChange}
-            onKeyDown={onKeyDown}
-          />
-        </div>
-        {filterItems && (
-          <button
-            type="button"
-            className={cx('filter-btn')}
-            onClick={handleFilterClick}
-          >
-            <Icon name="Filter" size={9} color={filterIconColor} />
-          </button>
-        )}
-      </div>
-      {filterItems && isFilterOpen && (
-        <ChipContainer
-          items={filterItems}
-          selectedItems={selectedFilter}
-          onClick={onFilterClick}
+      <div
+        className={cx('wrapper')}
+        onClick={onClick}
+        {...(readOnly && {
+          role: 'button',
+        })}
+      >
+        <Icon name={'Search'} size={12} />
+        <input
+          className={cx('search-input')}
+          readOnly={readOnly}
+          value={value}
+          placeholder={placeholder}
+          onChange={handleChange}
+          onKeyDown={onKeyDown}
         />
-      )}
+        {extras && extras}
+      </div>
     </>
   );
 };

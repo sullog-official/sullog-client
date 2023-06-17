@@ -1,3 +1,5 @@
+@use '@styles/themes';
+
 @mixin resetTrackStyles {
   height: 100%;
   border: none;
@@ -27,4 +29,23 @@
   &:focus {
     @include resetTrackStyles;
   }
+}
+
+@mixin hideScrollBar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  /* Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin pageModalStyles {
+  position: absolute;
+  z-index: themes.$modal;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
