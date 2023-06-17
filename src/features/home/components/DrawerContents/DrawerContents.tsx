@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
-import DoughnutChart from '@/features/home/components/DoughnutChart';
+import DonutChart from '@/features/home/components/DonutChart';
 import logout from '@/shared/apis/auth/logout';
 import { Button } from '@/shared/components';
 import { Statistics } from '@/shared/types/record/statistics';
@@ -30,7 +30,7 @@ const DrawerContents = ({ statistics }: DrawerContentsProps) => {
       </div>
       <div className={cx('chart-container')}>
         <p style={mapoFlowerIsland.style}>나의 술로그</p>
-        <DoughnutChart statistics={statistics} />
+        <DonutChart />
         <p>
           {statistics?.nickname}님은 {recordsCount}개의 술로그를 남겨주었어요
         </p>
