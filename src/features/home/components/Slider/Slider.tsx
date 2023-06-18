@@ -39,7 +39,7 @@ const Slider = ({ items }: SliderProps) => {
               name={item.alcoholName}
               brand={item.brandName}
               description={item.description}
-              imgSrc=""
+              imgSrc={item.mainPhotoPath}
             />
           </SwiperSlide>
         );
