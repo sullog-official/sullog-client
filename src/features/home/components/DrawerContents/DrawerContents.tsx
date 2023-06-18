@@ -15,7 +15,7 @@ type DrawerContentsProps = {
 };
 
 const DrawerContents = ({ statistics }: DrawerContentsProps) => {
-  const recordsCount = Object.values(statistics?.recordStatisticsMap).reduce(
+  const recordsCount = Object?.values(statistics?.recordStatisticsMap).reduce(
     (acc, cur) => acc + cur,
     0
   );
@@ -30,7 +30,20 @@ const DrawerContents = ({ statistics }: DrawerContentsProps) => {
       </div>
       <div className={cx('chart-container')}>
         <p style={mapoFlowerIsland.style}>나의 술로그</p>
-        <DonutChart />
+        {/*<div className={cx('chart-box')}>*/}
+        <DonutChart
+          width={200}
+          height={200}
+          items={[
+            { value: 100, color: 'red' },
+            { value: 200, color: 'green' },
+            { value: 300, color: 'blue' },
+            { value: 150, color: 'purple' },
+          ]}
+          innerRadius={'50%'}
+          outerRadius={'25%'}
+        />
+        {/*</div>*/}
         <p>
           {statistics?.nickname}님은 {recordsCount}개의 술로그를 남겨주었어요
         </p>
