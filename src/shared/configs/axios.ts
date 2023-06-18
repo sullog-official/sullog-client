@@ -19,11 +19,6 @@ let isFetchingAccessToken = false;
 // 새 액세스 토큰을 기다리는 구독자 배열
 let subscribers: ((AccessToken: string) => Promise<void>)[] = [];
 
-// 세션 스토리지에서 액세스 토큰을 가져 오는 함수
-function getAccessToken() {
-  return sessionStorage.getItem(TokenKeys.Access);
-}
-
 // 리프레시 토큰을 사용하여 새 액세스 토큰을 가져 오는 함수
 async function refreshAccessToken(refreshToken: string) {
   // 중복된 새로 고침 요청을 방지하기 위해 isFetchingAccessToken 플래그를 true로 설정
@@ -40,11 +35,7 @@ async function refreshAccessToken(refreshToken: string) {
   // 새로운 액세스 토큰을 세션 스토리지에 저장
   sessionStorage.setItem(TokenKeys.Access, response.headers['authorization']);
   // 리프레시 토큰 쿠키를 새 값으로 업데이트
-  setCookie(
-    TokenKeys.Refresh,
-    response.headers['refresh'],
-    24 * 60 * 60 * 1000 * 14
-  );
+  setCookie(TokenKeys.Refresh, response.headers['refresh'], 14);
 
   // isFetchingAccessToken 플래그를 false로 설정
   isFetchingAccessToken = false;
@@ -68,10 +59,10 @@ const instance = axios.create({
 
 // 각 요청마다 세션 스토리지에 있는 액세스 토큰 값을 Authorization 헤더에 설정하기 위한 인터셉터 추가
 instance.interceptors.request.use((config) => {
-  const AccessToken = getAccessToken();
+  const accessToken = sessionStorage.getItem(TokenKeys.Access);
 
-  if (AccessToken && AccessToken !== 'undefined') {
-    config.headers['authorization'] = `Bearer ${AccessToken}`;
+  if (accessToken && accessToken !== 'undefined') {
+    config.headers['authorization'] = `Bearer ${accessToken}`;
   }
 
   return config;
