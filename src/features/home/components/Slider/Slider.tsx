@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
 import AlcoholPreview from '@/features/alcohol/components/AlcoholPreview';
+import Chip from '@/shared/components/Chip';
 import Icon from '@/shared/components/Icon';
 import { Experience } from '@/shared/types/Experience';
 
@@ -18,13 +19,27 @@ const Slider = ({ items }: SliderProps) => {
   return (
     <Swiper className={cx('slider')} slidesPerView="auto" centeredSlides>
       {items.map((item) => {
+        /* FIXME: after merge 132 */
         return (
           <SwiperSlide className={cx('slide')} key={item.recordId}>
+            <div className={cx('slide-header')}>
+              <Icon name="LocationPin" size={10} aria-hidden />
+              <span className={cx('alcohol-location')}>
+                {item.productionLocation}
+              </span>
+              <Chip
+                className={cx('tag')}
+                label={item.alcoholTag || '기타'}
+                type="Primary"
+                appearance="round"
+                size="small"
+              />
+            </div>
             <AlcoholPreview
               name={item.alcoholName}
               brand={item.brandName}
               description={item.description}
-              imgSrc=""
+              imgSrc={item.mainPhotoPath}
             />
           </SwiperSlide>
         );
