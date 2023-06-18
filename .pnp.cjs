@@ -59,7 +59,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:18.0.10"],\
             ["axios", "npm:1.3.4"],\
             ["babel-loader", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:8.3.0"],\
-            ["chart.js", "npm:4.2.1"],\
+            ["chart.js", "npm:4.3.0"],\
             ["classnames", "npm:2.3.2"],\
             ["css-loader", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:6.7.3"],\
             ["dayjs", "npm:1.11.7"],\
@@ -12041,10 +12041,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["chart.js", [\
-        ["npm:4.2.1", {\
-          "packageLocation": "./.yarn/cache/chart.js-npm-4.2.1-97512b9a29-7319fdfd1e.zip/node_modules/chart.js/",\
+        ["npm:4.3.0", {\
+          "packageLocation": "./.yarn/cache/chart.js-npm-4.3.0-8c27842bcb-157ceaa381.zip/node_modules/chart.js/",\
           "packageDependencies": [\
-            ["chart.js", "npm:4.2.1"],\
+            ["chart.js", "npm:4.3.0"],\
             ["@kurkle/color", "npm:0.3.2"]\
           ],\
           "linkType": "HARD"\
@@ -21165,7 +21165,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-chartjs-2", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:5.2.0"],\
             ["@types/chart.js", "npm:2.9.37"],\
             ["@types/react", "npm:18.0.26"],\
-            ["chart.js", "npm:4.2.1"],\
+            ["chart.js", "npm:4.3.0"],\
             ["react", "npm:18.2.0"]\
           ],\
           "packagePeers": [\
@@ -23405,7 +23405,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:18.0.10"],\
             ["axios", "npm:1.3.4"],\
             ["babel-loader", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:8.3.0"],\
-            ["chart.js", "npm:4.2.1"],\
+            ["chart.js", "npm:4.3.0"],\
             ["classnames", "npm:2.3.2"],\
             ["css-loader", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:6.7.3"],\
             ["dayjs", "npm:1.11.7"],\
