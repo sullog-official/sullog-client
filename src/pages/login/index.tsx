@@ -15,15 +15,15 @@ const cx = classNames.bind(styles);
 const Login = () => {
   const router = useRouter();
 
-  const { loginWithKakao, loginWithNaver } = useAuth();
+  const { loginWithKakao, loginWithNaver, verifyLogin } = useAuth();
 
   useEffect(() => {
-    const accessToken = getAccessToken();
-    if (accessToken) {
-      router.push('/');
-      return;
-    }
-  }, [router]);
+    verifyLogin().then((isLoggedIn) => {
+      if (isLoggedIn) {
+        router.push('/');
+      }
+    });
+  }, [router, verifyLogin]);
 
   return (
     <PageLayout className={cx('main')}>
