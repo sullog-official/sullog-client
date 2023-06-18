@@ -16,7 +16,7 @@ type DrawerContentsProps = {
 
 const DrawerContents = ({ statistics }: DrawerContentsProps) => {
   const { logout } = useAuth();
-        
+
   const recordsCount = Object?.values(statistics?.recordStatisticsMap).reduce(
     (acc, cur) => acc + cur,
     0
@@ -24,6 +24,7 @@ const DrawerContents = ({ statistics }: DrawerContentsProps) => {
 
   const onClickContact = () => {
     window.location.href = 'mailto:gino9940@gmail.com';
+  };
 
   return (
     <div className={cx('wrapper')}>
