@@ -1,5 +1,5 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import _, { reverse } from 'lodash-es';
+import { sum } from 'lodash-es';
 import { Doughnut } from 'react-chartjs-2';
 
 import color from '@/assets/styles/themes/_color.module.scss';
@@ -25,7 +25,7 @@ const DoughnutChart = ({ statistics }: DoughnutChartProps) => {
     .sort(([, a]: any, [, b]: any) => b - a)
     .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
 
-  const totalCount = _.sum(Object.values(recordStatisticsMap));
+  const totalCount = sum(Object.values(recordStatisticsMap));
   const labels = Object.keys(recordStatisticsMap);
   const data = Object.values(recordStatisticsMap).map((value) => {
     if (typeof value === 'number') return value / totalCount;
@@ -45,11 +45,7 @@ const DoughnutChart = ({ statistics }: DoughnutChartProps) => {
       responsive: true,
       plugins: {
         legend: {
-          position: 'bottom',
-        },
-        title: {
-          display: true,
-          text: 'Chart.js Doughnut Chart',
+          position: 'top',
         },
       },
     },

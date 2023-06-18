@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
-import DonutChart from '@/features/home/components/DonutChart';
+import DoughnutChart from '@/features/home/components/DoughnutChart';
 import logout from '@/shared/apis/auth/logout';
 import { Button } from '@/shared/components';
 import { Statistics } from '@/shared/types/record/statistics';
@@ -30,20 +30,7 @@ const DrawerContents = ({ statistics }: DrawerContentsProps) => {
       </div>
       <div className={cx('chart-container')}>
         <p style={mapoFlowerIsland.style}>나의 술로그</p>
-        {/*<div className={cx('chart-box')}>*/}
-        <DonutChart
-          width={200}
-          height={200}
-          items={[
-            { value: 100, color: 'red' },
-            { value: 200, color: 'green' },
-            { value: 300, color: 'blue' },
-            { value: 150, color: 'purple' },
-          ]}
-          innerRadius={'50%'}
-          outerRadius={'25%'}
-        />
-        {/*</div>*/}
+        <DoughnutChart statistics={statistics} />
         <p>
           {statistics?.nickname}님은 {recordsCount}개의 술로그를 남겨주었어요
         </p>
