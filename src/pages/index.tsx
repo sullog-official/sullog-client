@@ -93,7 +93,7 @@ export default function Home() {
       {showMyRecordSearchModal && (
         <MyRecordSearchModal onClose={closeMyRecordSearchModal} />
       )}
-      <BottomNavigator statistics={statistics} />
+      <BottomNavigator />
     </PageLayout>
   );
 }
