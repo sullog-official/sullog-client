@@ -35,7 +35,6 @@ export default function Home() {
   const [showFilter, setShowFilter] = useState(true);
   const [selectedFilters, setSelectedFilters] = useState<string[]>(['전체']);
 
-  console.log(selectedFilters);
   const filteredRecords = useMemo(
     () =>
       selectedFilters.includes('전체')
