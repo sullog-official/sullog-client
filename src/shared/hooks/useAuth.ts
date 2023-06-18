@@ -6,8 +6,14 @@ import {
   NEXT_PUBLIC_KAKAO_REDIRECT_URI,
   NEXT_PUBLIC_KAKAO_SCOPE,
 } from '@/shared/constants';
-import { removeAccessToken, removeRefreshToken } from '@/shared/utils/auth';
+import {
+  getAccessToken,
+  removeAccessToken,
+  removeRefreshToken,
+} from '@/shared/utils/auth';
 import { generateUrl } from '@/shared/utils/generateUrl';
+
+import { refreshTokens } from '../apis/auth/refreshTokens';
 
 const useAuth = () => {
   const router = useRouter();
@@ -38,10 +44,20 @@ const useAuth = () => {
     router.push('/login');
   };
 
+  const verifyLoggedIn = async (): Promise<boolean> => {
+    const accessToken = getAccessToken();
+    if (accessToken) {
+      return true;
+    }
+
+    return await refreshTokens();
+  };
+
   return {
     loginWithKakao,
     loginWithNaver,
     logout,
+    verifyLoggedIn,
   };
 };
 
