@@ -37,12 +37,11 @@ export default function Home() {
 
   const filteredRecords = useMemo(
     () =>
-      selectedFilters.includes('전체')
+      selectedFilters.includes('전체') || !selectedFilters.length
         ? records
-        : !selectedFilters.length
-        ? records
-        : records.filter((record) =>
-            selectedFilters.includes(alcoholTag[record.alcoholTag])
+        : records.filter(
+            (record) => selectedFilters.includes(alcoholTag[record.alcoholTag]),
+            [records, selectedFilters]
           ),
     [records, selectedFilters]
   );
