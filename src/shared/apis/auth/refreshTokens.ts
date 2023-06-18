@@ -1,4 +1,6 @@
-import axios from '@/shared/configs/axios';
+import axios from 'axios';
+
+import { NEXT_PUBLIC_API_BASE_URI } from '@/shared/constants';
 import {
   getRefreshToken,
   getTokensFromResponse,
@@ -19,8 +21,9 @@ export const refreshTokens = async (): Promise<boolean> => {
     }
 
     const response = await axios({
-      method: 'get',
+      baseURL: NEXT_PUBLIC_API_BASE_URI,
       url: '/token/refresh',
+      method: 'get',
       headers: {
         Authorization: `Bearer ${refreshToken}`,
       },
