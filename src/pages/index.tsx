@@ -32,13 +32,14 @@ export default function Home() {
   ] = useModal();
 
   const [showFilter, setShowFilter] = useState(true);
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const [selectedFilters, setSelectedFilters] = useState<string[]>(['전체']);
 
   console.log(selectedFilters);
-
   const filteredRecords = useMemo(
     () =>
-      !selectedFilters.length
+      selectedFilters.includes('전체')
+        ? records
+        : !selectedFilters.length
         ? records
         : records.filter((record) =>
             selectedFilters.includes(record.alcoholTag)
