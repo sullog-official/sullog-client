@@ -3,17 +3,10 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
-import { kakaoLoginCallback } from '@/shared/apis/auth/kakaoLogin';
 import Icon from '@/shared/components/Icon';
 import PageLayout from '@/shared/components/PageLayout';
-import { TokenKeys } from '@/shared/configs/axios';
-import {
-  NEXT_PUBLIC_KAKAO_BASE_URI,
-  NEXT_PUBLIC_KAKAO_CLIENT_ID,
-  NEXT_PUBLIC_KAKAO_REDIRECT_URI,
-  NEXT_PUBLIC_KAKAO_SCOPE,
-} from '@/shared/constants';
-import { setCookie } from '@/shared/utils/cookie';
+import useAuth from '@/shared/hooks/useAuth';
+import { getAccessToken } from '@/shared/utils/auth';
 
 import styles from './index.module.scss';
 
@@ -21,47 +14,19 @@ const cx = classNames.bind(styles);
 
 const Login = () => {
   const router = useRouter();
-  const { code } = router.query as { code: string };
 
-  const onClickKakaoLoginBtn = () =>
-    (location.href = `${NEXT_PUBLIC_KAKAO_BASE_URI}&client_id=${NEXT_PUBLIC_KAKAO_CLIENT_ID}&scope=${NEXT_PUBLIC_KAKAO_SCOPE}&redirect_uri=${NEXT_PUBLIC_KAKAO_REDIRECT_URI}`);
-
-  const onClickNaverLoginBtn = () => alert('준비중입니다!');
-
-  const setToken = async (code: string) => {
-    const response = await kakaoLoginCallback(code);
-
-    sessionStorage.setItem(TokenKeys.Access, response.headers['authorization']);
-    setCookie(TokenKeys.Refresh, response.headers['refresh'], 14);
-  };
+  const { loginWithKakao, loginWithNaver } = useAuth();
 
   useEffect(() => {
-    if (code) {
-      setToken(code)
-        .then(() => {
-          router.push('/');
-        })
-        .catch((e) => {
-          console.error(e);
-        });
-    }
-  }, [code, router]);
-
-  useEffect(() => {
-    const accessToken = sessionStorage.getItem(TokenKeys.Access);
-
-    if (
-      accessToken !== undefined &&
-      accessToken !== 'undefined' &&
-      accessToken !== null
-    ) {
+    const accessToken = getAccessToken();
+    if (accessToken) {
       router.push('/');
+      return;
     }
   }, [router]);
 
   return (
     <PageLayout className={cx('main')}>
-      {code && <div className={cx('setting-token')} />}
       <div className={cx('title-wrapper')}>
         <h1 className={cx('main-title')} style={mapoFlowerIsland.style}>
           <span>술로그</span>
@@ -73,7 +38,7 @@ const Login = () => {
           type="button"
           aria-label="카카오 로그인"
           className={cx('login-button', 'login-button--kakao')}
-          onClick={onClickKakaoLoginBtn}
+          onClick={loginWithKakao}
         >
           <Icon name="Kakao" size={24} />
           <span>카카오톡 로그인</span>
@@ -82,7 +47,7 @@ const Login = () => {
           type="button"
           aria-label="네이버 로그인"
           className={cx('login-button', 'login-button--naver')}
-          onClick={onClickNaverLoginBtn}
+          onClick={loginWithNaver}
         >
           <Icon name="Naver" size={24} />
           <span>네이버 로그인</span>

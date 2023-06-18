@@ -2,8 +2,8 @@ import classNames from 'classnames/bind';
 
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import DoughnutChart from '@/features/home/components/DoughnutChart';
-import logout from '@/shared/apis/auth/logout';
 import { Button } from '@/shared/components';
+import useAuth from '@/shared/hooks/useAuth';
 import { Statistics } from '@/shared/types/record/statistics';
 
 import styles from './DrawerContents.module.scss';
@@ -15,6 +15,8 @@ type DrawerContentsProps = {
 };
 
 const DrawerContents = ({ statistics }: DrawerContentsProps) => {
+  const { logout } = useAuth();
+
   // TODO 글쓰기 기능 연결하고 실제 통계 데이터 출력
   return (
     <div className={cx('wrapper')}>
