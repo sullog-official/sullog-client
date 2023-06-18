@@ -17,6 +17,16 @@
   box-shadow: 0 0 10px rgb(0 0 0 / 10%);
 }
 
+.slide-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.alcohol-location {
+  @include themes.typography('body13');
+}
+
 .add-btn {
   display: flex;
   flex-direction: column;
