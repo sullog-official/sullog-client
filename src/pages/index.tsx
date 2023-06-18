@@ -33,7 +33,7 @@ export default function Home() {
   ] = useModal();
 
   const [showFilter, setShowFilter] = useState(true);
-  const [selectedFilters, setSelectedFilters] = useState<string[]>(['전체']);
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
 
   const filteredRecords = useMemo(
     () =>
@@ -90,7 +90,7 @@ export default function Home() {
           </div>
         )}
       </TopNavigator>
-      <Map records={filteredRecords} />
+      <Map records={filteredRecords} selectedFilters={selectedFilters} />
       {showMyRecordSearchModal && (
         <MyRecordSearchModal onClose={closeMyRecordSearchModal} />
       )}
