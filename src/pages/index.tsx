@@ -34,18 +34,25 @@ export default function Home() {
 
   const [showFilter, setShowFilter] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
-
-  const filteredRecords = useMemo(
-    () =>
-      selectedFilters.includes('전체') || !selectedFilters.length
-        ? records
-        : records.filter(
-            (record) =>
-              selectedFilters.includes(alcoholTagToKor[record.alcoholTag]),
-            [records, selectedFilters]
-          ),
-    [records, selectedFilters]
-  );
+  
+  const filteredRecords = useMemo(() => {
+    return selectedFilters.includes('전체') || !selectedFilters.length
+      ? records
+      : records.filter(
+          (record) => {
+            if (record.alcoholType === '소주/증류주') {
+              return selectedFilters.includes('소주');
+            } else if (record.alcoholType === '탁주') {
+              return selectedFilters.includes('막걸리');
+            } else if (record.alcoholType !== '과실주') {
+              return selectedFilters.includes('기타');
+            } else {
+              return selectedFilters.includes(record.alcoholType);
+            }
+          },
+          [records, selectedFilters]
+        );
+  }, [records, selectedFilters]);
 
   const toggleFilter = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
