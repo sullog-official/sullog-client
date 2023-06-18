@@ -31,17 +31,19 @@ export default function Home() {
     closeMyRecordSearchModal,
   ] = useModal();
 
-  const [showFilter, setShowFilter] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState<string[]>([]);
+  const [showFilter, setShowFilter] = useState(true);
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+
+  console.log(selectedFilters);
 
   const filteredRecords = useMemo(
     () =>
-      !selectedFilter.length
+      !selectedFilters.length
         ? records
         : records.filter((record) =>
-            selectedFilter.includes(record.alcoholTag)
+            selectedFilters.includes(record.alcoholTag)
           ),
-    [records, selectedFilter]
+    [records, selectedFilters]
   );
 
   const toggleFilter = (e: MouseEvent<HTMLButtonElement>) => {
@@ -81,8 +83,8 @@ export default function Home() {
         {showFilter && (
           <div className={cx('category-filter-wrap')}>
             <AlcoholCategoryFilter
-              selectedCategories={selectedFilter}
-              onChange={setSelectedFilter}
+              selectedCategories={selectedFilters}
+              onChange={setSelectedFilters}
             />
           </div>
         )}
