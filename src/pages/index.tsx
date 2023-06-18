@@ -12,6 +12,7 @@ import Icon from '@/shared/components/Icon';
 import PageLayout from '@/shared/components/PageLayout';
 import TopNavigator from '@/shared/components/TopNavigator';
 import { useModal } from '@/shared/hooks/useModal';
+import { alcoholTag } from '@/shared/types/alcohol';
 
 import styles from './index.module.scss';
 
@@ -42,7 +43,7 @@ export default function Home() {
         : !selectedFilters.length
         ? records
         : records.filter((record) =>
-            selectedFilters.includes(record.alcoholTag)
+            selectedFilters.includes(alcoholTag[record.alcoholTag])
           ),
     [records, selectedFilters]
   );
