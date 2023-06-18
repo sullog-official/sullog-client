@@ -44,7 +44,7 @@ const useAuth = () => {
     router.push('/login');
   };
 
-  const verifyLogin = async () => {
+  const verifyLoggedIn = async (): Promise<boolean> => {
     const accessToken = getAccessToken();
     if (accessToken) {
       return true;
@@ -57,7 +57,7 @@ const useAuth = () => {
     loginWithKakao,
     loginWithNaver,
     logout,
-    verifyLogin,
+    verifyLoggedIn,
   };
 };
 

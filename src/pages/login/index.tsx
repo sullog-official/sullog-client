@@ -6,7 +6,6 @@ import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import Icon from '@/shared/components/Icon';
 import PageLayout from '@/shared/components/PageLayout';
 import useAuth from '@/shared/hooks/useAuth';
-import { getAccessToken } from '@/shared/utils/auth';
 
 import styles from './index.module.scss';
 
@@ -15,15 +14,15 @@ const cx = classNames.bind(styles);
 const Login = () => {
   const router = useRouter();
 
-  const { loginWithKakao, loginWithNaver, verifyLogin } = useAuth();
+  const { loginWithKakao, loginWithNaver, verifyLoggedIn } = useAuth();
 
   useEffect(() => {
-    verifyLogin().then((isLoggedIn) => {
+    verifyLoggedIn().then((isLoggedIn) => {
       if (isLoggedIn) {
         router.push('/');
       }
     });
-  }, [router, verifyLogin]);
+  }, [router, verifyLoggedIn]);
 
   return (
     <PageLayout className={cx('main')}>
