@@ -2,8 +2,8 @@ import classNames from 'classnames/bind';
 
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import DoughnutChart from '@/features/home/components/DoughnutChart';
-import logout from '@/shared/apis/auth/logout';
 import { Button } from '@/shared/components';
+import useAuth from '@/shared/hooks/useAuth';
 import { Statistics } from '@/shared/types/record/statistics';
 
 import styles from './DrawerContents.module.scss';
@@ -15,6 +15,8 @@ type DrawerContentsProps = {
 };
 
 const DrawerContents = ({ statistics }: DrawerContentsProps) => {
+  const { logout } = useAuth();
+        
   const recordsCount = Object?.values(statistics?.recordStatisticsMap).reduce(
     (acc, cur) => acc + cur,
     0
@@ -22,7 +24,6 @@ const DrawerContents = ({ statistics }: DrawerContentsProps) => {
 
   const onClickContact = () => {
     window.location.href = 'mailto:gino9940@gmail.com';
-  };
 
   return (
     <div className={cx('wrapper')}>
