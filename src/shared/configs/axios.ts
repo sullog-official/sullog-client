@@ -70,9 +70,6 @@ const instance = axios.create({
 // 각 요청마다 세션 스토리지에 있는 액세스 토큰 값을 Authorization 헤더에 설정하기 위한 인터셉터 추가
 instance.interceptors.request.use((config) => {
   const accessToken = getAccessToken();
-  const refreshToken = getRefreshToken();
-  console.log('interceptors accessToken', accessToken);
-  console.log('interceptors refreshToken', refreshToken);
   if (accessToken) {
     config.headers.authorization = `Bearer ${accessToken}`;
   }
