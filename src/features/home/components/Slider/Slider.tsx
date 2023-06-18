@@ -29,7 +29,7 @@ const Slider = ({ items }: SliderProps) => {
               </span>
               <Chip
                 className={cx('tag')}
-                label={item.alcoholTag || '기타'}
+                label={item.alcoholType}
                 type="Primary"
                 appearance="round"
                 size="small"
