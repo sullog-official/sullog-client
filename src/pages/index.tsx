@@ -12,7 +12,7 @@ import Icon from '@/shared/components/Icon';
 import PageLayout from '@/shared/components/PageLayout';
 import TopNavigator from '@/shared/components/TopNavigator';
 import { useModal } from '@/shared/hooks/useModal';
-import { alcoholTag } from '@/shared/types/alcohol';
+import { alcoholTagToKor } from '@/shared/types/alcohol';
 
 import styles from './index.module.scss';
 
@@ -40,7 +40,8 @@ export default function Home() {
       selectedFilters.includes('전체') || !selectedFilters.length
         ? records
         : records.filter(
-            (record) => selectedFilters.includes(alcoholTag[record.alcoholTag]),
+            (record) =>
+              selectedFilters.includes(alcoholTagToKor[record.alcoholTag]),
             [records, selectedFilters]
           ),
     [records, selectedFilters]

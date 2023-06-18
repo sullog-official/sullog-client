@@ -6,21 +6,25 @@ export type Alcohol = {
   productionLocation: string;
   productionLatitude: number;
   productionLongitude: number;
-  alcoholTag: keyof typeof alcoholTag;
+  alcoholTag: keyof typeof alcoholTagToKor;
   alcoholType: string;
 };
 
-export const alcoholTag = {
+export const alcoholTagToKor = {
   SOJU: '소주',
   FRUIT_WINE: '과실주',
   MAKGEOLLI: '막걸리',
   ETC: '기타',
 };
 
+export const alcoholTagToEng = Object.fromEntries(
+  Object.entries(alcoholTagToKor).map(([key, value]) => [value, key])
+);
+
 export enum AlcoholTag {
-  'Soju' = '소주',
-  'FruitWine' = '과실주',
-  'Makgeolli' = '막걸리',
-  'Etc' = '기타',
-  'All' = '전체',
+  '소주' = 'Soju',
+  '과실주' = 'FruitWine',
+  '막걸리' = 'Makgeolli',
+  '기타' = 'Etc',
+  '전체' = 'All',
 }
