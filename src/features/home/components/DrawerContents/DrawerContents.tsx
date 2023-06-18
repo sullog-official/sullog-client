@@ -20,6 +20,10 @@ const DrawerContents = ({ statistics }: DrawerContentsProps) => {
     0
   );
 
+  const onClickContact = () => {
+    window.location.href = 'mailto:gino9940@gmail.com';
+  };
+
   return (
     <div className={cx('wrapper')}>
       <div className={cx('title-box')}>
@@ -36,7 +40,7 @@ const DrawerContents = ({ statistics }: DrawerContentsProps) => {
         </p>
       </div>
       <div className={cx('button-container')}>
-        <Button>문의하기</Button>
+        <Button onClick={onClickContact}>문의하기</Button>
         <Button type="outline" onClick={logout}>
           로그아웃
         </Button>
