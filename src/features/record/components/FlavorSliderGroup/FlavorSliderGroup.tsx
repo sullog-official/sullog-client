@@ -20,6 +20,8 @@ type FlavorSliderGroupProps = {
   onChange?: (value: Flavor) => void;
 };
 
+const DEFAULT_FLAVOR_SCORE = 3;
+
 const FlavorSliderGroup = forwardRef(
   (
     {
@@ -47,7 +49,7 @@ const FlavorSliderGroup = forwardRef(
           <label htmlFor="scentScore">향</label>
           <Slider
             name="scentScore"
-            value={value.scentScore}
+            value={value.scentScore ?? DEFAULT_FLAVOR_SCORE}
             onChange={handleSliderChange('scentScore')}
             min={1}
             max={5}
@@ -58,7 +60,7 @@ const FlavorSliderGroup = forwardRef(
           <label htmlFor="tasteScore">맛</label>
           <Slider
             name="tasteScore"
-            value={value.tasteScore}
+            value={value.tasteScore ?? DEFAULT_FLAVOR_SCORE}
             onChange={handleSliderChange('tasteScore')}
             min={1}
             max={5}
@@ -69,7 +71,7 @@ const FlavorSliderGroup = forwardRef(
           <label htmlFor="textureScore">감촉</label>
           <Slider
             name="textureScore"
-            value={value.textureScore}
+            value={value.textureScore ?? DEFAULT_FLAVOR_SCORE}
             onChange={handleSliderChange('textureScore')}
             min={1}
             max={5}

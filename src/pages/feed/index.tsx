@@ -2,6 +2,7 @@ import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import Card from '@/features/feed/components/Card';
 import { useGetFeed } from '@/shared/apis/feed/getFeed';
@@ -17,6 +18,7 @@ import styles from './index.module.scss';
 const cx = classNames.bind(styles);
 
 const FeedPage = () => {
+  const { pathname } = useRouter();
   const { data, fetchNextPage, hasNextPage, isFetching, isLoading } =
     useGetFeed({
       variables: {
@@ -53,7 +55,7 @@ const FeedPage = () => {
         )}
         <div ref={ref} />
       </div>
-      <BottomNavigator />
+      <BottomNavigator currentPage={pathname} />
     </PageLayout>
   );
 };

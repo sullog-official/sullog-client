@@ -11,6 +11,7 @@
   @include themes.typography('caption12', 500);
 
   &.Primary {
+    border: 1px solid themes.$purple;
     background-color: themes.$purple;
     color: themes.$white;
 

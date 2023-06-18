@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { GeoJSONSource } from 'mapbox-gl';
-import { useRef, useState, useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import ReactMapGL, { Layer, MapRef, Source, useMap } from 'react-map-gl';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -9,10 +9,10 @@ import { Experience } from '@/shared/types/Experience';
 import Slider from '../Slider';
 
 import {
-  clusterLayer,
-  unclusteredPointLayer,
   clusterCountBackgroundLayer,
   clusterCountLayer,
+  clusterLayer,
+  unclusteredPointLayer,
 } from './layers';
 import styles from './Map.module.scss';
 
@@ -25,6 +25,7 @@ const mapboxAccessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN?.replace(
 
 type MapProps = {
   records: Experience[];
+  selectedFilters: string[];
 };
 
 const MapImage = ({ id, src }: { id: string; src: string }) => {
@@ -42,7 +43,7 @@ const MapImage = ({ id, src }: { id: string; src: string }) => {
   return null;
 };
 
-const Map = ({ records }: MapProps) => {
+const Map = ({ records, selectedFilters }: MapProps) => {
   const mapRef = useRef<MapRef>(null);
   const [selectedItems, setSelectedItems] = useState<Experience[]>([]);
   const data = useMemo(
@@ -63,6 +64,10 @@ const Map = ({ records }: MapProps) => {
     [records]
   );
   const MAP_STYLE_URL = 'mapbox://styles/jinho1011/cl5faqrml00dv15qvknh8tres';
+
+  useEffect(() => {
+    setSelectedItems([]);
+  }, [selectedFilters]);
 
   const onClick = (event: any) => {
     if (!mapRef.current) {

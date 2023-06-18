@@ -16,6 +16,7 @@
   @include themes.typography('body13', 400);
 
   &.primary {
+    border: 1px solid themes.$purple;
     background-color: themes.$purple;
     color: themes.$white;
 
