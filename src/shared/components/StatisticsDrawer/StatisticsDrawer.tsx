@@ -15,7 +15,7 @@ const StatisticsDrawer = ({
 
   return (
     <Drawer isOpen={isDrawerOpen} onClose={closeDrawer}>
-      <DrawerContents statistics={statistics} />
+      {statistics && <DrawerContents statistics={statistics} />}
     </Drawer>
   );
 };

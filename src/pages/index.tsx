@@ -12,6 +12,7 @@ import Icon from '@/shared/components/Icon';
 import PageLayout from '@/shared/components/PageLayout';
 import TopNavigator from '@/shared/components/TopNavigator';
 import { useModal } from '@/shared/hooks/useModal';
+import { alcoholTag } from '@/shared/types/alcohol';
 
 import styles from './index.module.scss';
 
@@ -32,16 +33,17 @@ export default function Home() {
   ] = useModal();
 
   const [showFilter, setShowFilter] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState<string[]>([]);
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
 
   const filteredRecords = useMemo(
     () =>
-      !selectedFilter.length
+      selectedFilters.includes('전체') || !selectedFilters.length
         ? records
-        : records.filter((record) =>
-            selectedFilter.includes(record.alcoholTag)
+        : records.filter(
+            (record) => selectedFilters.includes(alcoholTag[record.alcoholTag]),
+            [records, selectedFilters]
           ),
-    [records, selectedFilter]
+    [records, selectedFilters]
   );
 
   const toggleFilter = (e: MouseEvent<HTMLButtonElement>) => {
@@ -81,17 +83,17 @@ export default function Home() {
         {showFilter && (
           <div className={cx('category-filter-wrap')}>
             <AlcoholCategoryFilter
-              selectedCategories={selectedFilter}
-              onChange={setSelectedFilter}
+              selectedCategories={selectedFilters}
+              onChange={setSelectedFilters}
             />
           </div>
         )}
       </TopNavigator>
-      <Map records={filteredRecords} />
+      <Map records={filteredRecords} selectedFilters={selectedFilters} />
       {showMyRecordSearchModal && (
         <MyRecordSearchModal onClose={closeMyRecordSearchModal} />
       )}
-      <BottomNavigator statistics={statistics} />
+      <BottomNavigator />
     </PageLayout>
   );
 }

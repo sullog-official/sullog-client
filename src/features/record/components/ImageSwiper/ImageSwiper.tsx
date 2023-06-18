@@ -24,6 +24,13 @@ type ImageSwiperProps = {
   max?: number;
 };
 
+const ALLOWED_IMAGE_TYPES = [
+  'image/jpg',
+  'image/jpeg',
+  'image/png',
+  'image/heic',
+];
+
 const ImageSwiper = ({
   mode = 'read',
   images: defaultImages = [],
@@ -45,6 +52,13 @@ const ImageSwiper = ({
     );
   };
 
+  const checkImageType = (files: File[]) => {
+    if (!files.every((file) => ALLOWED_IMAGE_TYPES.includes(file.type))) {
+      alert('허용되지 않는 이미지 형식입니다.');
+      return;
+    }
+  };
+
   const addImages = (e: ChangeEvent<HTMLInputElement>) => {
     const imageFiles = e.target.files;
     if (!imageFiles) {
@@ -57,6 +71,8 @@ const ImageSwiper = ({
       alert('이미지만 업로드 가능합니다.');
       return;
     }
+
+    checkImageType(imageFilesArray);
 
     if (images.length + imageFilesArray.length > max) {
       alert(`이미지는 최대 ${max}장까지 업로드 가능합니다.`);
