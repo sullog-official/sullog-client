@@ -1,7 +1,14 @@
 @use '@styles/themes';
 
 .map-container {
-  height: 600px;
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  bottom: env(safe-area-inset-bottom);
+
+  @supports (-webkit-touch-callout: none) {
+    height: -webkit-fill-available;
+  }
 
   .mapboxgl-canvas {
     height: 100%;

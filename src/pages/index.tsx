@@ -7,6 +7,7 @@ import AlcoholCategoryFilter from '@/features/search/components/AlcoholCategoryF
 import SearchBar from '@/features/search/components/SearchBar';
 import { useGetMyRecords } from '@/shared/apis/records/getMyRecords';
 import { useGetStatistics } from '@/shared/apis/records/getStatistics';
+import BottomNavigator from '@/shared/components/BottomNavigator';
 import Icon from '@/shared/components/Icon';
 import PageLayout from '@/shared/components/PageLayout';
 import TopNavigator from '@/shared/components/TopNavigator';
@@ -90,7 +91,7 @@ export default function Home() {
       {showMyRecordSearchModal && (
         <MyRecordSearchModal onClose={closeMyRecordSearchModal} />
       )}
-      {/*<BottomNavigator statistics={statistics} />*/}
+      <BottomNavigator statistics={statistics} />
     </PageLayout>
   );
 }
