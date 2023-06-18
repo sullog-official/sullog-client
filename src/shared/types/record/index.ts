@@ -26,7 +26,6 @@ export type RecordMeta = Pick<Record, 'recordId' | 'description'> &
     | 'productionLocation'
     | 'productionLatitude'
     | 'productionLongitude'
-    | 'alcoholTag'
     | 'brandName'
   > & {
     mainPhotoPath: string;
