@@ -16,6 +16,11 @@ type DrawerContentsProps = {
 
 const DrawerContents = ({ statistics }: DrawerContentsProps) => {
   // TODO 글쓰기 기능 연결하고 실제 통계 데이터 출력
+
+  const onClickContact = () => {
+    window.location.href = 'mailto:gino9940@gmail.com';
+  };
+
   return (
     <div className={cx('wrapper')}>
       <div className={cx('title-box')}>
@@ -30,7 +35,7 @@ const DrawerContents = ({ statistics }: DrawerContentsProps) => {
         <p>{statistics?.nickname}님은 10개의 술로그를 남겨주었어요</p>
       </div>
       <div className={cx('button-container')}>
-        <Button>문의하기</Button>
+        <Button onClick={onClickContact}>문의하기</Button>
         <Button type="outline" onClick={logout}>
           로그아웃
         </Button>
