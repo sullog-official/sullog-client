@@ -1,19 +1,23 @@
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 
-import MyRecordSearchResult from '@/features/search/components/MyRecordSearchResult';
-import RecentSearches from '@/features/search/components/RecentSearches';
-import SearchBar from '@/features/search/components/SearchBar';
-import { useMyRecentSearchKeywords } from '@/features/search/hooks/useMyRecentSearchKeywords';
-import BottomNavigator from '@/shared/components/BottomNavigator';
 import PageLayout from '@/shared/components/PageLayout';
 import TopNavigator from '@/shared/components/TopNavigator';
 
-import styles from './index.module.scss';
+import { useMyRecentSearchKeywords } from '../../hooks/useMyRecentSearchKeywords';
+import MyRecordSearchResult from '../MyRecordSearchResult';
+import RecentSearches from '../RecentSearches';
+import SearchBar from '../SearchBar';
+
+import styles from './MyRecordSearchModal.module.scss';
+
 const cx = classNames.bind(styles);
 
-// TODO: 페이지 -> 플로팅 레이아웃으로 변경
-const MyRecordSearch = () => {
+type MyRecordSearchModalProps = {
+  onClose: VoidFunction;
+};
+
+const MyRecordSearchModal = ({ onClose }: MyRecordSearchModalProps) => {
   const { myRecentSearchKeywords, deleteKeyword, resetKeywords } =
     useMyRecentSearchKeywords();
 
@@ -31,11 +35,14 @@ const MyRecordSearch = () => {
   };
 
   return (
-    <PageLayout className={cx('main')} hasBottomNavigatorPadding>
-      <TopNavigator title={'나의 술로그'} highlighted>
+    <PageLayout
+      className={cx('my-record-search-modal')}
+      hasBottomNavigatorPadding
+    >
+      <TopNavigator title={'나의 술로그'} highlighted onBack={onClose}>
         <div className={cx('search-bar-wrapper')}>
           <SearchBar
-            placeholder={'Search'}
+            placeholder="술이름을 검색해보세요"
             value={keyword}
             onValueChange={setKeyword}
             useDebounce
@@ -52,9 +59,8 @@ const MyRecordSearch = () => {
           onReset={resetKeywords}
         />
       )}
-      <BottomNavigator />
     </PageLayout>
   );
 };
 
-export default MyRecordSearch;
+export default MyRecordSearchModal;

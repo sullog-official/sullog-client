@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
-import { useMemo, useState } from 'react';
+import dynamic from 'next/dynamic';
+import { MouseEvent, useMemo, useState } from 'react';
 
-import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import Map from '@/features/home/components/Map';
 import AlcoholCategoryFilter from '@/features/search/components/AlcoholCategoryFilter';
 import SearchBar from '@/features/search/components/SearchBar';
@@ -10,9 +10,14 @@ import { useGetStatistics } from '@/shared/apis/records/getStatistics';
 import BottomNavigator from '@/shared/components/BottomNavigator';
 import Icon from '@/shared/components/Icon';
 import PageLayout from '@/shared/components/PageLayout';
+import TopNavigator from '@/shared/components/TopNavigator';
 import { useModal } from '@/shared/hooks/useModal';
 
 import styles from './index.module.scss';
+
+const MyRecordSearchModal = dynamic(
+  () => import('@/features/search/components/MyRecordSearchModal')
+);
 
 const cx = classNames.bind(styles);
 
@@ -39,35 +44,40 @@ export default function Home() {
     [records, selectedFilter]
   );
 
-  const toggleFilter = () => {
+  const toggleFilter = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     setShowFilter(!showFilter);
   };
 
   return (
     <PageLayout>
-      <div className={cx('header')}>
-        <h1 className={cx('header-text')} style={mapoFlowerIsland.style}>
-          나의 술로그
-        </h1>
-        <SearchBar
-          readOnly
-          placeholder="술이름을 검색해보세요"
-          onClick={openMyRecordSearchModal}
-          extras={
-            <button
-              className={cx('filter-button')}
-              type="button"
-              onClick={toggleFilter}
-              aria-label="필터"
-            >
-              <Icon
-                name="Filter"
-                size={9}
-                color={showFilter ? 'purple' : 'grey300'}
-              />
-            </button>
-          }
-        />
+      <TopNavigator
+        title={'나의 술로그'}
+        highlighted
+        backgroundColor="transparent"
+        showBackButton={false}
+      >
+        <div className={cx('search-bar-wrapper')}>
+          <SearchBar
+            readOnly
+            placeholder="술이름을 검색해보세요"
+            onClick={openMyRecordSearchModal}
+            extras={
+              <button
+                className={cx('filter-button')}
+                type="button"
+                onClick={toggleFilter}
+                aria-label="필터"
+              >
+                <Icon
+                  name="Filter"
+                  size={9}
+                  color={showFilter ? 'purple' : 'grey300'}
+                />
+              </button>
+            }
+          />
+        </div>
         {showFilter && (
           <div className={cx('category-filter-wrap')}>
             <AlcoholCategoryFilter
@@ -76,8 +86,11 @@ export default function Home() {
             />
           </div>
         )}
-      </div>
+      </TopNavigator>
       <Map records={filteredRecords} />
+      {showMyRecordSearchModal && (
+        <MyRecordSearchModal onClose={closeMyRecordSearchModal} />
+      )}
       <BottomNavigator statistics={statistics} />
     </PageLayout>
   );

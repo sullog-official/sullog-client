@@ -1,7 +1,10 @@
 @use '@styles/themes';
+@use '@styles/mixins.module';
 
-.main {
+.alcohol-search-modal {
   padding-top: 118px;
+  background-color: themes.$white;
+  @include mixins.pageModalStyles;
 }
 
 .search-bar-wrapper {
