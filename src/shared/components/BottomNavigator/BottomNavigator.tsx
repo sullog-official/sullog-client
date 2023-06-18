@@ -17,9 +17,10 @@ const cx = classNames.bind(styles);
 
 type BottomNavigatorProps = {
   statistics?: Statistics;
+  currentPage?: string;
 };
 
-const BottomNavigator = ({ statistics }: BottomNavigatorProps) => {
+const BottomNavigator = ({ statistics, currentPage }: BottomNavigatorProps) => {
   const router = useRouter();
 
   const [isDrawerOpen, openDrawer, closeDrawer] = useModal();
@@ -50,7 +51,11 @@ const BottomNavigator = ({ statistics }: BottomNavigatorProps) => {
             type="button"
             className={cx('navBtn')}
           >
-            <Icon name="Feed" size={28} />
+            <Icon
+              name="Feed"
+              size={28}
+              color={currentPage ? '/feed' && 'purple' : 'white'}
+            />
             <p>둘러보기</p>
           </button>
           <button onClick={openDrawer} type="button" className={cx('navBtn')}>

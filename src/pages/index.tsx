@@ -32,7 +32,7 @@ export default function Home() {
     closeMyRecordSearchModal,
   ] = useModal();
 
-  const [showFilter, setShowFilter] = useState(true);
+  const [showFilter, setShowFilter] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
 
   const filteredRecords = useMemo(
@@ -93,7 +93,7 @@ export default function Home() {
       {showMyRecordSearchModal && (
         <MyRecordSearchModal onClose={closeMyRecordSearchModal} />
       )}
-      <BottomNavigator statistics={statistics} />
+      <BottomNavigator />
     </PageLayout>
   );
 }
