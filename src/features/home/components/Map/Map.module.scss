@@ -1,9 +1,7 @@
 @use '@styles/themes';
 
 .map-container {
-  position: fixed;
   height: 100vh;
-  width: 100%;
   bottom: env(safe-area-inset-bottom);
 
   @supports (-webkit-touch-callout: none) {
