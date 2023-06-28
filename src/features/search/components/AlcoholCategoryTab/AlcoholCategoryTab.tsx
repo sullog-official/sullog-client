@@ -1,35 +1,33 @@
 import classNames from 'classnames/bind';
+import { Dispatch, SetStateAction } from 'react';
 
 import AlcoholCategoryTabItem from '@/features/search/components/AlcoholCategoryTabItem';
-import { AlcoholTag } from '@/shared/types/alcohol';
+import { ALCOHOL_CATEGORIES } from '@/shared/constants/alcohol';
 
 import styles from './AlcoholCategoryTab.module.scss';
 
 const cx = classNames.bind(styles);
+const ALL = '전체';
 
 type AlcoholCategoryTabProps = {
-  alcoholCategories: (keyof typeof AlcoholTag)[];
   selectedTab: string;
-  onTabChange: (alcohol: keyof typeof AlcoholTag) => void;
+  onTabChange: Dispatch<SetStateAction<string>>;
 };
 
 const AlcoholCategoryTab = ({
-  alcoholCategories,
   selectedTab,
   onTabChange,
 }: AlcoholCategoryTabProps) => {
   return (
     <div className={cx('wrapper')}>
-      {alcoholCategories.map((category: any) => {
-        return (
-          <AlcoholCategoryTabItem
-            key={category}
-            alcohol={category}
-            isSelected={selectedTab === category}
-            setSelectedTab={onTabChange}
-          />
-        );
-      })}
+      {[...ALCOHOL_CATEGORIES, ALL].map((category: string) => (
+        <AlcoholCategoryTabItem
+          key={category}
+          alcohol={category}
+          isSelected={selectedTab === category}
+          setSelectedTab={onTabChange}
+        />
+      ))}
     </div>
   );
 };

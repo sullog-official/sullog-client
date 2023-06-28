@@ -10,7 +10,7 @@ const cx = classNames.bind(styles);
 type AlcoholCategoryTabItemProps = {
   alcohol: keyof typeof AlcoholTag;
   isSelected: boolean;
-  setSelectedTab: (alcohol: AlcoholCategoryTabItemProps['alcohol']) => void;
+  setSelectedTab: (alcohol: string) => void;
 };
 
 const AlcoholCategoryTabItem = ({
@@ -30,12 +30,12 @@ const AlcoholCategoryTabItem = ({
       onClick={onClickTab}
       className={cx('button', isSelected && 'clicked')}
     >
-      {alcohol === 'All' ? (
+      {alcohol === '전체' ? (
         <div>all</div>
       ) : (
-        <Icon name={alcohol} size={20} color={svgColor} />
+        <Icon name={AlcoholTag[alcohol]} size={20} color={svgColor} />
       )}
-      <span className={cx('name')}>{AlcoholTag[alcohol]}</span>
+      <span className={cx('name')}>{alcohol}</span>
     </button>
   );
 };

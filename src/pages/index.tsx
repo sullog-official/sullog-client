@@ -12,6 +12,7 @@ import Icon from '@/shared/components/Icon';
 import PageLayout from '@/shared/components/PageLayout';
 import TopNavigator from '@/shared/components/TopNavigator';
 import { useModal } from '@/shared/hooks/useModal';
+import { alcoholTagToKor } from '@/shared/types/alcohol';
 
 import styles from './index.module.scss';
 
@@ -33,9 +34,7 @@ export default function Home() {
 
   const [showFilter, setShowFilter] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
-
-  // 소주/증류주 -> 소주
-  // 탁주 -> 막걸리
+  
   const filteredRecords = useMemo(() => {
     return selectedFilters.includes('전체') || !selectedFilters.length
       ? records
