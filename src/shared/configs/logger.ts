@@ -5,7 +5,7 @@ const logRequest = (res: AxiosResponse<any, any>, error = false) => {
   const method = res?.request._method;
   const url = res?.request.responseURL.replace('https://', '');
   let reqData = res?.config.data;
-  if (res.headers['Content-Type'] === 'multipart/form-data') {
+  if (res?.headers['Content-Type'] === 'multipart/form-data') {
     reqData = reqData ? JSON.parse(reqData) : null;
   }
 
