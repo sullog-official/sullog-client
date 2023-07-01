@@ -1,15 +1,16 @@
-@use '~@styles/themes';
-
-.container {
-  --transition-speed: 0.3s;
-}
+@use '@styles/themes';
 
 .drawer {
-  position: fixed;
+  position: absolute;
   z-index: themes.$drawer;
-  box-sizing: content-box;
-  height: calc(100% + env(safe-area-inset-bottom, 0));
+  top: 0;
   bottom: 0;
+  box-sizing: content-box;
+  height: 100vh;
+  overflow: auto;
+  transition: transform 0.3s ease;
+  background: themes.$white;
+  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
 
   &.left {
     left: 0;
@@ -23,15 +24,12 @@
     --transform-open-from: translateX(100%);
   }
 
-
-  overflow: auto;
-  transition: transform var(--transition-speed) ease;
-  animation: close 0.25s ease-out forwards;
-  background: themes.$white;
-  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
-
   &.open {
     animation: open 0.25s ease-out forwards;
+  }
+
+  &:not(.open) {
+    animation: close 0.25s ease-out forwards;
   }
 }
 
@@ -63,26 +61,4 @@
   height: 16px;
   outline: none;
   cursor: pointer;
-}
-
-.backdrop {
-  visibility: hidden;
-  position: fixed;
-  z-index: 0;
-  top: 0;
-  width: 100%;
-  max-width: themes.$layoutMaxWidth;
-  height: 100%;
-  transition: opacity var(--transition-speed) ease,
-  visibility var(--transition-speed) ease;
-  opacity: 0;
-  background: rgb(0 0 0 / 30%);
-  pointer-events: none;
-}
-
-.container.open .backdrop {
-  visibility: visible;
-  z-index: themes.$backdrop;
-  opacity: 1;
-  pointer-events: auto;
 }

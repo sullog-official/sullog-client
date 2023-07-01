@@ -1,13 +1,12 @@
 import classNames from 'classnames/bind';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import Icon from '../Icon';
+import ModalLayout from '../ModalLayout';
 
 import styles from './Drawer.module.scss';
 
 const cx = classNames.bind(styles);
-
-const TRANSITION_SPEED = 300;
 
 interface DrawerProps {
   children: React.ReactNode;
@@ -17,7 +16,6 @@ interface DrawerProps {
   position?: 'left' | 'right';
 }
 
-// TODO : ModalLayout사용하도록 수정
 const Drawer = ({
   children,
   isOpen,
@@ -25,31 +23,8 @@ const Drawer = ({
   percentage = 83,
   position = 'right',
 }: DrawerProps) => {
-  const [isVisible, setIsVisible] = useState<boolean>(isOpen);
-
-  useEffect(() => {
-    let timer: number;
-
-    if (isOpen) {
-      setIsVisible(true);
-    } else {
-      timer = window.setTimeout(() => {
-        setIsVisible(false);
-      }, 300);
-    }
-
-    return () => window.clearTimeout(timer);
-  }, [isOpen]);
-
-  if (!isVisible) {
-    return null;
-  }
-
   return (
-    <div
-      aria-hidden={isOpen ? 'false' : 'true'}
-      className={cx('container', { open: isOpen })}
-    >
+    <ModalLayout isOpen={isOpen} onClose={onClose}>
       <div
         className={cx('drawer', position, { open: isOpen })}
         style={{ width: `${percentage}%` }}
@@ -65,8 +40,7 @@ const Drawer = ({
         </button>
         {children}
       </div>
-      <div className={cx('backdrop')} onClick={onClose} />
-    </div>
+    </ModalLayout>
   );
 };
 
