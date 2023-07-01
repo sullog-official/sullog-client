@@ -8,70 +8,70 @@ export default {
 
 export const DefaultSoju: StoryObj<typeof AlcoholCard> = {
   args: {
-    alcohol: 'Soju',
+    alcohol: '소주',
     isSelected: false,
   },
 };
 
 export const SelectedSoju: StoryObj<typeof AlcoholCard> = {
   args: {
-    alcohol: 'Soju',
+    alcohol: '소주',
     isSelected: true,
   },
 };
 
 export const DefaultFruitWine: StoryObj<typeof AlcoholCard> = {
   args: {
-    alcohol: 'FruitWine',
+    alcohol: '과실주',
     isSelected: false,
   },
 };
 
 export const SelectedFruitWine: StoryObj<typeof AlcoholCard> = {
   args: {
-    alcohol: 'FruitWine',
+    alcohol: '과실주',
     isSelected: true,
   },
 };
 
 export const DefaultMakgeolli: StoryObj<typeof AlcoholCard> = {
   args: {
-    alcohol: 'Makgeolli',
+    alcohol: '막걸리',
     isSelected: false,
   },
 };
 
 export const SelectedMakgeolli: StoryObj<typeof AlcoholCard> = {
   args: {
-    alcohol: 'Makgeolli',
+    alcohol: '막걸리',
     isSelected: true,
   },
 };
 
 export const DefaultEtc: StoryObj<typeof AlcoholCard> = {
   args: {
-    alcohol: 'Etc',
+    alcohol: '기타',
     isSelected: false,
   },
 };
 
 export const SelectedEtc: StoryObj<typeof AlcoholCard> = {
   args: {
-    alcohol: 'Etc',
+    alcohol: '기타',
     isSelected: true,
   },
 };
 
 export const DefaultAll: StoryObj<typeof AlcoholCard> = {
   args: {
-    alcohol: 'All',
+    alcohol: '전체',
     isSelected: false,
   },
 };
 
 export const SelectedAll: StoryObj<typeof AlcoholCard> = {
   args: {
-    alcohol: 'All',
+    alcohol: '전체',
     isSelected: true,
   },
 };

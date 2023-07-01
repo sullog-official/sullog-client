@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction } from 'react';
 
 import AlcoholCategoryTabItem from '@/features/search/components/AlcoholCategoryTabItem';
 import { ALCOHOL_CATEGORIES } from '@/shared/constants/alcohol';
+import { AlcoholTag } from '@/shared/types/alcohol';
 
 import styles from './AlcoholCategoryTab.module.scss';
 
@@ -23,7 +24,7 @@ const AlcoholCategoryTab = ({
       {[...ALCOHOL_CATEGORIES, ALL].map((category: string) => (
         <AlcoholCategoryTabItem
           key={category}
-          alcohol={category}
+          alcohol={category as keyof typeof AlcoholTag}
           isSelected={selectedTab === category}
           setSelectedTab={onTabChange}
         />

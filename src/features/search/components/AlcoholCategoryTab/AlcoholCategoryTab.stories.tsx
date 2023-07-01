@@ -8,7 +8,6 @@ export default {
 
 export const Default: StoryObj<typeof AlcoholCategoryTab> = {
   args: {
-    alcoholCategories: ['Soju', 'FruitWine', 'Makgeolli', 'Etc', 'All'],
-    selectedTab: 'Soju',
+    selectedTab: '소주',
   },
 };
