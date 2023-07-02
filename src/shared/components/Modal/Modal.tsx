@@ -36,16 +36,6 @@ const Modal = ({
   onCancel,
   hideCancelButton,
 }: ModalProps) => {
-  const handleCancelClick = () => {
-    onCancel?.();
-    onClose();
-  };
-
-  const handleOkClick = () => {
-    onOk?.();
-    onClose();
-  };
-
   return (
     <ModalLayout isOpen={isOpen} onClose={onClose}>
       <article className={cx('modal', { open: isOpen })}>
@@ -53,11 +43,11 @@ const Modal = ({
         <div className={cx('content')}>{content}</div>
         <div className={cx('button-group')}>
           {!hideCancelButton && (
-            <Button type="outline" onClick={handleCancelClick}>
+            <Button type="outline" onClick={onCancel}>
               {cancelText}
             </Button>
           )}
-          <Button type="primary" onClick={handleOkClick}>
+          <Button type="primary" onClick={onOk}>
             {okText}
           </Button>
         </div>

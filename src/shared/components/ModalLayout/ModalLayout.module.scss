@@ -13,7 +13,7 @@
   margin: 0 auto;
   overflow: hidden;
 
-  &.open {
+  &:not(.open) {
     pointer-events: none;
   }
 }

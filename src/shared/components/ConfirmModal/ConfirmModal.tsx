@@ -6,7 +6,7 @@ import styles from './ConfirmModal.module.scss';
 
 const cx = classNames.bind(styles);
 
-type ConfirmModalProps = {
+export type ConfirmModalProps = {
   isOpen: boolean;
   onClose: VoidFunction;
   /** 메시지 */
