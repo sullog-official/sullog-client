@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import { ReactNode } from 'react';
 
 import Icon from '@/shared/components/Icon';
-import { useModal } from '@/shared/hooks/useModal';
+import { useOpen } from '@/shared/hooks/useOpen';
 
 import styles from './Accordion.module.scss';
 
@@ -21,7 +21,7 @@ const Accordion = ({
   children,
   maxHeight = DEFAULT_MAX_HEIGHT,
 }: AccordionProps) => {
-  const [isOpen, open, close] = useModal();
+  const [isOpen, open, close] = useOpen();
 
   return (
     <div className={cx('accordion')}>

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import Icon from '@/shared/components/Icon';
 import StatisticsDrawer from '@/shared/components/StatisticsDrawer';
-import { useModal } from '@/shared/hooks/useModal';
+import { useOpen } from '@/shared/hooks/useOpen';
 import { Statistics } from '@/shared/types/record/statistics';
 
 import styles from './BottomNavigator.module.scss';
@@ -23,12 +23,12 @@ type BottomNavigatorProps = {
 const BottomNavigator = ({ statistics, currentPage }: BottomNavigatorProps) => {
   const router = useRouter();
 
-  const [isDrawerOpen, openDrawer, closeDrawer] = useModal();
+  const [isDrawerOpen, openDrawer, closeDrawer] = useOpen();
   const [
     isAlcoholSearchModalOpen,
     openAlcoholSearchModalOpen,
     closeAlcoholSearchModalOpen,
-  ] = useModal();
+  ] = useOpen();
 
   const navigateToFeed = () => {
     router.push('/feed');
