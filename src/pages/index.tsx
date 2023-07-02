@@ -11,7 +11,7 @@ import BottomNavigator from '@/shared/components/BottomNavigator';
 import Icon from '@/shared/components/Icon';
 import PageLayout from '@/shared/components/PageLayout';
 import TopNavigator from '@/shared/components/TopNavigator';
-import { useModal } from '@/shared/hooks/useModal';
+import { useOpen } from '@/shared/hooks/useOpen';
 
 import styles from './index.module.scss';
 
@@ -29,7 +29,7 @@ export default function Home() {
     showMyRecordSearchModal,
     openMyRecordSearchModal,
     closeMyRecordSearchModal,
-  ] = useModal();
+  ] = useOpen();
 
   const [showFilter, setShowFilter] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);

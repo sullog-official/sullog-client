@@ -15,8 +15,11 @@ import { generateUrl } from '@/shared/utils/generateUrl';
 
 import { refreshTokens } from '../apis/auth/refreshTokens';
 
+import useConfirm from './useConfirm';
+
 const useAuth = () => {
   const router = useRouter();
+  const { confirm } = useConfirm();
 
   const getKakaoOAuthAuthorizeUrl = () => {
     return generateUrl({
@@ -38,10 +41,17 @@ const useAuth = () => {
     alert('준비중입니다!');
   };
 
-  const logout = () => {
-    removeAccessToken();
-    removeRefreshToken();
-    router.push('/login');
+  const logout = async () => {
+    if (
+      await confirm({
+        message: '로그아웃 하시겠습니까?',
+        okText: '로그아웃',
+      })
+    ) {
+      removeAccessToken();
+      removeRefreshToken();
+      router.push('/login');
+    }
   };
 
   const verifyLoggedIn = async (): Promise<boolean> => {

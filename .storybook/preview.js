@@ -1,6 +1,7 @@
 import { QueryClientProvider } from '@tanstack/react-query';
 
 import { queryClient } from '@/shared/configs/reactQuery';
+import ConfirmProvider from '@/shared/components/ConfirmProvider';
 import '@styles/index.scss';
 
 export const parameters = {
@@ -31,7 +32,9 @@ export const decorators = [
         `}
       </style>
       <QueryClientProvider client={queryClient}>
-        <Story />
+        <ConfirmProvider>
+          <Story />
+        </ConfirmProvider>
       </QueryClientProvider>
     </>
   ),

@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import { ReactNode, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
-import { useModal } from '@/shared/hooks/useModal';
+import { useOpen } from '@/shared/hooks/useOpen';
 
 import styles from './ModalLayout.module.scss';
 
@@ -38,7 +38,7 @@ export default ModalLayout;
 
 const useModalLayoutVisible = (isOpen: boolean) => {
   const dimRef = useRef<HTMLDivElement>(null);
-  const [isVisible, show, hide] = useModal(isOpen);
+  const [isVisible, show, hide] = useOpen(isOpen);
 
   useEffect(() => {
     if (isOpen) {
