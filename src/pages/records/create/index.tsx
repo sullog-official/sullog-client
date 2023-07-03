@@ -1,6 +1,7 @@
 import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
 import { Controller } from 'react-hook-form';
 
 import AlcoholPercentFeelingInput from '@/features/record/components/AlcoholPercentFeelingInput';
@@ -14,6 +15,7 @@ import PageLayout from '@/shared/components/PageLayout';
 import TextArea from '@/shared/components/TextArea';
 import TextField from '@/shared/components/TextField';
 import TopNavigator from '@/shared/components/TopNavigator';
+import useConfirm from '@/shared/hooks/useConfirm';
 
 import styles from './index.module.scss';
 
@@ -24,6 +26,9 @@ type RecordCreateProps = {
 };
 
 const RecordCreate = ({ alcoholId }: RecordCreateProps) => {
+  const router = useRouter();
+  const { confirm } = useConfirm();
+
   const { data: alcohol } = useGetAlcohol({ variables: { alcoholId } });
 
   const { control, formState, handleSubmit } = useCreateRecordForm({
@@ -34,10 +39,22 @@ const RecordCreate = ({ alcoholId }: RecordCreateProps) => {
     return null;
   }
 
+  const onClickBackBtn = async () => {
+    if (
+      await confirm({
+        message: '작성하신 내용이 저장되지 않습니다.',
+        okText: '확인',
+      })
+    ) {
+      router.back();
+    }
+  };
+
   return (
     <PageLayout hasTopNavigatorPadding>
       <form>
         <TopNavigator
+          onBack={onClickBackBtn}
           title="게시글"
           extra={
             <button
