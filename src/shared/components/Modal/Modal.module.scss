@@ -1,0 +1,71 @@
+@use '@styles/themes';
+
+.modal {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  flex-direction: column;
+  width: 80%;
+  max-height: 60%;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  border-radius: 24px;
+  opacity: 0;
+  background-color: themes.$white;
+
+  &.open {
+    animation: slide-up 0.3s forwards;
+  }
+
+  &:not(.open) {
+    animation: slide-down 0.3s forwards;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    top: 55%;
+    opacity: 0;
+  }
+
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}
+
+@keyframes slide-down {
+  from {
+    top: 50%;
+    opacity: 1;
+  }
+
+  to {
+    top: 55%;
+    opacity: 0;
+  }
+}
+
+.title {
+  padding: 16px;
+  text-align: center;
+  @include themes.typography('body16', 600);
+}
+
+.content {
+  margin: 0 16px 16px;
+}
+
+.button-group {
+  display: flex;
+  padding: 16px;
+
+  > * {
+    flex: 1;
+  }
+
+  > *:not(:first-child) {
+    margin-left: 10px;
+  }
+}

@@ -65,6 +65,7 @@ const SearchBar = ({
       >
         <Icon name={'Search'} size={12} />
         <input
+          autoFocus={true}
           className={cx('search-input')}
           readOnly={readOnly}
           value={value}
