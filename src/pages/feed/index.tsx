@@ -29,9 +29,7 @@ const FeedPage = () => {
 
   const ref = useIntersect(async (entry, observer) => {
     observer.unobserve(entry.target);
-    if (hasNextPage && !isFetching) {
-      fetchNextPage();
-    }
+    if (hasNextPage && !isFetching) fetchNextPage();
   });
 
   if (!data) return null;
