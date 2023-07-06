@@ -54,7 +54,7 @@ const handleUnauthorizedError = async (error: AxiosError) => {
       return await retryOriginalRequest;
     } catch (error) {
       // 새 액세스 토큰을 가져 오는 동안 오류가 발생하면 로그인 페이지로 리디렉션
-      window.location.href = '/login'; // TBD
+      if (typeof window !== 'undefined') window.location.href = '/login';
     }
   }
 };
