@@ -31,7 +31,7 @@ const AlcoholSearchModal = ({ onClose }: AlcoholSearchModalProps) => {
   };
 
   return (
-    <PageLayout className={cx('alcohol-search-modal')}>
+    <PageLayout className={cx('alcohol-search-modal')} isModal>
       <TopNavigator title={'검색'} onBack={onClose}>
         <div className={cx('search-bar-wrapper')}>
           <SearchBar
