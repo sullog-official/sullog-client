@@ -7,6 +7,8 @@
   bottom: 0;
   box-sizing: content-box;
   height: 100vh;
+  /* stylelint-disable-next-line value-no-vendor-prefix */
+  height: -webkit-fill-available;
   overflow: auto;
   transition: transform 0.3s ease;
   background: themes.$white;

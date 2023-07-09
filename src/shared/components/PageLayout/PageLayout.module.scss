@@ -7,6 +7,14 @@
   margin: 0 auto;
   overflow-x: hidden;
 
+  &--is-modal {
+    position: fixed !important;
+    z-index: themes.$modal;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   &.has-top-navigator-padding {
     padding-top: themes.$topNavigatorHeight;
   }

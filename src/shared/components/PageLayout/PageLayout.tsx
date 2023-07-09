@@ -9,6 +9,7 @@ type PageLayoutProps = {
   children: React.ReactNode;
   hasTopNavigatorPadding?: boolean;
   hasBottomNavigatorPadding?: boolean;
+  isModal?: boolean;
 };
 
 const PageLayout = ({
@@ -16,12 +17,16 @@ const PageLayout = ({
   children,
   hasTopNavigatorPadding,
   hasBottomNavigatorPadding,
+  isModal,
 }: PageLayoutProps) => {
+  const ElementType: keyof JSX.IntrinsicElements = isModal ? 'div' : 'main';
+
   return (
-    <main
+    <ElementType
       className={cx(
         'main',
         {
+          'main--is-modal': isModal,
           'has-top-navigator-padding': hasTopNavigatorPadding,
           'has-bottom-navigator-padding': hasBottomNavigatorPadding,
         },
@@ -29,7 +34,7 @@ const PageLayout = ({
       )}
     >
       {children}
-    </main>
+    </ElementType>
   );
 };
 
