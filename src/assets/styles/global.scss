@@ -1,11 +1,12 @@
-
 html {
   height: fill-available;
+  /* stylelint-disable-next-line value-no-vendor-prefix */
   height: -webkit-fill-available;
 }
 
 body {
   min-height: 100vh;
+  /* stylelint-disable-next-line value-no-vendor-prefix */
   min-height: -webkit-fill-available;
   background-color: #fff;
   font-family: 'Noto Sans KR', sans-serif;
