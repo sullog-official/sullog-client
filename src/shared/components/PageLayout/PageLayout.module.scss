@@ -7,8 +7,8 @@
   margin: 0 auto;
   overflow-x: hidden;
 
-  &--is-modal {
-    position: fixed !important;
+  &.main--is-modal {
+    position: fixed;
     z-index: themes.$modal;
     top: 0;
     left: 50%;
