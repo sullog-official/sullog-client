@@ -43,10 +43,10 @@ const DrawerContents = ({ statistics }: DrawerContentsProps) => {
             {statistics?.nickname}님은 {recordsCount}개의 술로그를 남겨주었어요
           </p>
         ) : (
-          <div>
+          <p>
             <span>아직 술로그를 작성하지 않았어요.</span>
             <Link href="/records/create">술로그 작성하러 가기</Link>
-          </div>
+          </p>
         )}
       </div>
       <div className={cx('button-container')}>
