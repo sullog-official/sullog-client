@@ -43,7 +43,7 @@ const FeedPage = () => {
   return (
     <PageLayout hasTopNavigatorPadding hasBottomNavigatorPadding>
       <TopNavigator title={'이웃 술로그'} highlighted />
-      {feeds.length < 0 ? (
+      {feeds.length > 0 ? (
         <div className={cx('grid')}>
           {feeds.map((feed) => (
             <Link key={feed.recordId} href={`/records/${feed.recordId}`}>
