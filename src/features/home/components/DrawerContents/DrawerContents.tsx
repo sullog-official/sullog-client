@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import Link from 'next/link';
 
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import DoughnutChart from '@/features/home/components/DoughnutChart';
@@ -37,9 +38,16 @@ const DrawerContents = ({ statistics }: DrawerContentsProps) => {
       <div className={cx('chart-container')}>
         <p style={mapoFlowerIsland.style}>나의 술로그</p>
         <DoughnutChart statistics={statistics} />
-        <p>
-          {statistics?.nickname}님은 {recordsCount}개의 술로그를 남겨주었어요
-        </p>
+        {recordsCount ? (
+          <p>
+            {statistics?.nickname}님은 {recordsCount}개의 술로그를 남겨주었어요
+          </p>
+        ) : (
+          <div>
+            <span>아직 술로그를 작성하지 않았어요.</span>
+            <Link href="/records/create">술로그 작성하러 가기</Link>
+          </div>
+        )}
       </div>
       <div className={cx('button-container')}>
         <Button onClick={onClickContact}>문의하기</Button>
