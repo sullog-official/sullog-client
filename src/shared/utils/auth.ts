@@ -1,13 +1,10 @@
-import { ServerResponse } from 'http';
+import { IncomingMessage, ServerResponse } from 'http';
 
-import { AxiosResponse } from 'axios';
+import { deleteCookie, getCookie, setCookie } from 'cookies-next';
 
-import { getCookie, setCookie, setServerSideCookie } from './cookie';
+import { REFRESH_TOKEN_KEY } from '../constants';
 
-enum TokenKeys {
-  Access = 'authorization',
-  Refresh = 'refresh',
-}
+import { isServer } from './isServer';
 
 let inMemoryAccessToken: string | undefined;
 
@@ -22,35 +19,52 @@ export const getAccessToken = (): string | undefined => {
   return inMemoryAccessToken;
 };
 
-export const removeAccessToken = () => {
-  inMemoryAccessToken = undefined;
+export const deleteAccessToken = () => {
+  inMemoryAccessToken = '';
 };
 
 /**
  * 리프레시 토큰을 쿠키에 저장 (expires : 14일)
  */
-export const setRefreshToken = (refreshToken: string) => {
-  setCookie(TokenKeys.Refresh, refreshToken, 14);
-};
+const FOURTEEN_DAYS = 14 * 24 * 60 * 60 * 1000;
 
-export const setServerSideRefreshToken = (
+export const setRefreshToken = (
   refreshToken: string,
-  response: ServerResponse
+  /** required for server side cookies */
+  context?: { req?: IncomingMessage; res?: ServerResponse }
 ) => {
-  setServerSideCookie(response, TokenKeys.Refresh, refreshToken, 14);
+  if (isServer() && !context) {
+    throw new Error("'context' is required for server side cookies");
+  }
+
+  setCookie(REFRESH_TOKEN_KEY, refreshToken, {
+    ...(context || {}),
+    httpOnly: true,
+    secure: process.env.NODE_ENV !== 'development',
+    maxAge: FOURTEEN_DAYS,
+    sameSite: 'strict',
+    path: '/',
+  });
 };
 
-export const getRefreshToken = () => {
-  return getCookie(TokenKeys.Refresh);
+export const getRefreshToken = (context?: {
+  req?: IncomingMessage;
+  res?: ServerResponse;
+}) => {
+  if (isServer() && !context) {
+    throw new Error("'context' is required for server side cookies");
+  }
+
+  return getCookie(REFRESH_TOKEN_KEY, context) as string | undefined;
 };
 
-export const removeRefreshToken = () => {
-  document.cookie = 'refresh=; Max-Age=0; path=/';
-};
+export const deleteRefreshToken = (context?: {
+  req?: IncomingMessage;
+  res?: ServerResponse;
+}) => {
+  if (isServer() && !context) {
+    throw new Error("'context' is required for server side cookies");
+  }
 
-export const getTokensFromResponse = (response: AxiosResponse) => {
-  return {
-    accessToken: response.headers['authorization'],
-    refreshToken: response.headers['refresh'],
-  };
+  deleteCookie(REFRESH_TOKEN_KEY, context);
 };

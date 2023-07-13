@@ -1,20 +1,30 @@
+import { IncomingMessage, ServerResponse } from 'http';
+
 import axios from 'axios';
 
-import { NEXT_PUBLIC_API_BASE_URI } from '@/shared/constants';
+import {
+  ACCESS_TOKEN_KEY,
+  NEXT_PUBLIC_API_BASE_URI,
+  REFRESH_TOKEN_KEY,
+} from '@/shared/constants';
 import {
   getRefreshToken,
-  getTokensFromResponse,
   setAccessToken,
   setRefreshToken,
 } from '@/shared/utils/auth';
+import { isServer } from '@/shared/utils/isServer';
 
 /**
  * 리프레시 토큰을 사용하여 새 액세스 토큰을 가져옴
  * @returns 토근 리프레시 성공 여부
  */
-export const refreshTokens = async (): Promise<boolean> => {
+// TODO : api로 만들어서 서버에서 토큰 설정하도록 수정 (?)
+export const refreshAccessToken = async (context?: {
+  req?: IncomingMessage;
+  res?: ServerResponse;
+}): Promise<boolean> => {
   try {
-    const refreshToken = getRefreshToken();
+    const refreshToken = getRefreshToken(context);
 
     if (!refreshToken) {
       throw new Error('refreshToken is undefined');
@@ -30,9 +40,8 @@ export const refreshTokens = async (): Promise<boolean> => {
       validateStatus: null,
     });
 
-    const tokens = getTokensFromResponse(response);
-    setAccessToken(tokens.accessToken);
-    setRefreshToken(tokens.refreshToken);
+    setAccessToken(response.headers[ACCESS_TOKEN_KEY]);
+    setRefreshToken(response.headers[REFRESH_TOKEN_KEY], context);
 
     return true;
   } catch (error) {
