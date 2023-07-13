@@ -59,3 +59,14 @@
     }
   }
 }
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - themes.$topNavigatorHeight - themes.$bottomNavigatorHeight);
+  color: themes.$grey300;
+
+  @include themes.typography('body14');
+}

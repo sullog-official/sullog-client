@@ -1,5 +1,4 @@
 import classNames from 'classnames/bind';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
@@ -20,11 +19,12 @@ type AlcoholSearchModalProps = {
 const AlcoholSearchModal = ({ onClose }: AlcoholSearchModalProps) => {
   const router = useRouter();
   const [searchValue, setSearchValue] = useState('');
-  const { data, fetchNextPage, hasNextPage, isLoading } = useSearchAlcohol({
-    variables: { keyword: searchValue, limit: 20, cursor: 1 },
-    enabled: searchValue !== '',
-    keepPreviousData: true,
-  });
+  const { data, fetchNextPage, hasNextPage, isLoading, isError } =
+    useSearchAlcohol({
+      variables: { keyword: searchValue, limit: 20, cursor: 1 },
+      enabled: searchValue !== '',
+      keepPreviousData: true,
+    });
 
   const onClickItem = (alcoholId: number) => {
     router.push(`/records/create?alcoholId=${alcoholId}`);
@@ -44,29 +44,38 @@ const AlcoholSearchModal = ({ onClose }: AlcoholSearchModalProps) => {
       </TopNavigator>
       <div className={cx('wrapper')}>
         <div className={cx('result-wrapper')}>
-          <div className={cx('label')}>해당하는 술을 선택해주세요.</div>
-          <div className={cx('alcohol-card-wrapper')}>
-            {data?.pages
-              .flatMap((page) => page.alcoholInfoDtoList)
-              .map((alcohol) => {
-                return (
-                  <button
-                    type="button"
-                    className={cx('alcohol-card')}
-                    onClick={() => onClickItem(alcohol.alcoholId)}
-                    key={alcohol.alcoholId}
-                  >
-                    <div className={cx('alcohol-info')}>
-                      <span>{alcohol.alcoholType}</span>
-                      <span>{alcohol.brandName}</span>
-                    </div>
-                    <span className={cx('alcohol-name')}>
-                      {alcohol.alcoholName}
-                    </span>
-                  </button>
-                );
-              })}
-          </div>
+          {isError ? (
+            <div className={cx('error')}>
+              <span>페이지를 불러오는데 실패했습니다.</span>
+              <span>잠시 후에 다시 접속해주세요.</span>
+            </div>
+          ) : (
+            <>
+              <div className={cx('label')}>해당하는 술을 선택해주세요.</div>
+              <div className={cx('alcohol-card-wrapper')}>
+                {data?.pages
+                  .flatMap((page) => page.alcoholInfoDtoList)
+                  .map((alcohol) => {
+                    return (
+                      <button
+                        type="button"
+                        className={cx('alcohol-card')}
+                        onClick={() => onClickItem(alcohol.alcoholId)}
+                        key={alcohol.alcoholId}
+                      >
+                        <div className={cx('alcohol-info')}>
+                          <span>{alcohol.alcoholType}</span>
+                          <span>{alcohol.brandName}</span>
+                        </div>
+                        <span className={cx('alcohol-name')}>
+                          {alcohol.alcoholName}
+                        </span>
+                      </button>
+                    );
+                  })}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </PageLayout>
