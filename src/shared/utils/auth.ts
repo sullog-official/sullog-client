@@ -1,4 +1,4 @@
-import { IncomingMessage, ServerResponse } from 'http';
+import type { IncomingMessage, ServerResponse } from 'http';
 
 import { deleteCookie, getCookie, setCookie } from 'cookies-next';
 
