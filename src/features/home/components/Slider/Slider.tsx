@@ -21,28 +21,35 @@ const Slider = ({ items }: SliderProps) => {
   return (
     <Swiper className={cx('slider')} slidesPerView="auto" centeredSlides>
       {items.map((item) => {
-        /* FIXME: after merge 132 */
         return (
-          <SwiperSlide className={cx('slide')} key={item.recordId}>
-            <div className={cx('slide-header')}>
-              <Icon name="LocationPin" size={10} aria-hidden />
-              <span className={cx('alcohol-location')}>
-                {item.productionLocation}
-              </span>
-              <Chip
-                className={cx('tag')}
-                label={item.alcoholType}
-                type="Primary"
-                appearance="round"
-                size="small"
+          <SwiperSlide key={item.recordId}>
+            <button
+              className={cx('slide')}
+              type="button"
+              onClick={() => {
+                router.push(`/records/${item.recordId}`);
+              }}
+            >
+              <div className={cx('slide-header')}>
+                <Icon name="LocationPin" size={10} aria-hidden />
+                <span className={cx('alcohol-location')}>
+                  {item.productionLocation}
+                </span>
+                <Chip
+                  className={cx('tag')}
+                  label={item.alcoholType}
+                  type="Primary"
+                  appearance="round"
+                  size="small"
+                />
+              </div>
+              <AlcoholPreview
+                name={item.alcoholName}
+                brand={item.brandName}
+                description={item.description}
+                imgSrc={item.mainPhotoPath}
               />
-            </div>
-            <AlcoholPreview
-              name={item.alcoholName}
-              brand={item.brandName}
-              description={item.description}
-              imgSrc={item.mainPhotoPath}
-            />
+            </button>
           </SwiperSlide>
         );
       })}
