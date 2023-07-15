@@ -1,0 +1,29 @@
+@use '@styles/themes';
+
+.contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - themes.$topNavigatorHeight - themes.$bottomNavigatorHeight);
+  text-align: center;
+  padding: 0 64px;
+  color: themes.$grey300;
+
+  @include themes.typography('body14');
+}
+
+.title {
+  font-weight: 500;
+  margin-top: 12px;
+}
+
+.info {
+  margin-top: 4px;
+  white-space: nowrap;
+}
+
+.button {
+  margin-top: 20px;
+  max-width: 232px;
+}
