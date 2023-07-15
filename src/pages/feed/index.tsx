@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 import Card from '@/features/feed/components/Card';
 import { useGetFeed } from '@/shared/apis/feed/getFeed';
@@ -18,8 +19,10 @@ import styles from './index.module.scss';
 const cx = classNames.bind(styles);
 
 const FeedPage = () => {
+  const [isFirstFetching, setIsFirstFetching] = useState<boolean>(true);
+
   const { pathname } = useRouter();
-  const { data, fetchNextPage, hasNextPage, isFetching, isLoading } =
+  const { data, fetchNextPage, hasNextPage, isFetching, isFetched } =
     useGetFeed({
       variables: {
         cursor: 0,
@@ -27,32 +30,58 @@ const FeedPage = () => {
       },
     });
 
+  if (isFetched && isFirstFetching) setIsFirstFetching(false);
+
   const ref = useIntersect(async (entry, observer) => {
     observer.unobserve(entry.target);
     if (hasNextPage && !isFetching) fetchNextPage();
   });
 
-  if (!data) return null;
-  const feeds: Feed[] = data.pages.flatMap((page) => page.allRecordMetaList);
+  const feeds: Feed[] =
+    data?.pages.flatMap((page) => page.allRecordMetaList) || [];
 
   return (
     <PageLayout hasTopNavigatorPadding hasBottomNavigatorPadding>
       <TopNavigator title={'이웃 술로그'} highlighted />
-      <div className={cx('wrapper')}>
-        {feeds.map((feed) => (
-          <Link key={feed.recordId} href={`/records/${feed.recordId}`}>
-            <Card alt={feed.alcoholName} imageUrl={feed.mainPhotoPath} />
-          </Link>
-        ))}
-        {isFetching && (
-          <>
-            {Array.from({ length: 2 }).map((_, index) => (
-              <Skeleton width="100%" height="100%" padding="50%" key={index} />
-            ))}
-          </>
-        )}
-        <div ref={ref} />
-      </div>
+      {feeds.length > 0 ? (
+        <div className={cx('grid')}>
+          {feeds.map((feed) => (
+            <Link key={feed.recordId} href={`/records/${feed.recordId}`}>
+              <Card alt={feed.alcoholName} imageUrl={feed.mainPhotoPath} />
+            </Link>
+          ))}
+          {isFetching && isFirstFetching && (
+            <>
+              {Array.from({ length: 8 }).map((_, index) => (
+                <Skeleton
+                  width="100%"
+                  height="100%"
+                  padding="50%"
+                  key={index}
+                />
+              ))}
+            </>
+          )}
+          {isFetching && !isFirstFetching && feeds.length > 0 && (
+            <>
+              {Array.from({ length: 2 }).map((_, index) => (
+                <Skeleton
+                  width="100%"
+                  height="100%"
+                  padding="50%"
+                  key={index}
+                />
+              ))}
+            </>
+          )}
+          <div ref={ref} />
+        </div>
+      ) : (
+        <div className={cx('no-data')}>
+          <p>아직 이웃의 술로그가 없습니다.</p>
+        </div>
+      )}
+
       <BottomNavigator currentPage={pathname} />
     </PageLayout>
   );
