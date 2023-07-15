@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { router } from 'next/client';
 import Image from 'next/image';
 
 import { Button } from '@/shared/components';
@@ -10,6 +11,8 @@ import styles from './index.module.scss';
 const cx = classNames.bind(styles);
 
 const NotFoundPage = () => {
+  const handleGoHome = () => router.push('/');
+
   return (
     <PageLayout hasTopNavigatorPadding>
       <TopNavigator title={'나의 술로그'} highlighted />
@@ -20,7 +23,9 @@ const NotFoundPage = () => {
           지금 입력하신 주소는 잘못 입력되었거나,
           <br /> 변경 혹은 삭제됐을 수 있습니다.
         </p>
-        <Button className={cx('button')}>홈으로 가기</Button>
+        <Button className={cx('button')} onClick={handleGoHome}>
+          홈으로 가기
+        </Button>
       </div>
     </PageLayout>
   );
