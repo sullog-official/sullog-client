@@ -7,3 +7,6 @@ export const NEXT_PUBLIC_KAKAO_CLIENT_ID =
 export const NEXT_PUBLIC_KAKAO_SCOPE = process.env.NEXT_PUBLIC_KAKAO_SCOPE;
 export const NEXT_PUBLIC_KAKAO_REDIRECT_URI =
   process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI;
+
+export const ACCESS_TOKEN_KEY = 'authorization';
+export const REFRESH_TOKEN_KEY = 'refresh';

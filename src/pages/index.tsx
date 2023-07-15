@@ -1,4 +1,6 @@
+import { dehydrate, QueryClient } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
+import { GetServerSideProps } from 'next';
 import dynamic from 'next/dynamic';
 import { MouseEvent, useMemo, useState } from 'react';
 
@@ -104,3 +106,18 @@ export default function Home() {
     </PageLayout>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery(
+    useGetMyRecords.getKey(),
+    useGetMyRecords.queryFn
+  );
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+};
