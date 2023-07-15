@@ -4,17 +4,21 @@ import { Hydrate, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import App from 'next/app';
 import type { AppContext, AppProps } from 'next/app';
+import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 
 import { refreshAccessToken } from '@/shared/apis/auth/refreshAccessToken';
 import ConfirmProvider from '@/shared/components/ConfirmProvider';
 import { queryClient as sullogQueryClient } from '@/shared/configs/reactQuery';
 import '@/assets/styles/index.scss';
+import { usePageLoading } from '@/shared/hooks/usePageLoading';
 import {
   getAccessToken,
   getRefreshToken,
   setAccessToken,
 } from '@/shared/utils/auth';
+
+const Loading = dynamic(() => import('@/shared/components/Loading'));
 
 type SullogAppProps = AppProps & {
   tokens?: {
@@ -29,6 +33,7 @@ export default function SullogApp({
   tokens,
 }: SullogAppProps) {
   const [queryClient] = useState(() => sullogQueryClient);
+  const { isPageLoading } = usePageLoading();
 
   useEffect(() => {
     if (tokens?.accessToken) {
@@ -40,7 +45,7 @@ export default function SullogApp({
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
         <ConfirmProvider>
-          <Component {...pageProps} />
+          {isPageLoading ? <Loading /> : <Component {...pageProps} />}
         </ConfirmProvider>
       </Hydrate>
       <ReactQueryDevtools />
