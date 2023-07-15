@@ -38,6 +38,7 @@
     "react-hook-form": "^7.43.9",
     "react-map-gl": "^7.0.21",
     "react-query-kit": "^1.4.1",
+    "react-spinners": "^0.13.8",
     "sass": "^1.57.1",
     "swiper": "^9.0.5",
     "typescript": "4.9.4"
