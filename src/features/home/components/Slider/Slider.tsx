@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { useRouter } from 'next/router';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
@@ -16,6 +17,7 @@ type SliderProps = {
 };
 
 const Slider = ({ items }: SliderProps) => {
+  const router = useRouter();
   return (
     <Swiper className={cx('slider')} slidesPerView="auto" centeredSlides>
       {items.map((item) => {
@@ -50,7 +52,7 @@ const Slider = ({ items }: SliderProps) => {
             type="button"
             className={cx('add-btn')}
             onClick={() => {
-              // navigate to 둘러보기
+              router.push('/my/records');
             }}
           >
             <Icon name="Plus" size={24} style={{ marginBottom: 4 }} />
