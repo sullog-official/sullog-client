@@ -1,9 +1,10 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
-import { refreshTokens } from '@/shared/apis/auth/refreshTokens';
+import { refreshAccessToken } from '@/shared/apis/auth/refreshAccessToken';
 import { NEXT_PUBLIC_API_BASE_URI } from '@/shared/constants';
 
-import { getAccessToken, getRefreshToken } from '../utils/auth';
+import { getAccessToken } from '../utils/auth';
+import { isServer } from '../utils/isServer';
 
 import registerLogger from './logger';
 
@@ -39,7 +40,8 @@ const handleUnauthorizedError = async (error: AxiosError) => {
 
       if (!isFetchingAccessToken) {
         isFetchingAccessToken = true;
-        await refreshTokens();
+        // FIXME: 브라우저에서는 쿠키 세팅이 안될 것 같은데
+        await refreshAccessToken();
         isFetchingAccessToken = false;
 
         const accessToken = getAccessToken()!;
@@ -54,7 +56,9 @@ const handleUnauthorizedError = async (error: AxiosError) => {
       return await retryOriginalRequest;
     } catch (error) {
       // 새 액세스 토큰을 가져 오는 동안 오류가 발생하면 로그인 페이지로 리디렉션
-      if (typeof window !== 'undefined') window.location.href = '/login';
+      if (!isServer()) {
+        window.location.href = '/login'; // TBD
+      }
     }
   }
 };
@@ -65,6 +69,7 @@ const handleUnauthorizedError = async (error: AxiosError) => {
  */
 const instance = axios.create({
   baseURL: NEXT_PUBLIC_API_BASE_URI,
+  timeout: 3000,
 });
 
 // 각 요청마다 세션 스토리지에 있는 액세스 토큰 값을 Authorization 헤더에 설정하기 위한 인터셉터 추가
