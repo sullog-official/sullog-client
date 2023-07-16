@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
-import { router } from 'next/client';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import { Button } from '@/shared/components';
 import PageLayout from '@/shared/components/PageLayout';
@@ -11,6 +11,7 @@ import styles from './index.module.scss';
 const cx = classNames.bind(styles);
 
 const NotFoundPage = () => {
+  const router = useRouter();
   const handleGoHome = () => router.push('/');
 
   return (
