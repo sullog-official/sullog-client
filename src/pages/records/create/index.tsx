@@ -162,9 +162,6 @@ const RecordCreate = ({ alcoholId }: RecordCreateProps) => {
           <Controller
             name="flavorScore"
             control={control}
-            rules={{
-              required: { value: true, message: '플레이버를 입력해주세요' },
-            }}
             render={({ field }) => (
               <FlavorSliderGroup label="플레이버" {...field} />
             )}
