@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 import { useRouter } from 'next/router';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 
+import { DEFAULT_FLAVOR_SCORE } from '@/features/record/components/FlavorSliderGroup/FlavorSliderGroup';
 import { useCreateRecord } from '@/shared/apis/records/createRecord';
 import { Alcohol } from '@/shared/types/alcohol';
 import { Record } from '@/shared/types/record';
@@ -46,9 +47,9 @@ export const useCreateRecordForm = ({
           alcoholPercentFeeling: data.alcoholPercentFeeling,
           flavorTagList: [data.flavorTag],
           starScore: data.starScore,
-          scentScore: data.flavorScore.scentScore,
-          tasteScore: data.flavorScore.tasteScore,
-          textureScore: data.flavorScore.textureScore,
+          scentScore: data.flavorScore?.scentScore ?? DEFAULT_FLAVOR_SCORE,
+          tasteScore: data.flavorScore?.tasteScore ?? DEFAULT_FLAVOR_SCORE,
+          textureScore: data.flavorScore?.textureScore ?? DEFAULT_FLAVOR_SCORE,
           description: data.description,
           experienceDate: data.experienceDate,
         },
