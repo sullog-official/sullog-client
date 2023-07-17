@@ -9,7 +9,11 @@
 }
 
 .slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: calc(100% - 40px);
+  height: auto;
   margin-right: 20px;
   padding: 16px 22px;
   border-radius: 15px;
@@ -21,7 +25,8 @@
   display: flex;
   align-items: center;
 
-  svg, span {
+  svg,
+  span {
     margin-right: 8px;
   }
 }
