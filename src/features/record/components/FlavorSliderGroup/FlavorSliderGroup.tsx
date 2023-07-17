@@ -42,8 +42,6 @@ const FlavorSliderGroup = forwardRef(
         onChange?.({ ...value, [name]: sliderValue });
       };
 
-    console.log(value);
-
     return (
       <div ref={ref} className={cx('container', className)}>
         {label && <span className={cx('label')}>{label}</span>}
