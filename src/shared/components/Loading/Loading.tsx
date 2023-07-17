@@ -1,14 +1,18 @@
 import classNames from 'classnames/bind';
 import { BeatLoader } from 'react-spinners';
 
+import color from '@/assets/styles/themes/_color.module.scss';
+
 import styles from './Loading.module.scss';
 
 const cx = classNames.bind(styles);
 
+console.log(color);
+
 const Loading = () => {
   return (
     <div className={cx('wrapper')}>
-      <BeatLoader color="#3e14b4" />
+      <BeatLoader color={color.purple} />
     </div>
   );
 };
