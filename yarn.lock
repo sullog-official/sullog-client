@@ -15588,6 +15588,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-spinners@npm:^0.13.8":
+  version: 0.13.8
+  resolution: "react-spinners@npm:0.13.8"
+  peerDependencies:
+    react: ^16.0.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: cb58f916bbf00c4f7fc33c1a75a8c0f91a98a42af26944340a0e29e4b3a97937a03f0292bc444eb5f5f0bea099344b580f9c04a81524246dadbf0571bdb57e62
+  languageName: node
+  linkType: hard
+
 "react@npm:18.2.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
@@ -17314,6 +17324,7 @@ __metadata:
     react-hook-form: ^7.43.9
     react-map-gl: ^7.0.21
     react-query-kit: ^1.4.1
+    react-spinners: ^0.13.8
     resolve-url-loader: ^5.0.0
     sass: ^1.57.1
     sass-loader: ^13.2.0
