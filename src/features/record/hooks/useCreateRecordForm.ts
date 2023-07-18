@@ -7,6 +7,8 @@ import { Alcohol } from '@/shared/types/alcohol';
 import { Record } from '@/shared/types/record';
 import { FlavorTag } from '@/shared/types/record/flavorTag';
 
+import { FLAVOR_SLIDER_GROUP_DEFAULT_VALUE } from '../components/FlavorSliderGroup/FlavorSliderGroup';
+
 type useCreateRecordFormProps = Pick<Alcohol, 'alcoholId'>;
 
 type CreateRecordForm = {
@@ -26,6 +28,7 @@ export const useCreateRecordForm = ({
     defaultValues: {
       photoList: [],
       experienceDate: dayjs().format('YYYY-MM-DD'),
+      flavorScore: FLAVOR_SLIDER_GROUP_DEFAULT_VALUE,
     },
   });
 
