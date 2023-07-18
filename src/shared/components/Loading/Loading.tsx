@@ -7,8 +7,6 @@ import styles from './Loading.module.scss';
 
 const cx = classNames.bind(styles);
 
-console.log(color);
-
 const Loading = () => {
   return (
     <div className={cx('wrapper')}>
