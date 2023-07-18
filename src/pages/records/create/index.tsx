@@ -34,6 +34,7 @@ const RecordCreate = ({ alcoholId }: RecordCreateProps) => {
   const { control, formState, handleSubmit } = useCreateRecordForm({
     alcoholId,
   });
+  const { isSubmitting } = formState;
 
   if (!alcohol) {
     return null;
@@ -58,6 +59,7 @@ const RecordCreate = ({ alcoholId }: RecordCreateProps) => {
           title="게시글"
           extra={
             <button
+              disabled={isSubmitting}
               type="submit"
               className={cx('submit-button')}
               onClick={handleSubmit}
