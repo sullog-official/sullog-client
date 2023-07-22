@@ -27,7 +27,7 @@
     <td align="center" width="200px" height="150px">
       <img src="https://github.com/sullog-official/sullog-client/assets/62709718/7ce2d3d1-33e9-4d2e-91d3-b84fa54b37a6" width="150px;" alt=""/>
     </td>  
-    <td align="center" width="1000px" height="150px">
+    <td align="center" width="200px" height="150px">
       <img src="https://github.com/sullog-official/sullog-client/assets/62709718/5b7ed212-d505-4a42-a491-c7e8c5008fbd" width="150px;" alt=""/>
     </td>
     <td align="center" width="200px" height="150px">
