@@ -1,4 +1,5 @@
 @use '@styles/themes';
+@use '@styles/mixins.module';
 
 .drawer {
   position: absolute;
@@ -6,9 +7,8 @@
   top: 0;
   bottom: 0;
   box-sizing: content-box;
-  height: 100vh;
-  /* stylelint-disable-next-line value-no-vendor-prefix */
-  height: -webkit-fill-available;
+  @include mixins.setHeight100vh;
+
   overflow: auto;
   transition: transform 0.3s ease;
   background: themes.$white;
