@@ -7,12 +7,11 @@
   top: 0;
   bottom: 0;
   box-sizing: content-box;
-  @include mixins.setHeight100vh;
-
   overflow: auto;
   transition: transform 0.3s ease;
   background: themes.$white;
   box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+  @include mixins.setHeight100vh;
 
   &.left {
     left: 0;
