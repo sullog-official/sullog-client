@@ -1,7 +1,9 @@
+@use '@styles/mixins.module';
+
 .wrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: -webkit-fill-available;
+  justify-content: center;
   width: 100%;
+  @include mixins.setHeight100vh;
 }
