@@ -49,3 +49,13 @@
   width: 100%;
   height: 100%;
 }
+
+@mixin setHeight100vh {
+  height: 100vh;
+
+  /* iOS only */
+  @supports (-webkit-touch-callout: none) {
+    /* stylelint-disable-next-line value-no-vendor-prefix */
+    height: -webkit-fill-available;
+  }
+}

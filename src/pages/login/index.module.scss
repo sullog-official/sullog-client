@@ -1,12 +1,13 @@
 @use '@styles/themes';
+@use '@styles/mixins.module';
 
 .main {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100vh;
   background-color: themes.$purple;
+  @include mixins.setHeight100vh;
 }
 
 .title-wrapper {
