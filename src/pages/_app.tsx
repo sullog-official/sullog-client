@@ -5,11 +5,11 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import App from 'next/app';
 import type { AppContext, AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
 import { useEffect, useState } from 'react';
 
 import { refreshAccessToken } from '@/shared/apis/auth/refreshAccessToken';
 import ConfirmProvider from '@/shared/components/ConfirmProvider';
+import CustomHead from '@/shared/components/CustomHead';
 import { queryClient as sullogQueryClient } from '@/shared/configs/reactQuery';
 import '@/assets/styles/index.scss';
 import { usePageLoading } from '@/shared/hooks/usePageLoading';
@@ -46,12 +46,7 @@ export default function SullogApp({
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
         <ConfirmProvider>
-          <Head>
-            <meta
-              name="viewport"
-              content="initial-scale=1, viewport-fit=cover"
-            />
-          </Head>
+          <CustomHead />
           {isPageLoading ? <Loading /> : <Component {...pageProps} />}
         </ConfirmProvider>
       </Hydrate>
