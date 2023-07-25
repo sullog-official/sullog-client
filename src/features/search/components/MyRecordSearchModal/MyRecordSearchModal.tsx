@@ -50,7 +50,7 @@ const MyRecordSearchModal = ({ onClose }: MyRecordSearchModalProps) => {
           />
         </div>
       </TopNavigator>
-      {isSearched ? (
+      {isSearched && keyword ? (
         <MyRecordSearchResult keyword={keyword} />
       ) : (
         <RecentSearches
