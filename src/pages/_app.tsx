@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 
 import { refreshAccessToken } from '@/shared/apis/auth/refreshAccessToken';
 import ConfirmProvider from '@/shared/components/ConfirmProvider';
+import CustomHead from '@/shared/components/CustomHead';
 import { queryClient as sullogQueryClient } from '@/shared/configs/reactQuery';
 import '@/assets/styles/index.scss';
 import { usePageLoading } from '@/shared/hooks/usePageLoading';
@@ -45,6 +46,7 @@ export default function SullogApp({
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
         <ConfirmProvider>
+          <CustomHead />
           {isPageLoading ? <Loading /> : <Component {...pageProps} />}
         </ConfirmProvider>
       </Hydrate>
