@@ -7,14 +7,36 @@
 
 <div style="display: flex; flex-direction: row; gap: 20px;">
     <a href="https://sullog-client.vercel.app/" >
-        <img alt="Sullog Web" src="https://github.com/sullog-official/sullog-client/assets/62709718/9187f59d-ae26-46e5-8dbd-8a97bc9e9e68" style="width: 150px; height: 150px"/>
+        <img alt="Sullog Web" src="https://github.com/sullog-official/sullog-client/assets/62709718/9187f59d-ae26-46e5-8dbd-8a97bc9e9e68" style="width: 100px; height: 100px"/>
     </a>
     <a href="https://sullog-official.github.io/sullog-client/">
-        <img alt="Sullog Storybook" src="https://github.com/sullog-official/sullog-client/assets/62709718/77535dca-1d6c-47d6-a4d2-d796fc82fdee" style="width:150px; height: 150px"/>
+        <img alt="Sullog Storybook" src="https://github.com/sullog-official/sullog-client/assets/62709718/77535dca-1d6c-47d6-a4d2-d796fc82fdee" style="width:100px; height: 100px"/>
     </a>
 </div>
 
-## 팀원 소개
+## 서비스 플로우
+
+![플로우설명-홈](https://github.com/sullog-official/sullog-client/assets/62709718/ab1cfaf0-659c-49ad-9985-b8beb9e39c74)
+
+![플로우설명-게시글보기](https://github.com/sullog-official/sullog-client/assets/62709718/1878994e-8b62-4fc9-ac23-07e3133153d2)
+
+![플로우설명-검색](https://github.com/sullog-official/sullog-client/assets/62709718/326150b5-8f7e-4ced-9e8b-90dcfec55458)
+
+![플로우설명-글쓰기](https://github.com/sullog-official/sullog-client/assets/62709718/a220b5fe-7046-42d2-a3ef-b681ece9d478)
+
+![플로우설명-글쓰기2](https://github.com/sullog-official/sullog-client/assets/62709718/1223ecb6-6c31-473a-bfb6-104160f4a408)
+
+![플로우설명-글쓰기3](https://github.com/sullog-official/sullog-client/assets/62709718/60bebee5-72f5-4182-b1c7-0c8cf14a794a)
+
+![플로우설명-글쓰기4](https://github.com/sullog-official/sullog-client/assets/62709718/244d0247-d32e-4961-a03f-9c40c8512605)
+
+![플로우설명-메뉴](https://github.com/sullog-official/sullog-client/assets/62709718/fc9cf3e6-5fc1-4ef1-8300-2cd62476a02b)
+
+![플로우설명-이웃술로그](https://github.com/sullog-official/sullog-client/assets/62709718/9514601a-ae36-4b66-bb69-9dc245f5d58d)
+
+
+
+## 개발
 
 <table>
   <tr>
@@ -37,27 +59,27 @@
   <tr>    
     <td align="center">
       <a href="https://github.com/syoung125">
-        <div>Ko Seoyoung</div>
+        <div>Ko Seoyoung(FE)</div>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/shinwonse">
-        <div>shinwonse</div>
+        <div>shinwonse(FE)</div>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/Jinho1011">
-        <div>Jinho1011</div>
+        <div>Jinho1011(FE)</div>
       </a>
     </td>   
     <td align="center">
       <a href="https://github.com/cnpcnp99">
-        <div>JJ_</div>
+        <div>JJ_(BE)</div>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/seungyeonchoi">
-        <div>seungyeonchoi</div>
+        <div>seungyeonchoi(BE)</div>
       </a>
     </td>
   </tr>
