@@ -30,12 +30,13 @@ const RecentSearches = ({
       <ul className={cx('items')}>
         {items.map((item, index) => {
           return (
-            <li
-              className={cx('item')}
-              onClick={() => onClickItem(item)}
-              key={`${item}-${index}`}
-            >
-              <span className={cx('item-name')}>{item}</span>
+            <li className={cx('item')} key={`${item}-${index}`}>
+              <span
+                className={cx('item-name')}
+                onClick={() => onClickItem(item)}
+              >
+                {item}
+              </span>
               <button
                 type="button"
                 aria-label="삭제"
