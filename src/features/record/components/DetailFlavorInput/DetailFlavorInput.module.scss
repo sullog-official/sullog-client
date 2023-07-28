@@ -21,6 +21,11 @@
   }
 }
 
+.flavor-options {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .flavor-option {
   margin: 6px 8px 0 0;
 }

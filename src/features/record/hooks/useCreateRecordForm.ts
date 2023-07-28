@@ -5,7 +5,6 @@ import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { useCreateRecord } from '@/shared/apis/records/createRecord';
 import { Alcohol } from '@/shared/types/alcohol';
 import { Record } from '@/shared/types/record';
-import { FlavorTag } from '@/shared/types/record/flavorTag';
 
 import { FLAVOR_SLIDER_GROUP_DEFAULT_VALUE } from '../components/FlavorSliderGroup/FlavorSliderGroup';
 
@@ -14,10 +13,13 @@ type useCreateRecordFormProps = Pick<Alcohol, 'alcoholId'>;
 type CreateRecordForm = {
   photoList: { url?: string; file?: File | null }[];
   flavorScore: Pick<Record, 'scentScore' | 'tasteScore' | 'textureScore'>;
-  flavorTag: FlavorTag;
 } & Pick<
   Record,
-  'experienceDate' | 'alcoholPercentFeeling' | 'starScore' | 'description'
+  | 'experienceDate'
+  | 'alcoholPercentFeeling'
+  | 'starScore'
+  | 'description'
+  | 'flavorTagList'
 >;
 
 export const useCreateRecordForm = ({
@@ -29,6 +31,7 @@ export const useCreateRecordForm = ({
       photoList: [],
       experienceDate: dayjs().format('YYYY-MM-DD'),
       flavorScore: FLAVOR_SLIDER_GROUP_DEFAULT_VALUE,
+      flavorTagList: [],
     },
   });
 
@@ -47,7 +50,7 @@ export const useCreateRecordForm = ({
         recordInfo: {
           alcoholId,
           alcoholPercentFeeling: data.alcoholPercentFeeling,
-          flavorTagList: [data.flavorTag],
+          flavorTagList: data.flavorTagList,
           starScore: data.starScore,
           scentScore: data.flavorScore.scentScore,
           tasteScore: data.flavorScore.tasteScore,

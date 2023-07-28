@@ -13,22 +13,30 @@ const cx = classNames.bind(styles);
 type DetailFlavorInputProps = {
   className?: string;
   label?: string;
-  value?: FlavorTag;
-  onChange?: (value?: FlavorTag) => void;
+  value?: FlavorTag[];
+  onChange?: (value: FlavorTag[]) => void;
 };
 
 const DetailFlavorInput = forwardRef(
   (
-    { className, label, value, onChange }: DetailFlavorInputProps,
+    { className, label, value = [], onChange }: DetailFlavorInputProps,
     ref: ForwardedRef<HTMLDivElement>
   ) => {
-    const handleButtonClick = (tag: FlavorTag) => {
+    const checkIsSameTag = (tag1: FlavorTag, tag2: FlavorTag) => {
+      return (
+        tag1.majorTag === tag2.majorTag && tag1.detailTag === tag2.detailTag
+      );
+    };
+
+    const checkIsSelected = (selectedTag: FlavorTag) => {
+      return !!value.find((tag) => checkIsSameTag(tag, selectedTag));
+    };
+
+    const handleButtonClick = (selectedTag: FlavorTag) => {
       onChange?.(
-        value &&
-          tag.majorTag === value.majorTag &&
-          tag.detailTag === value.detailTag
-          ? undefined
-          : tag
+        checkIsSelected(selectedTag)
+          ? value.filter((tag) => !checkIsSameTag(tag, selectedTag))
+          : [...value, selectedTag]
       );
     };
 
@@ -38,31 +46,40 @@ const DetailFlavorInput = forwardRef(
         <div className={cx('accordion-group')}>
           {flavorTagOptions.map(({ majorTag, detailTags }) => (
             <Accordion key={majorTag.label} header={majorTag.label}>
-              <div>
-                {detailTags.map((detailTag) => (
-                  <button
-                    key={detailTag.label}
-                    className={cx('flavor-option')}
-                    type="button"
-                    onClick={() =>
-                      handleButtonClick({
-                        majorTag: majorTag.value,
-                        detailTag: detailTag.value,
-                      } as FlavorTag)
-                    }
-                  >
-                    <Chip
-                      label={detailTag.label}
-                      type={
-                        detailTag.value === value?.detailTag
-                          ? 'Primary'
-                          : 'Secondary'
-                      }
-                      appearance="squircle"
-                      size="medium"
-                    />
-                  </button>
-                ))}
+              <div className={cx('flavor-options')}>
+                {detailTags.map((detailTag) => {
+                  const isSelected = checkIsSelected({
+                    majorTag: majorTag.value,
+                    detailTag: detailTag.value,
+                  } as FlavorTag);
+
+                  return (
+                    <label
+                      className={cx('flavor-option')}
+                      key={detailTag.value}
+                      htmlFor={detailTag.value}
+                    >
+                      <input
+                        id={detailTag.value}
+                        type="checkbox"
+                        onClick={() =>
+                          handleButtonClick({
+                            majorTag: majorTag.value,
+                            detailTag: detailTag.value,
+                          } as FlavorTag)
+                        }
+                        checked={isSelected}
+                        hidden
+                      />
+                      <Chip
+                        label={detailTag.label}
+                        type={isSelected ? 'Primary' : 'Secondary'}
+                        appearance="squircle"
+                        size="medium"
+                      />
+                    </label>
+                  );
+                })}
               </div>
             </Accordion>
           ))}
