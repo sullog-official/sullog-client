@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
 
 import Card from '@/features/feed/components/Card';
 import { useGetFeed } from '@/shared/apis/feed/getFeed';
@@ -19,18 +18,20 @@ import styles from './index.module.scss';
 const cx = classNames.bind(styles);
 
 const FeedPage = () => {
-  const [isFirstFetching, setIsFirstFetching] = useState<boolean>(true);
-
   const { pathname } = useRouter();
-  const { data, fetchNextPage, hasNextPage, isFetching, isFetched } =
-    useGetFeed({
-      variables: {
-        cursor: 0,
-        limit: 8,
-      },
-    });
-
-  if (isFetched && isFirstFetching) setIsFirstFetching(false);
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+    isInitialLoading,
+    isFetchingNextPage,
+  } = useGetFeed({
+    variables: {
+      cursor: 0,
+      limit: 8,
+    },
+  });
 
   const ref = useIntersect(async (entry, observer) => {
     observer.unobserve(entry.target);
@@ -50,7 +51,7 @@ const FeedPage = () => {
               <Card alt={feed.alcoholName} imageUrl={feed.mainPhotoPath} />
             </Link>
           ))}
-          {isFetching && isFirstFetching && (
+          {isInitialLoading && (
             <>
               {Array.from({ length: 8 }).map((_, index) => (
                 <Skeleton
@@ -62,7 +63,7 @@ const FeedPage = () => {
               ))}
             </>
           )}
-          {isFetching && !isFirstFetching && feeds.length > 0 && (
+          {isFetchingNextPage && (
             <>
               {Array.from({ length: 2 }).map((_, index) => (
                 <Skeleton
