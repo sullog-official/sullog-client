@@ -9,6 +9,7 @@
     "lint": "next lint",
     "lint:css": "stylelint --ignore-path .gitignore '**/*.scss'",
     "prettier": "prettier --write **/*.{ts,tsx}",
+    "type-check": "tsc --noEmit",
     "storybook": "storybook dev -p 6006 -s ./public",
     "build-storybook": "storybook build -s ./public",
     "test-storybook": "test-storybook",
