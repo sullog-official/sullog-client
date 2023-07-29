@@ -172,7 +172,7 @@ const RecordCreate = ({ alcoholId }: RecordCreateProps) => {
             )}
           />
           <Controller
-            name="flavorTag"
+            name="flavorTagList"
             control={control}
             render={({ field }) => (
               <DetailFlavorInput label="상세 플레이버 (선택)" {...field} />
