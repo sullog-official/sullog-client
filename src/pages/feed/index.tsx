@@ -44,25 +44,20 @@ const FeedPage = () => {
   return (
     <PageLayout hasTopNavigatorPadding hasBottomNavigatorPadding>
       <TopNavigator title={'이웃 술로그'} highlighted />
-      {feeds.length > 0 ? (
+      {isInitialLoading ? (
+        <>
+          {Array.from({ length: 8 }).map((_, index) => (
+            <Skeleton width="100%" height="100%" padding="50%" key={index} />
+          ))}
+        </>
+      ) : feeds.length > 0 ? (
         <div className={cx('grid')}>
           {feeds.map((feed) => (
             <Link key={feed.recordId} href={`/records/${feed.recordId}`}>
               <Card alt={feed.alcoholName} imageUrl={feed.mainPhotoPath} />
             </Link>
           ))}
-          {isInitialLoading && (
-            <>
-              {Array.from({ length: 8 }).map((_, index) => (
-                <Skeleton
-                  width="100%"
-                  height="100%"
-                  padding="50%"
-                  key={index}
-                />
-              ))}
-            </>
-          )}
+
           {isFetchingNextPage && (
             <>
               {Array.from({ length: 2 }).map((_, index) => (
