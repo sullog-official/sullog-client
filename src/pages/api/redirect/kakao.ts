@@ -28,13 +28,22 @@ export default async function handler(
 
   try {
     const response = await kakaoLoginCallback(code);
-    setAccessToken(response.headers[ACCESS_TOKEN_KEY]);
-    setRefreshToken(response.headers[REFRESH_TOKEN_KEY], { req, res });
 
-    res.setHeader(
-      'Set-Cookie',
-      `${REFRESH_TOKEN_KEY}=${response.headers[REFRESH_TOKEN_KEY]}; path=/; samesite=lax; httponly;`
-    );
+    const {
+      [ACCESS_TOKEN_KEY]: accessToken,
+      [REFRESH_TOKEN_KEY]: refreshToken,
+    } = response.headers;
+
+    setAccessToken(accessToken);
+    setRefreshToken(refreshToken, { req, res });
+
+    if (refreshToken) {
+      res.setHeader(
+        'Set-Cookie',
+        `${REFRESH_TOKEN_KEY}=${refreshToken}; path=/; samesite=lax; httponly;`
+      );
+    }
+
     res.redirect(307, '/');
   } catch (err) {
     console.error(err);
