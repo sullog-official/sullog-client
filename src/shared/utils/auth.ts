@@ -37,6 +37,10 @@ export const setRefreshToken = (
     throw new Error("'context' is required for server side cookies");
   }
 
+  if (!refreshToken) {
+    throw new Error("'refreshToken' is undefined");
+  }
+
   setCookie(REFRESH_TOKEN_KEY, refreshToken, {
     ...(context || {}),
     httpOnly: true,
