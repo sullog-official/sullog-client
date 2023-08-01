@@ -3,7 +3,7 @@ import { AxiosInstance, AxiosResponse } from 'axios';
 const logRequest = (res: AxiosResponse<any, any>, error = false) => {
   const status = res?.status;
   const method = res?.request._method;
-  const url = res?.request.responseURL.replace('https://', '');
+  const url = res?.request.responseURL?.replace('https://', '');
   let reqData = res?.config.data;
   if (res?.headers['Content-Type'] === 'multipart/form-data') {
     reqData = reqData ? JSON.parse(reqData) : null;
