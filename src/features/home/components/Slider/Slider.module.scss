@@ -3,9 +3,13 @@
 .slider {
   position: absolute;
   z-index: themes.$modal;
-  bottom: 120px;
+  bottom: 160px;
   width: 100%;
-  padding-left: 20px;
+}
+
+.slide-container {
+  display: flex;
+  justify-content: center;
 }
 
 .slide {
@@ -13,8 +17,7 @@
   flex-direction: column;
   justify-content: center;
   width: calc(100% - 40px);
-  height: auto;
-  margin-right: 20px;
+  height: 150px;
   padding: 16px 22px;
   border-radius: 15px;
   background-color: themes.$white;
@@ -40,8 +43,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100px;
 }
 
 .add-btn-text {

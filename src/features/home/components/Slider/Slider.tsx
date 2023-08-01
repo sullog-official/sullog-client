@@ -22,7 +22,7 @@ const Slider = ({ items }: SliderProps) => {
     <Swiper className={cx('slider')} slidesPerView="auto" centeredSlides>
       {items.map((item) => {
         return (
-          <SwiperSlide key={item.recordId}>
+          <SwiperSlide key={item.recordId} className={cx('slide-container')}>
             <button
               className={cx('slide')}
               type="button"
@@ -54,10 +54,10 @@ const Slider = ({ items }: SliderProps) => {
         );
       })}
       {items.length > 0 && (
-        <SwiperSlide className={cx('slide')}>
+        <SwiperSlide className={cx('slide-container')}>
           <button
             type="button"
-            className={cx('add-btn')}
+            className={cx('slide', 'add-btn')}
             onClick={() => {
               router.push('/my/records');
             }}
