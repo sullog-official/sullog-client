@@ -34,7 +34,7 @@ export const useSearchMyRecords = createInfiniteQuery<Response, Variables>({
   queryFn: ({ queryKey: [, { keyword }], pageParam }) => {
     return searchMyRecords({
       keyword,
-      cursor: pageParam || 1,
+      cursor: pageParam || null,
       limit: SEARCH_MY_RECORDS_LIMIT,
     });
   },
