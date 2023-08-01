@@ -53,7 +53,7 @@ const MyRecordSearchResult = ({ keyword }: MyRecordSearchResultProps) => {
           </div>
           <ul>
             {records.map((record, j) => (
-              <li key={`${record.recordId}-${j}`}>
+              <li className={cx('record-card')} key={`${record.recordId}-${j}`}>
                 <Link href={`/records/${record.recordId}`}>
                   <AlcoholPreview
                     name={record.alcoholName}
