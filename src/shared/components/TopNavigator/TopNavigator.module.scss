@@ -9,6 +9,14 @@
   width: 100%;
   max-width: themes.$layoutMaxWidth;
   padding-top: env(safe-area-inset-top);
+
+  &.white {
+    background-color: themes.$white;
+  }
+
+  &.transparent {
+    background-color: transparent;
+  }
 }
 
 .wrapper {
@@ -18,14 +26,6 @@
   justify-content: center;
   width: 100%;
   height: themes.$topNavigatorHeight;
-
-  &.white {
-    background-color: themes.$white;
-  }
-
-  &.transparent {
-    background-color: transparent;
-  }
 }
 
 $backButtonWidth: 40px;

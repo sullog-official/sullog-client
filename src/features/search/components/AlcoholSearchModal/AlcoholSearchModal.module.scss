@@ -2,7 +2,7 @@
 @use '@styles/mixins.module';
 
 .alcohol-search-modal {
-  padding-top: 118px;
+  padding-top: calc(env(safe-area-inset-top) + 118px);
   background-color: themes.$white;
   @include mixins.pageModalStyles;
 }
