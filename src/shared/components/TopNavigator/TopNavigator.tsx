@@ -31,8 +31,8 @@ const TopNavigator = ({
   const router = useRouter();
 
   return (
-    <div className={cx('container')}>
-      <nav className={cx('wrapper', backgroundColor)}>
+    <div className={cx('container', backgroundColor)}>
+      <nav className={cx('wrapper')}>
         {showBackButton && (
           <button
             type="button"

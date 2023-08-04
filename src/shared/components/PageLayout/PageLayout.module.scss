@@ -5,7 +5,6 @@
   max-width: themes.$layoutMaxWidth;
   min-height: 100%;
   margin: 0 auto;
-  overflow-x: hidden;
 
   &.main--is-modal {
     position: fixed;
@@ -14,6 +13,8 @@
     left: 50%;
     transform: translateX(-50%);
   }
+
+  overflow-x: hidden;
 
   &.has-top-navigator-padding {
     padding-top: themes.$topNavigatorHeight;
