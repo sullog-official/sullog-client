@@ -17,43 +17,7 @@ let subscribers: ((accessToken: string) => Promise<void>)[] = [];
 const handleUnauthorizedError = async (error: AxiosError) => {
   if (error.response?.status === 401) {
     try {
-      if (subscribers.length > 3) {
-        throw new Error('exceed retry limit count');
-      }
-
-      // 새 액세스 토큰을 얻은 후 원래 요청을 다시 시도하기 위한 새 promise 만들기
-      const retryOriginalRequest = new Promise<AxiosResponse>(
-        (resolve, reject) => {
-          // 새 액세스 토큰을 기다리면서 원래 요청을 다시 시도하기 위해 subscriber 추가
-          subscribers.push(async (accessToken: string) => {
-            try {
-              if (error.config) {
-                error.config.headers['authorization'] = `Bearer ${accessToken}`;
-                resolve(instance(error.config));
-              }
-            } catch (err) {
-              reject(err);
-            }
-          });
-        }
-      );
-
-      if (!isFetchingAccessToken) {
-        isFetchingAccessToken = true;
-        // FIXME: 브라우저에서는 쿠키 세팅이 안될 것 같은데
-        await refreshAccessToken();
-        isFetchingAccessToken = false;
-
-        const accessToken = getAccessToken()!;
-        // 새 액세스 토큰을 기다리는 모든 구독자를 호출하고 새 토큰 값을 전달
-        subscribers.forEach((callback) => callback(accessToken));
-
-        // 구독자 배열 지우기
-        subscribers = [];
-      }
-
-      // 새 액세스 토큰을 가져 온 후 원래 요청을 다시 시도하기 위한 프로미스 반환
-      return await retryOriginalRequest;
+      throw new Error('exceed retry limit count');
     } catch (error) {
       // 새 액세스 토큰을 가져 오는 동안 오류가 발생하면 로그인 페이지로 리디렉션
       if (!isServer()) {
