@@ -18,7 +18,7 @@ type MyRecordSearchModalProps = {
 };
 
 const MyRecordSearchModal = ({ onClose }: MyRecordSearchModalProps) => {
-  const { myRecentSearchKeywords, deleteKeyword, resetKeywords } =
+  const { myRecentSearchKeywords, saveKeyword, deleteKeyword, resetKeywords } =
     useMyRecentSearchKeywords();
 
   const [isSearched, setIsSearched] = useState(false);
@@ -51,7 +51,10 @@ const MyRecordSearchModal = ({ onClose }: MyRecordSearchModalProps) => {
         </div>
       </TopNavigator>
       {isSearched && keyword ? (
-        <MyRecordSearchResult keyword={keyword} />
+        <MyRecordSearchResult
+          keyword={keyword}
+          onClickAlcoholPreview={saveKeyword}
+        />
       ) : (
         <RecentSearches
           items={myRecentSearchKeywords}
