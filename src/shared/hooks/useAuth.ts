@@ -33,7 +33,7 @@ const useAuth = () => {
     location.href = getKakaoOAuthAuthorizeUrl();
   };
 
-  const loginWithNaver = () => {
+  const loginWithApple = () => {
     alert('준비중입니다!');
   };
 
@@ -58,7 +58,7 @@ const useAuth = () => {
 
   return {
     loginWithKakao,
-    loginWithNaver,
+    loginWithApple,
     logout,
     verifyLoggedIn,
   };
