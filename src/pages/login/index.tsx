@@ -14,7 +14,7 @@ const cx = classNames.bind(styles);
 const Login = () => {
   const router = useRouter();
 
-  const { loginWithKakao, loginWithNaver, verifyLoggedIn } = useAuth();
+  const { loginWithKakao, loginWithApple, verifyLoggedIn } = useAuth();
 
   useEffect(() => {
     verifyLoggedIn().then((isLoggedIn) => {
@@ -44,12 +44,12 @@ const Login = () => {
         </button>
         <button
           type="button"
-          aria-label="네이버 로그인"
-          className={cx('login-button', 'login-button--naver')}
-          onClick={loginWithNaver}
+          aria-label="애플 로그인"
+          className={cx('login-button', 'login-button--apple')}
+          onClick={loginWithApple}
         >
-          <Icon name="Naver" size={24} />
-          <span>네이버 로그인</span>
+          <Icon name="Apple" size={24} />
+          <span>Apple로 로그인</span>
         </button>
         <div className={cx('terms-of-service')}>
           <span>
