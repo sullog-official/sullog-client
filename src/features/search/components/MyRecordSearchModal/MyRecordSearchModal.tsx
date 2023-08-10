@@ -18,7 +18,7 @@ type MyRecordSearchModalProps = {
 };
 
 const MyRecordSearchModal = ({ onClose }: MyRecordSearchModalProps) => {
-  const { myRecentSearchKeywords, deleteKeyword, resetKeywords } =
+  const { myRecentSearchKeywords, saveKeyword, deleteKeyword, resetKeywords } =
     useMyRecentSearchKeywords();
 
   const [isSearched, setIsSearched] = useState(false);
@@ -35,11 +35,7 @@ const MyRecordSearchModal = ({ onClose }: MyRecordSearchModalProps) => {
   };
 
   return (
-    <PageLayout
-      className={cx('my-record-search-modal')}
-      hasBottomNavigatorPadding
-      isModal
-    >
+    <PageLayout className={cx('my-record-search-modal')} isModal>
       <TopNavigator title={'나의 술로그'} highlighted onBack={onClose}>
         <div className={cx('search-bar-wrapper')}>
           <SearchBar
@@ -51,7 +47,10 @@ const MyRecordSearchModal = ({ onClose }: MyRecordSearchModalProps) => {
         </div>
       </TopNavigator>
       {isSearched && keyword ? (
-        <MyRecordSearchResult keyword={keyword} />
+        <MyRecordSearchResult
+          keyword={keyword}
+          onClickAlcoholPreview={saveKeyword}
+        />
       ) : (
         <RecentSearches
           items={myRecentSearchKeywords}

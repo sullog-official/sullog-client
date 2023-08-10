@@ -12,9 +12,13 @@ const cx = classNames.bind(styles);
 
 type MyRecordSearchResultProps = {
   keyword: string;
+  onClickAlcoholPreview: (keyword: string) => void;
 };
 
-const MyRecordSearchResult = ({ keyword }: MyRecordSearchResultProps) => {
+const MyRecordSearchResult = ({
+  keyword,
+  onClickAlcoholPreview,
+}: MyRecordSearchResultProps) => {
   const { data: searchMyRecordsInfiniteData } = useSearchMyRecords({
     variables: { keyword },
     enabled: !!keyword,
@@ -53,7 +57,11 @@ const MyRecordSearchResult = ({ keyword }: MyRecordSearchResultProps) => {
           </div>
           <ul>
             {records.map((record, j) => (
-              <li className={cx('record-card')} key={`${record.recordId}-${j}`}>
+              <li
+                className={cx('record-card')}
+                key={`${record.recordId}-${j}`}
+                onClick={() => onClickAlcoholPreview(keyword)}
+              >
                 <Link href={`/records/${record.recordId}`}>
                   <AlcoholPreview
                     name={record.alcoholName}
