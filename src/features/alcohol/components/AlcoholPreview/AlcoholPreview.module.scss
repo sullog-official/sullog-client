@@ -16,6 +16,9 @@
 
 .header {
   display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   align-items: baseline;
 }
 
