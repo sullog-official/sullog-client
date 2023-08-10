@@ -25,12 +25,14 @@
 .name {
   @include themes.typography('body14');
 
+  margin-bottom: 2px;
   margin-right: 6px;
 }
 
 .brand {
   @include themes.typography('caption11');
 
+  margin-bottom: 4px;
   color: themes.$grey300;
 }
 
