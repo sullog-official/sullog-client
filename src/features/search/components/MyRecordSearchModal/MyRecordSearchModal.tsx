@@ -35,11 +35,7 @@ const MyRecordSearchModal = ({ onClose }: MyRecordSearchModalProps) => {
   };
 
   return (
-    <PageLayout
-      className={cx('my-record-search-modal')}
-      hasBottomNavigatorPadding
-      isModal
-    >
+    <PageLayout className={cx('my-record-search-modal')} isModal>
       <TopNavigator title={'나의 술로그'} highlighted onBack={onClose}>
         <div className={cx('search-bar-wrapper')}>
           <SearchBar
