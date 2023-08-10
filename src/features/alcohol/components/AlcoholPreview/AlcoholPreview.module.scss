@@ -16,18 +16,23 @@
 
 .header {
   display: flex;
+  flex-direction: column;
   align-items: baseline;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .name {
   @include themes.typography('body14');
 
   margin-right: 6px;
+  margin-bottom: 2px;
 }
 
 .brand {
   @include themes.typography('caption11');
 
+  margin-bottom: 4px;
   color: themes.$grey300;
 }
 
