@@ -49,6 +49,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tanstack/react-query", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:4.29.3"],\
             ["@tanstack/react-query-devtools", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:4.29.3"],\
             ["@types/chart.js", "npm:2.9.37"],\
+            ["@types/gtag.js", "npm:0.0.13"],\
             ["@types/lodash-es", "npm:4.17.6"],\
             ["@types/mapbox-gl", "npm:2.7.10"],\
             ["@types/node", "npm:18.11.18"],\
@@ -9336,6 +9337,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@types/graceful-fs", "npm:4.1.5"],\
             ["@types/node", "npm:18.11.18"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/gtag.js", [\
+        ["npm:0.0.13", {\
+          "packageLocation": "./.yarn/cache/@types-gtag.js-npm-0.0.13-6f0ba6a7ea-9c56c96157.zip/node_modules/@types/gtag.js/",\
+          "packageDependencies": [\
+            ["@types/gtag.js", "npm:0.0.13"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -22813,6 +22823,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tanstack/react-query", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:4.29.3"],\
             ["@tanstack/react-query-devtools", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:4.29.3"],\
             ["@types/chart.js", "npm:2.9.37"],\
+            ["@types/gtag.js", "npm:0.0.13"],\
             ["@types/lodash-es", "npm:4.17.6"],\
             ["@types/mapbox-gl", "npm:2.7.10"],\
             ["@types/node", "npm:18.11.18"],\

@@ -5395,6 +5395,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/gtag.js@npm:^0.0.13":
+  version: 0.0.13
+  resolution: "@types/gtag.js@npm:0.0.13"
+  checksum: 9c56c961579cc7c0b5bb4d8b01ba59baffe91a47893ed9d0be8161c6d74e04cebdcee4bc5762704ba72be0c40cb9d5fc88844df52b990545d6982cf9f8a6d6a7
+  languageName: node
+  linkType: hard
+
 "@types/html-minifier-terser@npm:^6.0.0":
   version: 6.1.0
   resolution: "@types/html-minifier-terser@npm:6.1.0"
@@ -16727,6 +16734,7 @@ __metadata:
     "@tanstack/react-query": ^4.29.3
     "@tanstack/react-query-devtools": ^4.29.3
     "@types/chart.js": ^2.9.37
+    "@types/gtag.js": ^0.0.13
     "@types/lodash-es": ^4.17.6
     "@types/mapbox-gl": ^2.7.10
     "@types/node": 18.11.18
