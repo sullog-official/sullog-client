@@ -5,6 +5,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import App from 'next/app';
 import type { AppContext, AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
+import Script from 'next/script';
 import { useEffect, useState } from 'react';
 
 import { refreshAccessToken } from '@/shared/apis/auth/refreshAccessToken';
@@ -13,6 +14,7 @@ import CustomHead from '@/shared/components/CustomHead';
 import { queryClient as sullogQueryClient } from '@/shared/configs/reactQuery';
 import '@/assets/styles/index.scss';
 import { usePageLoading } from '@/shared/hooks/usePageLoading';
+import * as gtag from '@/shared/libs/gtags';
 import {
   getAccessToken,
   getRefreshToken,
@@ -35,6 +37,7 @@ export default function SullogApp({
 }: SullogAppProps) {
   const [queryClient] = useState(() => sullogQueryClient);
   const { isPageLoading } = usePageLoading();
+  gtag.useGtag();
 
   useEffect(() => {
     if (tokens?.accessToken) {
@@ -43,15 +46,35 @@ export default function SullogApp({
   }, [tokens]);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <ConfirmProvider>
-          <CustomHead />
-          {isPageLoading ? <Loading /> : <Component {...pageProps} />}
-        </ConfirmProvider>
-      </Hydrate>
-      <ReactQueryDevtools />
-    </QueryClientProvider>
+    <>
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gtag.GA_TRACKING_ID}', {
+                  page_path: window.location.pathname,
+                });
+              `,
+        }}
+      />
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <ConfirmProvider>
+            <CustomHead />
+            {isPageLoading ? <Loading /> : <Component {...pageProps} />}
+          </ConfirmProvider>
+        </Hydrate>
+        <ReactQueryDevtools />
+      </QueryClientProvider>
+    </>
   );
 }
 
