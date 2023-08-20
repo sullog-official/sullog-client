@@ -31,8 +31,8 @@
   @include themes.typography('title40');
 
   display: flex;
-  flex-direction: column;
   position: relative;
+  flex-direction: column;
   color: themes.$white;
 }
 
