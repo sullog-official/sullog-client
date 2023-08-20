@@ -2,8 +2,10 @@ import classNames from 'classnames/bind';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
+import * as MoonAnimationData from '@/assets/lotties/moon_motion.json';
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import Icon from '@/shared/components/Icon';
+import Lottie from '@/shared/components/Lottie';
 import PageLayout from '@/shared/components/PageLayout';
 import useAuth from '@/shared/hooks/useAuth';
 
@@ -24,9 +26,21 @@ const Login = () => {
     });
   }, [router, verifyLoggedIn]);
 
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: MoonAnimationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
+
   return (
     <PageLayout className={cx('main')}>
       <div className={cx('title-wrapper')}>
+        <div className={cx('lottie')}>
+          <Lottie animationData={MoonAnimationData} />
+        </div>
         <h1 className={cx('main-title')} style={mapoFlowerIsland.style}>
           <span>술로그</span>
           <span className={cx('sub-title')}>전통주를 기록하다</span>

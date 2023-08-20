@@ -17,6 +17,11 @@
   margin-top: 32vh;
 }
 
+.lottie {
+  position: absolute;
+  top: 23vh;
+}
+
 .main-title {
   @include themes.typography('title40');
 
