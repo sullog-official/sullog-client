@@ -17,12 +17,35 @@
   margin-top: 32vh;
 }
 
+.lottie {
+  position: absolute;
+  top: 23vh;
+
+  &.hidden {
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+  }
+}
+
 .main-title {
   @include themes.typography('title40');
 
   display: flex;
+  position: relative;
   flex-direction: column;
   color: themes.$white;
+}
+
+.moon-logo {
+  position: absolute;
+  top: -5px;
+  right: -15px;
+  opacity: 0;
+
+  &.visible {
+    transition: opacity 1.5s ease-in-out;
+    opacity: 1;
+  }
 }
 
 .sub-title {
