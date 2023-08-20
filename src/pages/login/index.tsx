@@ -1,9 +1,11 @@
 import classNames from 'classnames/bind';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
+import * as MoonAnimationData from '@/assets/lotties/moon_motion.json';
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import Icon from '@/shared/components/Icon';
+import Lottie from '@/shared/components/Lottie';
 import PageLayout from '@/shared/components/PageLayout';
 import useAuth from '@/shared/hooks/useAuth';
 
@@ -12,6 +14,8 @@ import styles from './index.module.scss';
 const cx = classNames.bind(styles);
 
 const Login = () => {
+  const [isMoonLottieStopped, setIsMoonLottieStopped] =
+    useState<boolean>(false);
   const router = useRouter();
 
   const { loginWithKakao, loginWithApple, verifyLoggedIn } = useAuth();
@@ -27,7 +31,17 @@ const Login = () => {
   return (
     <PageLayout className={cx('main')}>
       <div className={cx('title-wrapper')}>
+        <Lottie
+          className={cx('lottie', isMoonLottieStopped && 'hidden')}
+          animationData={MoonAnimationData}
+          onCompleted={() => setIsMoonLottieStopped(true)}
+        />
         <h1 className={cx('main-title')} style={mapoFlowerIsland.style}>
+          <Icon
+            name="MoonLogo"
+            size={18}
+            className={cx('moon-logo', isMoonLottieStopped && 'visible')}
+          />
           <span>술로그</span>
           <span className={cx('sub-title')}>전통주를 기록하다</span>
         </h1>
