@@ -36,6 +36,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.9",
+    "react-lottie": "^1.2.3",
     "react-map-gl": "^7.0.21",
     "react-query-kit": "^1.4.1",
     "react-spinners": "^0.13.8",
