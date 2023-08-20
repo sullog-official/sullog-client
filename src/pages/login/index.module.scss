@@ -20,6 +20,11 @@
 .lottie {
   position: absolute;
   top: 23vh;
+
+  &.hidden {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
 }
 
 .main-title {
@@ -28,6 +33,20 @@
   display: flex;
   flex-direction: column;
   color: themes.$white;
+  position: relative;
+}
+
+.moon-logo {
+  position: absolute;
+  right: -15px;
+  top: -5px;
+
+  opacity: 0;
+
+  &.visible {
+    opacity: 1;
+    transition: opacity 1.5s ease-in-out;
+  }
 }
 
 .sub-title {
