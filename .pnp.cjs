@@ -56,6 +56,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/qs", "npm:6.9.7"],\
             ["@types/react", "npm:18.0.26"],\
             ["@types/react-dom", "npm:18.0.10"],\
+            ["@types/react-lottie", "npm:1.2.6"],\
             ["axios", "npm:1.3.4"],\
             ["babel-loader", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:8.3.0"],\
             ["chart.js", "npm:4.3.0"],\
@@ -79,6 +80,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss", "npm:8.4.20"],\
             ["postcss-loader", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:7.0.2"],\
             ["prettier", "npm:2.8.1"],\
+            ["prop-types", "npm:15.8.1"],\
             ["qs", "npm:6.11.2"],\
             ["react", "npm:18.2.0"],\
             ["react-chartjs-2", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:5.2.0"],\
@@ -9625,6 +9627,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-react-dom-npm-18.0.10-97fe360927-ff8282d500.zip/node_modules/@types/react-dom/",\
           "packageDependencies": [\
             ["@types/react-dom", "npm:18.0.10"],\
+            ["@types/react", "npm:18.0.26"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/react-lottie", [\
+        ["npm:1.2.6", {\
+          "packageLocation": "./.yarn/cache/@types-react-lottie-npm-1.2.6-cf3b4d2494-7930bad2cc.zip/node_modules/@types/react-lottie/",\
+          "packageDependencies": [\
+            ["@types/react-lottie", "npm:1.2.6"],\
             ["@types/react", "npm:18.0.26"]\
           ],\
           "linkType": "HARD"\
@@ -22889,6 +22901,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/qs", "npm:6.9.7"],\
             ["@types/react", "npm:18.0.26"],\
             ["@types/react-dom", "npm:18.0.10"],\
+            ["@types/react-lottie", "npm:1.2.6"],\
             ["axios", "npm:1.3.4"],\
             ["babel-loader", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:8.3.0"],\
             ["chart.js", "npm:4.3.0"],\
@@ -22912,6 +22925,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss", "npm:8.4.20"],\
             ["postcss-loader", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:7.0.2"],\
             ["prettier", "npm:2.8.1"],\
+            ["prop-types", "npm:15.8.1"],\
             ["qs", "npm:6.11.2"],\
             ["react", "npm:18.2.0"],\
             ["react-chartjs-2", "virtual:f8fa4015ddc4700ad5c3910af850aabec8cb904cfefb8f9edac32001b8929ce496e1f51c24e9519c50e0d90dd303fb1bf06fd892674bb37fb0e7dd3bfa52424e#npm:5.2.0"],\
