@@ -5,7 +5,10 @@ const CustomHead = () => {
     <Head>
       {/* HTML Meta Tags */}
       <title>Sullog</title>
-      <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
+      <meta
+        name="viewport"
+        content="initial-scale=1, viewport-fit=cover, user-scalable=no"
+      />
 
       {/* Facebook Meta Tags */}
       <meta property="og:url" content="https://sullog-client.vercel.app" />
