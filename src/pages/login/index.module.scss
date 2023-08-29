@@ -19,7 +19,9 @@
 
 .lottie {
   position: absolute;
-  top: 23vh;
+
+  // 로띠 안의 달 위치가 정가운데가 아니므로 x축 기준 5px 조절
+  transform: translate(5px, calc(-100% + 20px));
 
   &.hidden {
     transition: opacity 1s ease-in-out;
