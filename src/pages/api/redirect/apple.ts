@@ -12,6 +12,7 @@ const appleLoginCallback = (code: string, name?: string, email?: string) => {
     url: generateUrl({ url: '/apple', params: { code, name, email } }),
     method: 'post',
     validateStatus: null,
+    headers: { 'Content-Type': 'application/json' },
   });
 };
 
@@ -33,7 +34,6 @@ export default async function handler(
     let response;
     if (name && email) response = await appleLoginCallback(code, name, email);
     else response = await appleLoginCallback(code);
-    console.log(response);
 
     const {
       [ACCESS_TOKEN_KEY]: accessToken,
