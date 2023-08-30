@@ -34,7 +34,8 @@ const useAuth = () => {
   };
 
   const loginWithApple = () => {
-    alert('준비중입니다!');
+    location.href =
+      'https://appleid.apple.com/auth/authorize?client_id=sullogapp.sullog.com&redirect_uri=https://sullog-client.vercel.app/api/redirect/apple&response_type=code&scope=name%20email&response_mode=form_post';
   };
 
   const logout = async () => {
