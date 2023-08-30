@@ -19,9 +19,11 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  console.log('hello');
   const code = req.query.code?.toString();
   const name = req.query.name?.toString();
   const email = req.query.email?.toString();
+  console.log(code, name, email);
 
   if (!code) {
     res.redirect(307, '/login');
@@ -32,8 +34,6 @@ export default async function handler(
     let response;
     if (name && email) response = await appleLoginCallback(code, name, email);
     else response = await appleLoginCallback(code);
-
-    alert(response);
     console.log(response);
 
     const {
