@@ -9,16 +9,17 @@ import { generateUrl } from '@/shared/utils/generateUrl';
 const appleLoginCallback = (code: string, name?: string, email?: string) => {
   return axios({
     baseURL: NEXT_PUBLIC_API_BASE_URI,
-    url: generateUrl({ url: '/apple', params: { code, name, email } }),
+    url: generateUrl({ url: '/apple' }),
     method: 'post',
     validateStatus: null,
     headers: { 'Content-Type': 'application/json' },
+    data: { code, name, email },
   });
 };
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse기
 ) {
   const code = req.body.code?.toString();
   const name = req.body.name?.toString();
