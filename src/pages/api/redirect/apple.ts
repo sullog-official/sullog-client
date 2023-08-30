@@ -19,10 +19,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log('req', req.body);
-  const code = req.query.code?.toString();
-  const name = req.query.name?.toString();
-  const email = req.query.email?.toString();
+  const code = req.body.code?.toString();
+  const name = req.body.name?.toString();
+  const email = req.body.email?.toString();
+  console.log(code, name, email);
 
   if (!code) {
     res.redirect(307, '/login');
