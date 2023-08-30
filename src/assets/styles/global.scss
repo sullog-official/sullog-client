@@ -1,6 +1,7 @@
 html {
   /* stylelint-disable-next-line value-no-vendor-prefix */
   height: -webkit-fill-available;
+  touch-action: pan-x pan-y;
 }
 
 body {
@@ -9,6 +10,8 @@ body {
   min-height: -webkit-fill-available;
   background-color: #fff;
   font-family: 'Noto Sans KR', sans-serif;
+  -webkit-touch-callout: none;
+  user-select: none;
 }
 
 /* stylelint-disable-next-line selector-id-pattern */
