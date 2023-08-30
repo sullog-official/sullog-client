@@ -31,7 +31,9 @@ export default async function handler(
   try {
     let response;
     if (name && email) response = await appleLoginCallback(code, name, email);
-    response = await appleLoginCallback(code);
+    else response = await appleLoginCallback(code);
+
+    alert(response);
     console.log(response);
 
     const {
