@@ -19,8 +19,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log('req', req);
-  console.log('res', res);
+  console.log('req', req.body.json());
   const code = req.query.code?.toString();
   const name = req.query.name?.toString();
   const email = req.query.email?.toString();
