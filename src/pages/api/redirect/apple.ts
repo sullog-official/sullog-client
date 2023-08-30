@@ -19,7 +19,7 @@ const appleLoginCallback = (code: string, name?: string, email?: string) => {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse기
+  res: NextApiResponse
 ) {
   const code = req.body.code?.toString();
   const name = req.body.name?.toString();
