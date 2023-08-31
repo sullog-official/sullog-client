@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { useContext } from 'react';
 
 import {
   NEXT_PUBLIC_KAKAO_BASE_URI,
@@ -10,10 +11,12 @@ import { deleteAccessToken, getAccessToken } from '@/shared/utils/auth';
 import { generateUrl } from '@/shared/utils/generateUrl';
 
 import { logout as authLogout } from '../apis/auth/logout';
+import { AuthContext } from '../stores/AuthContext';
 
 import useConfirm from './useConfirm';
 
 const useAuth = () => {
+  const context = useContext(AuthContext);
   const router = useRouter();
   const { confirm } = useConfirm();
 
@@ -53,7 +56,7 @@ const useAuth = () => {
   };
 
   const verifyLoggedIn = async (): Promise<boolean> => {
-    const accessToken = getAccessToken();
+    const accessToken = context?.accessToken;
     return !!accessToken;
   };
 
