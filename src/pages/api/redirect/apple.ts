@@ -51,13 +51,6 @@ export default async function handler(
     console.log('accessToken', accessToken);
     console.log('refreshToken', refreshToken);
 
-    if (refreshToken) {
-      res.setHeader(
-        'Set-Cookie',
-        `${REFRESH_TOKEN_KEY}=${refreshToken}; path=/; samesite=none; httponly; Secure`
-      );
-    }
-
     console.log('res.getHeaders', res.getHeaders());
 
     res.redirect(307, '/');

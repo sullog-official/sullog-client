@@ -37,13 +37,6 @@ export default async function handler(
     setAccessToken(accessToken);
     setRefreshToken(refreshToken, { req, res });
 
-    if (refreshToken) {
-      res.setHeader(
-        'Set-Cookie',
-        `${REFRESH_TOKEN_KEY}=${refreshToken}; path=/; samesite=lax; httponly;`
-      );
-    }
-
     res.redirect(307, '/');
   } catch (err) {
     console.error(err);

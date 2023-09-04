@@ -46,7 +46,7 @@ export const setRefreshToken = (
     httpOnly: true,
     secure: process.env.NODE_ENV !== 'development',
     maxAge: FOURTEEN_DAYS,
-    sameSite: 'strict',
+    sameSite: 'none',
     path: '/',
   });
 };
