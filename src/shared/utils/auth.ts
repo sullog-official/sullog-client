@@ -2,8 +2,16 @@ import type { IncomingMessage, ServerResponse } from 'http';
 
 import { deleteCookie, getCookie, setCookie } from 'cookies-next';
 
+import {
+  NEXT_PUBLIC_KAKAO_BASE_URI,
+  NEXT_PUBLIC_KAKAO_CLIENT_ID,
+  NEXT_PUBLIC_KAKAO_REDIRECT_URI,
+  NEXT_PUBLIC_KAKAO_SCOPE,
+} from '@/shared/constants';
+
 import { REFRESH_TOKEN_KEY } from '../constants';
 
+import { generateUrl } from './generateUrl';
 import { isServer } from './isServer';
 
 let inMemoryAccessToken: string | undefined;
@@ -71,4 +79,30 @@ export const deleteRefreshToken = (context?: {
   }
 
   deleteCookie(REFRESH_TOKEN_KEY, context);
+};
+
+export const getKakaoOAuthAuthorizeUrl = () => {
+  return generateUrl({
+    url: NEXT_PUBLIC_KAKAO_BASE_URI!,
+    params: {
+      response_type: 'code',
+      client_id: NEXT_PUBLIC_KAKAO_CLIENT_ID,
+      scope: NEXT_PUBLIC_KAKAO_SCOPE,
+      redirect_uri: NEXT_PUBLIC_KAKAO_REDIRECT_URI,
+    },
+  });
+};
+
+// TODO: 환경변수로 관리
+export const getAppleOAuthAuthorizeUrl = () => {
+  return generateUrl({
+    url: 'https://appleid.apple.com/auth/authorize',
+    params: {
+      client_id: 'sullogapp.sullog.com',
+      redirect_uri: 'https://sullog-client.vercel.app/api/redirect/apple',
+      response_type: 'code',
+      scope: 'name email',
+      response_mode: 'form_post',
+    },
+  });
 };

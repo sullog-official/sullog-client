@@ -1,13 +1,11 @@
 import { useRouter } from 'next/router';
 
 import {
-  NEXT_PUBLIC_KAKAO_BASE_URI,
-  NEXT_PUBLIC_KAKAO_CLIENT_ID,
-  NEXT_PUBLIC_KAKAO_REDIRECT_URI,
-  NEXT_PUBLIC_KAKAO_SCOPE,
-} from '@/shared/constants';
-import { deleteAccessToken, getAccessToken } from '@/shared/utils/auth';
-import { generateUrl } from '@/shared/utils/generateUrl';
+  deleteAccessToken,
+  getAccessToken,
+  getAppleOAuthAuthorizeUrl,
+  getKakaoOAuthAuthorizeUrl,
+} from '@/shared/utils/auth';
 
 import { logout as authLogout } from '../apis/auth/logout';
 
@@ -17,25 +15,12 @@ const useAuth = () => {
   const router = useRouter();
   const { confirm } = useConfirm();
 
-  const getKakaoOAuthAuthorizeUrl = () => {
-    return generateUrl({
-      url: NEXT_PUBLIC_KAKAO_BASE_URI!,
-      params: {
-        response_type: 'code',
-        client_id: NEXT_PUBLIC_KAKAO_CLIENT_ID,
-        scope: NEXT_PUBLIC_KAKAO_SCOPE,
-        redirect_uri: NEXT_PUBLIC_KAKAO_REDIRECT_URI,
-      },
-    });
-  };
-
   const loginWithKakao = () => {
     location.href = getKakaoOAuthAuthorizeUrl();
   };
 
   const loginWithApple = () => {
-    location.href =
-      'https://appleid.apple.com/auth/authorize?client_id=sullogapp.sullog.com&redirect_uri=https://sullog-client.vercel.app/api/redirect/apple&response_type=code&scope=name%20email&response_mode=form_post';
+    location.href = getAppleOAuthAuthorizeUrl();
   };
 
   const logout = async () => {
