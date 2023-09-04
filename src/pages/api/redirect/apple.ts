@@ -54,7 +54,7 @@ export default async function handler(
     if (refreshToken) {
       res.setHeader(
         'Set-Cookie',
-        `${REFRESH_TOKEN_KEY}=${refreshToken}; path=/; samesite=lax; httponly;`
+        `${REFRESH_TOKEN_KEY}=${refreshToken}; path=/; samesite=none; httponly; Secure`
       );
     }
 

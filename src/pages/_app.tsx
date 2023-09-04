@@ -89,7 +89,13 @@ SullogApp.getInitialProps = async (appContext: AppContext) => {
 
   const refreshToken = getRefreshToken({ req, res });
 
-  console.log('2', req?.headers.cookie, pathname, refreshToken);
+  console.log(
+    '2',
+    res?.getHeaders(),
+    req?.headers.cookie,
+    pathname,
+    refreshToken
+  );
 
   if (pathname !== '/login' && !refreshToken) {
     console.log('3');
