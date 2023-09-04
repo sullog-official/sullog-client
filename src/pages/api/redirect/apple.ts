@@ -6,14 +6,18 @@ import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/shared/constants';
 import { setAccessToken, setRefreshToken } from '@/shared/utils/auth';
 import { generateUrl } from '@/shared/utils/generateUrl';
 
-const appleLoginCallback = (code: string, name?: string, email?: string) => {
+const appleLoginCallback = (data: {
+  code: string;
+  name?: string;
+  email?: string;
+}) => {
   return axios({
     baseURL: NEXT_PUBLIC_API_BASE_URI,
     url: generateUrl({ url: '/apple' }),
     method: 'post',
     validateStatus: null,
     headers: { 'Content-Type': 'application/json' },
-    data: { code, name, email },
+    data,
   });
 };
 
@@ -32,9 +36,7 @@ export default async function handler(
   }
 
   try {
-    let response;
-    if (name && email) response = await appleLoginCallback(code, name, email);
-    else response = await appleLoginCallback(code);
+    const response = await appleLoginCallback({ code, name, email });
 
     const {
       [ACCESS_TOKEN_KEY]: accessToken,
