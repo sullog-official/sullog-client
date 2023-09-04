@@ -87,7 +87,7 @@ SullogApp.getInitialProps = async (appContext: AppContext) => {
   const { ctx } = appContext;
   const { req, res, pathname } = ctx;
 
-  const refreshToken = getRefreshToken({ req, res });
+  const refreshToken = await getRefreshToken({ req, res });
 
   console.log('2', req?.headers.cookie, pathname, refreshToken);
 
@@ -103,7 +103,7 @@ SullogApp.getInitialProps = async (appContext: AppContext) => {
     try {
       await refreshAccessToken(ctx);
       const accessToken = getAccessToken();
-      const refreshToken = getRefreshToken({ req, res });
+      const refreshToken = await getRefreshToken({ req, res });
       console.log('5', accessToken, refreshToken);
 
       if (!accessToken || !refreshToken) {

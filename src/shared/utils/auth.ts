@@ -51,7 +51,7 @@ export const setRefreshToken = (
   });
 };
 
-export const getRefreshToken = (context?: {
+export const getRefreshToken = async (context?: {
   req?: IncomingMessage;
   res?: ServerResponse;
 }) => {
@@ -59,7 +59,7 @@ export const getRefreshToken = (context?: {
     throw new Error("'context' is required for server side cookies");
   }
 
-  return getCookie(REFRESH_TOKEN_KEY, context) as string | undefined;
+  return (await getCookie(REFRESH_TOKEN_KEY, context)) as string | undefined;
 };
 
 export const deleteRefreshToken = (context?: {
