@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
 
+import { login } from '@/shared/apis/auth/login';
 import { NEXT_PUBLIC_API_BASE_URI } from '@/shared/constants';
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/shared/constants';
 import { setAccessToken, setRefreshToken } from '@/shared/utils/auth';
@@ -27,17 +28,7 @@ export default async function handler(
   }
 
   try {
-    const response = await kakaoLoginCallback(code);
-
-    const {
-      [ACCESS_TOKEN_KEY]: accessToken,
-      [REFRESH_TOKEN_KEY]: refreshToken,
-    } = response.headers;
-
-    setAccessToken(accessToken);
-    setRefreshToken(refreshToken, { req, res });
-
-    res.redirect(307, '/');
+    await login(await kakaoLoginCallback(code));
   } catch (err) {
     console.error(err);
     res.redirect(307, '/login');
