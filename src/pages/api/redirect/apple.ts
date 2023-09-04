@@ -58,6 +58,8 @@ export default async function handler(
       );
     }
 
+    console.log('res.getHeaders', res.getHeaders());
+
     res.redirect(307, '/');
   } catch (err) {
     console.error(err);
