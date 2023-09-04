@@ -31,6 +31,8 @@ export default async function handler(
   console.log(code, name, email);
 
   if (!code) {
+    console.log('1');
+
     res.redirect(307, '/login');
     return;
   }
@@ -45,6 +47,9 @@ export default async function handler(
 
     setAccessToken(accessToken);
     setRefreshToken(refreshToken, { req, res });
+
+    console.log('accessToken', accessToken);
+    console.log('refreshToken', refreshToken);
 
     if (refreshToken) {
       res.setHeader(
