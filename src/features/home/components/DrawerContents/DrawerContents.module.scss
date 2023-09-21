@@ -75,3 +75,10 @@
   height: 110px;
   padding: 0 4px;
 }
+
+.delete-button {
+  margin-top: 12px;
+  @include themes.typography('caption9');
+  text-decoration: underline;
+  font-weight: 300;
+}
