@@ -2,8 +2,10 @@ import classNames from 'classnames/bind';
 
 import { mapoFlowerIsland } from '@/assets/styles/fonts';
 import DoughnutChart from '@/features/home/components/DoughnutChart';
+import { deleteUser } from '@/shared/apis/auth/delete';
 import { Button } from '@/shared/components';
 import useAuth from '@/shared/hooks/useAuth';
+import useConfirm from '@/shared/hooks/useConfirm';
 import { Statistics } from '@/shared/types/record/statistics';
 
 import styles from './DrawerContents.module.scss';
@@ -16,6 +18,7 @@ type DrawerContentsProps = {
 
 const DrawerContents = ({ statistics }: DrawerContentsProps) => {
   const { logout } = useAuth();
+  const { confirm } = useConfirm();
 
   const recordsCount = Object?.values(statistics?.recordStatisticsMap).reduce(
     (acc, cur) => acc + cur,
@@ -24,6 +27,18 @@ const DrawerContents = ({ statistics }: DrawerContentsProps) => {
 
   const onClickContact = () => {
     window.location.href = 'mailto:gino9940@gmail.com';
+  };
+
+  const handleClickDelete = async () => {
+    if (
+      await confirm({
+        message: '정말 회원탈퇴를 하시겠어요?',
+        okText: '확인',
+      })
+    ) {
+      await deleteUser();
+      logout();
+    }
   };
 
   return (
@@ -51,11 +66,20 @@ const DrawerContents = ({ statistics }: DrawerContentsProps) => {
         </div>
       )}
       <div className={cx('button-container')}>
-        <Button onClick={onClickContact}>문의하기</Button>
-        <Button type="outline" onClick={logout}>
+        <Button buttonType="button" onClick={onClickContact}>
+          문의하기
+        </Button>
+        <Button buttonType="button" type="outline" onClick={logout}>
           로그아웃
         </Button>
       </div>
+      <button
+        type="button"
+        className={cx('delete-button')}
+        onClick={handleClickDelete}
+      >
+        회원탈퇴
+      </button>
     </div>
   );
 };
