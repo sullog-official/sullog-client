@@ -97,7 +97,7 @@ export const getServerSideProps: GetServerSideProps<{
 
   return {
     props: {
-      dehydratedState: dehydrate(queryClient),
+      dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
     },
   };
 };
