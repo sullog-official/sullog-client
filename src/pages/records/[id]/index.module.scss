@@ -6,6 +6,18 @@
   padding: 20px 30px calc(env(safe-area-inset-bottom) + 50px);
 }
 
+.above-title {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.report-button {
+  color: themes.$grey300;
+  @include themes.typography('caption12');
+}
+
 .title-area {
   display: flex;
   flex-wrap: wrap;
