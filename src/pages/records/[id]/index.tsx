@@ -57,7 +57,6 @@ const RecordDetail = ({ id }: RecordDetailProps) => {
       <TopNavigator title="내 게시글" />
       <ImageSwiper images={record.photoPathList.map((url) => ({ url }))} />
       <div className={cx('contents-wrap')}>
-        {/* TODO : 주종 api 연동 */}
         <Chip
           label="과실주"
           type="Primary"
