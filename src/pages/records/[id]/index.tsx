@@ -14,6 +14,7 @@ import Chip from '@/shared/components/Chip';
 import Icon from '@/shared/components/Icon';
 import PageLayout from '@/shared/components/PageLayout';
 import TopNavigator from '@/shared/components/TopNavigator';
+import useConfirm from '@/shared/hooks/useConfirm';
 import { Alcohol } from '@/shared/types/alcohol';
 import { Record } from '@/shared/types/record';
 import { FlavorTag } from '@/shared/types/record/flavorTag';
@@ -28,6 +29,7 @@ type RecordDetailProps = {
 
 const RecordDetail = ({ id }: RecordDetailProps) => {
   const { data } = useGetRecord({ variables: { recordId: id } });
+  const { confirm } = useConfirm();
 
   const formatRecordTags = useCallback(
     ([alcoholPercent, alcoholPercentFeeling, flavorDetailTag]: [
@@ -46,6 +48,17 @@ const RecordDetail = ({ id }: RecordDetailProps) => {
     []
   );
 
+  const handleClickReport = async () => {
+    if (
+      await confirm({
+        message: '정말 신고하시겠어요?',
+        okText: '확인',
+      })
+    ) {
+      window.location.href = 'mailto:gino9940@gmail.com';
+    }
+  };
+
   if (!data) {
     return null;
   }
@@ -57,13 +70,21 @@ const RecordDetail = ({ id }: RecordDetailProps) => {
       <TopNavigator title="내 게시글" />
       <ImageSwiper images={record.photoPathList.map((url) => ({ url }))} />
       <div className={cx('contents-wrap')}>
-        {/* TODO : 주종 api 연동 */}
-        <Chip
-          label="과실주"
-          type="Primary"
-          appearance="round"
-          size="mediumLarge"
-        />
+        <div className={cx('above-title')}>
+          <Chip
+            label="과실주"
+            type="Primary"
+            appearance="round"
+            size="mediumLarge"
+          />
+          <button
+            onClick={handleClickReport}
+            className={cx('report-button')}
+            type="button"
+          >
+            신고하기
+          </button>
+        </div>
         <div className={cx('title-area')}>
           <h1 className={cx('title')}>{alcoholInfo.alcoholName}</h1>
           <span className={cx('location')}>
