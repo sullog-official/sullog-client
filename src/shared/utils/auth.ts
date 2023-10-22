@@ -9,36 +9,57 @@ import {
   NEXT_PUBLIC_KAKAO_SCOPE,
 } from '@/shared/constants';
 
-import { REFRESH_TOKEN_KEY } from '../constants';
+import { REFRESH_TOKEN_KEY, ACCESS_TOKEN_KEY } from '../constants';
 
 import { generateUrl } from './generateUrl';
+import { InMemoryValue } from './inMemory';
 import { isServer } from './isServer';
 
-let inMemoryAccessToken: string | undefined;
+const ONE_DAY = 24 * 60 * 60 * 1000;
 
-/**
- * 액세스 토큰을 인메모리에 저장
- */
-export const setAccessToken = (accessToken: string) => {
-  inMemoryAccessToken = accessToken;
+const inMemoryAccessToken = new InMemoryValue<string | undefined>(undefined);
+
+export const setAccessToken = (
+  accessToken: string,
+  context?: { req?: IncomingMessage; res?: ServerResponse }
+) => {
+  if (isServer() && context) {
+    setCookie(ACCESS_TOKEN_KEY, accessToken, {
+      ...(context || {}),
+      httpOnly: true,
+      secure: process.env.NODE_ENV !== 'development',
+      maxAge: ONE_DAY,
+      sameSite: 'strict',
+      path: '/',
+    });
+  }
+  inMemoryAccessToken.set(accessToken);
 };
 
-export const getAccessToken = (): string | undefined => {
-  return inMemoryAccessToken;
+export const getAccessToken = (context?: {
+  req?: IncomingMessage;
+  res?: ServerResponse;
+}): string | undefined => {
+  if (isServer() && context) {
+    return getCookie(ACCESS_TOKEN_KEY, context) as string | undefined;
+  }
+  return inMemoryAccessToken.get();
 };
 
-export const deleteAccessToken = () => {
-  inMemoryAccessToken = '';
+export const deleteAccessToken = (context?: {
+  req?: IncomingMessage;
+  res?: ServerResponse;
+}) => {
+  if (isServer() && context) {
+    deleteCookie(ACCESS_TOKEN_KEY, context);
+  }
+  inMemoryAccessToken.delete();
 };
 
-/**
- * 리프레시 토큰을 쿠키에 저장 (expires : 14일)
- */
 const FOURTEEN_DAYS = 14 * 24 * 60 * 60 * 1000;
 
 export const setRefreshToken = (
   refreshToken: string,
-  /** required for server side cookies */
   context?: { req?: IncomingMessage; res?: ServerResponse }
 ) => {
   if (isServer() && !context) {
