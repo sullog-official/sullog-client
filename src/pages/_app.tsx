@@ -89,31 +89,19 @@ SullogApp.getInitialProps = async (appContext: AppContext) => {
 
   const refreshToken = getRefreshToken({ req, res });
 
-  console.log(
-    '2',
-    res?.getHeaders(),
-    req?.headers.cookie,
-    pathname,
-    refreshToken
-  );
-
   if (pathname !== '/login' && !refreshToken) {
-    console.log('3');
     goToLogin(res);
     return {};
   }
 
   let tokens: SullogAppProps['tokens'];
   if (refreshToken) {
-    console.log('4', tokens);
     try {
       await refreshAccessToken(ctx);
       const accessToken = getAccessToken();
       const refreshToken = getRefreshToken({ req, res });
-      console.log('5', accessToken, refreshToken);
 
       if (!accessToken || !refreshToken) {
-        console.log('6');
         goToLogin(res);
         return {};
       }
@@ -123,7 +111,6 @@ SullogApp.getInitialProps = async (appContext: AppContext) => {
         refreshToken,
       };
     } catch (error) {
-      console.log('7', error);
       goToLogin(res);
       return {};
     }
