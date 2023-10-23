@@ -1,8 +1,11 @@
 import axios from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { NEXT_PUBLIC_API_BASE_URI } from '@/shared/constants';
-import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/shared/constants';
+import {
+  NEXT_PUBLIC_API_BASE_URI,
+  ACCESS_TOKEN_KEY,
+  REFRESH_TOKEN_KEY,
+} from '@/shared/constants';
 import { setAccessToken, setRefreshToken } from '@/shared/utils/auth';
 import { generateUrl } from '@/shared/utils/generateUrl';
 
