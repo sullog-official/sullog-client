@@ -8,6 +8,7 @@ import {
 } from '@/shared/utils/auth';
 
 import { logout as authLogout } from '../apis/auth/logout';
+import { refreshTokens } from '../apis/auth/refreshTokens';
 
 import useConfirm from './useConfirm';
 
@@ -39,6 +40,12 @@ const useAuth = () => {
 
   const verifyLoggedIn = async (): Promise<boolean> => {
     const accessToken = getAccessToken();
+
+    if (!accessToken) {
+      const { data } = await refreshTokens();
+      return !!data.result;
+    }
+
     return !!accessToken;
   };
 

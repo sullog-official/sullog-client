@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const refreshTokens = async () => {
-  return await axios({
+  return await axios<{ result: boolean }>({
     url: '/api/refresh',
     method: 'get',
   });
