@@ -1,8 +1,8 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
-import { refreshAccessToken } from '@/shared/apis/auth/refreshAccessToken';
 import { NEXT_PUBLIC_API_BASE_URI } from '@/shared/constants';
 
+import { refreshTokens } from '../apis/auth/refreshTokens';
 import { getAccessToken } from '../utils/auth';
 import { isServer } from '../utils/isServer';
 
@@ -17,7 +17,11 @@ let subscribers: ((accessToken: string) => Promise<void>)[] = [];
 const handleUnauthorizedError = async (error: AxiosError) => {
   if (error.response?.status === 401) {
     try {
-      throw new Error('exceed retry limit count');
+      const { data } = await refreshTokens();
+
+      if (!data.result) {
+        throw new Error('Failed to refresh tokens');
+      }
     } catch (error) {
       // 새 액세스 토큰을 가져 오는 동안 오류가 발생하면 로그인 페이지로 리디렉션
       if (!isServer()) {
