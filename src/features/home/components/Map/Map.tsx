@@ -1,10 +1,15 @@
 import classNames from 'classnames/bind';
-import { GeoJSONSource } from 'mapbox-gl';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import ReactMapGL, { Layer, MapRef, Source, useMap } from 'react-map-gl';
+import ReactMapGL, {
+  Layer,
+  Source,
+  useMap,
+  type GeoJSONSource,
+  type MapRef,
+} from 'react-map-gl';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { Experience } from '@/shared/types/Experience';
+import type { Experience } from '@/shared/types/Experience';
 
 import Slider from '../Slider';
 

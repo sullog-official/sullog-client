@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import type { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 
 import styles from './Button.module.scss';
 

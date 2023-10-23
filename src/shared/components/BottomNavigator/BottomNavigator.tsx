@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import Icon from '@/shared/components/Icon';
 import StatisticsDrawer from '@/shared/components/StatisticsDrawer';
 import { useOpen } from '@/shared/hooks/useOpen';
-import { Statistics } from '@/shared/types/record/statistics';
+import type { Statistics } from '@/shared/types/record/statistics';
 
 import styles from './BottomNavigator.module.scss';
 

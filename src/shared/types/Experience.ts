@@ -1,4 +1,4 @@
-import { Alcohol } from './alcohol';
+import type { Alcohol } from './alcohol';
 
 export type Experience = Omit<Alcohol, 'alcoholPercent'> & {
   recordId: number;

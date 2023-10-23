@@ -1,6 +1,6 @@
 import { createQuery } from 'react-query-kit';
 
-import { Experience } from '@/shared/types/Experience';
+import type { Experience } from '@/shared/types/Experience';
 import { request } from '@/shared/utils/request';
 
 type Response = Experience[];

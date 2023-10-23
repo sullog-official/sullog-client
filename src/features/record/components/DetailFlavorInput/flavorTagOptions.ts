@@ -1,5 +1,5 @@
 import { FLAVOR_TAGS } from '@/shared/constants/flavorTags';
-import { DetailTag, MajorTag } from '@/shared/types/record/flavorTag';
+import type { DetailTag, MajorTag } from '@/shared/types/record/flavorTag';
 
 import {
   getDetailFlavorTagLabel,

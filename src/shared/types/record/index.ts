@@ -1,7 +1,7 @@
-import { Alcohol } from '../alcohol';
+import type { Alcohol } from '../alcohol';
 
-import { AlcoholPercentFeeling } from './alcoholPercentFeeling';
-import { FlavorTag } from './flavorTag';
+import type { AlcoholPercentFeeling } from './alcoholPercentFeeling';
+import type { FlavorTag } from './flavorTag';
 
 export type Record = {
   recordId: number;

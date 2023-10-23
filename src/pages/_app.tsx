@@ -1,6 +1,6 @@
 import { Hydrate, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { NextPageContext } from 'next';
+import type { NextPageContext } from 'next';
 import App, { type AppContext, type AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
 import Script from 'next/script';

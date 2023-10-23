@@ -1,7 +1,7 @@
 import { createInfiniteQuery } from 'react-query-kit';
 
-import { Feed } from '@/shared/types/feed';
-import { PagingInfo } from '@/shared/types/paging';
+import type { Feed } from '@/shared/types/feed';
+import type { PagingInfo } from '@/shared/types/paging';
 import { request } from '@/shared/utils/request';
 
 type Response = {

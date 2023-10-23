@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { forwardRef, ForwardedRef } from 'react';
+import { forwardRef, type ForwardedRef } from 'react';
 
 import styles from './TextField.module.scss';
 

@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind';
-import { ForwardedRef, forwardRef } from 'react';
+import { forwardRef, type ForwardedRef } from 'react';
 
 import Accordion from '@/shared/components/Accordion';
 import Chip from '@/shared/components/Chip';
-import { FlavorTag } from '@/shared/types/record/flavorTag';
+import type { FlavorTag } from '@/shared/types/record/flavorTag';
 
 import styles from './DetailFlavorInput.module.scss';
 import { flavorTagOptions } from './flavorTagOptions';

@@ -1,8 +1,8 @@
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
-import { GetServerSideProps } from 'next';
+import type { GetServerSideProps } from 'next';
 import dynamic from 'next/dynamic';
-import { MouseEvent, useMemo, useState } from 'react';
+import { useMemo, useState, type MouseEvent } from 'react';
 
 import Map from '@/features/home/components/Map';
 import AlcoholCategoryFilter from '@/features/search/components/AlcoholCategoryFilter';

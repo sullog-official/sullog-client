@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind';
-import { Dispatch, SetStateAction } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 
 import AlcoholCategoryTabItem from '@/features/search/components/AlcoholCategoryTabItem';
 import { ALCOHOL_CATEGORIES } from '@/shared/constants/alcohol';
-import { AlcoholTag } from '@/shared/types/alcohol';
+import type { AlcoholTag } from '@/shared/types/alcohol';
 
 import styles from './AlcoholCategoryTab.module.scss';
 

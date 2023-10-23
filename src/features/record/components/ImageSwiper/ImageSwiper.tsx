@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useEffect, useState, ChangeEvent } from 'react';
+import { useEffect, useState, type ChangeEvent } from 'react';
 import { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 

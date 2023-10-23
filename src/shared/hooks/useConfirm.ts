@@ -1,6 +1,6 @@
 import {
   useConfirmContext,
-  ConfirmOpenPayload,
+  type ConfirmOpenPayload,
 } from '../stores/ConfirmContext';
 
 export let confirmResolveCallback: (value: boolean) => void;

@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
-import { ForwardedRef, forwardRef } from 'react';
+import { forwardRef, type ForwardedRef } from 'react';
 
 import Chip from '@/shared/components/Chip';
-import { AlcoholPercentFeeling } from '@/shared/types/record/alcoholPercentFeeling';
+import type { AlcoholPercentFeeling } from '@/shared/types/record/alcoholPercentFeeling';
 
 import { getAlcoholPercentFeelingLabel } from '../../utils/getAlcoholPercentFeelingLabel';
 

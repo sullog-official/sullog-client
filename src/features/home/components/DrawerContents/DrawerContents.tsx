@@ -6,7 +6,7 @@ import { deleteUser } from '@/shared/apis/auth/delete';
 import { Button } from '@/shared/components';
 import useAuth from '@/shared/hooks/useAuth';
 import useConfirm from '@/shared/hooks/useConfirm';
-import { Statistics } from '@/shared/types/record/statistics';
+import type { Statistics } from '@/shared/types/record/statistics';
 
 import styles from './DrawerContents.module.scss';
 

@@ -1,5 +1,5 @@
-import { Alcohol } from '@/shared/types/alcohol';
-import { Record } from '@/shared/types/record';
+import type { Alcohol } from '@/shared/types/alcohol';
+import type { Record } from '@/shared/types/record';
 
 export type Feed = Alcohol &
   Pick<Record, 'memberId' | 'recordId' | 'description'> & {

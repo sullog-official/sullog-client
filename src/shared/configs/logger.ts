@@ -1,4 +1,4 @@
-import { AxiosInstance, AxiosResponse } from 'axios';
+import type { AxiosInstance, AxiosResponse } from 'axios';
 
 const logRequest = (res: AxiosResponse<any, any>, error = false) => {
   const status = res?.status;

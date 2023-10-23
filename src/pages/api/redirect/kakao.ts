@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 import {
   NEXT_PUBLIC_API_BASE_URI,
