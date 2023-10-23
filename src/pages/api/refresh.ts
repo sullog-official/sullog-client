@@ -33,8 +33,15 @@ export default async function handler(
       validateStatus: null,
     });
 
-    setAccessToken(response.headers[ACCESS_TOKEN_KEY], { req, res });
-    setRefreshToken(response.headers[REFRESH_TOKEN_KEY], { req, res });
+    const newAccessToken = response.headers[ACCESS_TOKEN_KEY];
+    const newRefreshToken = response.headers[REFRESH_TOKEN_KEY];
+
+    if (!newAccessToken || !newRefreshToken) {
+      throw new Error('Invalid tokens.');
+    }
+
+    setAccessToken(newAccessToken, { req, res });
+    setRefreshToken(newRefreshToken, { req, res });
 
     res.status(200).json({ result: true });
   } catch (err) {
