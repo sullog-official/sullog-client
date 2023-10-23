@@ -1,7 +1,6 @@
-import type { IncomingMessage, ServerResponse } from 'http';
-
 import { Hydrate, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { NextPageContext } from 'next';
 import App from 'next/app';
 import type { AppContext, AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
@@ -12,12 +11,14 @@ import ConfirmProvider from '@/shared/components/ConfirmProvider';
 import CustomHead from '@/shared/components/CustomHead';
 import { queryClient as sullogQueryClient } from '@/shared/configs/reactQuery';
 import '@/assets/styles/index.scss';
+import { NEXT_PUBLIC_TEST_USER_TOKEN } from '@/shared/constants';
 import { usePageLoading } from '@/shared/hooks/usePageLoading';
 import * as gtag from '@/shared/libs/gtags';
 import {
   getAccessToken,
   getRefreshToken,
   setAccessToken,
+  setRefreshToken,
 } from '@/shared/utils/auth';
 
 const Loading = dynamic(() => import('@/shared/components/Loading'));
@@ -74,9 +75,18 @@ export default function SullogApp({
   );
 }
 
+const setTestUserTokens = ({ req, res }: NextPageContext) => {
+  if (process.env.NODE_ENV === 'development' && NEXT_PUBLIC_TEST_USER_TOKEN) {
+    setAccessToken(NEXT_PUBLIC_TEST_USER_TOKEN, { req, res });
+    setRefreshToken(NEXT_PUBLIC_TEST_USER_TOKEN, { req, res });
+  }
+};
+
 SullogApp.getInitialProps = async (appContext: AppContext) => {
   const { ctx } = appContext;
   const { req, res, pathname } = ctx;
+
+  setTestUserTokens(ctx);
 
   const accessToken = getAccessToken({ req, res });
   const refreshToken = getRefreshToken({ req, res });

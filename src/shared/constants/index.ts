@@ -1,5 +1,6 @@
 export const NEXT_PUBLIC_API_BASE_URI = process.env.NEXT_PUBLIC_API_BASE_URI;
-
+export const NEXT_PUBLIC_TEST_USER_TOKEN =
+  process.env.NEXT_PUBLIC_TEST_USER_TOKEN;
 export const NEXT_PUBLIC_KAKAO_BASE_URI =
   process.env.NEXT_PUBLIC_KAKAO_BASE_URI;
 export const NEXT_PUBLIC_KAKAO_CLIENT_ID =
