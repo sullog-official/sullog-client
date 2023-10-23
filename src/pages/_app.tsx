@@ -8,7 +8,6 @@ import dynamic from 'next/dynamic';
 import Script from 'next/script';
 import { useEffect, useState } from 'react';
 
-import { refreshAccessToken } from '@/shared/apis/auth/refreshAccessToken';
 import ConfirmProvider from '@/shared/components/ConfirmProvider';
 import CustomHead from '@/shared/components/CustomHead';
 import { queryClient as sullogQueryClient } from '@/shared/configs/reactQuery';
@@ -24,26 +23,23 @@ import {
 const Loading = dynamic(() => import('@/shared/components/Loading'));
 
 type SullogAppProps = AppProps & {
-  tokens?: {
-    accessToken: string;
-    refreshToken: string;
-  };
+  accessToken?: string;
 };
 
 export default function SullogApp({
   Component,
   pageProps,
-  tokens,
+  accessToken,
 }: SullogAppProps) {
   const [queryClient] = useState(() => sullogQueryClient);
   const { isPageLoading } = usePageLoading();
   gtag.useGtag();
 
   useEffect(() => {
-    if (tokens?.accessToken) {
-      setAccessToken(tokens.accessToken);
+    if (accessToken) {
+      setAccessToken(accessToken);
     }
-  }, [tokens]);
+  }, [accessToken]);
 
   return (
     <>
@@ -78,48 +74,23 @@ export default function SullogApp({
   );
 }
 
-const goToLogin = (res: ServerResponse<IncomingMessage> | undefined) => {
-  res?.writeHead(307, { location: `/login` });
-  res?.end();
-};
-
 SullogApp.getInitialProps = async (appContext: AppContext) => {
   const { ctx } = appContext;
   const { req, res, pathname } = ctx;
 
+  const accessToken = getAccessToken({ req, res });
   const refreshToken = getRefreshToken({ req, res });
 
-  if (pathname !== '/login' && !refreshToken) {
-    goToLogin(res);
+  if (pathname !== '/login' && !accessToken && !refreshToken) {
+    res?.writeHead(307, { location: `/login` });
+    res?.end();
     return {};
-  }
-
-  let tokens: SullogAppProps['tokens'];
-  if (refreshToken) {
-    try {
-      await refreshAccessToken(ctx);
-      const accessToken = getAccessToken();
-      const refreshToken = getRefreshToken({ req, res });
-
-      if (!accessToken || !refreshToken) {
-        goToLogin(res);
-        return {};
-      }
-
-      tokens = {
-        accessToken,
-        refreshToken,
-      };
-    } catch (error) {
-      goToLogin(res);
-      return {};
-    }
   }
 
   const pageProps = await App.getInitialProps(appContext);
 
   return {
     ...pageProps,
-    tokens,
+    accessToken,
   };
 };
