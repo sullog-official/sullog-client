@@ -1,4 +1,4 @@
-import { FLAVOR_TAGS } from '@/shared/constants/flavorTags';
+import type { FLAVOR_TAGS } from '@/shared/constants/flavorTags';
 
 export type MajorTag = keyof typeof FLAVOR_TAGS;
 export type DetailTag<TMajorTag extends MajorTag> =

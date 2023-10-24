@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import Icon from '@/shared/components/Icon';
 import { useOpen } from '@/shared/hooks/useOpen';

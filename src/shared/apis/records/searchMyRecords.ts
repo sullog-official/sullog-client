@@ -1,7 +1,7 @@
 import { createInfiniteQuery } from 'react-query-kit';
 
-import { PagingInfo } from '@/shared/types/paging';
-import { RecordMeta } from '@/shared/types/record';
+import type { PagingInfo } from '@/shared/types/paging';
+import type { RecordMeta } from '@/shared/types/record';
 import { generateUrl } from '@/shared/utils/generateUrl';
 import { request } from '@/shared/utils/request';
 

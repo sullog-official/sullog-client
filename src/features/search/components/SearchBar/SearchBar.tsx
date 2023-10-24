@@ -1,11 +1,11 @@
 import classNames from 'classnames/bind';
 import { debounce } from 'lodash-es';
 import {
-  KeyboardEventHandler,
   useCallback,
   useEffect,
   useMemo,
   useState,
+  type KeyboardEventHandler,
 } from 'react';
 
 import Icon from '@/shared/components/Icon';

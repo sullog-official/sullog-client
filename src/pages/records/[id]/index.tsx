@@ -1,8 +1,12 @@
-import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
+import {
+  dehydrate,
+  QueryClient,
+  type DehydratedState,
+} from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 import dayjs from 'dayjs';
 import { isNil } from 'lodash-es';
-import { GetServerSideProps } from 'next';
+import type { GetServerSideProps } from 'next';
 import { useCallback } from 'react';
 
 import FlavorSliderGroup from '@/features/record/components/FlavorSliderGroup';
@@ -15,9 +19,9 @@ import Icon from '@/shared/components/Icon';
 import PageLayout from '@/shared/components/PageLayout';
 import TopNavigator from '@/shared/components/TopNavigator';
 import useConfirm from '@/shared/hooks/useConfirm';
-import { Alcohol } from '@/shared/types/alcohol';
-import { Record } from '@/shared/types/record';
-import { FlavorTag } from '@/shared/types/record/flavorTag';
+import type { Alcohol } from '@/shared/types/alcohol';
+import type { Record } from '@/shared/types/record';
+import type { FlavorTag } from '@/shared/types/record/flavorTag';
 
 import styles from './index.module.scss';
 

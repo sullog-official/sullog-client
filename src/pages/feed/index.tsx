@@ -1,6 +1,10 @@
-import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
+import {
+  dehydrate,
+  QueryClient,
+  type DehydratedState,
+} from '@tanstack/react-query';
 import classNames from 'classnames/bind';
-import { GetServerSideProps } from 'next';
+import type { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -11,7 +15,7 @@ import PageLayout from '@/shared/components/PageLayout';
 import Skeleton from '@/shared/components/Skeleton';
 import TopNavigator from '@/shared/components/TopNavigator';
 import useIntersect from '@/shared/hooks/useIntersect';
-import { Feed } from '@/shared/types/feed';
+import type { Feed } from '@/shared/types/feed';
 
 import styles from './index.module.scss';
 

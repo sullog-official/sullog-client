@@ -1,6 +1,10 @@
-import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
+import {
+  type DehydratedState,
+  dehydrate,
+  QueryClient,
+} from '@tanstack/react-query';
 import classNames from 'classnames/bind';
-import { GetServerSideProps } from 'next';
+import type { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import { Controller } from 'react-hook-form';
 

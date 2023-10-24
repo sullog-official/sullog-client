@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind';
 import {
-  DetailedHTMLProps,
-  ForwardedRef,
   forwardRef,
-  TextareaHTMLAttributes,
+  type DetailedHTMLProps,
+  type ForwardedRef,
+  type TextareaHTMLAttributes,
 } from 'react';
 
 import styles from './TextArea.module.scss';

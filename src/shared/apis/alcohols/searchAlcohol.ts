@@ -1,7 +1,7 @@
 import { createInfiniteQuery, createQuery } from 'react-query-kit';
 
-import { Alcohol } from '@/shared/types/alcohol';
-import { PagingInfo } from '@/shared/types/paging';
+import type { Alcohol } from '@/shared/types/alcohol';
+import type { PagingInfo } from '@/shared/types/paging';
 import { request } from '@/shared/utils/request';
 
 type Variables = { keyword: string } & PagingInfo;

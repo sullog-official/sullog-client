@@ -1,4 +1,4 @@
-import { AlcoholPercentFeeling } from '@/shared/types/record/alcoholPercentFeeling';
+import type { AlcoholPercentFeeling } from '@/shared/types/record/alcoholPercentFeeling';
 
 const alcoholPercentFeelingAlias: Record<AlcoholPercentFeeling, string> = {
   MILD: '연하다',

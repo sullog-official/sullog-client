@@ -5,11 +5,13 @@
     "plugin:storybook/recommended",
     "plugin:prettier/recommended"
   ],
+  "plugins": ["@typescript-eslint"],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "no-unused-vars": "off",
     "react/prop-types": "off",
     "no-undef": "off",
+    "no-duplicate-imports": "error",
     "import/order": [
       "error",
       {
@@ -35,6 +37,7 @@
         "newlines-between": "always"
       }
     ],
+    "@typescript-eslint/consistent-type-imports": "error",
     "react/button-has-type": "warn",
     "react/self-closing-comp": [
       "error",

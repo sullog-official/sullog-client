@@ -1,10 +1,14 @@
 import dayjs from 'dayjs';
 import { useRouter } from 'next/router';
-import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
+import {
+  useForm,
+  type SubmitHandler,
+  type SubmitErrorHandler,
+} from 'react-hook-form';
 
 import { useCreateRecord } from '@/shared/apis/records/createRecord';
-import { Alcohol } from '@/shared/types/alcohol';
-import { Record } from '@/shared/types/record';
+import type { Alcohol } from '@/shared/types/alcohol';
+import type { Record } from '@/shared/types/record';
 
 import { FLAVOR_SLIDER_GROUP_DEFAULT_VALUE } from '../components/FlavorSliderGroup/FlavorSliderGroup';
 

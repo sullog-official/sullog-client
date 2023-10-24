@@ -1,4 +1,4 @@
-import qs, { IStringifyOptions } from 'qs';
+import qs, { type IStringifyOptions } from 'qs';
 
 export const generateUrl = ({
   url,

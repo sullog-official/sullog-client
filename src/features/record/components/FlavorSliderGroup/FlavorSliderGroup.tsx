@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
-import { ForwardedRef, forwardRef, useEffect, useState } from 'react';
+import { forwardRef, type ForwardedRef } from 'react';
 
 import Slider from '@/shared/components/Slider';
-import { Record } from '@/shared/types/record';
+import type { Record } from '@/shared/types/record';
 
 import styles from './FlavorSliderGroup.module.scss';
 

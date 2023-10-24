@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
-import { FlavorTag } from '@/shared/types/record/flavorTag';
+import type { FlavorTag } from '@/shared/types/record/flavorTag';
 
 import DetailFlavorInput from './DetailFlavorInput';
 

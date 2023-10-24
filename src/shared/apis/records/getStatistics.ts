@@ -1,6 +1,6 @@
 import { createQuery } from 'react-query-kit';
 
-import { Statistics } from '@/shared/types/record/statistics';
+import type { Statistics } from '@/shared/types/record/statistics';
 import { request } from '@/shared/utils/request';
 
 const getStatistics = () => {

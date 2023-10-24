@@ -1,4 +1,4 @@
-import { DetailTag, MajorTag } from '@/shared/types/record/flavorTag';
+import type { DetailTag, MajorTag } from '@/shared/types/record/flavorTag';
 
 /**
  * 맛 종류 문서: https://docs.google.com/spreadsheets/d/1HItKDWkbNg2vsrbqpdfcDhMcNnKmKkCouMeYWX3v7Bk/edit#gid=0

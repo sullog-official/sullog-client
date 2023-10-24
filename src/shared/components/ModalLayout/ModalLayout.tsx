@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { ReactNode, useEffect, useRef } from 'react';
+import { useEffect, useRef, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 
 import { useOpen } from '@/shared/hooks/useOpen';

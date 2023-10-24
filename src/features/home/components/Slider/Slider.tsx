@@ -6,7 +6,7 @@ import 'swiper/css';
 import AlcoholPreview from '@/features/alcohol/components/AlcoholPreview';
 import Chip from '@/shared/components/Chip';
 import Icon from '@/shared/components/Icon';
-import { Experience } from '@/shared/types/Experience';
+import type { Experience } from '@/shared/types/Experience';
 
 import styles from './Slider.module.scss';
 

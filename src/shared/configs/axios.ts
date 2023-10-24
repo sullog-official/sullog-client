@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import axios, { type AxiosError } from 'axios';
 
 import { NEXT_PUBLIC_API_BASE_URI } from '@/shared/constants';
 

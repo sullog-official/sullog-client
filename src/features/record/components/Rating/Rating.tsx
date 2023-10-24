@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { isNil } from 'lodash-es';
-import { ForwardedRef, forwardRef, useCallback, useState } from 'react';
+import { forwardRef, useCallback, type ForwardedRef } from 'react';
 
 import Icon from '@/shared/components/Icon';
 

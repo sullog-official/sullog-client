@@ -1,6 +1,6 @@
-import { createContext, Dispatch, useContext, useReducer } from 'react';
+import { createContext, useContext, useReducer, type Dispatch } from 'react';
 
-import { ConfirmModalProps } from '../components/ConfirmModal/ConfirmModal';
+import type { ConfirmModalProps } from '../components/ConfirmModal/ConfirmModal';
 
 export type ConfirmState = Omit<ConfirmModalProps, 'onClose'>;
 
